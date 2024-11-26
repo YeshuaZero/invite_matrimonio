@@ -1,0 +1,120 @@
+<div class="contenedorGeneral">
+    <div class="encabezado">
+        <img class="imgPrincipal" src="{{'Inicio.encabezado.imgEncabezado' | translate}}" alt="imgPrincipal">
+        <div class="dataInfo flex flexColumn">
+            <!-- <img src="{{'Inicio.encabezado.imgTextoCasados' | translate}}" alt="nosCasamos"> -->
+             <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{'Inicio.encabezado.nombreEl' | translate}}</span>
+             <span class="conectorNombres cursiva">&</span>
+             <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{'Inicio.encabezado.nombreElla' | translate}}</span>
+        </div>
+        <div class="contenedorFlores">
+            <img class="imgArribaIzq" src="{{'Inicio.encabezado.imgArribaIzq' | translate}}" alt="imgArribaIzq">
+            <img class="imgArribaDer" src="{{'Inicio.encabezado.imgArribaDer' | translate}}" alt="imgArribaDer">
+            <img class="imgAbajoIzq" src="{{'Inicio.encabezado.imgAbajoIzq' | translate}}" alt="imgAbajoIzq">
+            <img class="imgAbajoDer" src="{{'Inicio.encabezado.imgAbajoDer' | translate}}" alt="imgAbajoDer">
+            <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+        </div>
+        <svg class="separadorCurvas" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#fafafa" fill-opacity="1"
+                d="M0,160L34.3,170.7C68.6,181,137,203,206,208C274.3,213,343,203,411,186.7C480,171,549,149,617,160C685.7,171,754,213,823,224C891.4,235,960,213,1029,192C1097.1,171,1166,149,1234,138.7C1302.9,128,1371,128,1406,128L1440,128L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z">
+            </path>
+        </svg>
+    </div>
+    <div class="contenedorEslogan flex">
+        <p class="eslogan flex flexColumn">
+            <span class="frase flex">
+                <i class="fas fa-quote-left comillaIni"></i>
+                {{'Inicio.eslogan.frase' | translate}}
+                <i class="fas fa-quote-right comillaFin"></i>
+            </span>
+            <span class="autor">{{'Inicio.eslogan.autor' | translate}}</span>
+        </p>
+    </div>
+    <div class="contenedorConteoRegresivo flex flexColumn">
+        <div class="fechaBoda">
+            <p class="dia">{{'Inicio.conteoRegresivo.dia' | translate}}</p>
+            <p class="mes">{{'Inicio.conteoRegresivo.mes' | translate}}</p>
+            <p class="year">{{'Inicio.conteoRegresivo.year' | translate}}</p>
+        </div>
+        <div class="conteo flex">
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{'Inicio.conteoRegresivo.dias' | translate}}</span>
+                <span class="valor">{{tiempoRestante.dias}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{'Inicio.conteoRegresivo.horas' | translate}}</span>
+                <span class="valor">{{tiempoRestante.horas}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{'Inicio.conteoRegresivo.minutos' | translate}}</span>
+                <span class="valor">{{tiempoRestante.minutos}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{'Inicio.conteoRegresivo.segundos' | translate}}</span>
+                <span class="valor">{{tiempoRestante.segundos}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="contenedorCeremonia flex flexColumn">
+        <i class="icoSeccion fas fa-church"></i>
+        <p class="tituloSeccion cursiva">{{'Inicio.ceremonia.titulo' | translate}}</p>
+
+        <div class="flex">
+            <div class="contenedorHora flex flexColumn">
+                <p class="tituloHora">{{'Inicio.ceremonia.hora' | translate}}</p>
+                <span class="datoHora">{{'Inicio.ceremonia.datoHora' | translate}}</span>
+                <button mat-raised-button [matMenuTriggerFor]="menuAgenda">
+                    <i class="far fa-clock"></i>
+                    {{'Inicio.ceremonia.accionHora' | translate}}
+                </button>
+            </div>
+            
+            <div class="contenedorLugar flex flexColumn">
+                <p class="tituloLugar">{{'Inicio.ceremonia.lugar' | translate}}</p>
+                <span class="datoLugar">{{'Inicio.ceremonia.datoLugar' | translate}}</span>
+                <button mat-raised-button [matMenuTriggerFor]="menuLugar">
+                    <i class="fas fa-map-marked-alt"></i>
+                    {{'Inicio.ceremonia.accionLugar' | translate}}
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedorCodigoVestuario flex flexColumn">
+        <i class="icoSeccion fas fa-thumbs-up"></i>
+        <p class="tituloSeccion flex flexColumn">
+            <span class="primerTitulo">{{'Inicio.codigoVestuario.titulo' | translate}}</span>
+            <span class="cursiva">{{'Inicio.codigoVestuario.titulo2' | translate}}</span>
+        </p>
+
+    </div>
+
+    <div class="contenedorRegalos"></div>
+    <div class="confirmacionInvitados"></div>
+</div>
+
+<mat-menu #menuAgenda="matMenu">
+    <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
+        <i class="fab fa-apple"></i>
+        {{'Inicio.ceremonia.appleCalendar' | translate}}
+    </button>
+    <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
+        <img src="assets/imgs/google.png" alt="Google">
+        {{'Inicio.ceremonia.googleCalendar' | translate}}
+    </button>
+    <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
+        <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
+        {{'Inicio.ceremonia.microsoftCalendar' | translate}}
+    </button>
+</mat-menu>
+
+<mat-menu #menuLugar="matMenu">
+    <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
+        <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
+        {{'Inicio.ceremonia.waze' | translate}}
+    </button>
+    <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
+        <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg" alt="GoogleMaps">
+        {{'Inicio.ceremonia.googleMaps' | translate}}
+    </button>
+</mat-menu>

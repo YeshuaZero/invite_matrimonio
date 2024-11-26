@@ -1,0 +1,346 @@
+.tabla {
+    height: calc(100% - 16px);
+    overflow-y: hidden;
+    padding-bottom: 16px;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+}
+
+.visualizarTabla {
+    opacity: 1;
+}
+
+.nombreTabla {
+    display: none;
+}
+
+.contenedorTabla {
+    --mat-table-header-container-height: 24px;
+    --mat-table-footer-container-height: 24px;
+    --mat-table-row-item-container-height: 20px;
+}
+
+.contenedorTabla.tablaConInputs {
+    --mat-table-row-item-container-height: 21px;
+}
+
+.mat-mdc-paginator {
+    position: absolute;
+    bottom: 8px;
+}
+
+::ng-deep .mat-mdc-paginator-range-label {
+    min-width: 33px;
+    font-size: 10px;
+    width: auto;
+    margin: 0 8px 0 0 !important;
+    text-align: center;
+}
+
+.paginador {
+    width: 100%;
+    height: 26px;
+    bottom: 0;
+}
+
+.resaltarColumna {
+    background: #81b2f3 !important;
+    font-weight: 700;
+}
+
+.resaltarColumna ::ng-deep .mat-sort-header-arrow {
+    color: #fff;
+}
+
+.icoOpciones,
+.input {
+    text-align: center;
+}
+
+::ng-deep .mat-sort-header-container {
+    height: 24px;
+}
+
+::ng-deep .mat-sort-header-content {
+    line-height: 8px;
+}
+
+::ng-deep .icoOpciones .mat-sort-header-container {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.opciones {
+    cursor: pointer;
+}
+
+.contenedorNoData {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: calc(100% - 24px);
+    padding-bottom: 24px;
+}
+
+.contenedorNoData i {
+    font-size: 60px;
+    margin-right: 16px;
+    animation: pulse 2s infinite;
+    transform: scale(1);
+}
+
+.contenedorNoData span {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 1;
+}
+
+.nombreSel {
+    width: calc(100% - 24px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px 12px;
+    font-size: 12px;
+    border-bottom: solid 1px gainsboro;
+    font-weight: 700;
+    color: #101123;
+}
+
+.opcionMenuTabla {
+    min-height: 36px;
+}
+
+.opcionMenuTabla .icoOpcionesTabla,
+.opcionMenuTabla .textoOpcionesTabla {
+    font-size: 14px;
+    margin: 0;
+    text-align: center;
+}
+
+.checkboxTable {
+    --mdc-checkbox-state-layer-size: 20px;
+    transform: scale(0.7);
+    --mdc-checkbox-selected-focus-icon-color: #101123;
+    --mdc-checkbox-selected-hover-icon-color: #101123;
+    --mdc-checkbox-selected-icon-color: #101123;
+    --mdc-checkbox-selected-pressed-icon-color: #101123;
+}
+
+.contenedorIcoTexto {
+    cursor: pointer !important;
+}
+
+.contenedorIcoTexto i {
+    color: #989bb0;
+}
+
+.contenedorIcoTexto .textoIcono {
+    font-size: 10px;
+    font-weight: 600;
+    color: #989bb0;
+}
+
+.tabla .fa-info,
+.tabla .fa-info-circle {
+    color: #82939b
+}
+
+.tabla .fa-info:hover,
+.tabla .fa-info-circle:hover,
+.contenedorIcoTexto:hover i,
+.contenedorIcoTexto:hover .textoIcono {
+    color: #101023;
+}
+
+.tablaConTexto {
+    margin-bottom: 40px;
+}
+
+.textoTabla {
+    display: flex;
+    align-items: baseline;
+    align-content: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 42px;
+    right: 0;
+    text-align: center;
+    font-size: 11.5px;
+    width: 100%;
+    background: #e5e6e9;
+    color: #575979;
+    font-weight: 200;
+    padding: 6px 0;
+    border-radius: 0px;
+}
+
+.textoTabla span {
+    display: flex;
+    justify-content: center;
+    width: calc(100% - 90px);
+}
+
+.cerrarNotaTabla {
+    position: absolute;
+    right: 2px;
+    top: 0;
+    padding: 8px;
+    font-size: 10px;
+    color: #575979;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+
+.cerrarNotaTabla:hover {
+    color: #101123
+}
+
+::ng-deep .mat-mdc-cell {
+    height: 20px;
+}
+
+::ng-deep .mat-mdc-cell i {
+    width: 100%;
+    margin: 0;
+}
+
+tr:nth-child(even) {
+    background: #fafafa;
+}
+
+::ng-deep tr.mat-mdc-row:hover {
+    background: #e4e4e4 !important;
+}
+
+.textoInfoAdicional {
+    padding: 16px;
+}
+
+.infoContacto {
+    font-size: 12px;
+    margin-bottom: 8px;
+    font-weight: 200;
+}
+
+.textInfoContacto {
+    padding: 2px 0;
+}
+
+.textInfoContacto i {
+    margin-right: 8px;
+    color: #ccc;
+}
+
+.contenedorSinDataContacto i {
+    margin-right: 8px;
+    color: #101123;
+}
+
+.textInfoContacto span {
+    font-size: 14px;
+    color: #101123;
+}
+
+.textInfoContacto span.correoContacto,
+.sinDataContacto {
+    color: #101123;
+    font-size: 12px;
+}
+
+::ng-deep .mat-mdc-cell i.opciones,
+::ng-deep .mat-mdc-cell i.infoContactoDiscipulo,
+::ng-deep .mat-mdc-cell i.tratamiento {
+    width: auto;
+    padding: 0 6px;
+    cursor: pointer;
+}
+
+::ng-deep .mat-mdc-cell i.infoContactoDiscipulo,
+::ng-deep .mat-mdc-cell i.tratamiento {
+    color: #ccc;
+}
+
+::ng-deep .mat-mdc-cell i.tratamiento.fa-paper-plane {
+    color: #aaa;
+}
+
+::ng-deep .mat-mdc-cell i.tratamiento:hover {
+    color: #101123;
+}
+
+::ng-deep .mat-mdc-cell i.tratamiento.fa-check {
+    color: #12acb3
+}
+
+::ng-deep .mat-mdc-cell i.tratamiento.fa-check-double {
+    color: #08bf5a
+}
+
+::ng-deep .mat-mdc-cell i.tratamiento.fa-fa-times {
+    color: #d81e1e
+}
+
+::ng-deep .mat-column-valorSembradoAnterior {
+    width: 160px;
+}
+
+::ng-deep .mat-column-valorSembradoAnterior .mat-sort-header-content {
+    line-height: 1;
+}
+
+.campoNoEditable {
+    color: grey;
+    cursor: default;
+}
+
+.casillaInputClass {
+    height: 12px;
+    margin: 2px 0px;
+    text-align: center;
+}
+
+.borderBottom {
+    border-bottom: solid 1px gainsboro;
+    margin-bottom: 8px;
+}
+
+.sinTratamiento {
+    padding: 0 12px !important;
+    cursor: default !important;
+}
+
+.tablaFinal {
+    width: 100%;
+    overflow: auto;
+    padding-bottom: 12px;
+}
+
+.icoWp {
+    margin-left: 6px;
+    cursor: pointer;
+    color: green !important;
+}
+
+@media (max-width:920px) {
+    .contenedorNoData {
+        padding-top: 30px;
+    }
+}
+
+@media (max-width:500px) {
+    .textoTabla {
+        position: relative;
+        bottom: 14px;
+    }
+}
+
+@media (max-width:320px) {
+    .paginador {
+        transform: scale(0.8);
+        margin-top: 20px;
+    }
+}

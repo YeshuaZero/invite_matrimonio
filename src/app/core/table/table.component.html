@@ -1,0 +1,173 @@
+<div class="tabla relative" [ngClass]="{'visualizarTabla': visualizarTabla}">
+    <ng-container *ngIf="data && data.length > 0; else noData">
+        <ng-container *ngIf="mostrarTabla">
+            <div class="tablaFinal">
+                <table class="contenedorTabla" [ngClass]="{'tablaConInputs': indexInput != 999}" mat-table
+                    [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)"
+                    [ngClass]="{'tablaConTexto': mostrarTextoTabla && textoTabla}">
+                    <caption class="nombreTabla">{{nombreTabla}}</caption>
+                    <!-- Position Column -->
+                    <ng-container *ngFor="let columna of columnas, let i=index" [matColumnDef]="columna">
+                        <ng-container
+                            *ngIf="!ordenarTabla || indexCheck == i || indexIcono == i || indexInput == i || indexNoOrdenarColumna == i ; else ordenar">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header-disabled
+                                [ngClass]="{'resaltarColumna': indexActivo && i == indexActivo, 'icoOpciones': indexCheck == i || indexIcono == i, 'input': indexInput == i}">
+                                {{noTraducirTitulos ? columna : (nombreTabla+'.'+columna | translate)}} </th>
+                        </ng-container>
+                        <ng-template #ordenar>
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header
+                                sortActionDescription="{{'Paginator.ordenar' | translate}} {{noTraducirTitulos ? columna : (nombreTabla+'.'+columna | translate)}}"
+                                [ngClass]="{'resaltarColumna': indexActivo && i == indexActivo, 'icoOpciones': indexCheck == i || indexIcono == i, 'input': indexInput == i}">
+                                {{noTraducirTitulos ? columna : (nombreTabla+'.'+columna | translate)}} </th>
+                        </ng-template>
+
+                        <td mat-cell *matCellDef="let element"
+                            [ngClass]="{'resaltarColumna': indexActivo && i == indexActivo, 'icoOpciones': indexCheck == i || indexIcono == i || indexInput == i}"
+                            [ngStyle]="{'color': element.colorLetra}">
+                            <ng-container *ngIf="indexCheck == i || indexIcono == i || indexInput == i; else valor">
+                                <ng-container *ngIf="indexCheck == i || indexInput == i; else ico">
+                                    <ng-container *ngIf="indexCheck == i; else casillaInput">
+                                        <mat-checkbox color="primary" class="checkboxTable" [checked]="element[columna]"
+                                            (change)="cambioCheck(element, columna)"></mat-checkbox>
+                                    </ng-container>
+                                    <ng-template #casillaInput>
+                                        <input class="casillaInputClass" [(ngModel)]="element[columna]" [name]="columna"
+                                            maxlength="50" autocomplete="off"
+                                            (keypress)="funcionesGeneralesService.limitarInput($event, tipoLimiteInput)"
+                                            [ngStyle]="{'width': tamInput}"
+                                            [ngClass]="{'campoNoEditable': element[columna + 'Disabled']}"
+                                            [disabled]="element[columna + 'Disabled']"
+                                            (blur)="cambioCasillaInput(element, columna)">
+                                    </ng-template>
+                                </ng-container>
+                                <ng-template #ico>
+                                    <ng-container *ngIf="!opcionesDependenValor || element[columna]">
+                                        <ng-container *ngIf="textoIcono; else opciones">
+                                            <div class="contenedorIcoTexto" (click)="ejecutarAccion(element)">
+                                                <i class="opciones {{icono}}"></i>
+                                                <span class="textoIcono">{{textoIcono | translate}}</span>
+                                            </div>
+                                        </ng-container>
+                                        <ng-template #opciones>
+                                            <ng-container *ngIf="icoSinMenu; else icoMenu">
+                                                <i class="opciones {{icono}} w100"
+                                                    (click)="ejecutarAccion(element)"></i>
+                                            </ng-container>
+                                            <ng-template #icoMenu>
+                                                <i *ngIf="infoAdicional || (opcionesTabla && opcionesTabla.length > 0)"
+                                                    class="opciones {{icono}}" [matMenuTriggerFor]="menuOtrasOpc"
+                                                    (click)="verOpciones(element)"
+                                                    [ngClass]="{'w100': nombreTabla != 'Discipulos' && nombreTabla != 'Discipulos.verNoPastoreadosPopUp'}"></i>
+                                                <ng-container
+                                                    *ngIf="nombreTabla == 'Discipulos' || nombreTabla == 'Discipulos.verNoPastoreadosPopUp'">
+                                                    <i class="infoContactoDiscipulo fas fa-info"
+                                                        [matMenuTriggerFor]="infoAdicionalContacto"
+                                                        (click)="verOpciones(element)"></i>
+                                                    <i *ngIf="envioTratamientoDatos && nombreTabla == 'Discipulos'"
+                                                        class="tratamiento {{element.icoTratamientoDatos ? element.icoTratamientoDatos : 'sinTratamiento'}}"
+                                                        (click)="ejecutarAccion2(element)"></i>
+                                                </ng-container>
+                                            </ng-template>
+                                        </ng-template>
+                                    </ng-container>
+                                </ng-template>
+                            </ng-container>
+                            <ng-template #valor>
+                                <ng-container *ngIf="esArray(element[columna]); else valorNormal">
+                                    <div class="contenedorDataArreglo {{'datoArray'+i}}"
+                                        *ngFor="let e of element[columna], let i=index">
+                                        <span [innerHTML]="e"></span>
+                                        <br>
+                                    </div>
+                                </ng-container>
+                                <ng-template #valorNormal>
+                                    <span [innerHTML]="element[columna]"></span>
+                                </ng-template>
+                            </ng-template>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                    <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+                </table>
+            </div>
+
+            <div *ngIf="mostrarTextoTabla && textoTabla" class="textoTabla">
+                <i class="fas fa-quote-right"></i>
+                <span>{{'General.notaTextoTabla' | translate}} {{textoTabla | translate}}</span>
+                <i class="cerrarNotaTabla fas fa-times" (click)="mostrarTextoTabla = false"></i>
+            </div>
+
+            <div *ngIf="mostrarPaginador" class="paginador flex">
+                <mat-paginator [pageSizeOptions]="[cantidadElementosMostrar]" showFirstLastButtons></mat-paginator>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>
+
+<mat-menu #menuOtrasOpc="matMenu">
+    <span *ngIf="filaSeleccionada && atributoOpciones" class="nombreSel">{{filaSeleccionada[atributoOpciones]}}</span>
+    <ng-container *ngIf="infoAdicional">
+        <ng-container *ngTemplateOutlet="templateInfoAdicional"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="opcionesTabla && opcionesTabla.length > 0">
+        <ng-container *ngFor="let opcion of opcionesTabla, let i=index">
+            <button *ngIf="filaSeleccionada && !filaSeleccionada[opcion.nombre + 'Ocultar']" mat-menu-item
+                class="flex opcionMenuTabla" (click)="abrirOpcion(opcion, filaSeleccionada)">
+                <i class="icoOpcionesTabla {{opcion.icono}}"></i>
+                <span class="textoOpcionesTabla">{{opcion.nombre}}</span>
+            </button>
+        </ng-container>
+    </ng-container>
+</mat-menu>
+
+<mat-menu #infoAdicionalContacto="matMenu">
+    <span *ngIf="filaSeleccionada && atributoOpciones" class="nombreSel">{{filaSeleccionada[atributoOpciones]}}</span>
+    <ng-container *ngTemplateOutlet="templateInfoAdicional"></ng-container>
+</mat-menu>
+
+<ng-template #noData>
+    <div class="contenedorNoData">
+        <i class="fab fa-grav"></i>
+        <span>
+            {{'Paginator.noData' | translate}}
+        </span>
+    </div>
+</ng-template>
+
+<ng-template #templateInfoAdicional>
+    <ng-container *ngIf="filaSeleccionada">
+        <div class="textoInfoAdicional flex flexColumn"
+            [ngClass]="{'borderBottom': infoAdicional && opcionesTabla && opcionesTabla.length > 0}">
+            <ng-container
+                *ngIf="(filaSeleccionada.CORREO || (filaSeleccionada.correo && filaSeleccionada.correo != '-')) || (filaSeleccionada.TELEFONOS || filaSeleccionada.MOVIL || (filaSeleccionada.celular && filaSeleccionada.celular != '-')); else sinDataContacto">
+                <span class="infoContacto">{{'Cumple.infoContacto' | translate}}</span>
+                <div *ngIf="filaSeleccionada.TELEFONOS || filaSeleccionada.MOVIL || (filaSeleccionada.celular && filaSeleccionada.celular != '-')"
+                    class="flex textInfoContacto">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>{{filaSeleccionada.TELEFONOS ? filaSeleccionada.TELEFONOS : filaSeleccionada.MOVIL ?
+                        filaSeleccionada.MOVIL : filaSeleccionada.celular}}</span>
+                    <i class="fab fa-whatsapp icoWp" (click)="abrirWhatsApp(filaSeleccionada.TELEFONOS ? filaSeleccionada.TELEFONOS : filaSeleccionada.MOVIL ?
+                        filaSeleccionada.MOVIL : filaSeleccionada.celular)"></i>
+                </div>
+                <div *ngIf="filaSeleccionada.CORREO || (filaSeleccionada.correo && filaSeleccionada.correo != '-')"
+                    class="flex textInfoContacto">
+                    <i class="fas fa-envelope"></i>
+                    <span class="correoContacto">{{filaSeleccionada.CORREO ? filaSeleccionada.CORREO :
+                        filaSeleccionada.correo}}</span>
+                </div>
+                <div *ngIf="nombreTabla == 'Discipulos' && filaSeleccionada.correoRC && filaSeleccionada.correoRC != '-'"
+                    class="flex textInfoContacto">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    <span class="correoContacto">{{filaSeleccionada.correoRC}}</span>
+                </div>
+            </ng-container>
+            <ng-template #sinDataContacto>
+                <div class="contenedorSinDataContacto">
+                    <i class="fas fa-phone-slash"></i>
+                    <span class="sinDataContacto">{{'Cumple.sinDataContacto' | translate}}</span>
+                </div>
+            </ng-template>
+        </div>
+    </ng-container>
+</ng-template>

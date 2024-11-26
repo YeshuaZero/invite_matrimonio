@@ -1,0 +1,782 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html,
+body {
+    height: 100%;
+    min-width: 280px;
+    --mat-table-header-headline-font: 'Raleway';
+    --mat-table-background-color: 'transparent';
+    --mat-paginator-container-background-color: 'transparent';
+    --mat-expansion-header-collapsed-state-height: 36px;
+    --mat-expansion-header-expanded-state-height: 48px;
+}
+
+body {
+    margin: 0;
+    font-family: Raleway, "Helvetica Neue", sans-serif;
+}
+
+p,
+span,
+h1,
+h2,
+h3,
+h4,
+a,
+div,
+button {
+    font-family: Raleway, "Helvetica Neue", sans-serif;
+    font-feature-settings: 'lnum';
+}
+
+.cdk-overlay-pane {
+    max-width: 95vw !important;
+}
+
+.w100 {
+    width: 100% !important;
+}
+
+app-table,
+.wh100 {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.cursiva{
+    font-family: "Allison", cursive;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.popUp app-table {
+    height: auto !important;
+}
+
+.colorClaro {
+    color: #a7a9b1;
+}
+
+.colorPrincipal {
+    color: #101222
+}
+
+.backgroundPrincipal {
+    background: #101222;
+    color: #fff;
+}
+
+ngx-mat-datepicker-content {
+    background: #fff;
+    box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.4);
+}
+
+ngx-mat-timepicker form {
+    height: 38px;
+}
+
+ngx-mat-timepicker .mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+ngx-mat-timepicker table {
+    display: flex;
+    justify-content: center;
+}
+
+.mat-calendar-header {
+    padding-top: 0 !important;
+}
+
+.mat-calendar-controls {
+    margin-top: 0 !important;
+}
+
+.mat-calendar-controls .mat-calendar-period-button {
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.mat-mdc-button .mat-mdc-button-touch-target,
+.mat-mdc-unelevated-button .mat-mdc-button-touch-target,
+.mat-mdc-raised-button .mat-mdc-button-touch-target,
+.mat-mdc-outlined-button .mat-mdc-button-touch-target {
+    background: transparent;
+}
+
+.mat-calendar-table-header th {
+    text-transform: uppercase;
+}
+
+.mat-mdc-header-row {
+    font-size: 10px !important;
+    font-weight: bold !important;
+}
+
+.mat-mdc-header-cell {
+    border: none !important;
+}
+
+.mdc-data-table__cell,
+.mdc-data-table__header-cell {
+    padding: 0 4px 0 4px !important;
+}
+
+.mat-mdc-cell {
+    font-size: 12px;
+    font-family: 'Raleway';
+    border: none !important;
+}
+
+.mat-mdc-paginator-container {
+    --mat-paginator-container-size: 24px;
+}
+
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    height: 26px !important;
+    width: 20px !important;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+    height: 14px;
+    padding: 0 12px;
+}
+
+.mat-mdc-paginator {
+    margin-top: 8px;
+}
+
+.mat-mdc-paginator-range-label {
+    font-size: 12px;
+}
+
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+    border-radius: 0 !important;
+}
+
+.mat-mdc-icon-button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.mat-mdc-paginator-page-size {
+    display: none !important;
+}
+
+.mat-mdc-icon-button.mat-mdc-button-base {
+    position: relative;
+    width: 48px;
+    height: 24px;
+}
+
+.tabla .mat-mdc-icon-button .mat-mdc-button-persistent-ripple,
+.tabla .mat-mdc-icon-button .mat-mdc-focus-indicator,
+.tabla .mat-mdc-icon-button .mat-mdc-button-ripple {
+    width: 24px;
+    height: 24px;
+    left: 25% !important;
+}
+
+.tabla .mat-mdc-form-field-icon-suffix i {
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+td {
+    white-space: nowrap;
+}
+
+.matTooltip {
+    background-color: #3f51b5;
+    color: white;
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.mat-mdc-tooltip {
+    --mdc-plain-tooltip-container-color: #101023;
+}
+
+.mat-mdc-chip {
+    border: solid 1px #101023;
+    --mdc-chip-elevated-container-color: #fff;
+}
+
+.mat-mdc-standard-chip.mat-mdc-chip-selected.mat-primary,
+.mat-mdc-standard-chip.mat-mdc-chip-highlighted.mat-primary {
+    --mdc-chip-elevated-container-color: #101123;
+}
+
+.mat-mdc-chip.mat-mdc-standard-chip {
+    --mdc-chip-container-height: 20px;
+    font-size: 12px;
+}
+
+.mat-mdc-standard-chip {
+    --mdc-chip-with-icon-icon-size: 12px;
+    --mdc-chip-with-avatar-avatar-size: 16px
+}
+
+.mat-mdc-chip-action-label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.mdc-evolution-chip__action {
+    width: 100%;
+}
+
+.mat-mdc-chip-action-label .nombre {
+    width: calc(100%);
+    justify-content: space-between;
+    font-size: 11px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.flexColumn {
+    flex-direction: column;
+}
+
+.justifyStart {
+    justify-content: flex-start;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+i {
+    margin-right: 6px;
+}
+
+.contenedorBuscador i.fa-times {
+    margin-right: 12px;
+}
+
+.relative {
+    position: relative;
+}
+
+.pointer {
+    cursor: pointer !important;
+}
+
+.card {
+    width: calc(100% - 40px);
+    height: calc(100% - 32px);
+    padding: 16px 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2);
+}
+
+.card.resumenData {
+    padding: 6px 20px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+.mat-calendar-body-selected.mat-calendar-body-today {
+    box-shadow: none !important;
+}
+
+/* Estilos Scroll */
+
+*::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #61637C;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+*::-webkit-scrollbar-track:hover,
+*::-webkit-scrollbar-track:active {
+    background: transparent;
+}
+
+/* Estilos PopUp */
+
+.mat-mdc-dialog-container {
+    max-height: 85vh !important;
+}
+
+.popUp {
+    padding: 0 24px 24px;
+    position: relative;
+    transition: all .3s ease-in-out;
+}
+
+.contenedorTituloPopUp {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    background: #fff;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    padding: 16px 0px;
+}
+
+.contenedorTituloPopUp span {
+    font-weight: 800;
+    padding-right: 12px;
+}
+
+.contenedorTituloPopUp i.cerrar {
+    cursor: pointer;
+    font-size: 20px;
+    color: #444;
+    transition: all .3s ease-in-out;
+    position: absolute;
+    top: 10px;
+    right: -14px;
+}
+
+.contenedorTituloPopUp i.cerrar:hover {
+    color: #000;
+}
+
+.contenedorLoader {
+    height: 100%;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.chipSelect {
+    pointer-events: none !important;
+}
+
+.mat-calendar-body-cell-content {
+    --mat-datepicker-calendar-date-selected-state-background-color: rgb(16, 17, 35);
+    --mat-datepicker-calendar-date-hover-state-background-color: rgba(16, 17, 35, 0.2);
+}
+
+/* Styles PopUp General */
+
+.contenedorPopUpGeneral .mat-mdc-dialog-container {
+    width: 280px;
+    max-width: 95vw;
+}
+
+.contenedorPopUpGeneral {
+    --colorTipo: #0957b1;
+    margin-bottom: 8%;
+}
+
+.contenedorPopUpGeneral .warning {
+    --colorTipo: #ff6c00
+}
+
+.contenedorPopUpGeneral .error {
+    --colorTipo: #f90909
+}
+
+.contenedorInfo i {
+    font-size: 70px;
+    padding: 16px 24px 24px;
+    color: var(--colorTipo);
+    animation: pulse 3s infinite;
+}
+
+.contenedorInfo .titulo {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    text-align: center;
+    color: #101222;
+}
+
+.contenedorInfo .texto {
+    margin: 10px 0 16px;
+    padding: 0 24px;
+    font-size: 10px;
+    color: #61637C;
+    text-align: center;
+}
+
+.contenedorPopUpGeneral .confirmar {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 20px 0 2px;
+    border: solid 1px var(--colorTipo);
+    color: var(--colorTipo);
+    padding: 6px 26px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.contenedorPopUpGeneral .confirmar.tituloAccionPq {
+    font-size: 12px;
+}
+
+.contenedorPopUpGeneral .confirmar:hover {
+    background: var(--colorTipo);
+    color: #fff;
+}
+
+.contenedorPopUpGeneral .cancelar {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #aeafbe;
+    cursor: pointer;
+}
+
+.contenedorPopUpGeneral .cancelar:hover {
+    color: #101222;
+}
+
+/* Animación Pulse */
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.90);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.90);
+    }
+}
+
+/* BOTON GENERAL */
+
+.botonGeneralAccion:not(:disabled) {
+    --mdc-protected-button-container-color: #101123 !important;
+    --mdc-protected-button-label-text-color: #fff !important;
+}
+
+/* RADIO BUTTON */
+
+.mdc-radio {
+    width: 14px !important;
+    height: 16px !important;
+    --mdc-radio-selected-focus-icon-color: #101222;
+    --mdc-radio-selected-hover-icon-color: #101222;
+    --mdc-radio-selected-icon-color: #101222;
+    --mdc-radio-selected-pressed-icon-color: #101222;
+    --mat-radio-checked-ripple-color: #101222;
+    margin: 0 8px;
+}
+
+.mat-mdc-radio-button .mdc-radio {
+    --mdc-radio-state-layer-size: 14px;
+}
+
+.mat-mdc-radio-touch-target,
+.mdc-radio__background {
+    height: 14px !important;
+    width: 14px !important;
+}
+
+.mdc-radio__inner-circle {
+    border-width: 7px !important;
+}
+
+.mdc-radio__native-control:checked+.mdc-radio__background .mdc-radio__inner-circle {
+    transform: scale(0.4) !important;
+}
+
+.mdc-form-field>label {
+    font-size: 12px;
+}
+
+/* SELECTS */
+
+.mat-mdc-form-field-flex {
+    align-items: center;
+}
+
+.mdc-floating-label {
+    width: fit-content;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.mat-mdc-form-field-required-marker {
+    font-size: 26px;
+}
+
+.mat-mdc-form-field-infix {
+    min-height: 38px;
+}
+
+.mat-mdc-radio-button .mdc-radio {
+    margin-right: 2px;
+}
+
+.mdc-form-field>label {
+    padding-left: 2px !important;
+}
+
+.mat-mdc-select-value-text {
+    font-size: 12px !important;
+}
+
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
+    top: 18px !important;
+    font-size: 14px !important;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+    align-items: center;
+    align-content: center;
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+
+.mat-mdc-text-field-wrapper.mdc-text-field--outlined .mdc-notched-outline--upgraded .mdc-floating-label--float-above {
+    --mat-mdc-form-field-label-transform: translateY(-23.75px) scale(var(--mat-mdc-form-field-floating-label-scale, 0.75));
+}
+
+.mdc-text-field--no-label:not(.mdc-text-field--textarea) .mat-mdc-form-field-input-control.mdc-text-field__input,
+.mat-mdc-text-field-wrapper .mat-mdc-form-field-input-control {
+    height: 26px;
+    font-size: 12px !important;
+}
+
+.mat-mdc-option .mdc-list-item__primary-text {
+    font-size: 14px !important;
+    width: 175px;
+    white-space: nowrap !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.mat-mdc-form-field:not(.mat-form-field-no-animations) .mdc-text-field__input {
+    font-size: 12px !important;
+}
+
+textarea {
+    padding-top: 4px !important
+}
+
+.separador {
+    height: 1px;
+    width: 120px;
+    border-bottom: solid 1px #d3d3ff;
+    margin: 10px 0 20px;
+}
+
+/* POPUP LOADER */
+
+.contenedorLoaderPopUp {
+    width: 250px;
+    height: 250px;
+}
+
+.contenedorLoaderPopUp .mat-mdc-dialog-surface {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+/* LISTAS */
+
+.mdc-list {
+    padding: 0 !important;
+    cursor: pointer;
+}
+
+.mdc-list *,
+.mat-mdc-list-item,
+.mdc-list-item__content {
+    cursor: pointer !important;
+}
+
+.contenedorListaMaterias .mdc-list:hover {
+    background: #e2e2e2;
+}
+
+.mdc-list .active,
+.mdc-list .active {
+    background: #101222;
+}
+
+.mdc-list .active i,
+.mdc-list .active span {
+    color: #fff;
+}
+
+.mat-mdc-list-item {
+    font-size: 12px;
+}
+
+
+.mat-mdc-list-base {
+    --mdc-list-list-item-one-line-container-height: 24px
+}
+
+
+/* Estilos Visor General PDFS  */
+
+.popUpVisorDocs .docViewer {
+    width: 700px;
+    max-width: 86vw;
+    height: calc(80vh - 70px);
+}
+
+.popUpVisorDocs .tamHeightAuto .docViewer {
+    height: auto;
+    padding: 10px 0;
+    min-height: 40px;
+}
+
+.popUpVisorDocs .docViewer img {
+    width: 100%;
+}
+
+.popUpVisorDocs .contenedorLoader {
+    width: 450px;
+    max-width: 80vw;
+    height: 500px;
+}
+
+.popUpVisorDocs .botonDescargarPDF {
+    padding: 0 0 0 4px;
+    min-width: 104px;
+    margin-right: 20px;
+}
+
+.popUpVisorDocs .contenedorTituloPopUp .botonDescargarPDF span {
+    padding-right: 4px;
+}
+
+/* Ico  Google Drive */
+
+.icoGoogleDrive {
+    width: 50px;
+    height: 32px;
+    background-image: url('assets/imgs/google-drive.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: inline-block;
+}
+
+mat-hint {
+    font-size: 12px;
+}
+
+.error {
+    color: red;
+}
+
+.tamInput {
+    font-size: 10px;
+}
+
+/* SE AGREGA LOADER AL FONDO DEL CARGAR DOCS */
+
+.loaderFondoGeneral {
+    position: absolute;
+    z-index: 1;
+}
+
+.contenedorVisoresDocsGeneral {
+    width: 100%;
+    position: relative;
+    z-index: 999;
+    background: #fff;
+}
+
+/* BUTTON TOGGLE */
+
+.mat-button-toggle-appearance-standard.mat-button-toggle-checked {
+    --mat-standard-button-toggle-selected-state-text-color: #fafafa;
+    --mat-standard-button-toggle-selected-state-background-color: #101123;
+}
+
+.mat-mdc-checkbox-touch-target {
+    z-index: 999999999;
+}
+
+.colorRed {
+    color: #d81e1e !important;
+}
+
+.negrilla {
+    font-weight: 700;
+}
+
+@media (max-width:420px) {
+    .contenedorTituloPopUp span {
+        font-size: 12px;
+    }
+}
+
+@media (max-width:320px) {
+    .popUpVisorDocs .contenedorTituloPopUp {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .popUpVisorDocs .botonDescargarPDF {
+        margin-top: 8px;
+    }
+}
+
+@media (max-height:700px) {
+    .contenedorPopUpGeneral {
+        margin-bottom: 5%;
+    }
+}
+
+@media (max-height:600px) {
+    .contenedorPopUpGeneral {
+        margin-bottom: 3%;
+    }
+}
+
+@media (max-height:560px) {
+    .contenedorPopUpGeneral {
+        margin-bottom: 1%;
+    }
+}
+
+@media (max-height:560px) {
+    .contenedorPopUpGeneral {
+        margin-bottom: 0;
+    }
+}

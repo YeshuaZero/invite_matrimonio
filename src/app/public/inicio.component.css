@@ -1,0 +1,256 @@
+.contenedorGeneral {
+    background: #fafafa;
+}
+
+.encabezado {
+    position: relative;
+}
+
+.imgPrincipal {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    filter: brightness(0.9);
+}
+
+.dataInfo {
+    position: absolute;
+    bottom: 30px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+
+.dataInfo img {
+    height: 95vh;
+    width: 95vw;
+    object-fit: contain;
+}
+
+.dataInfo .nombreEl,
+.dataInfo .nombreElla {
+    font-size: 140px;
+    text-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
+}
+
+.dataInfo .conectorNombres {
+    font-size: 60px;
+    line-height: 12px;
+}
+
+.contenedorFlores {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+.contenedorFlores img {
+    position: absolute;
+}
+
+.contenedorFlores .imgArribaIzq {
+    top: 0;
+    left: 0;
+}
+
+.contenedorFlores .imgArribaDer {
+    top: 0;
+    right: 0;
+}
+
+.contenedorFlores .imgAbajoDer {
+    bottom: 0;
+    right: 0;
+}
+
+.contenedorFlores .imgAbajoIzq {
+    bottom: 0;
+    left: 0;
+}
+
+.contenedorFlores .scrollAbajo {
+    bottom: 80px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(50%);
+    color: #fff;
+    font-size: 50px;
+}
+
+.separadorCurvas {
+    position: absolute;
+    z-index: auto;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+}
+
+.contenedorEslogan {
+    min-height: 150px;
+}
+
+.contenedorEslogan .eslogan {
+    font-size: 40px;
+    font-weight: 200;
+    text-align: center;
+}
+
+.comillaIni {
+    color: #ccc;
+    font-size: 24px;
+    margin-right: 12px;
+}
+
+.comillaFin {
+    color: #ccc;
+    font-size: 24px;
+    margin-right: 0;
+    margin-left: 12px;
+}
+
+.contenedorEslogan .eslogan .autor {
+    font-family: "Allison", cursive;
+    font-weight: 400;
+    font-size: 40px;
+    text-align: right;
+    letter-spacing: 2px;
+    line-height: 26px;
+}
+
+.contenedorConteoRegresivo .fechaBoda {
+    border-top: solid 1px rgba(0, 0, 0, 0.3);
+    border-bottom: solid 1px rgba(0, 0, 0, 0.3);
+    padding: 40px 0;
+}
+
+.contenedorConteoRegresivo .fechaBoda .dia {
+    font-size: 120px;
+    margin: 0;
+    text-align: center;
+    line-height: 140px;
+    padding-left: 16px;
+}
+
+.contenedorConteoRegresivo .fechaBoda .mes {
+    font-family: 'Allison';
+    font-size: 100px;
+    margin: 0;
+    line-height: 50px;
+}
+
+.contenedorConteoRegresivo .fechaBoda .year {
+    font-size: 20px;
+    margin: 0;
+    line-height: 50px;
+    text-align: right;
+    letter-spacing: 12px;
+    color: #d2cdcd;
+}
+
+.contenedorConteoRegresivo .conteo {
+    width: 100%;
+    margin: 24px 0 40px;
+}
+
+.contenedorConteoRegresivo .conteo .valorRegresivo {
+    padding: 12px 24px;
+    border-right: solid 1px rgba(0, 0, 0, 0.2);
+    width: 60px;
+}
+
+.contenedorConteoRegresivo .conteo .valorRegresivo .titulo {
+    font-size: 12px;
+}
+
+.contenedorConteoRegresivo .conteo .valorRegresivo .valor {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.contenedorCeremonia {
+    padding: 80px 0;
+}
+
+.contenedorCeremonia .contenedorHora,
+.contenedorCeremonia .contenedorLugar{
+    margin: 0 12px;
+}
+
+.contenedorCeremonia .contenedorHora .tituloHora,
+.contenedorCeremonia .contenedorLugar .tituloLugar {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+.contenedorCeremonia .contenedorHora .datoHora,
+.contenedorCeremonia .contenedorLugar .datoLugar {
+    margin: 0 30px 12px;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.contenedorCeremonia .contenedorHora button,
+.contenedorCeremonia .contenedorLugar button {
+    font-size: 14px;
+    margin-top: 12px;
+}
+
+.opcionAgenda ::ng-deep .mat-mdc-menu-item-text,
+.opcionAgenda ::ng-deep .mat-mdc-menu-item-text {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.opcionAgenda i{
+    font-size: 20px;
+    margin: 0 10px 0 2px;
+}
+
+.opcionAgenda img{
+    margin-right: 6px;
+}
+
+.opcionAgenda img.imgMicrosoft{
+    width: 16px;
+    margin: 0 8px 0 2px;
+}
+
+.opcionAgenda img.imgWaze{
+    width: 30px;
+    margin-right: 2px
+}
+
+.opcionAgenda img.imgGoogleMaps{
+    width: 22px;
+    margin-left: 6px;
+}
+
+.tituloSeccion {
+    font-size: 120px;
+    margin: 0;
+}
+
+.icoSeccion{
+    font-size: 90px;
+    line-height: 1px;
+    padding-left: 70px;
+    color: #e6e6e6;
+}
+
+.contenedorCodigoVestuario .icoSeccion{
+    line-height: 100px;
+}
+
+.contenedorCodigoVestuario .primerTitulo{
+    font-size: 22px;
+    padding-left: 140px;
+}
+
+.contenedorCodigoVestuario .cursiva{
+    line-height: 18px;
+}
