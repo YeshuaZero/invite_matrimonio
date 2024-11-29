@@ -25,12 +25,15 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/aos/dist/aos.css",
               "src/custom-theme.scss",
               "src/styles.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/parallax-js/dist/parallax.min.js"
+            ]
           },
           "configurations": {
             "production": {

@@ -4,6 +4,9 @@ import { InicioService } from './inicio.service';
 import { FuncionesGeneralesService} from 'src/app/core/funciones-generales.services';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import * as AOS from 'aos';
+import * as Parallax from 'parallax-js'
+
 
 @Component({
   selector: 'app-inicio',
@@ -35,7 +38,11 @@ export class InicioComponent implements OnInit {
     private funcionesGenerales: FuncionesGeneralesService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    AOS.init();
+    const scene: any = document.getElementById('nombres');
+    const parallaxInstance = new Parallax(scene);
+  }
 
   ngAfterViewInit() {
     // Configurar un intervalo para actualizar el tiempo restante cada segundo
@@ -129,6 +136,10 @@ export class InicioComponent implements OnInit {
   abrirGoogleMaps() {
     const url = `https://www.google.com/maps/search/?api=1&query=${this.funcionesGenerales.translate('Inicio.ceremonia.latitud')},${this.funcionesGenerales.translate('Inicio.ceremonia.longitud') }`;
     window.open(url, '_blank');
+  }
+
+  verFormulario(){
+    
   }
 
 }

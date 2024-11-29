@@ -50,7 +50,28 @@
     },
     "codigoVestuario": {
       "titulo": "Código de",
-      "titulo2": "Vestuario"
+      "titulo2": "Vestuario",
+      "img": "assets/imgs/codigoVestuario.png",
+      "tituloHombres": "Hombres",
+      "descripcionHombres": "TRAJE OSCURO FORMAL",
+      "tituloMujeres": "Mujeres",
+      "descripcionMujeres": "VESTIDO LARGO FORMAL",
+      "tenPresente": "Recuerda...",
+      "notaGeneral": "COLORES RESERVADOS: VERDE OLIVA"
+    },
+    "regalos": {
+      "titulo": "Sugerencias de",
+      "titulo2": "Regalo",
+      "img": "assets/imgs/sobre.png",
+      "tituloLluvia": "Tú presencia es suficiente, pero si es tu deseo regalarnos algo, recibiremos ese día los regalos a modo de...",
+      "lluviaSobres": "Lluvia de Sobres"
+    },
+    "confirmacionInvitados": {
+      "titulo": "Confirmación de",
+      "titulo2": "Asistencia",
+      "gracias": "¡Gracias por llegar hasta aquí!",
+      "gracias2": "Si te ha llegado esta invitación es porque realmente queremos que seas parte de nuestra historia y compartir contigo nuestra alegría, te invitamos a que confirmes tu asistencia a esta fecha tan importante para nosotros, de verdad sería un honor que nos acompañaras.",
+      "confirmarAsistencia": "Confirmar Asistencia"
     }
   }
 }

@@ -2,14 +2,16 @@
     background: #fafafa;
 }
 
+/* ENCABEZADO */
+
 .encabezado {
     position: relative;
 }
 
 .imgPrincipal {
+    object-fit: cover;
     width: 100%;
     height: 100vh;
-    object-fit: cover;
     filter: brightness(0.9);
 }
 
@@ -19,6 +21,10 @@
     color: #fff;
     width: 100%;
     height: 100%;
+}
+
+.dataInfo>div {
+    display: flex !important;
 }
 
 .dataInfo img {
@@ -70,11 +76,10 @@
     left: 0;
 }
 
-.contenedorFlores .scrollAbajo {
-    bottom: 80px;
+.scrollAbajo {
+    bottom: -50px;
     position: absolute;
-    left: 50%;
-    transform: translateX(50%);
+    left: calc(50% - 25px);
     color: #fff;
     font-size: 50px;
 }
@@ -118,6 +123,8 @@
     letter-spacing: 2px;
     line-height: 26px;
 }
+
+/* CONTEO REGRESIVO */
 
 .contenedorConteoRegresivo .fechaBoda {
     border-top: solid 1px rgba(0, 0, 0, 0.3);
@@ -169,12 +176,14 @@
     font-weight: 500;
 }
 
+/* CEREMONIA */
+
 .contenedorCeremonia {
     padding: 80px 0;
 }
 
 .contenedorCeremonia .contenedorHora,
-.contenedorCeremonia .contenedorLugar{
+.contenedorCeremonia .contenedorLugar {
     margin: 0 12px;
 }
 
@@ -206,26 +215,26 @@
     justify-content: center;
 }
 
-.opcionAgenda i{
+.opcionAgenda i {
     font-size: 20px;
     margin: 0 10px 0 2px;
 }
 
-.opcionAgenda img{
+.opcionAgenda img {
     margin-right: 6px;
 }
 
-.opcionAgenda img.imgMicrosoft{
+.opcionAgenda img.imgMicrosoft {
     width: 16px;
     margin: 0 8px 0 2px;
 }
 
-.opcionAgenda img.imgWaze{
+.opcionAgenda img.imgWaze {
     width: 30px;
     margin-right: 2px
 }
 
-.opcionAgenda img.imgGoogleMaps{
+.opcionAgenda img.imgGoogleMaps {
     width: 22px;
     margin-left: 6px;
 }
@@ -235,22 +244,166 @@
     margin: 0;
 }
 
-.icoSeccion{
+.icoSeccion {
     font-size: 90px;
     line-height: 1px;
     padding-left: 70px;
     color: #e6e6e6;
 }
 
-.contenedorCodigoVestuario .icoSeccion{
+/* VESTUARIO */
+
+.contenedorCodigoVestuario {
+    margin: 12px 0 50px;
+}
+
+.contenedorCodigoVestuario .contenedor {
+    align-items: baseline;
+}
+
+.contenedorCodigoVestuario .icoSeccion {
     line-height: 100px;
 }
 
-.contenedorCodigoVestuario .primerTitulo{
+.contenedorCodigoVestuario .tituloSeccion {
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+.contenedorCodigoVestuario .primerTitulo {
     font-size: 22px;
     padding-left: 140px;
 }
 
-.contenedorCodigoVestuario .cursiva{
+.contenedorCodigoVestuario .cursiva {
     line-height: 18px;
+}
+
+.contenedorCodigoVestuario img {
+    height: 400px;
+}
+
+.contenedorCodigoVestuario .grupo {
+    margin-bottom: 20px;
+}
+
+.contenedorCodigoVestuario .grupo .cursiva {
+    font-size: 80px;
+    margin: 34px 0;
+    position: relative;
+}
+
+.contenedorCodigoVestuario .grupo i {
+    color: #e60023;
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    padding-left: 16px;
+    cursor: pointer;
+}
+
+.contenedorCodigoVestuario .grupo span {
+    padding-left: 24px;
+    font-size: 14px;
+    font-weight: 200;
+}
+
+.contenedorCodigoVestuario .tenPresente {
+    margin-top: 24px;
+    font-weight: 700;
+    font-size: 24px;
+    color: #dedede;
+}
+
+.contenedorCodigoVestuario .notaGeneral {
+    padding-left: 24px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.contenedorCodigoVestuario .notaGeneral i {
+    font-size: 14px;
+}
+
+/* REGALOS */
+
+.contenedorRegalos {
+    margin: 12px 0 50px;
+}
+
+.contenedorRegalos .icoSeccion {
+    line-height: 100px;
+}
+
+.contenedorRegalos .tituloSeccion {
+    padding-bottom: 40px;
+}
+
+.contenedorRegalos .primerTitulo {
+    font-size: 22px;
+    padding-left: 140px;
+}
+
+.contenedorRegalos .cursiva {
+    line-height: 14px;
+}
+
+.contenedorRegalos .contenedor {
+    width: 400px;
+}
+
+.contenedorRegalos .contenedor span {
+    font-size: 21px;
+    text-align: center;
+    margin-bottom: 12px;
+    margin-right: 40px;
+    font-weight: 100;
+}
+
+.contenedorRegalos .contenedor .cursiva {
+    font-size: 70px;
+    margin: 24px 0 0;
+}
+
+
+/* CONFIRMACION ASISTENCIA */
+
+.confirmacionInvitados {
+    margin: 12px 0 50px;
+}
+
+.confirmacionInvitados .icoSeccion {
+    line-height: 100px;
+}
+
+.confirmacionInvitados .tituloSeccion {
+    padding-bottom: 40px;
+}
+
+.confirmacionInvitados .primerTitulo {
+    font-size: 22px;
+    padding-left: 140px;
+}
+
+.confirmacionInvitados .cursiva {
+    line-height: 14px;
+}
+
+.confirmacionInvitados .contenedor{
+    margin-bottom: 40px;
+}
+
+.confirmacionInvitados .textoGracias{
+        margin: 30px 0 12px;
+            font-size: 18px;
+            font-weight: 400;
+}
+
+.confirmacionInvitados .textoGracias2{
+    width: 520px;
+        max-width: 95vw;
+        text-align: center;
+        font-size: 12px;
+        font-weight: 200;
+        margin-bottom: 24px;
 }
