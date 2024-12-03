@@ -1,7 +1,8 @@
 .contenedorGeneral {
     background: #fafafa;
-    --backgroundVestuario: #ebffe5;
-    --backgroundConfirmacion: #ffa6a6;
+    --backgroundVestuario: #e5e0d8;
+    --backgroundRegalos: #e5e0d8;
+    --backgroundConfirmacion: #bec092;
     overflow: hidden;
 }
 
@@ -32,21 +33,67 @@
     display: flex !important;
 }
 
-.dataInfo img {
+/* .dataInfo img {
     height: 95vh;
     width: 95vw;
     object-fit: contain;
+} */
+
+.dataInfo>div img {
+    width: 100px;
+    height: auto;
+    margin-bottom: -40px;
+    filter: grayscale(100%) brightness(300%);
+}
+
+.dataInfo .fechaBodaEncabezado{
+    font-weight: 400;
+    text-shadow: 1px 1px 10px black;
+}
+
+.dataInfo .fechaBodaEncabezado:before,
+.dataInfo .fechaBodaEncabezado:after {
+            border-top: 1px solid #fff;
+            content: '';
+            display: table-cell;
+            position: relative;
+            top: 0;
+            width: 80px;
+}
+
+.dataInfo .fechaBodaEncabezado:before{
+    left: -12px;
+}
+
+.dataInfo .fechaBodaEncabezado:after{
+    right: -12px;
 }
 
 .dataInfo .nombreEl,
 .dataInfo .nombreElla {
     font-size: 140px;
     text-shadow: 1px 1px 10px rgba(0, 0, 0, .7);
+    line-height: 130px;
 }
 
 .dataInfo .conectorNombres {
-    font-size: 60px;
-    line-height: 12px;
+    font-size: 50px;
+    line-height: 10px;
+    height: 40px;
+    width: 50px;
+    background: #ededed;
+    color: #1a2012;
+    border-radius: 40px;
+    padding-top: 10px;
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 1);
+}
+
+.dataInfo .fraseEncabezado{
+    border-top: solid 1px;
+        padding: 20px 60px;
+        margin-top: 14px;
+        font-size: 24px;
+        font-weight: 100;
 }
 
 .contenedorFlores {
@@ -140,18 +187,21 @@
 .contenedorConteoRegresivo {
     position: relative;
     background: #fff;
+    padding-bottom: 100px;
 }
 
 .contenedorConteoRegresivo .fechaBoda {
     padding: 40px 0;
 }
 
-.contenedorConteoRegresivo .fechaSup{
+.contenedorConteoRegresivo .fechaSup {
     padding-bottom: 24px;
+    max-width: 80vw;
 }
 
 .contenedorConteoRegresivo .fechaInf {
     padding-top: 24px;
+    max-width: 80vw;
 }
 
 .contenedorConteoRegresivo .fechaBoda .dia {
@@ -177,7 +227,7 @@
     text-align: right;
     letter-spacing: 12px;
     color: #d2cdcd;
-    width: 250px;
+    width: 210px;
 }
 
 .contenedorConteoRegresivo .conteo {
@@ -191,6 +241,10 @@
     width: 60px;
 }
 
+.contenedorConteoRegresivo .conteo .valorRegresivo:last-child {
+    border-right: none;
+}
+
 .contenedorConteoRegresivo .conteo .valorRegresivo .titulo {
     font-size: 12px;
 }
@@ -200,7 +254,7 @@
     font-weight: 500;
 }
 
-.imgsBordes{
+.imgsBordes {
     position: absolute;
     z-index: 99999;
 }
@@ -210,7 +264,7 @@
     left: 0;
 }
 
-.imgDer{
+.imgDer {
     right: 0;
     bottom: -50px;
 }
@@ -218,7 +272,7 @@
 /* CEREMONIA */
 
 .contenedorCeremonia {
-    padding: 80px 0 160px;
+    padding: 50px 0 80px;
     position: relative;
     background: #fff;
 }
@@ -292,12 +346,35 @@
     color: #e6e6e6;
 }
 
+/* SECCION FOTOS */
+
+.contenedorFotos {
+    position: relative;
+    background: #fff;
+    padding: 60px 0 160px;
+}
+
+.contenedorFotos .tituloSeccion {
+    font-size: 70px;
+}
+
+.contenedorFotos .contenedorFoto {
+    padding: 24px 24px 100px;
+    margin: 24px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.contenedorFotos .contenedorFoto img {
+    height: 300px;
+    object-fit: cover;
+}
+
 /* VESTUARIO */
 
 .contenedorCodigoVestuario {
-    padding: 12px 0 50px;
+    padding: 100px 0 80px;
     position: relative;
-    background: url('/assets/imgs/fondo.svg');
+    /* background: url('/assets/imgs/fondo.svg'); */
     background-color: var(--backgroundVestuario);
     background-attachment: inherit;
     background-repeat: inherit;
@@ -306,8 +383,8 @@
 }
 
 .contenedorCodigoVestuario .imgIzq,
-.contenedorCodigoVestuario .imgDer{
-    opacity: .2 !important;
+.contenedorCodigoVestuario .imgDer {
+    opacity: .05 !important;
 }
 
 .contenedorCodigoVestuario .separadorTop {
@@ -320,12 +397,18 @@
 }
 
 .contenedorCodigoVestuario .separadorBottom {
-    bottom: -60px;
+    bottom: -72px;
     position: absolute;
     fill: var(--backgroundVestuario);
     width: 100%;
     height: 80px;
     z-index: 999;
+}
+
+.contenedorCodigoVestuario .imgVestuario {
+    max-width: 95vw;
+    height: 460px;
+    margin: 0 12px;
 }
 
 .contenedorCodigoVestuario .contenedor {
@@ -403,6 +486,9 @@
     background: #fff;
 }
 
+.contenedorRegalos .imgDer {
+    bottom: -150px;
+}
 
 .contenedorRegalos .icoSeccion {
     line-height: 100px;
@@ -444,7 +530,7 @@
 .confirmacionInvitados {
     padding: 80px 0;
     position: relative;
-    background: #ffa6a6;
+    background: var(--backgroundConfirmacion);
 }
 
 .confirmacionInvitados .separadorTop {
@@ -457,7 +543,8 @@
 }
 
 .confirmacionInvitados .icoSeccion {
-    line-height: 100px;
+    line-height: 120px;
+    padding-left: 142px;
 }
 
 .confirmacionInvitados .tituloSeccion {
@@ -485,9 +572,484 @@
 
 .confirmacionInvitados .textoGracias2 {
     width: 520px;
-    max-width: 95vw;
+    max-width: 80vw;
     text-align: center;
     font-size: 12px;
     font-weight: 200;
     margin-bottom: 24px;
+}
+
+.confirmacionInvitados .imgIzq {
+    top: -50px;
+}
+
+.lineaSeparadora {
+    position: absolute;
+    width: 100vw;
+    height: 100px;
+    top: -80px;
+    transform: scaleX(-1);
+    z-index: 999;
+}
+
+.lineaSeparadora2 {
+    top: -70px;
+}
+
+.lineaSeparadora path {
+    stroke: #abbc91
+}
+
+.lineaSeparadora2 path {
+    stroke: #718355;
+}
+
+.footer {
+    position: relative;
+    background: #fff;
+    height: 150px;
+    padding-bottom: 20px;
+}
+
+.footer .contenedorFooter {
+    margin: 12px;
+    font-size: 60px;
+    line-height: 30px;
+}
+
+.footer .contenedorFooter .conectorNombres {
+    margin: 12px 18px 0;
+}
+
+.footer .desarrolladoPor p {
+    margin-bottom: 0;
+}
+
+@media (max-width:1300px) {
+
+    .imgIzq,
+    .imgDer {
+        width: 250px;
+    }
+}
+
+@media (max-width:1180px) {
+    .imgIzq {
+        top: -40px;
+    }
+
+    .imgDer {
+        right: 0;
+        bottom: -90px;
+    }
+}
+
+@media (max-width:900px) {
+    .contenedorFlores img {
+        width: 250px;
+    }
+
+    .imgIzq,
+    .imgDer {
+        width: 200px;
+    }
+
+    .contenedorCeremonia {
+        padding: 50px 0 60px;
+    }
+
+    .contenedorFotos {
+        padding: 30px 0 100px;
+    }
+
+    .contenedorRegalos .imgDer {
+        bottom: -90px;
+    }
+
+    .contenedorEslogan .eslogan {
+        font-size: 30px;
+    }
+
+    .contenedorCodigoVestuario>div {
+        flex-direction: column;
+    }
+
+    .contenedorCodigoVestuario {
+        padding: 90px 0 70px;
+    }
+
+    .contenedorCodigoVestuario .imgVestuario {
+        margin-bottom: 30px;
+    }
+
+    .contenedorCodigoVestuario .contenedor {
+        align-items: center;
+    }
+
+    .contenedorRegalos {
+        padding: 110px 0 180px;
+    }
+
+    .contenedorRegalos .primerTitulo {
+        font-size: 16px;
+        padding-left: 90px;
+    }
+
+    .contenedorRegalos>div {
+        flex-direction: column-reverse;
+    }
+
+    .contenedorRegalos img {
+        margin: 30px 0 20px;
+    }
+
+    .contenedorRegalos .contenedor span {
+        margin-right: 0;
+        padding-left: 12px;
+        max-width: 80vw;
+    }
+
+    .contenedorFotos {
+        padding: 60px 0 100px;
+    }
+}
+
+@media (max-width:750px) {
+    .contenedorFlores img {
+        width: 200px;
+    }
+}
+
+@media (max-width:650px) {
+    .contenedorEslogan .eslogan {
+        font-size: 24px;
+    }
+
+    .comillaIni,
+    .comillaFin {
+        font-size: 14px;
+    }
+
+    .contenedorCodigoVestuario .imgIzq,
+    .contenedorCodigoVestuario .imgDer {
+        display: none;
+    }
+}
+
+@media (max-width:600px) {
+    .contenedorCeremonia>div {
+        flex-direction: column;
+    }
+
+    .contenedorCeremonia .contenedorHora {
+        margin-top: 16px;
+        margin-bottom: 50px;
+    }
+
+    .contenedorCeremonia {
+        padding: 120px 0 130px;
+    }
+
+    .contenedorCeremonia .imgDer {
+        bottom: -30px;
+    }
+
+    .contenedorFotos {
+        padding: 40px 0 120px;
+    }
+}
+
+@media (max-width:530px) {
+    .contenedorFlores img {
+        width: 130px;
+    }
+
+    .imgIzq,
+    .imgDer {
+        width: 130px;
+    }
+
+    .contenedorEslogan .eslogan {
+        font-size: 20px;
+    }
+
+    .comillaIni,
+    .comillaFin {
+        font-size: 12px;
+    }
+
+    .contenedorEslogan .eslogan .autor {
+        font-size: 30px;
+    }
+
+    .contenedorCeremonia {
+        padding: 70px 0 90px;
+    }
+
+    .contenedorRegalos {
+        padding: 140px 0 180px;
+    }
+
+    .contenedorRegalos .imgIzq {
+        top: -50px;
+    }
+
+    .contenedorRegalos .imgDer {
+        bottom: -60px;
+    }
+}
+
+@media (max-width:500px) {
+    .contenedorConteoRegresivo .conteo .valorRegresivo {
+        padding: 12px;
+    }
+
+    .imgIzq {
+        top: -20px;
+    }
+
+    .imgDer {
+        right: 0;
+        bottom: -60px;
+    }
+}
+
+@media (max-width:480px) {
+    .contenedorRegalos .contenedor span {
+        font-size: 16px;
+    }
+}
+
+@media (max-width:430px) {
+    .contenedorEslogan .eslogan {
+        font-size: 16px;
+    }
+
+    .contenedorEslogan .eslogan .autor {
+        font-size: 24px;
+    }
+
+    .icoSeccion {
+        font-size: 70px;
+    }
+
+    .tituloSeccion {
+        font-size: 90px;
+    }
+
+    .contenedorCodigoVestuario .primerTitulo {
+        font-size: 16px;
+        padding-left: 110px;
+    }
+
+    .contenedorRegalos img {
+        max-width: 70vw;
+    }
+
+    .contenedorRegalos .contenedor .cursiva {
+        font-size: 54px;
+    }
+
+    .contenedorRegalos .primerTitulo {
+        font-size: 12px;
+        padding-left: 75px;
+    }
+
+    .confirmacionInvitados .icoSeccion {
+        line-height: 110px;
+        padding-left: 76px;
+    }
+
+    .confirmacionInvitados .primerTitulo {
+        font-size: 14px;
+        padding-left: 70px;
+    }
+
+    .confirmacionInvitados .textoGracias {
+        margin: 12px 0;
+    }
+
+    .contenedorCeremonia .imgIzq {
+        top: -30px;
+    }
+
+    .contenedorCeremonia .imgDer {
+        right: 0;
+        bottom: -30px;
+    }
+
+    .contenedorFotos .tituloSeccion {
+        font-size: 50px;
+    }
+}
+
+@media (max-width:400px) {
+    .encabezado {
+        position: relative;
+        height: calc(100vh - 40px);
+    }
+
+    .scrollAbajo {
+        bottom: -50px;
+    }
+
+    .dataInfo .nombreEl,
+    .dataInfo .nombreElla {
+        font-size: 100px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda .dia {
+        font-size: 100px;
+        line-height: 110px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda .mes {
+        font-size: 80px;
+        line-height: 40px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda .year {
+        width: 130px;
+    }
+
+    .contenedorConteoRegresivo .conteo .valorRegresivo {
+        padding: 12px 6px;
+    }
+
+    .confirmacionInvitados .textoGracias {
+        width: 180px;
+        text-align: center;
+        font-weight: 700;
+    }
+}
+
+@media (max-width:350px) {
+    .contenedorEslogan .eslogan {
+        font-size: 20px;
+        padding: 0 40px;
+    }
+
+    .contenedorEslogan .eslogan .autor {
+        font-size: 30px;
+        line-height: 50px;
+    }
+
+    .contenedorConteoRegresivo .conteo .valorRegresivo {
+        padding: 12px 4px;
+        width: 48px;
+    }
+
+    .contenedorConteoRegresivo .conteo .valorRegresivo .titulo {
+        font-size: 10px;
+    }
+
+    .contenedorConteoRegresivo .conteo .valorRegresivo .valor {
+        font-size: 30px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda {
+        padding: 20px 0;
+    }
+
+    .contenedorConteoRegresivo .conteo {
+        margin: 0 0 40px;
+    }
+
+    .icoSeccion {
+        font-size: 50px;
+    }
+
+    .tituloSeccion {
+        font-size: 60px;
+    }
+
+    .contenedorCeremonia {
+        padding: 70px 0 110px;
+    }
+
+    .contenedorCeremonia .imgIzq {
+        top: 0px;
+    }
+
+    .contenedorCodigoVestuario .icoSeccion {
+        line-height: 80px;
+    }
+
+    .contenedorCodigoVestuario .primerTitulo {
+        font-size: 10px;
+        padding-left: 70px;
+    }
+
+    .contenedorCodigoVestuario .tituloSeccion {
+        padding-bottom: 30px;
+        margin-bottom: 0px;
+    }
+
+    .contenedorCeremonia .contenedorHora .datoHora,
+    .contenedorCeremonia .contenedorLugar .datoLugar {
+        margin: 4px 30px 12px;
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    .contenedorCodigoVestuario .grupo .cursiva {
+        font-size: 60px;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .contenedorCodigoVestuario .grupo i {
+        font-size: 16px;
+        padding-left: 8px;
+    }
+
+    .contenedorCodigoVestuario .grupo span {
+        padding-left: 0;
+    }
+
+    .contenedorCodigoVestuario .tenPresente {
+        margin-bottom: 6px;
+    }
+
+    .contenedorCodigoVestuario .notaGeneral {
+        padding-left: 12px;
+        max-width: 80vw;
+    }
+
+    .contenedorRegalos .icoSeccion {
+        line-height: 70px;
+    }
+
+    .contenedorRegalos .primerTitulo {
+        font-size: 10px;
+        padding-left: 60px;
+    }
+
+    .contenedorRegalos img {
+        margin: 10px 0 14px;
+        width: 120px;
+    }
+
+    .contenedorRegalos .contenedor .cursiva {
+        font-size: 44px;
+    }
+
+    .confirmacionInvitados .icoSeccion {
+        line-height: 80px;
+        padding-left: 55px;
+    }
+
+    .confirmacionInvitados .primerTitulo {
+        font-size: 10px;
+        padding-left: 50px;
+    }
+
+    .contenedorFotos .tituloSeccion {
+        font-size: 40px;
+    }
+
+    .contenedorRegalos .imgDer {
+        bottom: -40px;
+    }
+
 }

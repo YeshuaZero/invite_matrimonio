@@ -6,7 +6,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import * as AOS from 'aos';
 import * as Parallax from 'parallax-js'
-
+import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmarAsistenciaComponent } from './confirmar-asistencia/confirmar-asistencia.component';
 
 @Component({
   selector: 'app-inicio',
@@ -14,7 +16,7 @@ import * as Parallax from 'parallax-js'
   providers: [InicioService],
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
-  imports: [SharedModule, MatButtonModule, MatMenuModule]
+  imports: [SharedModule, MatButtonModule, MatMenuModule, CarouselModule]
 })
 export class InicioComponent implements OnInit {
   hide: boolean = true;
@@ -32,16 +34,63 @@ export class InicioComponent implements OnInit {
     segundos: 0
   };
 
+  mostrarIcoSecciones = false;
+
   existeCoordenadas = this.funcionesGenerales.translate('Inicio.ceremonia.coordenadas');
 
+  fechaActual = new Date();
+
+  customOptions: OwlOptions = {
+    loop: true,
+    mouseDrag: true,
+    touchDrag: true,
+    pullDrag: false,
+    dots: false,
+    navSpeed: 700,
+    navText: ['', ''],
+    responsive: {
+      0: {
+        items: 1
+      },
+      400: {
+        items: 2
+      },
+      740: {
+        items: 3
+      },
+      940: {
+        items: 4
+      }
+    },
+    nav: true
+  };
+
+  listaFotos: any = [
+    { src: '/assets/imgs/IMG_9518.JPG', position: 'center'},
+    {  src: '/assets/imgs/IMG_9501.JPG', position: 'center'},
+    {  src: '/assets/imgs/IMG_9511.JPG', position: 'center'},
+    { src: '/assets/imgs/IMG_9383.JPG', position: 'center'},
+    {  src: '/assets/imgs/IMG_9402.JPG', position: 'center'},
+    { src: '/assets/imgs/IMG_9410.JPG', position: 'center'},
+    {  src: '/assets/imgs/IMG_9507.JPG', position: 'center'},
+    {  src: '/assets/imgs/IMG_9436.JPG', position: 'center'},
+    { src: '/assets/imgs/IMG_9514.JPG', position: 'bottom'},
+  ];
+
+
   constructor(
-    private funcionesGenerales: FuncionesGeneralesService
+    private funcionesGenerales: FuncionesGeneralesService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {
     AOS.init();
     const scene: any = document.getElementById('nombres');
     const parallaxInstance = new Parallax(scene);
+
+    this.listaFotos.forEach((e: any, i: number) => {
+      e.id = i + 1;
+    });
   }
 
   ngAfterViewInit() {
@@ -138,8 +187,13 @@ export class InicioComponent implements OnInit {
     window.open(url, '_blank');
   }
 
+  abrirPinterest(sexo: string){
+    const url = this.funcionesGenerales.translate(`Inicio.codigoVestuario.${sexo}`);
+    window.open(url, '_blank');
+  }
+
   verFormulario(){
-    
+    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false });
   }
 
 }

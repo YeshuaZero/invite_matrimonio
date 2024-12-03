@@ -7,8 +7,10 @@
       "imgArribaDer": "assets/imgs/esquinaSupDer.png",
       "imgAbajoIzq": "assets/imgs/abajoIzq.png",
       "imgAbajoDer": "assets/imgs/abajoDer.png",
+      "fechaBoda": "15.02.2025",
       "nombreEl": "Yeshua",
-      "nombreElla": "Ana"
+      "nombreElla": "Ana",
+      "frase": "¡Nos Casamos!"
     },
     "eslogan": {
       "frase": "Todo lo hizo hermoso en su tiempo.",
@@ -48,14 +50,19 @@
       "waze": "Waze",
       "googleMaps": "Google Maps"
     },
+    "fotos": {
+      "titulo": "Recuerdos de Amor"
+    },
     "codigoVestuario": {
       "titulo": "Código de",
       "titulo2": "Vestuario",
       "img": "assets/imgs/codigoVestuario.svg",
       "tituloHombres": "Hombres",
       "descripcionHombres": "TRAJE OSCURO FORMAL",
+      "linkHombres": "https://pin.it/2DeLuqwMF",
       "tituloMujeres": "Mujeres",
       "descripcionMujeres": "VESTIDO LARGO FORMAL",
+      "linkMujeres": "https://pin.it/6DdeGP4ax",
       "tenPresente": "Recuerda...",
       "notaGeneral": "COLORES RESERVADOS: VERDE OLIVA"
     },
@@ -71,7 +78,8 @@
       "titulo2": "Asistencia",
       "gracias": "¡Gracias por llegar hasta aquí!",
       "gracias2": "Si te ha llegado esta invitación es porque realmente queremos que seas parte de nuestra historia y compartir contigo nuestra alegría, te invitamos a que confirmes tu asistencia a esta fecha tan importante para nosotros, de verdad sería un honor que nos acompañaras.",
-      "confirmarAsistencia": "Confirmar Asistencia"
+      "confirmarAsistencia": "Confirmar Asistencia",
+      "linkFormulario": "https://docs.google.com/forms/d/e/1FAIpQLScV5nf8uXG96BWbe7s8zZvScMwFVMjW14hnZ6qwQAVBiGUrKQ/viewform?embedded=true"
     }
   }
 }
