@@ -104,10 +104,6 @@ export class InicioComponent implements OnInit {
     const now = new Date().getTime(); // Obtener la hora actual en milisegundos
     const difference = this.targetTime - now; // Calcular la diferencia en milisegundos
 
-    console.log('Hora actual:', new Date(now).toISOString());
-    console.log('Hora objetivo:', new Date(this.targetTime).toISOString());
-    console.log('Diferencia en milisegundos:', difference);
-
     if (difference > 0) {
       const seconds = Math.floor((difference / 1000) % 60);
       const minutes = Math.floor((difference / (1000 * 60)) % 60);

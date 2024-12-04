@@ -110,6 +110,15 @@
         <p class="tituloSeccion cursiva">{{'Inicio.ceremonia.titulo' | translate}}</p>
 
         <div class="flex">
+            <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
+                <p class="tituloLugar">{{'Inicio.ceremonia.lugar' | translate}}</p>
+                <span class="datoLugar">{{'Inicio.ceremonia.datoLugar' | translate}}</span>
+                <button mat-raised-button [matMenuTriggerFor]="menuLugar">
+                    <i class="fas fa-map-marked-alt"></i>
+                    {{'Inicio.ceremonia.accionLugar' | translate}}
+                </button>
+            </div>
+            
             <div class="contenedorHora flex flexColumn" data-aos="fade-right">
                 <p class="tituloHora">{{'Inicio.ceremonia.hora' | translate}}</p>
                 <span class="datoHora">{{'Inicio.ceremonia.datoHora' | translate}}</span>
@@ -119,14 +128,6 @@
                 </button>
             </div>
             
-            <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
-                <p class="tituloLugar">{{'Inicio.ceremonia.lugar' | translate}}</p>
-                <span class="datoLugar">{{'Inicio.ceremonia.datoLugar' | translate}}</span>
-                <button mat-raised-button [matMenuTriggerFor]="menuLugar">
-                    <i class="fas fa-map-marked-alt"></i>
-                    {{'Inicio.ceremonia.accionLugar' | translate}}
-                </button>
-            </div>
         </div>
     </div>
 

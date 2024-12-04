@@ -20,6 +20,8 @@ import { Keepalive } from '@ng-idle/keepalive';
 import { NgxMatNativeDateModule } from '@angular-material-components/datetime-picker';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideDatabase, getDatabase } from '@angular/fire/database';
 
 registerLocaleData(localeEs, 'es');
 
@@ -44,6 +46,17 @@ moment.updateLocale('es', {
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDWsEcMwGa71YR24wiCWpdKKsXAjaZ64w8",
+  authDomain: "app-invite-c081e.firebaseapp.com",
+  databaseURL: "https://app-invite-c081e-default-rtdb.firebaseio.com",
+  projectId: "app-invite-c081e",
+  storageBucket: "app-invite-c081e.firebasestorage.app",
+  messagingSenderId: "1010992241532",
+  appId: "1:1010992241532:web:8ed8c256a9807c53e1e2f9",
+  measurementId: "G-XV8J3VCMCH"
+};
 
 
 @NgModule({
@@ -71,7 +84,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       // Register the ServiceWorker as soon as the application is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideDatabase(() => getDatabase())
   ],
   providers: [
     Keepalive,

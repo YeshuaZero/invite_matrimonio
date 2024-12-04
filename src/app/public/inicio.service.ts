@@ -1,20 +1,34 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from "../../environments/environment"
+import { Database, ref, set, get, child, push } from '@angular/fire/database';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class InicioService {
-    baseUrl = environment.baseUrl
+    constructor(private dataBase: Database) { }
 
-    constructor(private http: HttpClient) { }
-
-    login(data: any) {
-        return this.http.post(`${this.baseUrl}/login/validate_user.php`, data);
+    // Guardar datos en una ruta específica
+    agregarConfirmado(data: any): Promise<void> {
+        const dbRef = ref(this.dataBase, 'usuarios');
+        const nuevoUsuarioRef = push(dbRef);
+        return set(nuevoUsuarioRef, data);
     }
 
-    recuperar(data: any) {
-        return this.http.post(`${this.baseUrl}/login/recuperar_pass.php`, data);
+    // Guardar datos en una ruta específica
+    saveData(path: string, data: any): Promise<void> {
+        const dbRef = ref(this.dataBase, path);
+        return set(dbRef, data);
+    }
+
+    // Consultar datos desde una ruta específica
+    getData(path: string): Promise<any> {
+        const dbRef = ref(this.dataBase);
+        return get(child(dbRef, path)).then((snapshot) => {
+            if (snapshot.exists()) {
+                return snapshot.val();
+            } else {
+                throw new Error('No data available');
+            }
+        });
     }
 }

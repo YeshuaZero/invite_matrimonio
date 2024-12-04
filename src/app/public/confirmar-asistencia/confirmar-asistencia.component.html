@@ -4,7 +4,40 @@
         <i class="cerrar fas fa-times" (click)="cerrar()"></i>
     </div>
     <div class="contenedorConfirmarAsistencia flex flexColumn">
-        <iframe class="conteneforForm"
+        <ng-container *ngIf="usarGoogleForms; else listaEnApp">
+            <iframe class="conteneforForm"
             [src]="linkForm" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </ng-container>
+        <ng-template #listaEnApp>
+            <mat-form-field class="listaInvitados" appearance="outline" subscriptSizing="dynamic">
+                <mat-label>{{'Inicio.confirmacionInvitados.listaInvitados' | translate}}</mat-label>
+                <mat-select [panelWidth]="300" [(ngModel)]="dataConfirmacion.invitado">
+                    <mat-optgroup *ngFor="let familia of listaInvitados" [label]="familia.nombre">
+                        <i class="fas fa-users"></i>
+                        <mat-option *ngFor="let invitado of familia.invitados" [value]="invitado">
+                            {{invitado.nombre}}
+                        </mat-option>
+                    </mat-optgroup>
+                </mat-select>
+            </mat-form-field>
+
+            <div class="flex flexColumn decisionAsistencia">
+                <p>{{'Inicio.confirmacionInvitados.preguntaAsistencia' | translate}}</p>
+                <mat-radio-group aria-label="Select an option" [(ngModel)]="dataConfirmacion.asistencia">
+                    <mat-radio-button value="1">{{'Inicio.confirmacionInvitados.si' | translate}}</mat-radio-button>
+                    <mat-radio-button value="2">{{'Inicio.confirmacionInvitados.no' | translate}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+
+            <div class="flex flexColumn infoAdicional">
+                <p>{{'Inicio.confirmacionInvitados.infoAdicional' | translate}}</p>
+                <mat-form-field class="infoAdicionalInvitado" appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Inicio.confirmacionInvitados.infoAdicionalInvitado' | translate}}</mat-label>
+                    <textarea matInput placeholder="{{'Inicio.confirmacionInvitados.ingreseAqui' | translate}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
+                </mat-form-field>
+            </div>
+
+            <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{'Inicio.confirmacionInvitados.tituloBoton' | translate}}</button>
+        </ng-template>
     </div>
 </div>
