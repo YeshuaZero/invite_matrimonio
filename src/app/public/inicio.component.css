@@ -1,6 +1,16 @@
 .contenedorGeneral {
     background: #fafafa;
     --backgroundVestuario: #e5e0d8;
+    --vestuarioMujerSugerido1: #cdb4db;
+    --vestuarioMujerSugerido2: #ffafcc;
+    --vestuarioMujerSugerido3: #a2d2ff;
+    --vestuarioMujerSugerido4: #e5e0d8;
+    --vestuarioMujerSugerido5: #e5e0d8;
+    --vestuarioMujerReservado1: #fff;
+    --vestuarioMujerReservado2: #bec092;
+    --vestuarioMujerReservado3: #a2d2ff;
+    --vestuarioMujerReservado4: #e5e0d8;
+    --vestuarioMujerReservado5: #e5e0d8;
     --backgroundRegalos: #e5e0d8;
     --backgroundConfirmacion: #bec092;
     overflow: hidden;
@@ -46,26 +56,26 @@
     filter: grayscale(100%) brightness(300%);
 }
 
-.dataInfo .fechaBodaEncabezado{
+.dataInfo .fechaBodaEncabezado {
     font-weight: 400;
     text-shadow: 1px 1px 10px black;
 }
 
 .dataInfo .fechaBodaEncabezado:before,
 .dataInfo .fechaBodaEncabezado:after {
-            border-top: 1px solid #fff;
-            content: '';
-            display: table-cell;
-            position: relative;
-            top: 0;
-            width: 80px;
+    border-top: 1px solid #fff;
+    content: '';
+    display: table-cell;
+    position: relative;
+    top: 0;
+    width: 80px;
 }
 
-.dataInfo .fechaBodaEncabezado:before{
+.dataInfo .fechaBodaEncabezado:before {
     left: -12px;
 }
 
-.dataInfo .fechaBodaEncabezado:after{
+.dataInfo .fechaBodaEncabezado:after {
     right: -12px;
 }
 
@@ -88,12 +98,12 @@
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 1);
 }
 
-.dataInfo .fraseEncabezado{
+.dataInfo .fraseEncabezado {
     border-top: solid 1px;
-        padding: 20px 60px;
-        margin-top: 14px;
-        font-size: 24px;
-        font-weight: 100;
+    padding: 20px 60px;
+    margin-top: 14px;
+    font-size: 24px;
+    font-weight: 100;
 }
 
 .contenedorFlores {
@@ -437,6 +447,7 @@
 
 .contenedorCodigoVestuario .grupo {
     margin-bottom: 20px;
+    align-items: baseline;
 }
 
 .contenedorCodigoVestuario .grupo .cursiva {
@@ -460,6 +471,38 @@
     font-weight: 200;
 }
 
+.contenedorCodigoVestuario .grupo .coloresSugeridos {
+    padding-left: 30px;
+    margin-top: 12px;
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos div {
+    width: 20px;
+    height: 20px;
+    border-radius: 16px;
+    margin-right: 8px;
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos .color1 {
+    background: var(--vestuarioMujerSugerido1);
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos .color2 {
+    background: var(--vestuarioMujerSugerido2);
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos .color3 {
+    background: var(--vestuarioMujerSugerido3);
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos .color4 {
+    background: var(--vestuarioMujerSugerido4);
+}
+
+.contenedorCodigoVestuario .grupo .coloresSugeridos .color5 {
+    background: var(--vestuarioMujerSugerido5);
+}
+
 .contenedorCodigoVestuario .tenPresente {
     margin-top: 24px;
     font-weight: 700;
@@ -472,10 +515,41 @@
     padding-left: 24px;
     font-size: 12px;
     font-weight: 600;
+    align-items: baseline;
 }
 
 .contenedorCodigoVestuario .notaGeneral i {
     font-size: 14px;
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados {
+    margin-top: 8px;
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados i {
+    border-radius: 16px;
+    margin-right: 8px;
+    padding: 4px;
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados .color1 {
+    background: var(--vestuarioMujerReservado1);
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados .color2 {
+    background: var(--vestuarioMujerReservado2);
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados .color3 {
+    background: var(--vestuarioMujerReservado3);
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados .color4 {
+    background: var(--vestuarioMujerReservado4);
+}
+
+.contenedorCodigoVestuario .notaGeneral .coloresReservados .color5 {
+    background: var(--vestuarioMujerReservado5);
 }
 
 /* REGALOS */
@@ -528,7 +602,7 @@
 /* CONFIRMACION ASISTENCIA */
 
 .confirmacionInvitados {
-    padding: 80px 0;
+    padding: 80px 0 10px;
     position: relative;
     background: var(--backgroundConfirmacion);
 }
@@ -540,6 +614,16 @@
     fill: var(--backgroundConfirmacion);
     width: 100%;
     height: 80px;
+    z-index: 999;
+}
+
+.confirmacionInvitados .separadorBottom {
+    bottom: -500px;
+    position: absolute;
+    fill: var(--backgroundConfirmacion);
+    width: 100%;
+    height: 500px;
+    z-index: 999;
 }
 
 .confirmacionInvitados .icoSeccion {
@@ -604,24 +688,65 @@
     stroke: #718355;
 }
 
-.footer {
+/* RECUERDOS */
+
+.contenedorRecuerdos {
     position: relative;
-    background: #fff;
-    height: 150px;
-    padding-bottom: 20px;
+    background: rgba(255, 255, 255, .8);
+    height: 420px;
+    padding: 60px 0 20px;
 }
 
-.footer .contenedorFooter {
-    margin: 12px;
+.contenedorRecuerdos .textRecuerdos{
+    max-width: calc(100vw - 48px);
+    text-align: center;
+}
+
+.contenedorRecuerdos .nombresRecuerdos {
+    margin: 12px 12px 24px;
     font-size: 60px;
     line-height: 30px;
 }
 
-.footer .contenedorFooter .conectorNombres {
+.contenedorRecuerdos .nombresRecuerdos .conectorNombres {
     margin: 12px 18px 0;
 }
 
+.contenedorRecuerdos .subcontenedorRecuerdos>i {
+    font-size: 100px;
+    margin: 4px 0 18px;
+}
+
+.tituloRecuerdos {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.recuerdos {
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.hashtag {
+    font-size: 30px;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.hashtag i{
+    padding-top: 6px;
+    margin-right: 10px;
+}
+
+.contenedorFooter {
+    background: #242424;
+    position: relative;
+    color: #fafafa;
+}
+
 .footer .desarrolladoPor p {
+    margin-top: 40px;
     margin-bottom: 0;
 }
 
@@ -683,6 +808,20 @@
     }
 
     .contenedorCodigoVestuario .contenedor {
+        align-items: center;
+    }
+
+    .contenedorCodigoVestuario .grupo {
+        width: 200px;
+        align-items: center;
+    }
+
+    .contenedorCodigoVestuario .grupo span {
+        text-align: center;
+    }
+
+    .contenedorCodigoVestuario .notaGeneral {
+        text-align: center;
         align-items: center;
     }
 
@@ -757,6 +896,22 @@
     .contenedorFotos {
         padding: 40px 0 120px;
     }
+
+    .contenedorRecuerdos .subcontenedorRecuerdos>i {
+        font-size: 80px;
+    }
+
+    .tituloRecuerdos {
+        font-size: 18px;
+    }
+
+    .recuerdos {
+        font-size: 14px;
+    }
+
+    .hashtag {
+        font-size: 24px;
+    }
 }
 
 @media (max-width:530px) {
@@ -817,6 +972,22 @@
 @media (max-width:480px) {
     .contenedorRegalos .contenedor span {
         font-size: 16px;
+    }
+
+    .contenedorRecuerdos .subcontenedorRecuerdos>i {
+        font-size: 80px;
+    }
+
+    .tituloRecuerdos {
+        font-size: 16px;
+    }
+
+    .recuerdos {
+        font-size: 12px;
+    }
+
+    .hashtag {
+        font-size: 24px;
     }
 }
 
@@ -920,6 +1091,33 @@
         width: 180px;
         text-align: center;
         font-weight: 700;
+    }
+
+    .contenedorRecuerdos {
+        position: relative;
+        background: rgba(255, 255, 255, .8);
+        height: 460px;
+        padding: 70px 0 20px;
+    }
+
+    .contenedorRecuerdos .subcontenedorRecuerdos>i {
+        font-size: 80px;
+    }
+
+    .tituloRecuerdos {
+        font-size: 24px;
+        width: 290px;
+        margin-bottom: 6px;
+    }
+
+    .recuerdos {
+        font-size: 14px;
+        width: 280px;
+        margin-bottom: 6px;
+    }
+
+    .hashtag {
+        font-size: 24px;
     }
 }
 
@@ -1052,4 +1250,31 @@
         bottom: -40px;
     }
 
+    .contenedorRecuerdos {
+        position: relative;
+        background: rgba(255, 255, 255, .8);
+        height: 460px;
+        padding: 70px 0 20px;
+    }
+
+    .contenedorRecuerdos .nombresRecuerdos {
+        font-size: 46px;
+    }
+
+    .contenedorRecuerdos .subcontenedorRecuerdos>i {
+        font-size: 80px;
+    }
+
+    .tituloRecuerdos {
+        margin: 12px 12px 24px;
+        font-size: 46px;
+    }
+
+    .recuerdos {
+        width: 240px;
+    }
+
+    .hashtag {
+        font-size: 24px;
+    }
 }

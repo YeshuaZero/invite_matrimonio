@@ -172,25 +172,38 @@
         <div class="flex">
             <img class="imgVestuario" src="{{'Inicio.codigoVestuario.img' | translate}}" alt="Código Vestuario">
             <div class="contenedor flex flexColumn">
-                <div class="grupo">
+                <div class="grupo flex flexColumn">
                     <p class="cursiva">
                         {{'Inicio.codigoVestuario.tituloHombres' | translate}}
                         <i class="fab fa-pinterest" (click)="abrirPinterest('linkHombres')"></i>
                     </p>
                     <span>{{'Inicio.codigoVestuario.descripcionHombres' | translate}}</span>
                 </div>
-                <div class="grupo">
+                <div class="grupo flex flexColumn">
                     <p class="cursiva">
                         {{'Inicio.codigoVestuario.tituloMujeres' | translate}}
                         <i class="fab fa-pinterest" (click)="abrirPinterest('linkMujeres')"></i>
                     </p>
                     <span>{{'Inicio.codigoVestuario.descripcionMujeres' | translate}}</span>
+                    <div class="coloresSugeridos flex">
+                        <div *ngIf="cantidadColoresSugeridos >= 1" class="color1"></div>
+                        <div *ngIf="cantidadColoresSugeridos >= 2" class="color2"></div>
+                        <div *ngIf="cantidadColoresSugeridos >= 3" class="color3"></div>
+                        <div *ngIf="cantidadColoresSugeridos >= 4" class="color4"></div>
+                        <div *ngIf="cantidadColoresSugeridos >= 5" class="color5"></div>
+                    </div>
                 </div>
 
                 <span class="tenPresente">{{'Inicio.codigoVestuario.tenPresente' | translate}}</span>
-                <span class="notaGeneral flex">
-                    <i class="fas fa-ban"></i>
+                <span class="notaGeneral flex flexColumn">
                     {{'Inicio.codigoVestuario.notaGeneral' | translate}}
+                    <div *ngIf="coloresReservados" class="coloresReservados flex">
+                        <i *ngIf="cantidadColoresReservados >= 1" class="fas fa-ban color1"></i>
+                        <i *ngIf="cantidadColoresReservados >= 2" class="fas fa-ban color2"></i>
+                        <i *ngIf="cantidadColoresReservados >= 3" class="fas fa-ban color3"></i>
+                        <i *ngIf="cantidadColoresReservados >= 4" class="fas fa-ban color4"></i>
+                        <i *ngIf="cantidadColoresReservados >= 5"class="fas fa-ban color5"></i>
+                    </div>
                 </span>
             </div>
         </div>
@@ -231,8 +244,6 @@
     </div>
 
     <div class="confirmacionInvitados flex flexColumn">
-       <!--  <img class="imgsBordes imgIzq" src="/assets/imgs/confirmIzq.svg" alt="confirmIzq" data-aos="zoom-in-right"
-            data-aos-duration="2000" data-aos-easing="ease-in-out"> -->
         <svg class="separadorTop" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
             preserveAspectRatio="none">
             <path
@@ -259,21 +270,42 @@
                 {{'Inicio.confirmacionInvitados.confirmarAsistencia' | translate}}
             </button>
         </div>
+
+        <svg class="separadorBottom" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none">
+            <path d="M0 97L192 83L384 95L576 123L768 105L960 72L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".2"></path>
+            <path d="M0 89L192 103L384 75L576 68L768 89L960 79L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".25"></path>
+            <path d="M0 50L192 69L384 83L576 54L768 54L960 83L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".4"></path>
+            <path d="M0 51L192 28L384 27L576 60L768 61L960 33L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".6"></path>
+            <path d="M0 38L192 32L384 38L576 37L768 16L960 17L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity="1"></path>
+        </svg>
     </div>
 
-    <div class="footer flex flexColumn">
-        <div class="contenedorFooter flex">
+    <div class="contenedorRecuerdos flex flexColumn">
+        <div class="nombresRecuerdos flex">
             <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{'Inicio.encabezado.nombreEl' | translate}}</span>
             <span class="conectorNombres cursiva">&</span>
             <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{'Inicio.encabezado.nombreElla' |
                 translate}}</span>
         </div>
+        <div class="subcontenedorRecuerdos flex flexColumn">
+            <i class="fab fa-instagram animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+            <div class="textRecuerdos flex flexColumn">
+                <span class="tituloRecuerdos animate__animated animate__fadeInUp">{{'Inicio.recuerdos.ayudanos' | translate}}</span>
+                <span class="recuerdos animate__animated animate__fadeInUp">{{'Inicio.recuerdos.ayudanos2' | translate}}</span>
+                <span class="hashtag animate__animated animate__fadeInUp flex">
+                    <i class="fas fa-hashtag"></i>
+                    {{'Inicio.recuerdos.hashtag' | translate}}
+                </span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="contenedorFooter">
         <div class="desarrolladoPor flex">
             <p class="flex"><i class="fas fa-copyright"></i> Copyright {{fechaActual | date: 'yyyy'}}</p>
         </div>
     </div>
-
-    <div class="fondoFooter"></div>
 </div>
 
 <mat-menu #menuAgenda="matMenu">

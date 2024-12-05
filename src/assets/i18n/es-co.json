@@ -1,8 +1,10 @@
 {
+  "ConfigApp": {
+    "familia": "LopezGiraldo"
+  },
   "Inicio": {
     "encabezado":{
-      "imgEncabezado": "assets/imgs/IMG_9504.JPG",
-      "imgTextoCasados": "assets/imgs/Yeshua&Ana.png",
+      "imgEncabezado": "assets/imgs/fotos/imgPrincipal.JPG",
       "imgArribaIzq": "assets/imgs/esquinaSupIzq.png",
       "imgArribaDer": "assets/imgs/esquinaSupDer.png",
       "imgAbajoIzq": "assets/imgs/abajoIzq.png",
@@ -58,13 +60,13 @@
       "titulo2": "Vestuario",
       "img": "assets/imgs/codigoVestuario.svg",
       "tituloHombres": "Hombres",
-      "descripcionHombres": "TRAJE OSCURO FORMAL",
+      "descripcionHombres": "TRAJE FORMAL",
       "linkHombres": "https://pin.it/2DeLuqwMF",
       "tituloMujeres": "Mujeres",
-      "descripcionMujeres": "VESTIDO LARGO FORMAL",
+      "descripcionMujeres": "VESTIDO LARGO FORMAL (Idealmente tonos pasteles)",
       "linkMujeres": "https://pin.it/6DdeGP4ax",
       "tenPresente": "Recuerda...",
-      "notaGeneral": "COLORES RESERVADOS: VERDE OLIVA"
+      "notaGeneral": "COLORES RESERVADOS: BLANCO - VERDE OLIVA"
     },
     "regalos": {
       "titulo": "Sugerencias de",
@@ -82,12 +84,22 @@
       "linkFormulario": "https://docs.google.com/forms/d/e/1FAIpQLScV5nf8uXG96BWbe7s8zZvScMwFVMjW14hnZ6qwQAVBiGUrKQ/viewform?embedded=true",
       "listaInvitados": "Selecciona tu nombre",
       "preguntaAsistencia": "¿Asistirás a la Ceremonia?",
+      "preguntaAsistenciaGrupo": "¿Asistirán a la Ceremonia?",
       "si": "Si! Por supuesto!",
       "no": "No puedo",
       "infoAdicional": "¿Algo que necesitemos saber?",
       "infoAdicionalInvitado": "Información...",
       "ingreseAqui": "Por favor, cuéntanos...",
-      "tituloBoton": "ENVIAR RESPUESTA..."
+      "tituloBoton": "ENVIAR RESPUESTA...",
+      "confirmacionOk": "Respuesta enviada correctamente",
+      "confirmacionOkDetalle": "Se ha enviado y registrado correctamente la respuesta... !Gracias por tomarte el tiempo y confirmar!",
+      "confirmacionFallo": "No ha sido posible registrar la respuesta",
+      "confirmacionFalloDetalle": "No sabemos que pasó... Por favor ayúdanos enviando nuevamente tu respuesta..."
+    },
+    "recuerdos": {
+      "ayudanos": "Ayúdanos a crear recuerdos en Instagram...",
+      "ayudanos2": "Las fotos que tomes el día del evento súbelas con el Hashtag",
+      "hashtag": "yeshua_ana"
     }
   }
 }

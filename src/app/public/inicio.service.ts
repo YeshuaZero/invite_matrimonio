@@ -8,16 +8,21 @@ export class InicioService {
     constructor(private dataBase: Database) { }
 
     // Guardar datos en una ruta específica
-    agregarConfirmado(data: any): Promise<void> {
-        const dbRef = ref(this.dataBase, 'usuarios');
+    agregarConfirmado(familia: any, data: any): Promise<void> {
+        const dbRef = ref(this.dataBase, `${familia}/usuarios`);
         const nuevoUsuarioRef = push(dbRef);
         return set(nuevoUsuarioRef, data);
     }
 
-    // Guardar datos en una ruta específica
-    saveData(path: string, data: any): Promise<void> {
-        const dbRef = ref(this.dataBase, path);
-        return set(dbRef, data);
+    agregarConfirmados(familia: string, usuarios: any[]): Promise<void[]> {
+        const dbRef = ref(this.dataBase, `${familia}/usuarios`);
+
+        const promesas = usuarios.map((usuario) => {
+            const nuevoUsuarioRef = push(dbRef); // Genera un ID único para cada usuario
+            return set(nuevoUsuarioRef, usuario);
+        });
+
+        return Promise.all(promesas); // Espera a que todas las operaciones se completen
     }
 
     // Consultar datos desde una ruta específica
@@ -25,10 +30,30 @@ export class InicioService {
         const dbRef = ref(this.dataBase);
         return get(child(dbRef, path)).then((snapshot) => {
             if (snapshot.exists()) {
-                return snapshot.val();
+                const data = snapshot.val();
+                // Convertir el objeto en un arreglo
+                const dataArray = Object.keys(data).map((key) => ({
+                    id: key, // Guardamos la clave como ID
+                    ...data[key], // Extraemos los valores del objeto
+                }));
+                return dataArray;
             } else {
-                throw new Error('No data available');
+                console.error('No se encontraron datos.');
+                return [];
             }
         });
+    }
+
+    addCalendario(icsContent: any){
+        const dbRef = ref(this.dataBase, 'eventos/archivo.ics');
+        set(dbRef, icsContent)
+        .then(() => {
+            // Generar la URL pública (puedes usar Firebase Hosting o Cloud Functions)
+            const fileUrl = `https://app-invite-c081e-default-rtdb.firebaseio.com/eventos/archivo.ics`;
+            const webcalUrl = fileUrl.replace('https://', 'webcal://');
+
+            // Redirigir al usuario al esquema webcal://
+            window.location.href = webcalUrl;
+        })
     }
 }

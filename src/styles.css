@@ -397,7 +397,7 @@ i {
 }
 
 .contenedorPopUpGeneral {
-    --colorTipo: #0957b1;
+    --colorTipo: #4f5051;
     margin-bottom: 8%;
 }
 
@@ -417,17 +417,18 @@ i {
 }
 
 .contenedorInfo .titulo {
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 700;
     margin: 0;
     text-align: center;
-    color: #101222;
+    color: #4f5051;
 }
 
 .contenedorInfo .texto {
     margin: 10px 0 16px;
     padding: 0 24px;
-    font-size: 10px;
+    font-size: 12px;
+    font-weight: 300;
     color: #61637C;
     text-align: center;
 }

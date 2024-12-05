@@ -36,6 +36,10 @@ export class InicioComponent implements OnInit {
 
   mostrarIcoSecciones = false;
 
+  cantidadColoresSugeridos = 3;
+  coloresReservados = true;
+  cantidadColoresReservados = 2;
+
   existeCoordenadas = this.funcionesGenerales.translate('Inicio.ceremonia.coordenadas');
 
   fechaActual = new Date();
@@ -66,20 +70,21 @@ export class InicioComponent implements OnInit {
   };
 
   listaFotos: any = [
-    { src: '/assets/imgs/IMG_9518.JPG', position: 'center'},
-    {  src: '/assets/imgs/IMG_9501.JPG', position: 'center'},
-    {  src: '/assets/imgs/IMG_9511.JPG', position: 'center'},
-    { src: '/assets/imgs/IMG_9383.JPG', position: 'center'},
-    {  src: '/assets/imgs/IMG_9402.JPG', position: 'center'},
-    { src: '/assets/imgs/IMG_9410.JPG', position: 'center'},
-    {  src: '/assets/imgs/IMG_9507.JPG', position: 'center'},
-    {  src: '/assets/imgs/IMG_9436.JPG', position: 'center'},
-    { src: '/assets/imgs/IMG_9514.JPG', position: 'bottom'},
+    { src: '/assets/imgs/fotos/1.jpg', position: 'center'},
+    {  src: '/assets/imgs/fotos/2.jpg', position: 'center'},
+    {  src: '/assets/imgs/fotos/3.jpg', position: 'center'},
+    { src: '/assets/imgs/fotos/4.jpg', position: 'center'},
+    {  src: '/assets/imgs/fotos/5.jpg', position: 'center'},
+    { src: '/assets/imgs/fotos/6.jpg', position: 'center'},
+    {  src: '/assets/imgs/fotos/7.jpg', position: 'center'},
+    {  src: '/assets/imgs/fotos/8.jpg', position: 'center'},
+    { src: '/assets/imgs/fotos/9.jpg', position: 'bottom'},
   ];
 
 
   constructor(
-    private funcionesGenerales: FuncionesGeneralesService,
+    private readonly funcionesGenerales: FuncionesGeneralesService,
+    private readonly inicioService: InicioService,
     public dialog: MatDialog
   ) { }
 
@@ -129,23 +134,30 @@ export class InicioComponent implements OnInit {
   }
 
   addToAppleCalendar() {
+    // Asegúrate de convertir las fechas al formato correcto (UTC o local)
+    const startDate = this.funcionesGenerales.translate(this.funcionesGenerales.translate('Inicio.ceremonia.inicioCalendario')); // YYYYMMDDTHHMMSS
+    const endDate = this.funcionesGenerales.translate(this.funcionesGenerales.translate('Inicio.ceremonia.finCalendario')); // YYYYMMDDTHHMMSS
+
     const icsContent = `
       BEGIN:VCALENDAR
       VERSION:2.0
+      PRODID:-//YourApp//YourEvent//EN
+      CALSCALE:GREGORIAN
+      METHOD:PUBLISH
       BEGIN:VEVENT
-      SUMMARY: ${this.funcionesGenerales.translate('Inicio.ceremonia.tituloCalendario')}
-      DESCRIPTION: ${this.funcionesGenerales.translate('Inicio.ceremonia.detalleCalendario')}
-      DTSTART: ${this.funcionesGenerales.translate('Inicio.ceremonia.inicioCalendario')}
-      DTEND: ${this.funcionesGenerales.translate('Inicio.ceremonia.finCalendario')}
-      LOCATION: ${this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate('Inicio.ceremonia.ubicacionCalendario')}
+      UID:${Date.now()}@yourapp.com
+      SUMMARY:${this.funcionesGenerales.translate('Inicio.ceremonia.tituloCalendario')}
+      DESCRIPTION:${this.funcionesGenerales.translate('Inicio.ceremonia.detalleCalendario')}
+      DTSTART:${startDate}
+      DTEND:${endDate}
+      LOCATION:${this.existeCoordenadas && this.existeCoordenadas !== '' ? this.existeCoordenadas : this.funcionesGenerales.translate('Inicio.ceremonia.ubicacionCalendario')}
+      STATUS:CONFIRMED
+      SEQUENCE:0
       END:VEVENT
       END:VCALENDAR
-    `;
-    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
-    const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'evento.ics';
-    link.click();
+      `;
+
+    this.inicioService.addCalendario(icsContent);
   }
 
   addToGoogleCalendar() {

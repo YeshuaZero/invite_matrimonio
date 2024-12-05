@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
-import { FuncionesGeneralesService } from 'src/app/core/funciones-generales.services';
+import { FuncionesGeneralesService, TipoEnum } from 'src/app/core/funciones-generales.services';
 import { DomSanitizer } from '@angular/platform-browser';
 import { InicioService } from '../inicio.service';
 
@@ -21,29 +21,110 @@ export class ConfirmarAsistenciaComponent implements OnInit {
   usarGoogleForms = false;
   form = this.funcionesGeneralesService.translate('Inicio.confirmacionInvitados.linkFormulario');
   linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
+  familia = this.funcionesGeneralesService.translate('ConfigApp.familia');
 
   listaInvitados: any = [
     {
       nombre: 'Familia Novio', invitados: [
-        { nombre: 'Jesús David López Piedrahita' },
-        { nombre: 'Cristhian Fernando López' },
-        { nombre: 'Maria Alejandra López' },
         { nombre: 'Nestor León López' },
+        { nombre: 'Bertha Liliana Piedrahita' },
+        { nombre: 'Cristhian Fernando López' },
+        { nombre: 'Ximena Garces' },
+        { nombre: 'Carmen Mora' },
+        { nombre: 'Maria Alejandra López' },
+        { nombre: 'Robert Morales' },
+        { nombre: 'Ana Maria Piedrahita' },
+        { nombre: 'Daniel Piedrahita' },
+        { nombre: 'Gloria Piedrahita' },
+        { nombre: 'Lida Piedrahita' },
+        { nombre: 'Luciana Flórez' },
+        { nombre: 'Anita Arbelaez' },
+        { nombre: 'Julian García' },
+        { nombre: 'Hernan López' },
+        { nombre: 'Oliva Agudelo' },
+        { nombre: 'Esperanza' }
       ]
     },
     { nombre: 'Familia Novia', invitados: [
-        { nombre: 'Alex Giraldo' },
-        { nombre: 'Luz Adriana Saenz' },
-        { nombre: 'Ana Maria Giraldo Saenz' },
-        { nombre: 'Isabella Giraldo Saenz' }
+        { nombre: 'Barbara León' },
+        { nombre: 'Edward Sáenz León' },
+        { nombre: 'Tatiana Sáenz Arenas' },
+        { nombre: 'Jaiver Sáenz León' },
+        { nombre: 'Laura Sáenz Arenas' },
+        { nombre: 'Brian Sáenz Arenas' },
+        { nombre: 'Lina Campuzano' },
+        { nombre: 'Paulina' },
+        { nombre: 'Antonella' },
+        { nombre: 'Diego Sáenz Arenas' },
+        { nombre: 'Mina Arenas' },
+        { nombre: 'German Sáenz León' },
+        { nombre: 'Janeth Amaya' },
+        { nombre: 'Natalia Sáenz Amaya' },
+        { nombre: 'David Olarte' },
+        { nombre: 'Daniel Echeverry Sáenz' },
+        { nombre: 'Luz Mary Sáenz León' },
+        { nombre: 'Esteban Echeverry Sáenz' },
+        { nombre: 'Andrés Echeverry Sáenz' },
+        { nombre: 'José Echeverry' },
+        { nombre: 'Isabella Ortiz' },
+        { nombre: 'Ehimar Sáenz León' },
+        { nombre: 'Paola' },
+        { nombre: 'Wilver Sáenz León' },
+        { nombre: 'Luz Elena Gómez' },
+        { nombre: 'Alejandro Sáenz Gómez' },
+        { nombre: 'Juan Manuel Sáenz Gómez' },
+        { nombre: 'Carolina' },
+        { nombre: 'Chata' },
+        { nombre: 'Nelsida' },
+        { nombre: 'Socorro' },
+        { nombre: 'Isabella Giraldo Sáenz' },
+        { nombre: 'Alexander Giraldo Nieto' },
+        { nombre: 'Adriana Sáenz' },
+        { nombre: 'Alberto' },
+        { nombre: 'Norita' },
+        { nombre: 'Miriam Nieto' },
+        { nombre: 'Marina' },
+        { nombre: 'Rosmeri' },
+        { nombre: 'Patricia Giraldo Nieto' },
+        { nombre: 'Luis Romero' },
+        { nombre: 'Camila Romero Giraldo' },
+        { nombre: 'Fabio Giraldo' },
+        { nombre: 'Rosa' },
+        { nombre: 'Viviana Giraldo Nieto' },
+        { nombre: 'Amy Arcos Giraldo' },
       ]
     },
     {
       nombre: 'Amigos', invitados: [
-        { nombre: 'Alex Giraldo' },
-        { nombre: 'Luz Adriana Saenz' },
-        { nombre: 'Ana Maria Giraldo Saenz' },
-        { nombre: 'Isabella Giraldo Saenz' }
+        { nombre: 'Ana Otero' },
+        { nombre: 'Andrés Prado' },
+        { nombre: 'Andrea Flor' },
+        { nombre: 'Andrés Palomar' },
+        { nombre: 'Dayana Zuluaga' },
+        { nombre: 'Isabella Ortiz' },
+        { nombre: 'Johanna Caicedo' },
+        { nombre: 'Mariana López' },
+        { nombre: 'Melissa Trejos' },
+        { nombre: 'Nelson Herrera' },
+        { nombre: 'Laura Valencia' },
+        { nombre: 'Oscar Sosa' },
+        { nombre: 'Octavio Gómez' },
+        { nombre: 'Lida Gómez' },
+        { nombre: 'Valeria Vargas' },
+        { nombre: 'Alvaro Fernandez' },
+        { nombre: 'Andrés Sanchez' },
+        { nombre: 'Lina Rivera' },
+        { nombre: 'Mauricio Sanchez' },
+        { nombre: 'Samuel Sanchez' },
+        { nombre: 'Mario Delgado' },
+        { nombre: 'Patricia Atehortua' },
+        { nombre: 'Santiago Delgado' },
+        { nombre: 'Edwin Marin' },
+        { nombre: 'Veronica Tamayo' },
+        { nombre: 'Laura Marin' },
+        { nombre: 'Elmer Reina' },
+        { nombre: 'Jessica Rojas' },
+        { nombre: 'Juan Martin Reina' }
       ]
     }
   ];
@@ -68,21 +149,34 @@ export class ConfirmarAsistenciaComponent implements OnInit {
   }
 
   enviar() {
-    console.log('dataConfirmacion:', this.dataConfirmacion);
-    const data:any = {nombre: this.dataConfirmacion.invitado.nombre, asistencia: this.dataConfirmacion.asistencia == '1', fecha: this.funcionesGeneralesService.formatearFecha(new Date(), 'dd/MM/yyyy')};
-    if (this.dataConfirmacion.infoAdicional) data.infoAdicional = this.dataConfirmacion.infoAdicional;
-    console.log('data:', data);
-    this.inicioService.agregarConfirmado(data).then(() => {
-      console.log('Datos guardados con éxito.');
+    const data: any = [];
+    this.dataConfirmacion.invitado.forEach((e: any) => {
+        e.asistencia = this.dataConfirmacion.asistencia == '1';
+        e.fecha = this.funcionesGeneralesService.formatearFecha(new Date(), 'dd/MM/yyyy');
+        if (this.dataConfirmacion.infoAdicional) e.infoAdicional = this.dataConfirmacion.infoAdicional;
+        data.push(e);
+    });
+    
+    this.inicioService.agregarConfirmados(this.familia, data).then(() => {
+      this.funcionesGeneralesService.openDialog('Inicio.confirmacionInvitados.confirmacionOk', 'Inicio.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
+      this.cerrar();
     }, ()=> {
-      console.log('Error.');
+      this.funcionesGeneralesService.openDialog('Inicio.confirmacionInvitados.confirmacionFallo', 'Inicio.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
+      this.cerrar();
     });
   }
 
   // Consultar datos
   obtenerConfirmados() {
-    this.inicioService.getData('usuarios').then((resp: any) => {
+    this.inicioService.getData(`${this.familia}/usuarios`).then((resp: any) => {
       console.log('Datos consultados:', resp);
+      if(resp?.length > 0){
+        this.listaInvitados.forEach((familia: any) => {
+          familia.invitados = familia.invitados.filter((inv: any) => !resp.some((e: any) => e.nombre == inv.nombre));
+        });
+
+        this.listaInvitados = this.listaInvitados.filter((familia: any) => familia.invitados?.length > 0);
+      }
     });
   }
 
