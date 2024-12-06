@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/core/shared/shared.module';
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { InicioService } from './inicio.service';
 import { FuncionesGeneralesService} from 'src/app/core/funciones-generales.services';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,6 +9,7 @@ import * as Parallax from 'parallax-js'
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarAsistenciaComponent } from './confirmar-asistencia/confirmar-asistencia.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-inicio',
@@ -22,10 +23,12 @@ export class InicioComponent implements OnInit {
   hide: boolean = true;
   loading: boolean = false;
 
+  id: any = '';
+
   date: any;
   now: any = new Date().getTime();
-  targetDate: any = new Date(2025, 1, 15, 16, 0, 0);
-  targetTime: any = this.targetDate.getTime();
+  targetDate: any;
+  targetTime: any;
   difference: number = 0;
   tiempoRestante: any = {
     dias: 0,
@@ -34,13 +37,16 @@ export class InicioComponent implements OnInit {
     segundos: 0
   };
 
+  imgPrincipal = '';
+  imgSecundaria = '';
+  existeCoordenadas = '';
+  
   mostrarIcoSecciones = false;
 
-  cantidadColoresSugeridos = 3;
+  cantidadColoresSugeridos = 6;
   coloresReservados = true;
   cantidadColoresReservados = 2;
 
-  existeCoordenadas = this.funcionesGenerales.translate('Inicio.ceremonia.coordenadas');
 
   fechaActual = new Date();
 
@@ -85,10 +91,24 @@ export class InicioComponent implements OnInit {
   constructor(
     private readonly funcionesGenerales: FuncionesGeneralesService,
     private readonly inicioService: InicioService,
+    private route: ActivatedRoute,
     public dialog: MatDialog
-  ) { }
+  ) {
+    this.route.paramMap.subscribe(params => {
+      this.id = params.get('id') ? `${params.get('id')}.` : null; 
+      this.id = this.id ?? 'yeshua_&_ana.';
+      console.log(this.id);
+    });
+  }
 
   ngOnInit() {
+    this.imgPrincipal = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgEncabezado');
+    this.imgSecundaria = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgSecundaria');
+    this.existeCoordenadas = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.coordenadas');
+
+    this.targetDate = new Date(this.funcionesGenerales.translate(this.id + 'Inicio.conteoRegresivo.fecha'));
+    this.targetTime = this.targetDate.getTime();
+
     AOS.init();
     const scene: any = document.getElementById('nombres');
     const parallaxInstance = new Parallax(scene);
@@ -134,39 +154,32 @@ export class InicioComponent implements OnInit {
   }
 
   addToAppleCalendar() {
-    // Asegúrate de convertir las fechas al formato correcto (UTC o local)
-    const startDate = this.funcionesGenerales.translate(this.funcionesGenerales.translate('Inicio.ceremonia.inicioCalendario')); // YYYYMMDDTHHMMSS
-    const endDate = this.funcionesGenerales.translate(this.funcionesGenerales.translate('Inicio.ceremonia.finCalendario')); // YYYYMMDDTHHMMSS
-
     const icsContent = `
       BEGIN:VCALENDAR
       VERSION:2.0
-      PRODID:-//YourApp//YourEvent//EN
-      CALSCALE:GREGORIAN
-      METHOD:PUBLISH
       BEGIN:VEVENT
-      UID:${Date.now()}@yourapp.com
-      SUMMARY:${this.funcionesGenerales.translate('Inicio.ceremonia.tituloCalendario')}
-      DESCRIPTION:${this.funcionesGenerales.translate('Inicio.ceremonia.detalleCalendario')}
-      DTSTART:${startDate}
-      DTEND:${endDate}
-      LOCATION:${this.existeCoordenadas && this.existeCoordenadas !== '' ? this.existeCoordenadas : this.funcionesGenerales.translate('Inicio.ceremonia.ubicacionCalendario')}
-      STATUS:CONFIRMED
-      SEQUENCE:0
+      SUMMARY: ${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.tituloCalendario')}
+      DESCRIPTION: ${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.detalleCalendario')}
+      DTSTART: ${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.inicioCalendario')}
+      DTEND: ${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.finCalendario')}
+      LOCATION: ${this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.ubicacionCalendario')}
       END:VEVENT
       END:VCALENDAR
-      `;
-
-    this.inicioService.addCalendario(icsContent);
+    `;
+    const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'evento.ics';
+    link.click();
   }
 
   addToGoogleCalendar() {
-    const title = this.funcionesGenerales.translate('Inicio.ceremonia.tituloCalendario');
-    const description = this.funcionesGenerales.translate('Inicio.ceremonia.detalleCalendario');
-    const startDate = this.funcionesGenerales.translate('Inicio.ceremonia.inicioCalendario');
-    const endDate = this.funcionesGenerales.translate('Inicio.ceremonia.finCalendario');
-    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate('Inicio.ceremonia.ubicacionCalendario');
-    const timezone = this.funcionesGenerales.translate('Inicio.ceremonia.zonaHoraria');
+    const title = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.tituloCalendario');
+    const description = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.detalleCalendario');
+    const startDate = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.inicioCalendario');
+    const endDate = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.finCalendario');
+    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.ubicacionCalendario');
+    const timezone = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.zonaHoraria');
 
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&ctz=${timezone}`;
 
@@ -174,11 +187,11 @@ export class InicioComponent implements OnInit {
   }
 
   addToMicrosoftCalendar() {
-    const title = this.funcionesGenerales.translate('Inicio.ceremonia.tituloCalendario');
-    const description = this.funcionesGenerales.translate('Inicio.ceremonia.detalleCalendario');
-    const startDate = this.funcionesGenerales.translate('Inicio.ceremonia.inicioCalendarioMicrosoft');
-    const endDate = this.funcionesGenerales.translate('Inicio.ceremonia.finCalendarioMicrosoft');
-    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate('Inicio.ceremonia.ubicacionCalendario');
+    const title = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.tituloCalendario');
+    const description = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.detalleCalendario');
+    const startDate = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.inicioCalendarioMicrosoft');
+    const endDate = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.finCalendarioMicrosoft');
+    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.ubicacionCalendario');
 
     const url = `https://outlook.live.com/calendar/0/deeplink/compose?startdt=${startDate}&enddt=${endDate}&subject=${encodeURIComponent(title)}&body=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
 
@@ -186,12 +199,12 @@ export class InicioComponent implements OnInit {
   }
 
   abrirWaze() {
-    const url = `https://waze.com/ul?ll=${this.funcionesGenerales.translate('Inicio.ceremonia.latitud')},${this.funcionesGenerales.translate('Inicio.ceremonia.longitud') }&navigate=yes`;
+    const url = `https://waze.com/ul?ll=${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.latitud')},${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.longitud') }&navigate=yes`;
     window.open(url, '_blank');
   }
 
   abrirGoogleMaps() {
-    const url = `https://www.google.com/maps/search/?api=1&query=${this.funcionesGenerales.translate('Inicio.ceremonia.latitud')},${this.funcionesGenerales.translate('Inicio.ceremonia.longitud') }`;
+    const url = `https://www.google.com/maps/search/?api=1&query=${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.latitud')},${this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.longitud') }`;
     window.open(url, '_blank');
   }
 

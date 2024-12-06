@@ -70,3 +70,23 @@
 .botonConfirmacion.mat-mdc-raised-button[disabled][disabled]{
     background: #ccc;
 }
+
+.icoConfirmados{
+    margin-top: 12px;
+    margin-right: 0;
+    margin-left: 14px;
+    font-size: 80px;
+    color: #222;
+}
+
+.tituloGraciasConfirmacion{
+    font-size: 80px;
+    margin: 0;
+    text-align: center;
+}
+
+.invitadosConfirmados{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 100;
+}

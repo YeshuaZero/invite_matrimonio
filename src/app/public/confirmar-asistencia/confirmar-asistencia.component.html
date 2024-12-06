@@ -1,6 +1,6 @@
 <div class=popUp>
     <div class="contenedorTituloPopUp">
-        <span>{{'Inicio.confirmacionInvitados.confirmarAsistencia' | translate}}</span>
+        <span *ngIf="listaInvitados?.length > 0">{{'Inicio.confirmacionInvitados.confirmarAsistencia' | translate}}</span>
         <i class="cerrar fas fa-times" (click)="cerrar()"></i>
     </div>
     <div class="contenedorConfirmarAsistencia flex flexColumn">
@@ -9,35 +9,51 @@
             [src]="linkForm" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
         </ng-container>
         <ng-template #listaEnApp>
-            <mat-form-field class="listaInvitados" appearance="outline" subscriptSizing="dynamic">
-                <mat-label>{{'Inicio.confirmacionInvitados.listaInvitados' | translate}}</mat-label>
-                <mat-select [panelWidth]="300" [(ngModel)]="dataConfirmacion.invitado" multiple>
-                    <mat-optgroup *ngFor="let familia of listaInvitados" [label]="familia.nombre">
-                        <i class="fas fa-users"></i>
-                        <mat-option *ngFor="let invitado of familia.invitados" [value]="invitado">
-                            {{invitado.nombre}}
-                        </mat-option>
-                    </mat-optgroup>
-                </mat-select>
-            </mat-form-field>
-
-            <div class="flex flexColumn decisionAsistencia">
-                <p>{{('Inicio.confirmacionInvitados.' + (dataConfirmacion.invitado?.length > 1 ? 'preguntaAsistenciaGrupo' : 'preguntaAsistencia')) | translate}}</p>
-                <mat-radio-group aria-label="Select an option" [(ngModel)]="dataConfirmacion.asistencia">
-                    <mat-radio-button value="1">{{'Inicio.confirmacionInvitados.si' | translate}}</mat-radio-button>
-                    <mat-radio-button value="2">{{'Inicio.confirmacionInvitados.no' | translate}}</mat-radio-button>
-                </mat-radio-group>
-            </div>
-
-            <div class="flex flexColumn infoAdicional">
-                <p>{{'Inicio.confirmacionInvitados.infoAdicional' | translate}}</p>
-                <mat-form-field class="infoAdicionalInvitado" appearance="outline" subscriptSizing="dynamic">
-                    <mat-label>{{'Inicio.confirmacionInvitados.infoAdicionalInvitado' | translate}}</mat-label>
-                    <textarea matInput placeholder="{{'Inicio.confirmacionInvitados.ingreseAqui' | translate}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
+            <ng-container *ngIf="!loading; else loader">
+            
+            <ng-container *ngIf="listaInvitados?.length > 0; else todosConfirmados">
+                <mat-form-field class="listaInvitados" appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Inicio.confirmacionInvitados.listaInvitados' | translate}}</mat-label>
+                    <mat-select [panelWidth]="300" [(ngModel)]="dataConfirmacion.invitado" multiple>
+                        <mat-optgroup *ngFor="let familia of listaInvitados" [label]="familia.nombre">
+                            <i class="fas fa-users"></i>
+                            <mat-option *ngFor="let invitado of familia.invitados" [value]="invitado">
+                                {{invitado.nombre}}
+                            </mat-option>
+                        </mat-optgroup>
+                    </mat-select>
                 </mat-form-field>
-            </div>
 
-            <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{'Inicio.confirmacionInvitados.tituloBoton' | translate}}</button>
+                <div class="flex flexColumn decisionAsistencia">
+                    <p>{{('Inicio.confirmacionInvitados.' + (dataConfirmacion.invitado?.length > 1 ? 'preguntaAsistenciaGrupo' : 'preguntaAsistencia')) | translate}}</p>
+                    <mat-radio-group aria-label="Select an option" [(ngModel)]="dataConfirmacion.asistencia">
+                        <mat-radio-button value="1">{{'Inicio.confirmacionInvitados.si' | translate}}</mat-radio-button>
+                        <mat-radio-button value="2">{{'Inicio.confirmacionInvitados.no' | translate}}</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+
+                <div class="flex flexColumn infoAdicional">
+                    <p>{{'Inicio.confirmacionInvitados.infoAdicional' | translate}}</p>
+                    <mat-form-field class="infoAdicionalInvitado" appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Inicio.confirmacionInvitados.infoAdicionalInvitado' | translate}}</mat-label>
+                        <textarea matInput placeholder="{{'Inicio.confirmacionInvitados.ingreseAqui' | translate}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
+                    </mat-form-field>
+                </div>
+
+                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{'Inicio.confirmacionInvitados.tituloBoton' | translate}}</button>
+            </ng-container>
+            </ng-container>
         </ng-template>
     </div>
 </div>
+
+<ng-template #todosConfirmados>
+    <i class="icoConfirmados fas fa-glass-cheers animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+    <p class="tituloGraciasConfirmacion cursiva">{{'Inicio.confirmacionInvitados.graciasConfirmados' | translate}}</p>
+    <p class="invitadosConfirmados">{{'Inicio.confirmacionInvitados.todosConfirmados' | translate}}</p>
+</ng-template>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

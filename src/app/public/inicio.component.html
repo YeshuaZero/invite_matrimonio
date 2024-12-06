@@ -1,26 +1,26 @@
 <div class="contenedorGeneral content">
     <div class="encabezado">
-        <img class="imgPrincipal" src="{{'Inicio.encabezado.imgEncabezado' | translate}}" alt="imgPrincipal">
+        <img class="imgPrincipal" src="{{imgPrincipal}}" alt="imgPrincipal">
         <div id="nombres" class="dataInfo flex flexColumn">
             <div data-depth="0.2" class="flex flexColumn">
                 <div class="fechaBodaEncabezado flex">
-                    {{'Inicio.encabezado.fechaBoda' | translate}}
+                    {{(id + 'Inicio.encabezado.fechaBoda') | translate}}
                 </div>
                 <!-- <img src="assets/imgs/argollas.gif" alt="argollas"> -->
-                <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{'Inicio.encabezado.nombreEl' | translate}}</span>
+                <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id + 'Inicio.encabezado.nombreEl') | translate}}</span>
                 <span class="conectorNombres cursiva flex">&</span>
-                <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{'Inicio.encabezado.nombreElla' | translate}}</span>
+                <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id + 'Inicio.encabezado.nombreElla') | translate}}</span>
                 <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
                 <div class="fraseEncabezado flex">
-                    {{'Inicio.encabezado.frase' | translate}}
+                    {{(id + 'Inicio.encabezado.frase') | translate}}
                 </div>
             </div>
         </div>
         <div class="contenedorFlores">
-            <img class="imgArribaIzq" src="{{'Inicio.encabezado.imgArribaIzq' | translate}}" alt="imgArribaIzq" data-aos="fade-down-right" data-aos-duration="2000" data-aos-offset="0">
-            <img class="imgArribaDer" src="{{'Inicio.encabezado.imgArribaDer' | translate}}" alt="imgArribaDer" data-aos="fade-down-left" data-aos-duration="2000" data-aos-offset="0">
-            <img class="imgAbajoIzq" src="{{'Inicio.encabezado.imgAbajoIzq' | translate}}" alt="imgAbajoIzq" data-aos="fade-right" data-aos-duration="2000" data-aos-offset="0">
-            <img class="imgAbajoDer" src="{{'Inicio.encabezado.imgAbajoDer' | translate}}" alt="imgAbajoDer" data-aos="fade-left" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgArribaIzq" src="{{(id + 'Inicio.encabezado.imgArribaIzq') | translate}}" alt="imgArribaIzq" data-aos="fade-down-right" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgArribaDer" src="{{(id + 'Inicio.encabezado.imgArribaDer') | translate}}" alt="imgArribaDer" data-aos="fade-down-left" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgAbajoIzq" src="{{(id + 'Inicio.encabezado.imgAbajoIzq') | translate}}" alt="imgAbajoIzq" data-aos="fade-right" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgAbajoDer" src="{{(id + 'Inicio.encabezado.imgAbajoDer') | translate}}" alt="imgAbajoDer" data-aos="fade-left" data-aos-duration="2000" data-aos-offset="0">
         </div>
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path
@@ -38,36 +38,36 @@
         <p class="eslogan flex flexColumn">
             <span class="frase flex">
                 <i class="fas fa-quote-left comillaIni"></i>
-                {{'Inicio.eslogan.frase' | translate}}
+                {{(id + 'Inicio.eslogan.frase') | translate}}
                 <i class="fas fa-quote-right comillaFin"></i>
             </span>
-            <span class="autor">{{'Inicio.eslogan.autor' | translate}}</span>
+            <span class="autor">{{(id + 'Inicio.eslogan.autor') | translate}}</span>
         </p>
     </div>
 
     <div class="contenedorConteoRegresivo flex flexColumn">
         <div class="fechaBoda flex flexColumn">
             <img class="fechaSup" src="/assets/imgs/fechaSup.svg" alt="fechaSup" data-aos="fade-up" data-aos-duration="1000">
-            <p class="dia" data-aos="zoom-in" data-aos-duration="2000">{{'Inicio.conteoRegresivo.dia' | translate}}</p>
-            <p class="mes" data-aos="zoom-in" data-aos-duration="2000">{{'Inicio.conteoRegresivo.mes' | translate}}</p>
-            <p class="year" data-aos="zoom-in" data-aos-duration="2000">{{'Inicio.conteoRegresivo.year' | translate}}</p>
+            <p class="dia" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.dia') | translate}}</p>
+            <p class="mes" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.mes') | translate}}</p>
+            <p class="year" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.year') | translate}}</p>
             <img class="fechaInf" src="/assets/imgs/fechaInf.svg" alt="fechaInf" data-aos="fade-down" data-aos-duration="1000" data-aos-offset="100">
         </div>
         <div class="conteo flex">
             <div class="valorRegresivo flex flexColumn">
-                <span class="titulo">{{'Inicio.conteoRegresivo.dias' | translate}}</span>
+                <span class="titulo">{{(id + 'Inicio.conteoRegresivo.dias') | translate}}</span>
                 <span class="valor">{{tiempoRestante.dias}}</span>
             </div>
             <div class="valorRegresivo flex flexColumn">
-                <span class="titulo">{{'Inicio.conteoRegresivo.horas' | translate}}</span>
+                <span class="titulo">{{(id + 'Inicio.conteoRegresivo.horas') | translate}}</span>
                 <span class="valor">{{tiempoRestante.horas}}</span>
             </div>
             <div class="valorRegresivo flex flexColumn">
-                <span class="titulo">{{'Inicio.conteoRegresivo.minutos' | translate}}</span>
+                <span class="titulo">{{(id + 'Inicio.conteoRegresivo.minutos') | translate}}</span>
                 <span class="valor">{{tiempoRestante.minutos}}</span>
             </div>
             <div class="valorRegresivo flex flexColumn">
-                <span class="titulo">{{'Inicio.conteoRegresivo.segundos' | translate}}</span>
+                <span class="titulo">{{(id + 'Inicio.conteoRegresivo.segundos') | translate}}</span>
                 <span class="valor">{{tiempoRestante.segundos}}</span>
             </div>
         </div>
@@ -107,24 +107,31 @@
         <img class="imgsBordes imgIzq" src="/assets/imgs/flor1.svg" alt="flor1Izq" data-aos="zoom-in-right" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <img class="imgsBordes imgDer" src="/assets/imgs/flor2.svg" alt="flor2Der" data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-church animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-        <p class="tituloSeccion cursiva">{{'Inicio.ceremonia.titulo' | translate}}</p>
+        <p class="tituloSeccion cursiva">{{(id + 'Inicio.ceremonia.titulo') | translate}}</p>
 
         <div class="flex">
             <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
-                <p class="tituloLugar">{{'Inicio.ceremonia.lugar' | translate}}</p>
-                <span class="datoLugar">{{'Inicio.ceremonia.datoLugar' | translate}}</span>
+                <p class="tituloLugar">{{(id + 'Inicio.ceremonia.lugar') | translate}}</p>
+                <div class="subcontenedorLugar flex flexColumn">
+                    <span class="datoLugar">{{(id + 'Inicio.ceremonia.datoLugar') | translate}}</span>
+                    <span class="datoLugar2">{{(id + 'Inicio.ceremonia.datoLugar2') | translate}}</span>
+                    <span class="datoLugar3">{{(id + 'Inicio.ceremonia.datoLugar3') | translate}}</span>
+                </div>
                 <button mat-raised-button [matMenuTriggerFor]="menuLugar">
                     <i class="fas fa-map-marked-alt"></i>
-                    {{'Inicio.ceremonia.accionLugar' | translate}}
+                    {{(id + 'Inicio.ceremonia.accionLugar') | translate}}
                 </button>
             </div>
             
             <div class="contenedorHora flex flexColumn" data-aos="fade-right">
-                <p class="tituloHora">{{'Inicio.ceremonia.hora' | translate}}</p>
-                <span class="datoHora">{{'Inicio.ceremonia.datoHora' | translate}}</span>
+                <p class="tituloHora">{{(id + 'Inicio.ceremonia.hora') | translate}}</p>
+                <span class="datoHora flex flexColumn">
+                    {{(id + 'Inicio.ceremonia.datoHora') | translate}}
+                    <span class="textoHora">{{(id + 'Inicio.ceremonia.textoHora') | translate}}</span>
+                </span>
                 <button mat-raised-button [matMenuTriggerFor]="menuAgenda">
                     <i class="far fa-clock"></i>
-                    {{'Inicio.ceremonia.accionHora' | translate}}
+                    {{(id + 'Inicio.ceremonia.accionHora') | translate}}
                 </button>
             </div>
             
@@ -134,7 +141,7 @@
     <div class="contenedorFotos">
         <i *ngIf="mostrarIcoSecciones"
             class="icoSeccion fas fa-heart animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-        <p class="tituloSeccion cursiva flex">{{'Inicio.fotos.titulo' | translate}}</p>
+        <p class="tituloSeccion cursiva flex">{{(id + 'Inicio.fotos.titulo') | translate}}</p>
 
         <owl-carousel-o [options]="customOptions">
             <ng-container *ngFor="let slide of listaFotos">
@@ -165,38 +172,39 @@
         </svg>
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-thumbs-up"></i>
         <p class="tituloSeccion flex flexColumn">
-            <span class="primerTitulo">{{'Inicio.codigoVestuario.titulo' | translate}}</span>
-            <span class="cursiva">{{'Inicio.codigoVestuario.titulo2' | translate}}</span>
+            <span class="primerTitulo">{{(id + 'Inicio.codigoVestuario.titulo') | translate}}</span>
+            <span class="cursiva">{{(id + 'Inicio.codigoVestuario.titulo2') | translate}}</span>
         </p>
 
         <div class="flex">
-            <img class="imgVestuario" src="{{'Inicio.codigoVestuario.img' | translate}}" alt="Código Vestuario">
+            <img class="imgVestuario" src="{{(id + 'Inicio.codigoVestuario.img') | translate}}" alt="Código Vestuario">
             <div class="contenedor flex flexColumn">
                 <div class="grupo flex flexColumn">
                     <p class="cursiva">
-                        {{'Inicio.codigoVestuario.tituloHombres' | translate}}
+                        {{(id + 'Inicio.codigoVestuario.tituloHombres') | translate}}
                         <i class="fab fa-pinterest" (click)="abrirPinterest('linkHombres')"></i>
                     </p>
-                    <span>{{'Inicio.codigoVestuario.descripcionHombres' | translate}}</span>
+                    <span>{{(id + 'Inicio.codigoVestuario.descripcionHombres') | translate}}</span>
                 </div>
                 <div class="grupo flex flexColumn">
                     <p class="cursiva">
-                        {{'Inicio.codigoVestuario.tituloMujeres' | translate}}
+                        {{(id + 'Inicio.codigoVestuario.tituloMujeres') | translate}}
                         <i class="fab fa-pinterest" (click)="abrirPinterest('linkMujeres')"></i>
                     </p>
-                    <span>{{'Inicio.codigoVestuario.descripcionMujeres' | translate}}</span>
+                    <span>{{(id + 'Inicio.codigoVestuario.descripcionMujeres') | translate}}</span>
                     <div class="coloresSugeridos flex">
                         <div *ngIf="cantidadColoresSugeridos >= 1" class="color1"></div>
                         <div *ngIf="cantidadColoresSugeridos >= 2" class="color2"></div>
                         <div *ngIf="cantidadColoresSugeridos >= 3" class="color3"></div>
                         <div *ngIf="cantidadColoresSugeridos >= 4" class="color4"></div>
                         <div *ngIf="cantidadColoresSugeridos >= 5" class="color5"></div>
+                        <div *ngIf="cantidadColoresSugeridos >= 6" class="color6"></div>
                     </div>
                 </div>
 
-                <span class="tenPresente">{{'Inicio.codigoVestuario.tenPresente' | translate}}</span>
+                <span class="tenPresente">{{(id + 'Inicio.codigoVestuario.tenPresente') | translate}}</span>
                 <span class="notaGeneral flex flexColumn">
-                    {{'Inicio.codigoVestuario.notaGeneral' | translate}}
+                    {{(id + 'Inicio.codigoVestuario.notaGeneral') | translate}}
                     <div *ngIf="coloresReservados" class="coloresReservados flex">
                         <i *ngIf="cantidadColoresReservados >= 1" class="fas fa-ban color1"></i>
                         <i *ngIf="cantidadColoresReservados >= 2" class="fas fa-ban color2"></i>
@@ -228,18 +236,18 @@
 
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-gift"></i>
         <p class="tituloSeccion flex flexColumn">
-            <span class="primerTitulo">{{'Inicio.regalos.titulo' | translate}}</span>
-            <span class="cursiva">{{'Inicio.regalos.titulo2' | translate}}</span>
+            <span class="primerTitulo">{{(id + 'Inicio.regalos.titulo') | translate}}</span>
+            <span class="cursiva">{{(id + 'Inicio.regalos.titulo2') | translate}}</span>
         </p>
 
         <div class="flex">
             <div class="contenedor flex flexColumn">
-                <span>{{'Inicio.regalos.tituloLluvia' | translate}}</span>
+                <span>{{(id + 'Inicio.regalos.tituloLluvia') | translate}}</span>
                 <p class="cursiva">
-                    {{'Inicio.regalos.lluviaSobres' | translate}}
+                    {{(id + 'Inicio.regalos.lluviaSobres') | translate}}
                 </p>
             </div>
-            <img src="{{'Inicio.regalos.img' | translate}}" alt="Regalo">
+            <img src="{{(id + 'Inicio.regalos.img') | translate}}" alt="Regalo">
         </div>
     </div>
 
@@ -258,16 +266,16 @@
         </svg>
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-vote-yea animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
         <p class="tituloSeccion flex flexColumn">
-            <span class="primerTitulo">{{'Inicio.confirmacionInvitados.titulo' | translate}}</span>
-            <span class="cursiva">{{'Inicio.confirmacionInvitados.titulo2' | translate}}</span>
+            <span class="primerTitulo">{{(id + 'Inicio.confirmacionInvitados.titulo') | translate}}</span>
+            <span class="cursiva">{{(id + 'Inicio.confirmacionInvitados.titulo2') | translate}}</span>
         </p>
 
         <div class="contenedor flex flexColumn">
-            <p class="textoGracias">{{'Inicio.confirmacionInvitados.gracias' | translate}}</p>
-            <span class="textoGracias2">{{'Inicio.confirmacionInvitados.gracias2' | translate}}</span>
+            <p class="textoGracias">{{(id + 'Inicio.confirmacionInvitados.gracias') | translate}}</p>
+            <span class="textoGracias2">{{(id + 'Inicio.confirmacionInvitados.gracias2') | translate}}</span>
             <button mat-raised-button (click)="verFormulario()">
                 <i class="fas fa-vote-yea"></i>
-                {{'Inicio.confirmacionInvitados.confirmarAsistencia' | translate}}
+                {{(id + 'Inicio.confirmacionInvitados.confirmarAsistencia') | translate}}
             </button>
         </div>
 
@@ -281,21 +289,21 @@
         </svg>
     </div>
 
-    <div class="contenedorRecuerdos flex flexColumn">
+    <div class="contenedorRecuerdos flex flexColumn" [ngStyle]="{'background-image': 'url(' + imgSecundaria + ')'}">
         <div class="nombresRecuerdos flex">
-            <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{'Inicio.encabezado.nombreEl' | translate}}</span>
+            <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id + 'Inicio.encabezado.nombreEl') | translate}}</span>
             <span class="conectorNombres cursiva">&</span>
-            <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{'Inicio.encabezado.nombreElla' |
+            <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id + 'Inicio.encabezado.nombreElla') |
                 translate}}</span>
         </div>
         <div class="subcontenedorRecuerdos flex flexColumn">
             <i class="fab fa-instagram animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
             <div class="textRecuerdos flex flexColumn">
-                <span class="tituloRecuerdos animate__animated animate__fadeInUp">{{'Inicio.recuerdos.ayudanos' | translate}}</span>
-                <span class="recuerdos animate__animated animate__fadeInUp">{{'Inicio.recuerdos.ayudanos2' | translate}}</span>
+                <span class="tituloRecuerdos animate__animated animate__fadeInUp">{{(id + 'Inicio.recuerdos.ayudanos') | translate}}</span>
+                <span class="recuerdos animate__animated animate__fadeInUp">{{(id + 'Inicio.recuerdos.ayudanos2') | translate}}</span>
                 <span class="hashtag animate__animated animate__fadeInUp flex">
                     <i class="fas fa-hashtag"></i>
-                    {{'Inicio.recuerdos.hashtag' | translate}}
+                    {{(id + 'Inicio.recuerdos.hashtag') | translate}}
                 </span>
             </div>
         </div>
@@ -311,25 +319,25 @@
 <mat-menu #menuAgenda="matMenu">
     <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
         <i class="fab fa-apple"></i>
-        {{'Inicio.ceremonia.appleCalendar' | translate}}
+        {{(id + 'Inicio.ceremonia.appleCalendar') | translate}}
     </button>
     <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
         <img src="assets/imgs/google.png" alt="Google">
-        {{'Inicio.ceremonia.googleCalendar' | translate}}
+        {{(id + 'Inicio.ceremonia.googleCalendar') | translate}}
     </button>
     <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
         <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
-        {{'Inicio.ceremonia.microsoftCalendar' | translate}}
+        {{(id + 'Inicio.ceremonia.microsoftCalendar') | translate}}
     </button>
 </mat-menu>
 
 <mat-menu #menuLugar="matMenu">
     <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
         <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
-        {{'Inicio.ceremonia.waze' | translate}}
+        {{(id + 'Inicio.ceremonia.waze') | translate}}
     </button>
     <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
         <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg" alt="GoogleMaps">
-        {{'Inicio.ceremonia.googleMaps' | translate}}
+        {{(id + 'Inicio.ceremonia.googleMaps') | translate}}
     </button>
 </mat-menu>

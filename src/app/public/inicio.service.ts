@@ -44,16 +44,4 @@ export class InicioService {
         });
     }
 
-    addCalendario(icsContent: any){
-        const dbRef = ref(this.dataBase, 'eventos/archivo.ics');
-        set(dbRef, icsContent)
-        .then(() => {
-            // Generar la URL pública (puedes usar Firebase Hosting o Cloud Functions)
-            const fileUrl = `https://app-invite-c081e-default-rtdb.firebaseio.com/eventos/archivo.ics`;
-            const webcalUrl = fileUrl.replace('https://', 'webcal://');
-
-            // Redirigir al usuario al esquema webcal://
-            window.location.href = webcalUrl;
-        })
-    }
 }

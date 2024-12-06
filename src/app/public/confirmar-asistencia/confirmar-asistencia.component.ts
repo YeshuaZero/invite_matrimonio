@@ -17,13 +17,14 @@ import { InicioService } from '../inicio.service';
 })
 export class ConfirmarAsistenciaComponent implements OnInit {
 
-  loading = false;
+  loading = true;
   usarGoogleForms = false;
   form = this.funcionesGeneralesService.translate('Inicio.confirmacionInvitados.linkFormulario');
   linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
   familia = this.funcionesGeneralesService.translate('ConfigApp.familia');
 
-  listaInvitados: any = [
+  listaInvitados: any = [];
+  listaInvitadosCompleta: any = [
     {
       nombre: 'Familia Novio', invitados: [
         { nombre: 'Nestor León López' },
@@ -53,10 +54,10 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         { nombre: 'Laura Sáenz Arenas' },
         { nombre: 'Brian Sáenz Arenas' },
         { nombre: 'Lina Campuzano' },
-        { nombre: 'Paulina' },
-        { nombre: 'Antonella' },
+        { nombre: 'Paulina Sáenz Campuzano' },
+        { nombre: 'Antonella Sáenz Campuzano' },
         { nombre: 'Diego Sáenz Arenas' },
-        { nombre: 'Mina Arenas' },
+        { nombre: 'Maria Arenas Cardona' },
         { nombre: 'German Sáenz León' },
         { nombre: 'Janeth Amaya' },
         { nombre: 'Natalia Sáenz Amaya' },
@@ -65,31 +66,32 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         { nombre: 'Luz Mary Sáenz León' },
         { nombre: 'Esteban Echeverry Sáenz' },
         { nombre: 'Andrés Echeverry Sáenz' },
-        { nombre: 'José Echeverry' },
+        { nombre: 'José Daniel Echeverry Sáenz ' },
         { nombre: 'Isabella Ortiz' },
+        { nombre: 'Sarabella Echeverry Ortiz' },
         { nombre: 'Ehimar Sáenz León' },
-        { nombre: 'Paola' },
+        { nombre: 'Paola García' },
         { nombre: 'Wilver Sáenz León' },
         { nombre: 'Luz Elena Gómez' },
         { nombre: 'Alejandro Sáenz Gómez' },
         { nombre: 'Juan Manuel Sáenz Gómez' },
-        { nombre: 'Carolina' },
-        { nombre: 'Chata' },
-        { nombre: 'Nelsida' },
-        { nombre: 'Socorro' },
+        { nombre: 'Carolina Giraldo' },
+        { nombre: 'Luz Aida Hincapié' },
+        { nombre: 'Nelsida Hincapié' },
+        { nombre: 'Socorro Hincapié' },
         { nombre: 'Isabella Giraldo Sáenz' },
         { nombre: 'Alexander Giraldo Nieto' },
         { nombre: 'Adriana Sáenz' },
-        { nombre: 'Alberto' },
-        { nombre: 'Norita' },
+        { nombre: 'Alberto Sáenz Ojeda' },
+        { nombre: 'Nora de Saenz' },
         { nombre: 'Miriam Nieto' },
-        { nombre: 'Marina' },
-        { nombre: 'Rosmeri' },
+        { nombre: 'Luz Marina Restrepo' },
+        { nombre: 'Rosmeri Nieto' },
         { nombre: 'Patricia Giraldo Nieto' },
         { nombre: 'Luis Romero' },
         { nombre: 'Camila Romero Giraldo' },
         { nombre: 'Fabio Giraldo' },
-        { nombre: 'Rosa' },
+        { nombre: 'Rosalba Moreno' },
         { nombre: 'Viviana Giraldo Nieto' },
         { nombre: 'Amy Arcos Giraldo' },
       ]
@@ -101,7 +103,6 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         { nombre: 'Andrea Flor' },
         { nombre: 'Andrés Palomar' },
         { nombre: 'Dayana Zuluaga' },
-        { nombre: 'Isabella Ortiz' },
         { nombre: 'Johanna Caicedo' },
         { nombre: 'Mariana López' },
         { nombre: 'Melissa Trejos' },
@@ -144,8 +145,22 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     this.obtenerConfirmados();
   }
 
-  cerrar() {
-    this.dialogRef.close();
+  // Consultar datos
+  obtenerConfirmados() {
+    this.inicioService.getData(`${this.familia}/usuarios`).then((resp: any) => {
+      console.log('Datos consultados:', resp);
+      if (resp?.length > 0) {
+        this.listaInvitadosCompleta.forEach((familia: any) => {
+          familia.invitados = familia.invitados.filter((inv: any) => !resp.some((e: any) => e.nombre == inv.nombre));
+        });
+
+        this.listaInvitados = this.listaInvitadosCompleta.filter((familia: any) => familia.invitados?.length > 0);
+        console.log('this.listaInvitados:', this.listaInvitados)
+      } else {
+        this.listaInvitados = this.listaInvitadosCompleta;
+      }
+      this.loading = false;
+    });
   }
 
   enviar() {
@@ -166,18 +181,8 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     });
   }
 
-  // Consultar datos
-  obtenerConfirmados() {
-    this.inicioService.getData(`${this.familia}/usuarios`).then((resp: any) => {
-      console.log('Datos consultados:', resp);
-      if(resp?.length > 0){
-        this.listaInvitados.forEach((familia: any) => {
-          familia.invitados = familia.invitados.filter((inv: any) => !resp.some((e: any) => e.nombre == inv.nombre));
-        });
-
-        this.listaInvitados = this.listaInvitados.filter((familia: any) => familia.invitados?.length > 0);
-      }
-    });
+  cerrar() {
+    this.dialogRef.close();
   }
 
 }

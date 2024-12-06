@@ -1,105 +1,114 @@
 {
-  "ConfigApp": {
-    "familia": "LopezGiraldo"
-  },
-  "Inicio": {
-    "encabezado":{
-      "imgEncabezado": "assets/imgs/fotos/imgPrincipal.JPG",
-      "imgArribaIzq": "assets/imgs/esquinaSupIzq.png",
-      "imgArribaDer": "assets/imgs/esquinaSupDer.png",
-      "imgAbajoIzq": "assets/imgs/abajoIzq.png",
-      "imgAbajoDer": "assets/imgs/abajoDer.png",
-      "fechaBoda": "15.02.2025",
-      "nombreEl": "Yeshua",
-      "nombreElla": "Ana",
-      "frase": "¡Nos Casamos!"
-    },
-    "eslogan": {
-      "frase": "Todo lo hizo hermoso en su tiempo.",
-      "autor": "Eclesiastés 3 :11"
-    },
-    "conteoRegresivo": {
-      "dia": "15",
-      "mes": "Febrero",
-      "year": "2025",
-      "dias": "Días",
-      "horas": "Horas",
-      "minutos": "Minutos",
-      "segundos": "Segundos"
-    },
-    "ceremonia": {
-      "titulo": "Ceremonia",
-      "hora": "Hora",
-      "datoHora": "4:00pm",
-      "accionHora": "Agregar a mi Agenda",
-      "appleCalendar": "Apple Calendar",
-      "googleCalendar": "Google Calendar",
-      "microsoftCalendar": "Microsoft Calendar",
-      "tituloCalendario": "Boda Yeshua y Ana",
-      "detalleCalendario": "Ceremonia y Fiesta de Celebración por la Boda",
-      "inicioCalendario": "20250115T160000",
-      "finCalendario": "20250115T220000",
-      "inicioCalendarioMicrosoft": "2025-01-15T16:00:00",
-      "finCalendarioMicrosoft": "2025-01-15T22:00:00",
-      "ubicacionCalendario": "Rozo",
-      "zonaHoraria": "'America/Bogota'",
-      "lugar": "Lugar",
-      "datoLugar": "Rozo",
-      "latitud": "3.6208611",
-      "longitud": "-76.4088333",
-      "coordenadas": "3.6208611,-76.4088333",
-      "accionLugar": "¿Como Llegar?",
-      "waze": "Waze",
-      "googleMaps": "Google Maps"
-    },
-    "fotos": {
-      "titulo": "Recuerdos de Amor"
-    },
-    "codigoVestuario": {
-      "titulo": "Código de",
-      "titulo2": "Vestuario",
-      "img": "assets/imgs/codigoVestuario.svg",
-      "tituloHombres": "Hombres",
-      "descripcionHombres": "TRAJE FORMAL",
-      "linkHombres": "https://pin.it/2DeLuqwMF",
-      "tituloMujeres": "Mujeres",
-      "descripcionMujeres": "VESTIDO LARGO FORMAL (Idealmente tonos pasteles)",
-      "linkMujeres": "https://pin.it/6DdeGP4ax",
-      "tenPresente": "Recuerda...",
-      "notaGeneral": "COLORES RESERVADOS: BLANCO - VERDE OLIVA"
-    },
-    "regalos": {
-      "titulo": "Sugerencias de",
-      "titulo2": "Regalo",
-      "img": "assets/imgs/sobre.png",
-      "tituloLluvia": "Tú presencia es suficiente, pero si es tu deseo regalarnos algo, recibiremos ese día los regalos a modo de...",
-      "lluviaSobres": "Lluvia de Sobres"
-    },
-    "confirmacionInvitados": {
-      "titulo": "Confirmación de",
-      "titulo2": "Asistencia",
-      "gracias": "¡Gracias por llegar hasta aquí!",
-      "gracias2": "Si te ha llegado esta invitación es porque realmente queremos que seas parte de nuestra historia y compartir contigo nuestra alegría, te invitamos a que confirmes tu asistencia a esta fecha tan importante para nosotros, de verdad sería un honor que nos acompañaras.",
-      "confirmarAsistencia": "Confirmar Asistencia",
-      "linkFormulario": "https://docs.google.com/forms/d/e/1FAIpQLScV5nf8uXG96BWbe7s8zZvScMwFVMjW14hnZ6qwQAVBiGUrKQ/viewform?embedded=true",
-      "listaInvitados": "Selecciona tu nombre",
-      "preguntaAsistencia": "¿Asistirás a la Ceremonia?",
-      "preguntaAsistenciaGrupo": "¿Asistirán a la Ceremonia?",
-      "si": "Si! Por supuesto!",
-      "no": "No puedo",
-      "infoAdicional": "¿Algo que necesitemos saber?",
-      "infoAdicionalInvitado": "Información...",
-      "ingreseAqui": "Por favor, cuéntanos...",
-      "tituloBoton": "ENVIAR RESPUESTA...",
-      "confirmacionOk": "Respuesta enviada correctamente",
-      "confirmacionOkDetalle": "Se ha enviado y registrado correctamente la respuesta... !Gracias por tomarte el tiempo y confirmar!",
-      "confirmacionFallo": "No ha sido posible registrar la respuesta",
-      "confirmacionFalloDetalle": "No sabemos que pasó... Por favor ayúdanos enviando nuevamente tu respuesta..."
-    },
-    "recuerdos": {
-      "ayudanos": "Ayúdanos a crear recuerdos en Instagram...",
-      "ayudanos2": "Las fotos que tomes el día del evento súbelas con el Hashtag",
-      "hashtag": "yeshua_ana"
-    }
+  "yeshua_&_ana":{
+      "ConfigApp": {
+        "familia": "LopezGiraldo"
+      },
+      "Inicio": {
+        "encabezado": {
+          "imgEncabezado": "assets/imgs/fotos/imgPrincipal.JPG",
+          "imgSecundaria": "assets/imgs/fotos/imgSecundaria.jpg",
+          "imgArribaIzq": "assets/imgs/esquinaSupIzq.png",
+          "imgArribaDer": "assets/imgs/esquinaSupDer.png",
+          "imgAbajoIzq": "assets/imgs/abajoIzq.png",
+          "imgAbajoDer": "assets/imgs/abajoDer.png",
+          "fechaBoda": "08.02.2025",
+          "nombreEl": "Yeshua",
+          "nombreElla": "Ana",
+          "frase": "¡Nos Casamos!"
+        },
+        "eslogan": {
+          "frase": "Todo lo hizo hermoso en su tiempo.",
+          "autor": "Eclesiastés 3 :11"
+        },
+        "conteoRegresivo": {
+          "fecha": "2025-02-08T16:00:00",
+          "dia": "8",
+          "mes": "Febrero",
+          "year": "2025",
+          "dias": "Días",
+          "horas": "Horas",
+          "minutos": "Minutos",
+          "segundos": "Segundos"
+        },
+        "ceremonia": {
+          "titulo": "Ceremonia",
+          "hora": "Hora",
+          "datoHora": "4:00pm",
+          "textoHora": "Si puedes agéndate toda la noche",
+          "accionHora": "Agregar a mi Agenda",
+          "appleCalendar": "Apple Calendar",
+          "googleCalendar": "Google Calendar",
+          "microsoftCalendar": "Microsoft Calendar",
+          "tituloCalendario": "Boda Yeshua y Ana",
+          "detalleCalendario": "Ceremonia y Fiesta de Celebración por la Boda",
+          "inicioCalendario": "20250115T160000",
+          "finCalendario": "20250115T220000",
+          "inicioCalendarioMicrosoft": "2025-01-08T16:00:00",
+          "finCalendarioMicrosoft": "2025-01-08T22:00:00",
+          "ubicacionCalendario": "Rozo",
+          "zonaHoraria": "'America/Bogota'",
+          "lugar": "Lugar",
+          "datoLugar": "Rozo",
+          "datoLugar2": "Callejón Vergara",
+          "datoLugar3": "Sector Triviño Villa Elena",
+          "latitud": "3.6208611",
+          "longitud": "-76.4088333",
+          "coordenadas": "3.6208611,-76.4088333",
+          "accionLugar": "¿Como Llegar?",
+          "waze": "Waze",
+          "googleMaps": "Google Maps"
+        },
+        "fotos": {
+          "titulo": "Recuerdos de Amor"
+        },
+        "codigoVestuario": {
+          "titulo": "Código de",
+          "titulo2": "Vestuario",
+          "img": "assets/imgs/codigoVestuario.svg",
+          "tituloHombres": "Hombres",
+          "descripcionHombres": "TRAJE FORMAL",
+          "linkHombres": "https://pin.it/2DeLuqwMF",
+          "tituloMujeres": "Mujeres",
+          "descripcionMujeres": "VESTIDO LARGO FORMAL (Idealmente tonos pasteles)",
+          "linkMujeres": "https://pin.it/6DdeGP4ax",
+          "tenPresente": "Recuerda...",
+          "notaGeneral": "COLORES RESERVADOS: BLANCO - VERDE OLIVA"
+        },
+        "regalos": {
+          "titulo": "Sugerencias de",
+          "titulo2": "Regalo",
+          "img": "assets/imgs/sobre.png",
+          "tituloLluvia": "Tú presencia es suficiente, pero si es tu deseo regalarnos algo, recibiremos ese día los regalos a modo de...",
+          "lluviaSobres": "Lluvia de Sobres"
+        },
+        "confirmacionInvitados": {
+          "titulo": "Confirmación de",
+          "titulo2": "Asistencia",
+          "gracias": "¡Gracias por llegar hasta aquí!",
+          "gracias2": "Si te ha llegado esta invitación es porque realmente queremos que seas parte de nuestra historia y compartir contigo nuestra alegría, te invitamos a que confirmes tu asistencia a esta fecha tan importante para nosotros, de verdad sería un honor que nos acompañaras.",
+          "confirmarAsistencia": "Confirmar Asistencia",
+          "linkFormulario": "https://docs.google.com/forms/d/e/1FAIpQLScV5nf8uXG96BWbe7s8zZvScMwFVMjW14hnZ6qwQAVBiGUrKQ/viewform?embedded=true",
+          "listaInvitados": "Selecciona tu nombre",
+          "preguntaAsistencia": "¿Asistirás a la Ceremonia?",
+          "preguntaAsistenciaGrupo": "¿Asistirán a la Ceremonia?",
+          "si": "Si! Por supuesto!",
+          "no": "No puedo",
+          "infoAdicional": "¿Algo que necesitemos saber?",
+          "infoAdicionalInvitado": "Información...",
+          "ingreseAqui": "Por favor, cuéntanos...",
+          "tituloBoton": "ENVIAR RESPUESTA...",
+          "confirmacionOk": "Respuesta enviada correctamente",
+          "confirmacionOkDetalle": "Se ha enviado y registrado correctamente la respuesta... !Gracias por tomarte el tiempo y confirmar!",
+          "confirmacionFallo": "No ha sido posible registrar la respuesta",
+          "confirmacionFalloDetalle": "No sabemos que pasó... Por favor ayúdanos enviando nuevamente tu respuesta...",
+          "graciasConfirmados": "¡Gracias!",
+          "todosConfirmados": "Todos los invitados han sido confirmados y han aceptado la invitación de ser parte de nuestra Boda... Si tú también confirmaste... ¡Nos vemos el 15 de Febrero!"
+        },
+        "recuerdos": {
+          "ayudanos": "Ayúdanos a crear recuerdos en Instagram...",
+          "ayudanos2": "Las fotos que tomes el día del evento súbelas con el Hashtag",
+          "hashtag": "yeshua_ana"
+        }
+      }
   }
 }
