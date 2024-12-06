@@ -214,7 +214,7 @@ export class InicioComponent implements OnInit {
   }
 
   verFormulario(){
-    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false });
+    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id } });
   }
 
 }

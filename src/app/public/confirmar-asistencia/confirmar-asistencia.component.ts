@@ -18,10 +18,11 @@ import { InicioService } from '../inicio.service';
 export class ConfirmarAsistenciaComponent implements OnInit {
 
   loading = true;
+  id = '';
   usarGoogleForms = false;
-  form = this.funcionesGeneralesService.translate('Inicio.confirmacionInvitados.linkFormulario');
-  linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
-  familia = this.funcionesGeneralesService.translate('ConfigApp.familia');
+  form: any;
+  linkForm: any;
+  familia: any;
 
   listaInvitados: any = [];
   listaInvitadosCompleta: any = [
@@ -139,9 +140,13 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     private readonly inicioService: InicioService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.id = data.id;
   }
 
   ngOnInit(): void {
+    this.funcionesGeneralesService.translate(this.id + 'ConfigApp.familia');
+    this.form = this.funcionesGeneralesService.translate(this.id + 'Inicio.confirmacionInvitados.linkFormulario');
+    this.linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
     this.obtenerConfirmados();
   }
 
@@ -173,10 +178,10 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     });
     
     this.inicioService.agregarConfirmados(this.familia, data).then(() => {
-      this.funcionesGeneralesService.openDialog('Inicio.confirmacionInvitados.confirmacionOk', 'Inicio.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
+      this.funcionesGeneralesService.openDialog(this.id + 'Inicio.confirmacionInvitados.confirmacionOk', this.id + 'Inicio.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
       this.cerrar();
     }, ()=> {
-      this.funcionesGeneralesService.openDialog('Inicio.confirmacionInvitados.confirmacionFallo', 'Inicio.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
+      this.funcionesGeneralesService.openDialog(this.id + 'Inicio.confirmacionInvitados.confirmacionFallo', this.id + 'Inicio.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
       this.cerrar();
     });
   }
