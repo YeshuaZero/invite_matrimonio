@@ -57,7 +57,7 @@ export class InicioComponent implements OnInit {
     pullDrag: false,
     dots: false,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['<i class="fas fa-chevron-left margin0"></i>', '<i class="fas fa-chevron-right margin0"></i>'],
     responsive: {
       0: {
         items: 1
