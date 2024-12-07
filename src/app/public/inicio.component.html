@@ -273,7 +273,7 @@
         <div class="contenedor flex flexColumn">
             <p class="textoGracias">{{(id + 'Inicio.confirmacionInvitados.gracias') | translate}}</p>
             <span class="textoGracias2">{{(id + 'Inicio.confirmacionInvitados.gracias2') | translate}}</span>
-            <button mat-raised-button (click)="verFormulario()">
+            <button mat-raised-button (click)="verFormulario()" class="animate__animated animate__tada animate__infinite animate__delay-1s animate__slow">
                 <i class="fas fa-vote-yea"></i>
                 {{(id + 'Inicio.confirmacionInvitados.confirmarAsistencia') | translate}}
             </button>
@@ -297,7 +297,7 @@
                 translate}}</span>
         </div>
         <div class="subcontenedorRecuerdos flex flexColumn">
-            <i class="fab fa-instagram animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+            <i class="fab fa-instagram animate__animated animate__pulse animate__infinite animate__delay-1s animate__slow"></i>
             <div class="textRecuerdos flex flexColumn">
                 <span class="tituloRecuerdos animate__animated animate__fadeInUp">{{(id + 'Inicio.recuerdos.ayudanos') | translate}}</span>
                 <span class="recuerdos animate__animated animate__fadeInUp">{{(id + 'Inicio.recuerdos.ayudanos2') | translate}}</span>
