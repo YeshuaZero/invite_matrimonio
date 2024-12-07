@@ -44,12 +44,6 @@
     display: flex !important;
 }
 
-/* .dataInfo img {
-    height: 95vh;
-    width: 95vw;
-    object-fit: contain;
-} */
-
 .dataInfo>div img {
     width: 100px;
     height: auto;
@@ -191,6 +185,17 @@
     text-align: right;
     letter-spacing: 2px;
     line-height: 26px;
+}
+
+/* ENCABEZADO 2 */
+
+.encabezado2{
+    height: 100%;
+}
+
+.argollas{
+    width: 150px;
+    filter: brightness(10) grayscale(1);
 }
 
 /* CONTEO REGRESIVO */
