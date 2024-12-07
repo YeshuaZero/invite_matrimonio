@@ -81,6 +81,7 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         { nombre: 'Nelsida Hincapié' },
         { nombre: 'Socorro Hincapié' },
         { nombre: 'Isabella Giraldo Sáenz' },
+        { nombre: 'Alejandro Paz' },
         { nombre: 'Alexander Giraldo Nieto' },
         { nombre: 'Adriana Sáenz' },
         { nombre: 'Alberto Sáenz Ojeda' },
