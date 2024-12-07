@@ -371,8 +371,22 @@
 
 
 <ng-template #encabezado2>
-    <div *ngIf="((id + 'ConfigApp.encabezado') | translate) == '2'; else encabezado3" class="flex encabezado2 relative">
+    <div *ngIf="((id + 'ConfigApp.encabezado') | translate) == '2'; else encabezado3" class="dataInfo flex flexColumn encabezado2 relative">
         <img class="argollas" src="assets/imgs/argollas.gif" alt="argollas">
+        <div class="fechaBodaEncabezado flex">
+            {{(id + 'Inicio.encabezado.fechaBoda') | translate}}
+        </div>
+        <div class="flex">
+            <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id +
+                'Inicio.encabezado.nombreEl') | translate}}</span>
+                <span class="conectorNombres cursiva flex">&</span>
+                <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id +
+                    'Inicio.encabezado.nombreElla') | translate}}</span>
+        </div>
+        <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+        <div class="fraseEncabezado flex">
+            {{(id + 'Inicio.encabezado.frase') | translate}}
+        </div>
     </div>
 </ng-template>
 <ng-template #encabezado3>
