@@ -110,7 +110,9 @@ export class InicioComponent implements OnInit {
     this.targetTime = this.targetDate.getTime();
 
     AOS.init();
-    const scene: any = document.getElementById('nombres');
+
+    const tipoEncabezado = this.funcionesGenerales.translate(this.id + 'ConfigApp.encabezado');
+    const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
     const parallaxInstance = new Parallax(scene);
 
     this.listaFotos.forEach((e: any, i: number) => {

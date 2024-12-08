@@ -1,9 +1,9 @@
-<div class="contenedorGeneral content">
+<div class="contenedorGeneral content" [ngClass]="{'titulosTipo2': ((id + 'ConfigApp.tipoTitulos') | translate) == '2', 'titulosTipo3': ((id + 'ConfigApp.tipoTitulos') | translate) == '3'}">
     <div class="encabezado">
         <img class="imgPrincipal" src="{{imgPrincipal}}" alt="imgPrincipal">
         <ng-container *ngIf="((id + 'ConfigApp.encabezado') | translate) == '1'; else encabezado2">
-            <div id="nombres" class="dataInfo flex flexColumn">
-                <div data-depth="0.2" class="flex flexColumn relative">
+            <div id="nombres1" class="dataInfo flex flexColumn animate__animated animate__fadeIn animate__slow">
+                <div data-depth="0.2" class="flex flexColumn relative" >
                     <div class="fechaBodaEncabezado flex">
                         {{(id + 'Inicio.encabezado.fechaBoda') | translate}}
                     </div>
@@ -12,26 +12,23 @@
                     <span class="conectorNombres cursiva flex">&</span>
                     <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id +
                         'Inicio.encabezado.nombreElla') | translate}}</span>
-                    <i
-                        class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-                    <div class="fraseEncabezado flex">
-                        {{(id + 'Inicio.encabezado.frase') | translate}}
-                    </div>
+                        <div class="fraseEncabezado flex">
+                            {{(id + 'Inicio.encabezado.frase') | translate}}
+                        </div>
+                        <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
                 </div>
             </div>
-            <div class="contenedorFlores">
-                <img class="imgArribaIzq" src="{{(id + 'Inicio.encabezado.imgArribaIzq') | translate}}"
-                    alt="imgArribaIzq" data-aos="fade-down-right" data-aos-duration="2000" data-aos-offset="0">
-                <img class="imgArribaDer" src="{{(id + 'Inicio.encabezado.imgArribaDer') | translate}}"
-                    alt="imgArribaDer" data-aos="fade-down-left" data-aos-duration="2000" data-aos-offset="0">
-                <img class="imgAbajoIzq" src="{{(id + 'Inicio.encabezado.imgAbajoIzq') | translate}}" alt="imgAbajoIzq"
-                    data-aos="fade-right" data-aos-duration="2000">
-                <img class="imgAbajoDer" src="{{(id + 'Inicio.encabezado.imgAbajoDer') | translate}}" alt="imgAbajoDer"
-                    data-aos="fade-left" data-aos-duration="2000">
-            </div>
         </ng-container>
+        <div class="contenedorFlores">
+            <img class="imgArribaIzq" src="/assets/imgs/esquinaSupIzq{{(id + 'ConfigApp.flores') | translate}}.png"
+                alt="imgArribaIzq" data-aos="fade-down-right" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgArribaDer" src="/assets/imgs/esquinaSupDer{{(id + 'ConfigApp.flores') | translate}}.png"
+                alt="imgArribaDer" data-aos="fade-down-left" data-aos-duration="2000" data-aos-offset="0">
+            <img class="imgAbajoIzq animate__animated animate__fadeInLeft" src="/assets/imgs/abajoIzq{{(id + 'ConfigApp.flores') | translate}}.png" alt="imgAbajoIzq">
+            <img class="imgAbajoDer animate__animated animate__fadeInRight" src="/assets/imgs/abajoDer{{(id + 'ConfigApp.flores') | translate}}.png" alt="imgAbajoDer">
+        </div>
 
-        <svg *ngIf="((id + 'ConfigApp.separadorEncabezado') | translate) == '1'" data-name="Layer 1"
+        <svg *ngIf="((id + 'ConfigApp.separadorEncabezado') | translate) == '1'; else separadorEncabezado2" data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
             <path
                 d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
@@ -56,17 +53,24 @@
     </div>
 
     <div class="contenedorConteoRegresivo flex flexColumn">
-        <div class="fechaBoda flex flexColumn">
-            <img class="fechaSup" src="/assets/imgs/fechaSup.svg" alt="fechaSup" data-aos="fade-up"
+        <div class="fechaBoda flex flexColumn relative" [ngClass]="{'tipoConteo2': ((id + 'ConfigApp.estiloConteoRegresivo') | translate) == '2'}">
+            <ng-container *ngIf="((id + 'ConfigApp.estiloConteoRegresivo') | translate) == '1'; else tipoEstiloConteo2">
+                <img class="fechaSup" src="/assets/imgs/fecha{{(id + 'ConfigApp.flores') | translate}}.png" alt="fechaSup" data-aos="fade-up"
                 data-aos-duration="1000">
-            <p class="dia" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.dia') |
-                translate}}</p>
-            <p class="mes" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.mes') |
-                translate}}</p>
-            <p class="year" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.year') |
-                translate}}</p>
-            <img class="fechaInf" src="/assets/imgs/fechaInf.svg" alt="fechaInf" data-aos="fade-down"
+                <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
+                <img class="fechaInf" src="/assets/imgs/fecha{{(id + 'ConfigApp.flores') | translate}}.png" alt="fechaInf" data-aos="fade-down"
                 data-aos-duration="1000" data-aos-offset="100">
+            </ng-container>
+            <ng-template #tipoEstiloConteo2>
+                <ng-container *ngIf="((id + 'ConfigApp.estiloConteoRegresivo') | translate) == '2'; else tipoEstiloConteo3">
+                    <img class="fondoFloresFecha" src="/assets/imgs/conteo{{(id + 'ConfigApp.flores') | translate}}.png" alt="fechaSup"
+                        data-aos="zoom-in" data-aos-duration="1000">
+                    <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
+                </ng-container>
+            </ng-template>
+            <ng-template #tipoEstiloConteo3>
+                
+            </ng-template>
         </div>
         <div class="conteo flex">
             <div class="valorRegresivo flex flexColumn">
@@ -88,7 +92,7 @@
         </div>
     </div>
     <div class="contenedorCeremonia flex flexColumn">
-        <svg class="lineaSeparadora" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+        <svg class="lineaSeparadora color{{(id + 'ConfigApp.flores') | translate}}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
             width="1366" viewBox="0 0 1024.5 241.499998" height="322" preserveAspectRatio="none" version="1.0">
             <defs>
                 <clipPath id="5200d755a2">
@@ -100,10 +104,10 @@
                 <path stroke-linecap="butt" transform="matrix(0.811643, 0, 0, 0.812199, -227.544927, -778.920616)"
                     fill="none" stroke-linejoin="miter"
                     d="M 275.442128 1090.398243 C 404.742042 1018.568706 534.041956 946.739168 686.688623 986.239402 C 839.340103 1025.758873 1015.328712 1176.608116 1162.589888 1212.52048 C 1309.86069 1248.442463 1428.379996 1169.417948 1487.63965 1129.917715 C 1546.908928 1090.398243 1546.908928 1090.398243 1546.908928 1090.398243 "
-                    stroke="#332c2b" stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
+                    stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
             </g>
         </svg>
-        <svg class="lineaSeparadora lineaSeparadora2" xmlns="http://www.w3.org/2000/svg"
+        <svg class="lineaSeparadora lineaSeparadora2 color{{(id + 'ConfigApp.flores') | translate}}" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" viewBox="0 0 1024.5 241.499998" height="322"
             preserveAspectRatio="none" version="1.0">
             <defs>
@@ -116,12 +120,12 @@
                 <path stroke-linecap="butt" transform="matrix(0.811643, 0, 0, 0.812199, -227.544927, -778.920616)"
                     fill="none" stroke-linejoin="miter"
                     d="M 275.442128 1090.398243 C 404.742042 1018.568706 534.041956 946.739168 686.688623 986.239402 C 839.340103 1025.758873 1015.328712 1176.608116 1162.589888 1212.52048 C 1309.86069 1248.442463 1428.379996 1169.417948 1487.63965 1129.917715 C 1546.908928 1090.398243 1546.908928 1090.398243 1546.908928 1090.398243 "
-                    stroke="#332c2b" stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
+                    stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
             </g>
         </svg>
-        <img class="imgsBordes imgIzq" src="/assets/imgs/flor1.svg" alt="flor1Izq" data-aos="zoom-in-right"
+        <img class="imgsBordes imgIzq" src="/assets/imgs/florIzquierda{{(id + 'ConfigApp.flores') | translate}}.png" alt="flor1Izq" data-aos="zoom-in-right"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
-        <img class="imgsBordes imgDer" src="/assets/imgs/flor2.svg" alt="flor2Der" data-aos="zoom-in-left"
+        <img class="imgsBordes imgDer" src="/assets/imgs/florDerecha{{(id + 'ConfigApp.flores') | translate}}.png" alt="flor2Der" data-aos="zoom-in-left"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
         <i *ngIf="mostrarIcoSecciones"
             class="icoSeccion fas fa-church animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
@@ -157,8 +161,6 @@
     </div>
 
     <div class="contenedorFotos">
-        <i *ngIf="mostrarIcoSecciones"
-            class="icoSeccion fas fa-heart animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
         <p class="tituloSeccion cursiva flex">{{(id + 'Inicio.fotos.titulo') | translate}}</p>
 
         <owl-carousel-o [options]="customOptions">
@@ -174,9 +176,9 @@
     </div>
 
     <div class="contenedorCodigoVestuario flex flexColumn">
-        <img class="imgsBordes imgIzq" src="/assets/imgs/vestuarioIzq.svg" alt="vestuarioIzq" data-aos="zoom-in-right"
+        <img class="imgsBordes imgIzq" src="/assets/imgs/vestuarioIzq{{(id + 'ConfigApp.vestuarioLateralesIzq') | translate}}.png" alt="vestuarioIzq" data-aos="zoom-in-right"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
-        <img class="imgsBordes imgDer" src="/assets/imgs/vestuarioDer.svg" alt="vestuarioDer" data-aos="zoom-in-left"
+        <img class="imgsBordes imgDer" src="/assets/imgs/vestuarioDer{{(id + 'ConfigApp.vestuarioLateralesDer') | translate}}.png" alt="vestuarioDer" data-aos="zoom-in-left"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
         <svg class="separadorTop" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
             preserveAspectRatio="none">
@@ -197,7 +199,7 @@
         </p>
 
         <div class="flex">
-            <img class="imgVestuario" src="{{(id + 'Inicio.codigoVestuario.img') | translate}}" alt="Código Vestuario">
+            <img class="imgVestuario" src="/assets/imgs/codigoVestuario{{(id + 'ConfigApp.vestuarioImgPrincipal') | translate}}.png" alt="Código Vestuario">
             <div class="contenedor flex flexColumn">
                 <div class="grupo flex flexColumn">
                     <p class="cursiva">
@@ -250,9 +252,9 @@
     </div>
 
     <div class="contenedorRegalos flex flexColumn">
-        <img class="imgsBordes imgIzq" src="/assets/imgs/regalosIzq.svg" alt="regalosIzq" data-aos="zoom-in-right"
+        <img class="imgsBordes imgIzq" src="/assets/imgs/regalosIzq{{(id + 'ConfigApp.regalosLateralesIzq') | translate}}.png" alt="regalosIzq" data-aos="zoom-in-right"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
-        <img class="imgsBordes imgDer" src="/assets/imgs/regalosDer.svg" alt="regalosDer" data-aos="zoom-in-left"
+        <img class="imgsBordes imgDer" src="/assets/imgs/regalosDer{{(id + 'ConfigApp.regalosLateralesDer') | translate}}.png" alt="regalosDer" data-aos="zoom-in-left"
             data-aos-duration="2000" data-aos-easing="ease-in-out">
 
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-gift"></i>
@@ -268,7 +270,7 @@
                     {{(id + 'Inicio.regalos.lluviaSobres') | translate}}
                 </p>
             </div>
-            <img src="{{(id + 'Inicio.regalos.img') | translate}}" alt="Regalo">
+            <img src="/assets/imgs/sobre{{(id + 'ConfigApp.regalosImgPrincipal') | translate}}.png" alt="Regalo">
         </div>
     </div>
 
@@ -371,24 +373,56 @@
 
 
 <ng-template #encabezado2>
-    <div *ngIf="((id + 'ConfigApp.encabezado') | translate) == '2'; else encabezado3" class="dataInfo flex flexColumn encabezado2 relative">
-        <img class="argollas" src="assets/imgs/argollas.gif" alt="argollas">
-        <div class="fechaBodaEncabezado flex">
-            {{(id + 'Inicio.encabezado.fechaBoda') | translate}}
-        </div>
-        <div class="flex">
-            <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id +
-                'Inicio.encabezado.nombreEl') | translate}}</span>
+    <div id="nombres2" *ngIf="((id + 'ConfigApp.encabezado') | translate) == '2'; else encabezado3"
+        class="dataInfo flex flexColumn encabezado2 relative animate__animated animate__fadeIn animate__slow">
+        <div data-depth="0.2" class="flex flexColumn relative">
+            <div class="fechaBodaEncabezado flex">
+                <img class="argollas" src="assets/imgs/argollas.gif" alt="argollas">
+            </div>
+            <div class="flex subcontenedorNombres">
+                <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id +
+                    'Inicio.encabezado.nombreEl') | translate}}</span>
                 <span class="conectorNombres cursiva flex">&</span>
                 <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id +
                     'Inicio.encabezado.nombreElla') | translate}}</span>
-        </div>
-        <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-        <div class="fraseEncabezado flex">
-            {{(id + 'Inicio.encabezado.frase') | translate}}
+            </div>
+            <div class="fraseEncabezado flex">
+                {{(id + 'Inicio.encabezado.frase') | translate}}
+            </div>
+            <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
         </div>
     </div>
 </ng-template>
 <ng-template #encabezado3>
+    <div id="nombres3" class="dataInfo flex flexColumn encabezado3 relative animate__animated animate__fadeIn animate__slow">
+        <div data-depth="0.2" class="flex flexColumn relative">
+            <div class="flex subcontenedorNombres">
+                <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id +
+                    'Inicio.encabezado.nombreEl') | translate}}</span>
+                <span class="conectorNombres cursiva flex">/</span>
+                <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id +
+                    'Inicio.encabezado.nombreElla') | translate}}</span>
+            </div>
+            <i class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+        </div>
+    </div>
+</ng-template>
+<ng-template #separadorEncabezado2>
+    <svg class="separador2" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none">
+        <path d="M0 97L192 83L384 95L576 123L768 105L960 72L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".2"></path>
+        <path d="M0 89L192 103L384 75L576 68L768 89L960 79L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".25"></path>
+        <path d="M0 50L192 69L384 83L576 54L768 54L960 83L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".4"></path>
+        <path d="M0 51L192 28L384 27L576 60L768 61L960 33L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".6"></path>
+        <path d="M0 38L192 32L384 38L576 37L768 16L960 17L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity="1"></path>
+    </svg>
+</ng-template>
 
+<ng-template #conteoRegresivo>
+    <p class="dia" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.dia') |
+        translate}}</p>
+    <p class="mes" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.mes') |
+        translate}}</p>
+    <p class="year" data-aos="zoom-in" data-aos-duration="2000">{{(id + 'Inicio.conteoRegresivo.year') |
+        translate}}</p>
 </ng-template>

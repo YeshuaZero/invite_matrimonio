@@ -2,8 +2,17 @@
   "yeshua_&_ana":{
       "ConfigApp": {
         "familia": "LopezGiraldo",
-        "encabezado": "2",
-        "separadorEncabezado": "1"
+        "encabezado": "1",
+        "separadorEncabezado": "1",
+        "flores": "1",
+        "estiloConteoRegresivo": "1",
+        "vestuarioImgPrincipal": "1",
+        "vestuarioLateralesIzq": "1",
+        "vestuarioLateralesDer": "1",
+        "regalosImgPrincipal": "1",
+        "regalosLateralesIzq": "1",
+        "regalosLateralesDer": "1",
+        "tipoTitulos": "2"
       },
       "Inicio": {
         "encabezado": {
@@ -66,7 +75,6 @@
         "codigoVestuario": {
           "titulo": "Código de",
           "titulo2": "Vestuario",
-          "img": "assets/imgs/codigoVestuario.svg",
           "tituloHombres": "Hombres",
           "descripcionHombres": "TRAJE FORMAL",
           "linkHombres": "https://pin.it/2DeLuqwMF",
@@ -79,7 +87,6 @@
         "regalos": {
           "titulo": "Sugerencias de",
           "titulo2": "Regalo",
-          "img": "assets/imgs/sobre.png",
           "tituloLluvia": "Tú presencia es suficiente, pero si es tu deseo regalarnos algo, recibiremos ese día los regalos a modo de...",
           "lluviaSobres": "Lluvia de Sobres"
         },
