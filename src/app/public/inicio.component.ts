@@ -209,7 +209,7 @@ export class InicioComponent implements OnInit {
   }
 
   abrirPinterest(sexo: string){
-    const url = this.funcionesGenerales.translate(`Inicio.codigoVestuario.${sexo}`);
+    const url = this.funcionesGenerales.translate(`${this.id}Inicio.codigoVestuario.${sexo}`);
     window.open(url, '_blank');
   }
 
