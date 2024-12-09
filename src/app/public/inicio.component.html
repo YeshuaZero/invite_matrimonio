@@ -137,31 +137,77 @@
         </div>
 
         <div class="flex">
-            <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
-                <p class="tituloLugar">{{(id + 'Inicio.ceremonia.lugar') | translate}}</p>
-                <div class="subcontenedorLugar flex flexColumn">
-                    <span class="datoLugar">{{(id + 'Inicio.ceremonia.datoLugar') | translate}}</span>
-                    <span class="datoLugar2">{{(id + 'Inicio.ceremonia.datoLugar2') | translate}}</span>
-                    <span class="datoLugar3">{{(id + 'Inicio.ceremonia.datoLugar3') | translate}}</span>
+            <ng-container *ngIf="['1', '2'].includes((id + 'ConfigApp.tipoCeremonia') | translate); else ceremoniaTipo3">            
+                <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
+                    <p class="tituloLugar">{{(id + 'Inicio.ceremonia.lugar') | translate}}</p>
+                    <div class="subcontenedorLugar flex flexColumn">
+                        <span class="datoLugar">{{(id + 'Inicio.ceremonia.datoLugar') | translate}}</span>
+                        <span class="datoLugar2">{{(id + 'Inicio.ceremonia.datoLugar2') | translate}}</span>
+                        <span class="datoLugar3">{{(id + 'Inicio.ceremonia.datoLugar3') | translate}}</span>
+                    </div>
+                    <ng-container *ngIf="((id + 'ConfigApp.tipoCeremonia') | translate) == '1'; else ceremoniaTipo2">
+                        <button mat-raised-button [matMenuTriggerFor]="menuLugar">
+                            <i class="fas fa-map-marked-alt"></i>
+                            {{(id + 'Inicio.ceremonia.accionLugar') | translate}}
+                        </button>
+                    </ng-container>
+                    <ng-template #ceremoniaTipo2>
+                        <div class="flex flexColumn contenedorCeremoniaTipo2">
+                            <span class="tituloCeremoniaTipo2">{{(id + 'Inicio.ceremonia.accionLugar') | translate}}</span>
+                            <div class="flex ceremoniaTipo2">
+                                <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
+                                    <div class="flex flexColumn">
+                                        <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
+                                    </div>
+                                </button>
+                                <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
+                                    <div class="flex flexColumn">
+                                        <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg" alt="GoogleMaps">
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                        </ng-template>
                 </div>
-                <button mat-raised-button [matMenuTriggerFor]="menuLugar">
-                    <i class="fas fa-map-marked-alt"></i>
-                    {{(id + 'Inicio.ceremonia.accionLugar') | translate}}
-                </button>
-            </div>
 
-            <div class="contenedorHora flex flexColumn" data-aos="fade-right">
-                <p class="tituloHora">{{(id + 'Inicio.ceremonia.hora') | translate}}</p>
-                <span class="datoHora flex flexColumn">
-                    {{(id + 'Inicio.ceremonia.datoHora') | translate}}
-                    <span class="textoHora">{{(id + 'Inicio.ceremonia.textoHora') | translate}}</span>
-                </span>
-                <button mat-raised-button [matMenuTriggerFor]="menuAgenda">
-                    <i class="far fa-clock"></i>
-                    {{(id + 'Inicio.ceremonia.accionHora') | translate}}
-                </button>
-            </div>
-
+                <div class="contenedorHora flex flexColumn" data-aos="fade-right">
+                    <p class="tituloHora">{{(id + 'Inicio.ceremonia.hora') | translate}}</p>
+                    <span class="datoHora flex flexColumn">
+                        {{(id + 'Inicio.ceremonia.datoHora') | translate}}
+                        <span class="textoHora">{{(id + 'Inicio.ceremonia.textoHora') | translate}}</span>
+                    </span>
+                    <ng-container *ngIf="((id + 'ConfigApp.tipoCeremonia') | translate) == '1'; else ceremoniaHoraTipo2">
+                        <button mat-raised-button [matMenuTriggerFor]="menuAgenda">
+                            <i class="far fa-clock"></i>
+                            {{(id + 'Inicio.ceremonia.accionHora') | translate}}
+                        </button>
+                    </ng-container>
+                    <ng-template #ceremoniaHoraTipo2>
+                        <div class="flex flexColumn contenedorCeremoniaTipo2">
+                        <span class="tituloCeremoniaTipo2">{{(id + 'Inicio.ceremonia.accionHora') | translate}}</span>
+                        <div class="flex ceremoniaTipo2">
+                            <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
+                                <div class="flex flexColumn">
+                                    <i class="fab fa-apple"></i>
+                                </div>
+                            </button>
+                            <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
+                                <div class="flex flexColumn">
+                                    <img class="imgGoogle" src="assets/imgs/google.png" alt="Google">
+                                </div>
+                            </button>
+                            <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
+                                <div class="flex flexColumn">
+                                    <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
+                                </div>
+                            </button>
+                        </div></div>
+                    </ng-template>
+                </div>
+            </ng-container>
+            <ng-template #ceremoniaTipo3>
+                fasdfasd
+            </ng-template>
         </div>
     </div>
 

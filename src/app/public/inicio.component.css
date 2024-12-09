@@ -380,6 +380,10 @@
     background: #fff;
 }
 
+.contenedorCeremonia .tituloSeccion{
+    margin-bottom: 16px;
+}
+
 .contenedorCeremonia .contenedorHora,
 .contenedorCeremonia .contenedorLugar {
     margin: 0 12px;
@@ -428,6 +432,7 @@
 .contenedorCeremonia .contenedorLugar button {
     font-size: 14px;
     margin-top: 12px;
+    margin-bottom: 16px;
 }
 
 .opcionAgenda ::ng-deep .mat-mdc-menu-item-text,
@@ -460,6 +465,60 @@
 .opcionAgenda img.imgGoogleMaps {
     width: 22px;
     margin-left: 6px;
+}
+
+.contenedorCeremoniaTipo2{
+        border: dashed 1px rgba(0, 0, 0, .2);
+            border-radius: 14px;
+            margin-top: 20px;
+            margin-bottom: 16px;
+            padding: 12px 12px;
+}
+
+.tituloCeremoniaTipo2{
+    margin: 6px 0 0px;
+        font-size: 12px;
+        font-weight: 100;
+}
+
+.ceremoniaTipo2 .contenedorCeremonia .contenedorHora button,
+.ceremoniaTipo2 .contenedorCeremonia .contenedorLugar button {
+    margin-top: 4px;
+}
+
+.ceremoniaTipo2 ::ng-deep .mat-mdc-menu-item{
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.ceremoniaTipo2 .opcionAgenda div{
+    text-align: center;
+}
+
+.ceremoniaTipo2 .opcionAgenda i {
+        font-size: 44px;
+            margin: 0 0 4px;
+}
+
+.ceremoniaTipo2 .opcionAgenda img.imgMicrosoft {
+        width: 32px;
+            margin: 0 0 0 4px;
+}
+
+.ceremoniaTipo2 .opcionAgenda img.imgWaze {
+    width: 50px;
+    margin-right: 2px
+}
+
+.ceremoniaTipo2 .opcionAgenda img.imgGoogleMaps {
+        width: 37px;
+            margin-left: 0px;
+            margin-bottom: 4px;
+}
+
+.ceremoniaTipo2 .opcionAgenda img.imgGoogle{
+        margin: 0;
+            width: 42px;
 }
 
 .tituloSeccion {
@@ -1364,7 +1423,7 @@
     }
 
     .contenedorCeremonia {
-        padding: 70px 0 90px;
+        padding: 70px 0 50px;
     }
 
     .contenedorRegalos {
@@ -1801,7 +1860,7 @@
     }
 
     .contenedorCeremonia {
-        padding: 70px 0 110px;
+        padding: 70px 0 70px;
     }
 
     .contenedorCeremonia .imgIzq {
@@ -1820,13 +1879,6 @@
     .contenedorCodigoVestuario .tituloSeccion {
         padding-bottom: 30px;
         margin-bottom: 0px;
-    }
-
-    .contenedorCeremonia .contenedorHora .datoHora,
-    .contenedorCeremonia .contenedorLugar .datoLugar {
-        margin: 4px 30px 12px;
-        font-size: 26px;
-        font-weight: 600;
     }
 
     .contenedorCodigoVestuario .grupo .cursiva {

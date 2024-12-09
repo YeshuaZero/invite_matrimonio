@@ -6,18 +6,19 @@
   "yeshua_&_ana":{
       "ConfigApp": {
         "familia": "LopezGiraldo",
+        "tipoTitulos": "1",
+        "flores": "1",
         "encabezado": "1",
         "separadorEncabezado": "1",
-        "flores": "1",
         "estiloConteoRegresivo": "1",
+        "tipoCeremonia": "2",
+        "tipoRecuerdos": "1",
         "vestuarioImgPrincipal": "1",
         "vestuarioLateralesIzq": "1",
         "vestuarioLateralesDer": "1",
         "regalosImgPrincipal": "1",
         "regalosLateralesIzq": "1",
-        "regalosLateralesDer": "1",
-        "tipoTitulos": "1",
-        "tipoRecuerdos": "1"
+        "regalosLateralesDer": "1"
       },
       "Inicio": {
         "encabezado": {
