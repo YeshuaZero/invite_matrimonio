@@ -1,4 +1,8 @@
 {
+  "dataApp": {
+    "nombreApp": "Digital Moments ",
+    "copyright": "Copyright"
+  },
   "yeshua_&_ana":{
       "ConfigApp": {
         "familia": "LopezGiraldo",
@@ -12,7 +16,8 @@
         "regalosImgPrincipal": "1",
         "regalosLateralesIzq": "1",
         "regalosLateralesDer": "1",
-        "tipoTitulos": "2"
+        "tipoTitulos": "1",
+        "tipoRecuerdos": "1"
       },
       "Inicio": {
         "encabezado": {

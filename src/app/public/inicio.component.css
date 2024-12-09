@@ -145,7 +145,7 @@
     fill: #FFFFFF;
 }
 
-.encabezado svg.separador2{
+.encabezado svg.separador2 {
     height: 500px;
 }
 
@@ -277,11 +277,11 @@
     padding: 40px 0;
 }
 
-.contenedorConteoRegresivo .fechaBoda.tipoConteo2{
+.contenedorConteoRegresivo .fechaBoda.tipoConteo2 {
     padding: 160px 0 110px;
 }
 
-.contenedorConteoRegresivo .fondoFloresFecha{
+.contenedorConteoRegresivo .fondoFloresFecha {
     position: absolute;
     transform: scale(1.5);
 }
@@ -328,7 +328,7 @@
     padding-left: 6px;
 }
 
-.contenedorConteoRegresivo .fechaBoda.tipoConteo2 .year{
+.contenedorConteoRegresivo .fechaBoda.tipoConteo2 .year {
     text-align: center;
     padding-left: 36px;
 }
@@ -467,7 +467,7 @@
     margin: 0;
 }
 
-.titulosTipo2 .tituloSeccion{
+.titulosTipo2 .tituloSeccion {
     font-family: 'Raleway';
     font-size: 60px;
     margin: 16px 0 24px;
@@ -497,6 +497,10 @@
     padding: 60px 0 160px;
 }
 
+.contenedorFotos .contenedorTitulo.tipoFoto2 {
+    margin-bottom: 50px;
+}
+
 .contenedorFotos .tituloSeccion {
     font-size: 70px;
 }
@@ -514,6 +518,33 @@
 .contenedorFotos .contenedorFoto img {
     height: 300px;
     object-fit: cover;
+}
+
+.contenedorFotos .contenedorFotoTipo2 img {
+    object-position: center center;
+    height: 20vw;
+    width: 20vw;
+    margin: 20px;
+    border-radius: 100%;
+    border: solid 8px rgba(255, 255, 255, 1);
+    box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.6);
+    object-fit: cover;
+}
+
+.contenedorFotos .contenedorFotoTipo3 img {
+    mask: url('/assets/imgs/mascaraTipoFoto3.svg') no-repeat center;
+    mask-size: cover;
+
+    -webkit-mask: url('/assets/imgs/mascaraTipoFoto3.svg') no-repeat center;
+    -webkit-mask-size: cover;
+}
+
+.contenedorFotos .contenedorFotoTipo4 img {
+    mask: url('/assets/imgs/mascaraTipoFoto4.svg') no-repeat center;
+    mask-size: cover;
+
+    -webkit-mask: url('/assets/imgs/mascaraTipoFoto4.svg') no-repeat center;
+    -webkit-mask-size: cover;
 }
 
 /* VESTUARIO */
@@ -593,14 +624,14 @@
     padding-bottom: 0;
 }
 
-.titulosTipo2 .contenedorCodigoVestuario .primerTitulo{
+.titulosTipo2 .contenedorCodigoVestuario .primerTitulo {
     text-align: center;
     padding-left: 0;
     margin-bottom: 12px;
     font-size: 20px;
 }
 
-.titulosTipo2 .contenedorCodigoVestuario  .tituloSeccion .cursiva {
+.titulosTipo2 .contenedorCodigoVestuario .tituloSeccion .cursiva {
     font-family: 'Raleway';
     font-size: 60px;
 }
@@ -752,8 +783,12 @@
     line-height: 14px;
 }
 
-.titulosTipo2 .contenedorRegalos .tituloSeccion{
+.titulosTipo2 .contenedorRegalos .tituloSeccion {
     padding-bottom: 0;
+}
+
+.titulosTipo3 .contenedorTitulo {
+    margin-bottom: 24px;
 }
 
 .titulosTipo2 .contenedorRegalos .primerTitulo {
@@ -818,7 +853,7 @@
     padding-left: 142px;
 }
 
-.titulosTipo2 .confirmacionInvitados .icoSeccion{
+.titulosTipo2 .confirmacionInvitados .icoSeccion {
     padding: 0;
     line-height: 90px;
     margin: 0;
@@ -994,6 +1029,45 @@
     margin-bottom: 0;
 }
 
+.contenedorFooter .desarrolladoPor i {
+    margin: 0 12px;
+}
+
+.fondoLetrero {
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    margin-bottom: 6px;
+    fill: #eee;
+}
+
+.titulosTipo4 .fondoLetrero {
+    width: 440px;
+    height: 150px;
+    margin-bottom: 4px;
+}
+
+.contenedorFotos .fondoLetrero {
+    width: 640px;
+}
+
+.contenedorCodigoVestuario .fondoLetrero,
+.confirmacionInvitados .fondoLetrero {
+    fill: #ffffff;
+}
+
+.titulosTipo3 .contenedorRegalos .tituloSeccion {
+    margin: 16px 0 34px;
+}
+
+.titulosTipo3 .contenedorRegalos .tituloSeccion {
+    margin: 16px 0 34px;
+}
+
+.titulosTipo3 .confirmacionInvitados .tituloSeccion {
+    margin: 16px 0 36px;
+}
+
 @media (max-width:1300px) {
 
     .imgIzq,
@@ -1020,6 +1094,18 @@
         right: 0;
         bottom: -90px;
     }
+
+    .contenedorFotos .contenedorFotoTipo2 img {
+        border: solid 6px rgba(255, 255, 255, 1);
+    }
+}
+
+@media (max-width:1050px) {
+    .contenedorFotos .contenedorFotoTipo2 img {
+        border: solid 4px rgba(255, 255, 255, 1);
+        margin: 12px;
+        box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.6);
+    }
 }
 
 @media (max-width:980px) {
@@ -1031,6 +1117,16 @@
 
     .dataInfo.encabezado3 .nombreEl {
         margin-right: 12px;
+    }
+}
+
+@media (max-width:940px) {
+    .contenedorFotos .contenedorFotoTipo2 img {
+        width: 27vw;
+        height: 27vw;
+        margin: 16px;
+        border: solid 6px rgba(255, 255, 255, 1);
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.6);
     }
 }
 
@@ -1146,6 +1242,12 @@
 @media (max-width:750px) {
     .contenedorFlores img {
         width: 200px;
+    }
+
+    .contenedorFotos .contenedorFotoTipo2 img {
+        width: 40vw;
+        height: 40vw;
+        border: solid 6px rgba(255, 255, 255, 1);
     }
 }
 
@@ -1284,10 +1386,52 @@
         font-size: 50px;
     }
 
+    .titulosTipo3 .tituloSeccion,
+    .titulosTipo4 .tituloSeccion,
+    .titulosTipo3 .contenedorCodigoVestuario .tituloSeccion .cursiva,
+    .titulosTipo4 .contenedorCodigoVestuario .tituloSeccion .cursiva,
+    .titulosTipo3 .contenedorRegalos .tituloSeccion .cursiva,
+    .titulosTipo4 .contenedorRegalos .tituloSeccion .cursiva,
+    .titulosTipo3 .confirmacionInvitados .tituloSeccion .cursiva,
+    .titulosTipo4 .confirmacionInvitados .tituloSeccion .cursiva {
+        font-size: 44px;
+    }
+
     .titulosTipo2 .contenedorFotos .tituloSeccion {
         font-size: 30px;
     }
 
+    .titulosTipo2.titulosTipo3 .contenedorCodigoVestuario .primerTitulo,
+    .titulosTipo2.titulosTipo4 .contenedorCodigoVestuario .primerTitulo,
+    .titulosTipo2.titulosTipo3 .confirmacionInvitados .primerTitulo,
+    .titulosTipo2.titulosTipo4 .confirmacionInvitados .primerTitulo {
+        margin-bottom: 8px;
+    }
+
+    .titulosTipo2.titulosTipo3 .contenedorRegalos .primerTitulo,
+    .titulosTipo2.titulosTipo4 .contenedorRegalos .primerTitulo {
+        margin-bottom: 10px;
+    }
+
+    .fondoLetrero {
+        width: 400px;
+        height: 90px;
+    }
+
+    .titulosTipo4 .fondoLetrero {
+        width: 350px;
+        height: 120px;
+    }
+
+    .contenedorFotos .fondoLetrero {
+        width: 420px;
+        height: 70px;
+    }
+
+    .titulosTipo4 .contenedorFotos .fondoLetrero {
+        width: 380px;
+        height: 90px;
+    }
 }
 
 @media (max-width:500px) {
@@ -1316,6 +1460,16 @@
         padding: 0px;
         width: calc(100% - 48px);
         max-width: 250px;
+    }
+
+    .contenedorFotos .contenedorFotoTipo2 img {
+        object-position: center center;
+        width: 80vw;
+        height: 80vw;
+        margin: 20px;
+        border-radius: 100%;
+        border: solid 6px rgba(255, 255, 255, 1);
+        box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.6);
     }
 }
 
@@ -1531,6 +1685,37 @@
 
     .dataInfo.encabezado3 .conectorNombres {
         font-size: 90px;
+    }
+
+    .titulosTipo3 .tituloSeccion,
+    .titulosTipo3 .contenedorCodigoVestuario .tituloSeccion .cursiva,
+    .titulosTipo3 .contenedorRegalos .tituloSeccion .cursiva,
+    .titulosTipo3 .confirmacionInvitados .tituloSeccion .cursiva {
+        font-size: 40px;
+    }
+
+    .titulosTipo3 .contenedorFotos .tituloSeccion {
+        font-size: 24px;
+    }
+
+    .fondoLetrero {
+        width: 340px;
+        height: 80px;
+    }
+
+    .titulosTipo4 .fondoLetrero {
+        width: 350px;
+        height: 120px;
+    }
+
+    .contenedorFotos .fondoLetrero {
+        width: 350px;
+        height: 60px;
+    }
+
+    .titulosTipo4 .contenedorFotos .fondoLetrero {
+        width: 380px;
+        height: 90px;
     }
 }
 
@@ -1749,6 +1934,17 @@
         font-size: 40px;
     }
 
+    .titulosTipo3 .tituloSeccion,
+    .titulosTipo4 .tituloSeccion,
+    .titulosTipo3 .contenedorCodigoVestuario .tituloSeccion .cursiva,
+    .titulosTipo4 .contenedorCodigoVestuario .tituloSeccion .cursiva,
+    .titulosTipo3 .contenedorRegalos .tituloSeccion .cursiva,
+    .titulosTipo4 .contenedorRegalos .tituloSeccion .cursiva,
+    .titulosTipo3 .confirmacionInvitados .tituloSeccion .cursiva,
+    .titulosTipo4 .confirmacionInvitados .tituloSeccion .cursiva {
+        font-size: 30px;
+    }
+
     .titulosTipo2 .contenedorCodigoVestuario .primerTitulo,
     .titulosTipo2 .contenedorRegalos .primerTitulo,
     .titulosTipo2 .confirmacionInvitados .primerTitulo {
@@ -1760,25 +1956,51 @@
         font-size: 16px;
         margin: 0;
     }
+
+    .fondoLetrero {
+        width: 240px;
+        height: 70px;
+    }
+
+    .titulosTipo4 .fondoLetrero {
+        width: 220px;
+        height: 100px;
+        margin-bottom: 10px;
+    }
+
+    .titulosTipo4 .contenedorCodigoVestuario .fondoLetrero {
+        margin-bottom: -4px;
+    }
+
+    .contenedorFotos .fondoLetrero {
+        width: 240px;
+        height: 40px;
+        margin-bottom: 0;
+    }
+
+    .titulosTipo4 .contenedorFotos .fondoLetrero {
+        width: 230px;
+        height: 60px;
+    }
 }
 
 @media (max-width:320px) {
     .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .fondoFloresFecha {
-            transform: scale(0.8);
-        }
-    
-        .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .dia {
-            font-size: 50px;
-            line-height: 50px;
-        }
-    
-        .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .mes {
-            font-size: 50px;
-            line-height: 20px;
-        }
-    
-        .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .year {
-            font-size: 12px;
-            line-height: 38px;
-        }
+        transform: scale(0.8);
+    }
+
+    .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .dia {
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .mes {
+        font-size: 50px;
+        line-height: 20px;
+    }
+
+    .contenedorConteoRegresivo .fechaBoda.tipoConteo2 .year {
+        font-size: 12px;
+        line-height: 38px;
+    }
 }

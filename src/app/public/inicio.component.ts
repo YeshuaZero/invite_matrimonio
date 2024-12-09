@@ -62,10 +62,10 @@ export class InicioComponent implements OnInit {
       0: {
         items: 1
       },
-      400: {
+      500: {
         items: 2
       },
-      740: {
+      750: {
         items: 3
       },
       940: {
@@ -105,6 +105,9 @@ export class InicioComponent implements OnInit {
     this.imgPrincipal = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgEncabezado');
     this.imgSecundaria = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgSecundaria');
     this.existeCoordenadas = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.coordenadas');
+    this.listaFotos.forEach((e: any, i: number) => {
+      e.id = i + 1;
+    });
 
     this.targetDate = new Date(this.funcionesGenerales.translate(this.id + 'Inicio.conteoRegresivo.fecha'));
     this.targetTime = this.targetDate.getTime();
@@ -115,9 +118,6 @@ export class InicioComponent implements OnInit {
     const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
     const parallaxInstance = new Parallax(scene);
 
-    this.listaFotos.forEach((e: any, i: number) => {
-      e.id = i + 1;
-    });
   }
 
   ngAfterViewInit() {
