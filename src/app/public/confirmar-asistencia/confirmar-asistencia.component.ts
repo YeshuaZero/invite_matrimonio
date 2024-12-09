@@ -94,6 +94,7 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         { nombre: 'Camila Romero Giraldo' },
         { nombre: 'Fabio Giraldo' },
         { nombre: 'Rosalba Moreno' },
+        { nombre: 'Wilmer Arcos' },  
         { nombre: 'Viviana Giraldo Nieto' },
         { nombre: 'Amy Arcos Giraldo' },
       ]
