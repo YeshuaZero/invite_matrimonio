@@ -1,6 +1,4 @@
 .contenedorGeneral {
-    background: #fafafa;
-    --backgroundVestuario: #e5e0d8;
     --vestuarioMujerSugerido1: #cdb4db;
     --vestuarioMujerSugerido2: #ffafcc;
     --vestuarioMujerSugerido3: #a2d2ff;
@@ -12,8 +10,6 @@
     --vestuarioMujerReservado3: #a2d2ff;
     --vestuarioMujerReservado4: #e5e0d8;
     --vestuarioMujerReservado5: #e5e0d8;
-    --backgroundRegalos: #e5e0d8;
-    --backgroundConfirmacion: #bec092;
     overflow: hidden;
 }
 
@@ -153,7 +149,6 @@
     position: relative;
     min-height: 150px;
     padding-top: 40px;
-    background: #fff;
 }
 
 .contenedorEslogan .eslogan {
@@ -269,7 +264,6 @@
 
 .contenedorConteoRegresivo {
     position: relative;
-    background: #fff;
     padding-bottom: 100px;
 }
 
@@ -377,16 +371,29 @@
 .contenedorCeremonia {
     padding: 50px 0 80px;
     position: relative;
-    background: #fff;
 }
 
 .contenedorCeremonia .tituloSeccion{
     margin-bottom: 16px;
 }
 
+.contenedorCeremonia .icoCeremonia{
+    width: 270px;
+    font-size: 230px;
+    color: rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.contenedorCeremonia .ceremoniaColumn{
+    flex-direction: column;
+    margin-top: 24px;
+    grid-gap: 90px;
+}
+
 .contenedorCeremonia .contenedorHora,
 .contenedorCeremonia .contenedorLugar {
     margin: 0 12px;
+    width: 250px;
 }
 
 .contenedorCeremonia .contenedorHora .tituloHora,
@@ -552,7 +559,6 @@
 
 .contenedorFotos {
     position: relative;
-    background: #fff;
     padding: 60px 0 160px;
 }
 
@@ -571,6 +577,7 @@
 .contenedorFotos .contenedorFoto {
     padding: 24px 24px 100px;
     margin: 24px;
+    background: #fff;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -585,6 +592,7 @@
     width: 20vw;
     margin: 20px;
     border-radius: 100%;
+    background: #fff;
     border: solid 8px rgba(255, 255, 255, 1);
     box-shadow: 1px 1px 20px rgba(0, 0, 0, 0.6);
     object-fit: cover;
@@ -612,7 +620,6 @@
     padding: 100px 0 80px;
     position: relative;
     /* background: url('/assets/imgs/fondo.svg'); */
-    background-color: var(--backgroundVestuario);
     background-attachment: inherit;
     background-repeat: inherit;
     background-size: 30px;
@@ -628,7 +635,6 @@
     transform: rotate(180deg);
     top: -80px;
     position: absolute;
-    fill: var(--backgroundVestuario);
     width: 100%;
     height: 80px;
 }
@@ -636,7 +642,6 @@
 .contenedorCodigoVestuario .separadorBottom {
     bottom: -72px;
     position: absolute;
-    fill: var(--backgroundVestuario);
     width: 100%;
     height: 80px;
     z-index: 999;
@@ -813,7 +818,6 @@
 .contenedorRegalos {
     padding: 140px 0;
     position: relative;
-    background: #fff;
 }
 
 .contenedorRegalos .imgDer {
@@ -885,14 +889,12 @@
 .confirmacionInvitados {
     padding: 80px 0 10px;
     position: relative;
-    background: var(--backgroundConfirmacion);
 }
 
 .confirmacionInvitados .separadorTop {
     transform: rotate(180deg);
     top: -80px;
     position: absolute;
-    fill: var(--backgroundConfirmacion);
     width: 100%;
     height: 80px;
     z-index: 999;
@@ -901,7 +903,6 @@
 .confirmacionInvitados .separadorBottom {
     bottom: -500px;
     position: absolute;
-    fill: var(--backgroundConfirmacion);
     width: 100%;
     height: 500px;
     z-index: 999;
@@ -1327,10 +1328,33 @@
 }
 
 @media (max-width:700px) {
-
     .dataInfo.encabezado3 .nombreEl,
     .dataInfo.encabezado3 .nombreElla {
         font-size: 90px;
+    }
+
+    .contenedorCeremonia .icoCeremonia {
+        width: 240px;
+        font-size: 210px;
+    }
+}
+
+@media (max-width:650px) {
+    .contenedorCeremonia .ceremoniaColumn {
+        margin-top: 8px;
+    }
+    
+    .contenedorCeremonia .ceremoniaColumn > div {
+        flex-direction: column;
+    }
+
+    .contenedorCeremonia .ceremoniaColumn>div:last-child{
+        flex-direction: column-reverse;
+    }
+
+    .contenedorCeremonia .ceremoniaColumn .icoCeremonia{
+        margin-bottom: 16px;
+        font-size: 120px;
     }
 }
 

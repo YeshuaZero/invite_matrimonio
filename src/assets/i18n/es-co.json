@@ -6,12 +6,15 @@
   "yeshua_&_ana":{
       "ConfigApp": {
         "familia": "LopezGiraldo",
+        "colorFondo": "#fff",
         "tipoTitulos": "1",
         "flores": "1",
         "encabezado": "1",
         "separadorEncabezado": "1",
         "estiloConteoRegresivo": "1",
+        "ordenCeremonia": "1",
         "tipoCeremonia": "2",
+        "tipoFiesta": "",
         "tipoRecuerdos": "1",
         "vestuarioImgPrincipal": "1",
         "vestuarioLateralesIzq": "1",

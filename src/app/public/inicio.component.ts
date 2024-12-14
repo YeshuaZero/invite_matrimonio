@@ -37,6 +37,10 @@ export class InicioComponent implements OnInit {
     segundos: 0
   };
 
+  listaBackground = ['#f7f4ef', '#f9f6e9', '#e5ebf1', '#e2ece9', '#f7f4e9', '#fff7f7', '#f7f1ff'];
+  background = '#ffffff';
+  backgroundVestuario = '#e5e0d8';
+  backgroundConfirmacion = '#bec092';
   imgPrincipal = '';
   imgSecundaria = '';
   existeCoordenadas = '';
@@ -102,6 +106,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.background = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondo');
     this.imgPrincipal = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgEncabezado');
     this.imgSecundaria = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgSecundaria');
     this.existeCoordenadas = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.coordenadas');
