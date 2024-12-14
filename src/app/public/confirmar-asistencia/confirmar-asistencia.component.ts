@@ -104,9 +104,11 @@ export class ConfirmarAsistenciaComponent implements OnInit {
       nombre: 'Amigos', invitados: [
         { nombre: 'Ana Otero' },
         { nombre: 'Andrés Prado' },
+        { nombre: 'Laura Lozada' },
         { nombre: 'Andrea Flor' },
         { nombre: 'Andrés Palomar' },
         { nombre: 'Dayana Zuluaga' },
+        { nombre: 'Johan Angulo' },
         { nombre: 'Johanna Caicedo' },
         { nombre: 'Mariana López' },
         { nombre: 'Melissa Trejos' },
