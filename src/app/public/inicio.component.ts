@@ -37,6 +37,12 @@ export class InicioComponent implements OnInit {
     segundos: 0
   };
 
+  listaBackground = ['#f7f4ef', '#f9f6e9', '#e5ebf1', '#e2ece9', '#f7f4e9', '#fff7f7', '#f7f1ff'];
+  background = '#ffffff';
+  listaBackgroundVestuario = ['#f9c7c9', '#ffc69a', '##F8E8A0', '#dbe1bc', '#cfd5b3', '#93b3a7', '#a6c6dd', '#cca3c1'];
+  backgroundVestuario = '#e5e0d8';
+  listaBackgroundConfirmacion = ['#f9c7c9', '#ffc69a', '##F8E8A0', '#dbe1bc', '#cfd5b3', '#93b3a7', '#a6c6dd', '#cca3c1'];
+  backgroundConfirmacion = '#bec092';
   imgPrincipal = '';
   imgSecundaria = '';
   existeCoordenadas = '';
@@ -62,10 +68,10 @@ export class InicioComponent implements OnInit {
       0: {
         items: 1
       },
-      400: {
+      500: {
         items: 2
       },
-      740: {
+      750: {
         items: 3
       },
       940: {
@@ -102,20 +108,25 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.background = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondo');
+    this.backgroundVestuario = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondoVestuario');
+    this.backgroundConfirmacion = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondoConfirmacion');
     this.imgPrincipal = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgEncabezado');
     this.imgSecundaria = this.funcionesGenerales.translate(this.id + 'Inicio.encabezado.imgSecundaria');
     this.existeCoordenadas = this.funcionesGenerales.translate(this.id + 'Inicio.ceremonia.coordenadas');
+    this.listaFotos.forEach((e: any, i: number) => {
+      e.id = i + 1;
+    });
 
     this.targetDate = new Date(this.funcionesGenerales.translate(this.id + 'Inicio.conteoRegresivo.fecha'));
     this.targetTime = this.targetDate.getTime();
 
     AOS.init();
-    const scene: any = document.getElementById('nombres');
+
+    const tipoEncabezado = this.funcionesGenerales.translate(this.id + 'ConfigApp.encabezado');
+    const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
     const parallaxInstance = new Parallax(scene);
 
-    this.listaFotos.forEach((e: any, i: number) => {
-      e.id = i + 1;
-    });
   }
 
   ngAfterViewInit() {
