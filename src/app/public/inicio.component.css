@@ -555,6 +555,10 @@
     margin: 0;
 }
 
+.contenedorFiesta .imgsBordes{
+    transform: scaleX(-1);
+}
+
 /* SECCION FOTOS */
 
 .contenedorFotos {
