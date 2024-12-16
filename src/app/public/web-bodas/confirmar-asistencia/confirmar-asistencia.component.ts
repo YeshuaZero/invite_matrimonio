@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { FuncionesGeneralesService, TipoEnum } from 'src/app/core/funciones-generales.services';
 import { DomSanitizer } from '@angular/platform-browser';
-import { InicioService } from '../inicio.service';
+import { WebBodasService } from '../web-bodas.service';
 
 
 @Component({
@@ -142,7 +142,7 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     private readonly funcionesGeneralesService: FuncionesGeneralesService,
     public dialogRef: MatDialogRef<ConfirmarAsistenciaComponent>,
     private readonly sanitizer: DomSanitizer,
-    private readonly inicioService: InicioService,
+    private readonly webServiceService: WebBodasService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.id = data.id;
@@ -150,14 +150,14 @@ export class ConfirmarAsistenciaComponent implements OnInit {
 
   ngOnInit(): void {
     this.funcionesGeneralesService.translate(this.id + 'ConfigApp.familia');
-    this.form = this.funcionesGeneralesService.translate(this.id + 'Inicio.confirmacionInvitados.linkFormulario');
+    this.form = this.funcionesGeneralesService.translate(this.id + 'WebBodas.confirmacionInvitados.linkFormulario');
     this.linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
     this.obtenerConfirmados();
   }
 
   // Consultar datos
   obtenerConfirmados() {
-    this.inicioService.getData(`${this.familia}/usuarios`).then((resp: any) => {
+    this.webServiceService.getData(`${this.familia}/usuarios`).then((resp: any) => {
       console.log('Datos consultados:', resp);
       if (resp?.length > 0) {
         this.listaInvitadosCompleta.forEach((familia: any) => {
@@ -182,11 +182,11 @@ export class ConfirmarAsistenciaComponent implements OnInit {
         data.push(e);
     });
     
-    this.inicioService.agregarConfirmados(this.familia, data).then(() => {
-      this.funcionesGeneralesService.openDialog(this.id + 'Inicio.confirmacionInvitados.confirmacionOk', this.id + 'Inicio.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
+    this.webServiceService.agregarConfirmados(this.familia, data).then(() => {
+      this.funcionesGeneralesService.openDialog(this.id + 'WebBodas.confirmacionInvitados.confirmacionOk', this.id + 'WebBodas.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
       this.cerrar();
     }, ()=> {
-      this.funcionesGeneralesService.openDialog(this.id + 'Inicio.confirmacionInvitados.confirmacionFallo', this.id + 'Inicio.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
+      this.funcionesGeneralesService.openDialog(this.id + 'WebBodas.confirmacionInvitados.confirmacionFallo', this.id + 'WebBodas.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
       this.cerrar();
     });
   }

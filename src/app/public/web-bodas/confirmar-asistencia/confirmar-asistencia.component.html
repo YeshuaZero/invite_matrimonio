@@ -1,6 +1,6 @@
 <div class=popUp>
     <div class="contenedorTituloPopUp">
-        <span *ngIf="listaInvitados?.length > 0">{{id + 'Inicio.confirmacionInvitados.confirmarAsistencia' | translate}}</span>
+        <span *ngIf="listaInvitados?.length > 0">{{id + 'WebBodas.confirmacionInvitados.confirmarAsistencia' | translate}}</span>
         <i class="cerrar fas fa-times" (click)="cerrar()"></i>
     </div>
     <div class="contenedorConfirmarAsistencia flex flexColumn">
@@ -13,7 +13,7 @@
             
             <ng-container *ngIf="listaInvitados?.length > 0; else todosConfirmados">
                 <mat-form-field class="listaInvitados" appearance="outline" subscriptSizing="dynamic">
-                    <mat-label>{{id + 'Inicio.confirmacionInvitados.listaInvitados' | translate}}</mat-label>
+                    <mat-label>{{id + 'WebBodas.confirmacionInvitados.listaInvitados' | translate}}</mat-label>
                     <mat-select [panelWidth]="300" [(ngModel)]="dataConfirmacion.invitado" multiple>
                         <mat-optgroup *ngFor="let familia of listaInvitados" [label]="familia.nombre">
                             <i class="fas fa-users"></i>
@@ -25,22 +25,22 @@
                 </mat-form-field>
 
                 <div class="flex flexColumn decisionAsistencia">
-                    <p>{{(id + 'Inicio.confirmacionInvitados.' + (dataConfirmacion.invitado?.length > 1 ? 'preguntaAsistenciaGrupo' : 'preguntaAsistencia')) | translate}}</p>
+                    <p>{{(id + 'WebBodas.confirmacionInvitados.' + (dataConfirmacion.invitado?.length > 1 ? 'preguntaAsistenciaGrupo' : 'preguntaAsistencia')) | translate}}</p>
                     <mat-radio-group aria-label="Select an option" [(ngModel)]="dataConfirmacion.asistencia">
-                        <mat-radio-button value="1">{{id + 'Inicio.confirmacionInvitados.si' | translate}}</mat-radio-button>
-                        <mat-radio-button value="2">{{id + 'Inicio.confirmacionInvitados.no' | translate}}</mat-radio-button>
+                        <mat-radio-button value="1">{{id + 'WebBodas.confirmacionInvitados.si' | translate}}</mat-radio-button>
+                        <mat-radio-button value="2">{{id + 'WebBodas.confirmacionInvitados.no' | translate}}</mat-radio-button>
                     </mat-radio-group>
                 </div>
 
                 <div class="flex flexColumn infoAdicional">
-                    <p>{{id + 'Inicio.confirmacionInvitados.infoAdicional' | translate}}</p>
+                    <p>{{id + 'WebBodas.confirmacionInvitados.infoAdicional' | translate}}</p>
                     <mat-form-field class="infoAdicionalInvitado" appearance="outline" subscriptSizing="dynamic">
-                        <mat-label>{{id + 'Inicio.confirmacionInvitados.infoAdicionalInvitado' | translate}}</mat-label>
-                        <textarea matInput placeholder="{{id + 'Inicio.confirmacionInvitados.ingreseAqui' | translate}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
+                        <mat-label>{{id + 'WebBodas.confirmacionInvitados.infoAdicionalInvitado' | translate}}</mat-label>
+                        <textarea matInput placeholder="{{id + 'WebBodas.confirmacionInvitados.ingreseAqui' | translate}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
                     </mat-form-field>
                 </div>
 
-                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{id + 'Inicio.confirmacionInvitados.tituloBoton' | translate}}</button>
+                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{id + 'WebBodas.confirmacionInvitados.tituloBoton' | translate}}</button>
             </ng-container>
             </ng-container>
         </ng-template>
@@ -49,8 +49,8 @@
 
 <ng-template #todosConfirmados>
     <i class="icoConfirmados fas fa-glass-cheers animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-    <p class="tituloGraciasConfirmacion cursiva">{{id + 'Inicio.confirmacionInvitados.graciasConfirmados' | translate}}</p>
-    <p class="invitadosConfirmados">{{id + 'Inicio.confirmacionInvitados.todosConfirmados' | translate}}</p>
+    <p class="tituloGraciasConfirmacion cursiva">{{id + 'WebBodas.confirmacionInvitados.graciasConfirmados' | translate}}</p>
+    <p class="invitadosConfirmados">{{id + 'WebBodas.confirmacionInvitados.todosConfirmados' | translate}}</p>
 </ng-template>
 
 <ng-template #loader>

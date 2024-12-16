@@ -3,6 +3,52 @@
     "nombreApp": "Digital Moments ",
     "copyright": "Copyright"
   },
+  "Inicio": {
+    "digitalMoments": "Digital Moments",
+    "textoPrincipal": "Moderniza tu boda con una",
+    "frasePrincipal": "invitación digital",
+    "textoPrincipalFinal": "personalizada.",
+    "descripcionAccion": "El primer paso hacia el 'Sí, acepto' empieza aquí. ¡Diseña tu invitación ahora!",
+    "accion1": "¡ Quiero mi Web !",
+    "accion2": "ver Ejemplos",
+    "historiaCorta": "Tu boda es única, y la invitación debe reflejar eso.",
+    "historiaCorta2": "Con una invitación digital, no solo envías un mensaje, envías una experiencia, un adelanto del amor y la felicidad que compartirás en tu gran día.",
+    "historiaCorta3": "Pasemos de lo complicado y ten control de lo que quieres, incluso de la confirmación de tus invitados.",
+    "menu": {
+      "inicio": "Inicio",
+      "nosotros": "Sobre Nosotros",
+      "caracteristicas": "¿Qué incluye?",
+      "precios": "Precios",
+      "redes": "Redes"
+    },
+    "queIncluye": "¿Qué incluye?",
+    "infoIncluye": {
+      "envioTitulo": "Sin restricciones, solo emociones",
+      "envioDesc": "Envía tu invitación digital todas las veces que necesites, sin límites... ¡Que nadie se pierda tu gran momento!",
+      "galeriaTitulo": "Galería de Recuerdos",
+      "galeriaDesc": "Tus fotos más preciadas en un lugar especial. Un recorrido visual que enamora y conecta con tus seres queridos.",
+      "vestuarioTitulo": "Código de Vestuario",
+      "vestuarioDesc": "Deja claro el estilo del día para que todos se sientan parte del momento. Elige el código, estilo y haz que tu día sea inolvidable.",
+      "regalosTitulo": "Lista de Deseos",
+      "regalosDesc": "Simplifica el proceso: Comparte tus deseos al alcance de todos y deja que tus invitados formen parte de tu nueva historia.",
+      "ceremoniaTitulo": "Ceremonia",
+      "ceremoniaDesc": "Toda la información que tus invitados necesitan para acompañarte en este momento único.",
+      "fiestaTitulo": "Fiesta",
+      "fiestaDesc": "Tendrás una fiesta en otra hora y lugar... no te preocupes, agrega una sesión aparte y agrega la información que necesites.",
+      "cuentaRegresivaTitulo": "Cuenta Regresiva",
+      "cuentaRegresivaDesc": "El amor no puede esperar, un conteo regresivo hasta el día de tu boda... ¡la cuenta atrás ha comenzado!",
+      "personalizaTitulo": "Personalización",
+      "personalizaDesc": "Control total en tus manos: Crea la invitación perfecta para tu evento, personalízala tú mismo de manera fácil y rápida.",
+      "administraTitulo": "Control en tus manos",
+      "administraDesc": "Cambia detalles, confirma asistentes y actualiza el evento cuando lo necesites, sin intermediarios.",
+      "confirmacionTitulo": "Tu evento, tus invitados",
+      "confirmacionDesc": "Agrega, elimina o edita invitados en cualquier momento. Visualiza quién asistirá en tiempo real.",
+      "musicaTitulo": "La Canción de Tu Historia",
+      "musicaDesc": "Elige una canción vuestra que emocione a todos. Una melodía personalizada que hará que tu invitación cobre vida.",
+      "instagramTitulo": "Muro de Instagram",
+      "instagramDesc": "Comparte tus momentos únicos y hazlos brillar con emoción. !Que cada recuerdo sea parte de la celebración!"
+    }
+  },
   "yeshua_&_ana":{
       "ConfigApp": {
         "familia": "LopezGiraldo",
@@ -25,7 +71,7 @@
         "regalosLateralesIzq": "1",
         "regalosLateralesDer": "1"
       },
-      "Inicio": {
+      "WebBodas": {
         "encabezado": {
           "imgEncabezado": "assets/imgs/fotos/imgPrincipal.JPG",
           "imgSecundaria": "assets/imgs/fotos/imgSecundaria.jpg",

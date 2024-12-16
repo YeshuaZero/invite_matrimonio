@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', loadComponent: () => import('./public/inicio.component').then(c => c.InicioComponent) },
-  { path: ':id', loadComponent: () => import('./public/inicio.component').then(c => c.InicioComponent) },
+  { path: ':id', loadComponent: () => import('./public/web-bodas/web-bodas.component').then(c => c.WebBodasComponent) },
 
   // REDIRECCIONAMIENTOS 
   { path: '**', redirectTo: '/404' }
