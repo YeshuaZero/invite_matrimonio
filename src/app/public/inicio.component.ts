@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
+import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 
 @Component({
   selector: 'app-inicio',
@@ -17,6 +18,8 @@ import { ActivatedRoute } from '@angular/router';
   imports: [SharedModule, MatButtonModule, MatMenuModule, CarouselModule]
 })
 export class InicioComponent {
+
+  fechaActual = new Date();
 
   listaInfoIncluye: any = [
     { icono: 'fas fa-wrench', titulo: 'Inicio.infoIncluye.personalizaTitulo', detalle: 'Inicio.infoIncluye.personalizaDesc' },
@@ -33,11 +36,35 @@ export class InicioComponent {
     { icono: 'fab fa-instagram', titulo: 'Inicio.infoIncluye.instagramTitulo', detalle: 'Inicio.infoIncluye.instagramDesc' },
   ];
 
+  planClassic = {
+    id: 1, titulo: 'Inicio.precios.plan1', valor: 'Inicio.precios.valor1', caracteristicas: [
+      { info: 'Inicio.precios.caracteristicas.nro1' },
+      { info: 'Inicio.precios.caracteristicas.nro2' },
+      { info: 'Inicio.precios.caracteristicas.nro3' }
+    ]
+  };
+
+  planVIP = {
+    id: 2, titulo: 'Inicio.precios.plan2', valor: 'Inicio.precios.valor2', caracteristicas: [
+      { info: 'Inicio.precios.caracteristicas.nro1Pro' },
+      { info: 'Inicio.precios.caracteristicas.nro2Pro' },
+      { info: 'Inicio.precios.caracteristicas.nro3Pro' }
+    ]
+  };
+
   constructor(
     private readonly funcionesGenerales: FuncionesGeneralesService,
     private route: ActivatedRoute,
     public dialog: MatDialog
   ) {
+  }
+
+  scroll(div: string){
+    this.funcionesGenerales.scroll(div);
+  }
+
+  iniciarSesion(){
+    this.dialog.open(IniciarSesionComponent, { autoFocus: false });
   }
 
 }

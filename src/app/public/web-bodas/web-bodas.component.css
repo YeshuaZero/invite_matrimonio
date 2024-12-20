@@ -1082,21 +1082,6 @@
     margin-right: 10px;
 }
 
-.contenedorFooter {
-    background: #242424;
-    position: relative;
-    color: #fafafa;
-}
-
-.footer .desarrolladoPor p {
-    margin-top: 40px;
-    margin-bottom: 0;
-}
-
-.contenedorFooter .desarrolladoPor i {
-    margin: 0 12px;
-}
-
 .fondoLetrero {
     position: absolute;
     width: 500px;

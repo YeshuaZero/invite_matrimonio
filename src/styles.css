@@ -748,6 +748,21 @@ mat-hint {
     font-weight: 700;
 }
 
+.contenedorFooter {
+    background: #242424;
+    position: relative;
+    color: #fafafa;
+}
+
+.footer .desarrolladoPor p {
+    margin-top: 40px;
+    margin-bottom: 0;
+}
+
+.contenedorFooter .desarrolladoPor i {
+    margin: 0 12px;
+}
+
 @media (max-width:420px) {
     .contenedorTituloPopUp span {
         font-size: 12px;

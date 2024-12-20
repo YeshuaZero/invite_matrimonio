@@ -1,0 +1,35 @@
+<div class=popUp>
+    <div class="contenedorTituloPopUp">
+        <i class="cerrar fas fa-times" (click)="cerrar()"></i>
+    </div>
+    <div class="contenedorIniciarSesion flex flexColumn">
+        <img class="logo animate__animated animate__pulse animate__infinite animate__slow" src="assets/imgs/logo2.svg" alt="Logo">
+        <p class="textoBienvenida">{{'Inicio.iniciarSesion.textoBienvenido' | translate}}</p>
+
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>{{'Inicio.iniciarSesion.user' | translate}}</mat-label>
+            <input matInput [(ngModel)]="dataLogin.user" name="user" maxlength="50" autocomplete="off">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+            <mat-label>{{'Inicio.iniciarSesion.pass' | translate}}</mat-label>
+            <input matInput [(ngModel)]="dataLogin.pass" (keyup.enter)="iniciarSesion()" [type]="hide ? 'password' : 'text'">
+            <button class="mostrarPass" matSuffix (click)="hide = !hide" [attr.aria-label]="'Ocultar contraseña'"
+                [attr.aria-pressed]="hide">
+                <i class="fas {{hide ? 'fa-eye-slash': 'fa-eye'}}"></i>
+            </button>
+        </mat-form-field>
+
+        <button class="botonGeneralAccion" mat-raised-button
+            [disabled]="!dataLogin.user || !dataLogin.pass"
+            (click)="iniciarSesion()">
+            <i class="fas fa-check"></i>
+            {{'Inicio.iniciarSesion.iniciarSesion' | translate}}
+        </button>
+    </div>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

@@ -1,12 +1,16 @@
 <div class="contenedorPrincipal">
-    <div class="encabezado">
+    <div id="encabezado" class="encabezado">
         <img class="imgEncabezado" src="assets/imgs/paginaPrincipal.jpg" alt="Principal">
         <div class="opcionesMenu flex">
-            <span>{{'Inicio.menu.inicio' | translate}}</span>
-            <span>{{'Inicio.menu.caracteristicas' | translate}}</span>
-            <span>{{'Inicio.menu.precios' | translate}}</span>
-            <span>{{'Inicio.menu.redes' | translate}}</span>
+            <span (click)="scroll('encabezado')">{{'Inicio.menu.inicio' | translate}}</span>
+            <span (click)="scroll('contenedorIncluye')">{{'Inicio.menu.caracteristicas' | translate}}</span>
+            <span (click)="scroll('contenedorPrecios')">{{'Inicio.menu.precios' | translate}}</span>
+            <span (click)="scroll('contenedorRedes')">{{'Inicio.menu.redes' | translate}}</span>
         </div>
+        <button class="iniciarSesion" (click)="iniciarSesion()">
+            <i class="fas fa-sign-in-alt"></i>
+            {{'Inicio.login' | translate}}
+        </button>
         <div class="textoEncabezado flex flexColumn">
             <img class="logo" src="assets/imgs/logo2.svg" alt="Logo">
             <p class="tituloPrincipal flex flexColumn">
@@ -35,7 +39,7 @@
         </div>
     </div>
 
-    <div class="contenedorIncluye flex flexColumn">
+    <div id="contenedorIncluye" class="contenedorIncluye flex flexColumn">
         <p class="textoHistoria cursiva">{{'Inicio.queIncluye' | translate}}</p>
         <div class="subcontenedorIncluye">
             <div class="infoIncluye" *ngFor="let info of listaInfoIncluye, let i=index">
@@ -60,5 +64,81 @@
                 d="M0 601L82 601L164 601L245 601L327 601L409 601L491 601L573 601L655 601L736 601L818 601L900 601L900 551L818 509L736 527L655 509L573 521L491 515L409 545L327 551L245 527L164 533L82 521L0 521Z">
             </path>
         </svg>
+    </div>
+
+    <div id="contenedorPrecios" class="contenedorPrecios flex">
+        <div class="tituloDescPrecio boxInfo">
+            <p class="titulo flex flexColumn">
+                <span class="cursiva">{{'Inicio.precios.tituloPrecios' | translate}}</span>
+                {{'Inicio.precios.tituloPrecios2' | translate}}
+            </p>
+            <span class="descripcionPrecio flex">{{'Inicio.precios.descripcionPrecios' | translate}}</span>
+            <i class="fas fa-hand-holding-usd"></i>
+        </div>
+        <div class="flex flexColumn">
+            <p class="infoPrecios">{{'Inicio.precios.infoPrecios' | translate}}</p>
+            <p class="infoPrecios2">{{'Inicio.precios.infoPrecios2' | translate}}</p>
+            <div class="flex subcontenedorPrecios">
+                        <div class="planClassic boxInfo detallePrecio">
+                            <div class="flex tituloPrecio">
+                                <p class="cursiva">{{planClassic.titulo| translate}}</p>
+                                <span class="flex">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    {{planClassic.valor| translate}}
+                                </span>
+                            </div>
+                            <p class="planIncluye">{{'Inicio.precios.planIncluye' | translate}}</p>
+                        
+                            <div class="contenedorPrecioIncluye" *ngFor="let caracteristica of planClassic.caracteristicas, let i=index">
+                                <i class="fas fa-check"></i>
+                                <span>{{caracteristica.info | translate}}</span>
+                            </div>
+                        
+                            <div class="flex contenedorAccionCompra">
+                                <button>{{'Inicio.precios.botonPlan1' | translate}}</button>
+                            </div>
+                        </div>
+                        <div class="planVIP boxInfo detallePrecio">
+                            <div class="flex tituloPrecio">
+                                <p class="cursiva relative">
+                                    <i class="fas fa-crown"></i>
+                                    {{planVIP.titulo| translate}}
+                                </p>
+                                <span class="flex">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    {{planVIP.valor| translate}}
+                                </span>
+                            </div>
+                            <p class="planIncluye">{{'Inicio.precios.planVipIncluye' | translate}}</p>
+                        
+                            <div class="contenedorPrecioIncluye" *ngFor="let caracteristica of planVIP.caracteristicas, let i=index">
+                                <i class="fas fa-check"></i>
+                                <span>{{caracteristica.info | translate}}</span>
+                            </div>
+                        
+                            <div class="flex contenedorAccionCompra">
+                                <button>{{'Inicio.precios.botonPlan2' | translate}}</button>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contenedorRedes" class="contenedorRedes flex flexColumn">
+        <p class="cursiva">{{'Inicio.siguenos' | translate}}</p>
+        <div class="flex subcontenedorRedes">
+            <i class="fab fa-instagram"></i>
+            <i class="fab fa-whatsapp"></i>
+        </div>
+    </div>
+
+    <div class="contenedorFooter">
+        <div class="desarrolladoPor flex">
+            <p class="flex">
+                {{'dataApp.nombreApp' | translate}}
+                <i class="fas fa-copyright"></i>
+                {{'dataApp.copyright' | translate}} {{fechaActual | date: 'yyyy'}}
+            </p>
+        </div>
     </div>
 </div>

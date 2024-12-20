@@ -14,6 +14,13 @@
     "historiaCorta": "Tu boda es única, y la invitación debe reflejar eso.",
     "historiaCorta2": "Con una invitación digital, no solo envías un mensaje, envías una experiencia, un adelanto del amor y la felicidad que compartirás en tu gran día.",
     "historiaCorta3": "Pasemos de lo complicado y ten control de lo que quieres, incluso de la confirmación de tus invitados.",
+    "login": "Iniciar Sesión",
+    "iniciarSesion": {
+      "textoBienvenido": "Bienvenido nuevamente, accede para ver toda la configuración e información de la boda.",
+      "user": "Usuario",
+      "pass": "Contraseña",
+      "iniciarSesion": "Iniciar Sesión"
+    }, 
     "menu": {
       "inicio": "Inicio",
       "nosotros": "Sobre Nosotros",
@@ -47,7 +54,31 @@
       "musicaDesc": "Elige una canción vuestra que emocione a todos. Una melodía personalizada que hará que tu invitación cobre vida.",
       "instagramTitulo": "Muro de Instagram",
       "instagramDesc": "Comparte tus momentos únicos y hazlos brillar con emoción. !Que cada recuerdo sea parte de la celebración!"
-    }
+    },
+    "precios": {
+      "tituloPrecios": "Porque Tu Boda",
+      "tituloPrecios2": "Lo Merece Todo",
+      "descripcionPrecios": "Nuestras opciones tienen todo lo que necesitas. ¿Buscas algo más? Lo personalizamos para ti con soluciones a medida. Sin letras pequeñas ni costos ocultos. Elige tu plan y empieza a crear la invitación de tus sueños hoy mismo.",
+      "infoPrecios": "Comienza ahora tu",
+      "infoPrecios2": "Invitación Digital",
+      "plan1": "Classic",
+      "valor1": "200.000",
+      "plan2": "Platino",
+      "valor2": "400.000",
+      "planIncluye": "El paquete incluye:",
+      "planVipIncluye": "Todo lo del Classic más:",
+      "caracteristicas": {
+        "nro1": "Envíos ilimitados a tus invitados.",
+        "nro2": "Personalización básica sin complicaciones.",
+        "nro3": "Contiene todas las herramientas y secciones detalladas en la sección anterior.",
+        "nro1Pro": "Atención prioritaria y soporte rápido.",
+        "nro2Pro": "Desarrollo de funcionalidades personalizadas según tus ideas o necesidades.",
+        "nro3Pro": "¿Tienes un estilo en mente? Lo creamos para ti."
+      },
+      "botonPlan1": "¡Quiero este!",
+      "botonPlan2": "¡Quiero este!"
+    },
+    "siguenos": "Síguenos"
   },
   "yeshua_&_ana":{
       "ConfigApp": {
