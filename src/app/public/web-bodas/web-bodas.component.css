@@ -13,6 +13,18 @@
     overflow: hidden;
 }
 
+.loaderWeb{
+    width: 100%;
+        height: 100%;
+        background: #fffef6;
+        overflow: hidden;
+}
+
+.loaderWeb app-loader{
+    transform: scale(8);
+        opacity: 0.1;
+}
+
 /* ENCABEZADO */
 
 .encabezado {
@@ -457,6 +469,10 @@
 
 .opcionAgenda img {
     margin-right: 6px;
+}
+
+.opcionAgenda img.google{
+        width: 20px;
 }
 
 .opcionAgenda img.imgMicrosoft {

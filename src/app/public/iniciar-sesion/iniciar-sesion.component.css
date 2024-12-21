@@ -1,5 +1,7 @@
-.contenedorIniciarSesion {
+.contenedorIniciarSesion,
+.loader{
     width: 250px;
+    height: 350px;
 }
 
 .contenedorIniciarSesion img {

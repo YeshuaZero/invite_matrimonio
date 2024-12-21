@@ -46,6 +46,7 @@ export class WebBodasComponent implements OnInit {
   imgPrincipal = '';
   imgSecundaria = '';
   existeCoordenadas = '';
+  dataWeb: any = {};
   
   mostrarIcoSecciones = false;
 
@@ -101,39 +102,47 @@ export class WebBodasComponent implements OnInit {
     public dialog: MatDialog
   ) {
     this.route.paramMap.subscribe(params => {
-      this.id = params.get('id') ? `${params.get('id')}.` : null; 
-      this.id = this.id ?? 'yeshua_&_ana.';
+      this.id = params.get('id') ? `${params.get('id')}` : null; 
+      this.id = this.id ?? 'yeshua_&_ana';
       console.log(this.id);
     });
   }
 
   ngOnInit() {
-    this.background = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondo');
-    this.backgroundVestuario = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondoVestuario');
-    this.backgroundConfirmacion = this.funcionesGenerales.translate(this.id + 'ConfigApp.colorFondoConfirmacion');
-    this.imgPrincipal = this.funcionesGenerales.translate(this.id + 'WebBodas.encabezado.imgEncabezado');
-    this.imgSecundaria = this.funcionesGenerales.translate(this.id + 'WebBodas.encabezado.imgSecundaria');
-    this.existeCoordenadas = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.coordenadas');
-    this.listaFotos.forEach((e: any, i: number) => {
-      e.id = i + 1;
-    });
-
-    this.targetDate = new Date(this.funcionesGenerales.translate(this.id + 'WebBodas.conteoRegresivo.fecha'));
-    this.targetTime = this.targetDate.getTime();
-
-    AOS.init();
-
-    const tipoEncabezado = this.funcionesGenerales.translate(this.id + 'ConfigApp.encabezado');
-    const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
-    const parallaxInstance = new Parallax(scene);
-
+    this.cargarDataWeb();
   }
 
-  ngAfterViewInit() {
-    // Configurar un intervalo para actualizar el tiempo restante cada segundo
-    setInterval(() => {
-      this.calculateTimeRemaining();
-    }, 1000);
+  cargarDataWeb(){
+    this.webBodasService.getDataWeb(`dataWeb/${this.id}`).then((resp: any) => {
+      console.log('resp:', resp);
+      this.dataWeb = resp;
+      this.background = this.dataWeb.ConfigApp.colorFondo;
+      this.backgroundVestuario = this.dataWeb.ConfigApp.colorFondoVestuario;
+      this.backgroundConfirmacion = this.dataWeb.ConfigApp.colorFondoConfirmacion;
+      this.imgPrincipal = this.dataWeb.WebBodas.encabezado.imgEncabezado;
+      this.imgSecundaria = this.dataWeb.WebBodas.encabezado.imgSecundaria;
+      this.existeCoordenadas = this.dataWeb.WebBodas.ceremonia.coordenadas;
+      this.listaFotos.forEach((e: any, i: number) => {
+        e.id = i + 1;
+      });
+
+      this.targetDate = new Date(this.dataWeb.WebBodas.conteoRegresivo.fecha);
+      this.targetTime = this.targetDate.getTime();
+
+      AOS.init();
+
+      const tipoEncabezado = this.dataWeb.ConfigApp.encabezado;
+      console.log('tipoEncabezado:', tipoEncabezado)
+      setTimeout(()=>{
+        const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
+        console.log('scene:', scene)
+        const parallaxInstance = new Parallax(scene);  
+      }, 500)
+
+      setInterval(() => {
+        this.calculateTimeRemaining();
+      }, 1000);
+    })
   }
 
   calculateTimeRemaining() {
@@ -169,11 +178,11 @@ export class WebBodasComponent implements OnInit {
       BEGIN:VCALENDAR
       VERSION:2.0
       BEGIN:VEVENT
-      SUMMARY: ${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.tituloCalendario')}
-      DESCRIPTION: ${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.detalleCalendario')}
-      DTSTART: ${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.inicioCalendario')}
-      DTEND: ${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.finCalendario')}
-      LOCATION: ${this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.ubicacionCalendario')}
+      SUMMARY: ${this.dataWeb.WebBodas.ceremonia.tituloCalendario}
+      DESCRIPTION: ${this.dataWeb.WebBodas.ceremonia.detalleCalendario}
+      DTSTART: ${this.dataWeb.WebBodas.ceremonia.inicioCalendario}
+      DTEND: ${this.dataWeb.WebBodas.ceremonia.finCalendario}
+      LOCATION: ${this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.dataWeb.WebBodas.ceremonia.ubicacionCalendario}
       END:VEVENT
       END:VCALENDAR
     `;
@@ -185,12 +194,12 @@ export class WebBodasComponent implements OnInit {
   }
 
   addToGoogleCalendar() {
-    const title = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.tituloCalendario');
-    const description = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.detalleCalendario');
-    const startDate = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.inicioCalendario');
-    const endDate = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.finCalendario');
-    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.ubicacionCalendario');
-    const timezone = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.zonaHoraria');
+    const title = this.dataWeb.WebBodas.ceremonia.tituloCalendario;
+    const description = this.dataWeb.WebBodas.ceremonia.detalleCalendario;
+    const startDate = this.dataWeb.WebBodas.ceremonia.inicioCalendario;
+    const endDate = this.dataWeb.WebBodas.ceremonia.finCalendario;
+    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.dataWeb.WebBodas.ceremonia.ubicacionCalendario;
+    const timezone = this.dataWeb.WebBodas.ceremonia.zonaHoraria;
 
     const url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&ctz=${timezone}`;
 
@@ -198,11 +207,11 @@ export class WebBodasComponent implements OnInit {
   }
 
   addToMicrosoftCalendar() {
-    const title = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.tituloCalendario');
-    const description = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.detalleCalendario');
-    const startDate = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.inicioCalendarioMicrosoft');
-    const endDate = this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.finCalendarioMicrosoft');
-    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.ubicacionCalendario');
+    const title = this.dataWeb.WebBodas.ceremonia.tituloCalendario;
+    const description = this.dataWeb.WebBodas.ceremonia.detalleCalendario;
+    const startDate = this.dataWeb.WebBodas.ceremonia.inicioCalendarioMicrosoft;
+    const endDate = this.dataWeb.WebBodas.ceremonia.finCalendarioMicrosoft;
+    const location = this.existeCoordenadas && this.existeCoordenadas != '' ? this.existeCoordenadas : this.dataWeb.WebBodas.ceremonia.ubicacionCalendario;
 
     const url = `https://outlook.live.com/calendar/0/deeplink/compose?startdt=${startDate}&enddt=${endDate}&subject=${encodeURIComponent(title)}&body=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
 
@@ -210,12 +219,12 @@ export class WebBodasComponent implements OnInit {
   }
 
   abrirWaze() {
-    const url = `https://waze.com/ul?ll=${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.latitud')},${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.longitud') }&navigate=yes`;
+    const url = `https://waze.com/ul?ll=${this.dataWeb.WebBodas.ceremonia.latitud},${this.dataWeb.WebBodas.ceremonia.longitud}&navigate=yes`;
     window.open(url, '_blank');
   }
 
   abrirGoogleMaps() {
-    const url = `https://www.google.com/maps/search/?api=1&query=${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.latitud')},${this.funcionesGenerales.translate(this.id + 'WebBodas.ceremonia.longitud') }`;
+    const url = `https://www.google.com/maps/search/?api=1&query=${this.dataWeb.WebBodas.ceremonia.latitud},${this.dataWeb.WebBodas.ceremonia.longitud}`;
     window.open(url, '_blank');
   }
 
