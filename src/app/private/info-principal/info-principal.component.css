@@ -1,0 +1,239 @@
+.dataContenedor {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-gap: 40px;
+    align-items: start;
+    align-content: baseline;
+    padding-top: 18px;
+    overflow: hidden;
+}
+
+.contenedorPreviaWeb {
+    position: absolute;
+    right: 80px;
+    top: 60px;
+    height: calc(100% - 110px);
+    max-height: 600px;
+    container: inline-size;
+}
+
+.inputForm {
+    overflow: auto;
+    height: calc(100% - 16px);
+    direction: rtl;
+    padding-bottom: 16px;
+}
+
+.inputForm ::ng-deep mat-vertical-stepper {
+    direction: ltr;
+}
+
+.contenedorInputs {
+    padding: 12px 0 0;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+::ng-deep .mat-step:first-child {
+    padding-top: 8px;
+}
+
+::ng-deep .mat-step:last-child {
+    padding-bottom: 8px;
+}
+
+::ng-deep .mat-vertical-stepper-header {
+    padding: 8px 24px !important;
+}
+
+::ng-deep .mat-step-icon {
+    background-color: #311d47 !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+    background-color: #451580 !important;
+}
+
+::ng-deep .mat-step-label-selected .mat-step-text-label {
+    font-weight: 600;
+    color: #451580;
+}
+
+.contenedorHoras {
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.contenedorHoras .textoFechas {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.contenedorPrincipalVestuario {
+    align-items: baseline;
+}
+
+.contenedorColores {
+    padding: 12px 12px 0px;
+    gap: 40px;
+}
+
+.colores {
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.colores i {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 1px;
+    margin: 0 !important;
+}
+
+.opcionColores span {
+    font-size: 11px;
+}
+
+.colorPicker {
+    width: 26px;
+    border: none;
+}
+
+.textoFiestaNoIncluida {
+    color: #ccc;
+    font-weight: 200;
+    margin-left: 4px;
+}
+
+.icoVestuario i {
+    font-size: 14px;
+    margin-right: 18px;
+}
+
+.icoRecuerdos {
+    margin-top: 10px;
+}
+
+.icoRecuerdos i {
+    font-size: 24px;
+    margin-right: 18px;
+}
+
+.icoUpload {
+    margin: 0;
+}
+
+.contenedorImagenesGaleria {
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 24px;
+}
+
+.contenedorImagenesGaleria>div {
+    background: #fff;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    padding: 4px 4px 12px;
+}
+
+.contenedorImagenesGaleria img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.contenedorImagenesGaleria i {
+    position: absolute;
+    z-index: 999;
+    top: -8px;
+    right: -16px;
+    padding: 4px 6px;
+    background: #fff;
+    border-radius: 16px;
+    font-size: 16px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    color: #aaa;
+}
+
+.contenedorImagenesGaleria i:hover {
+    color: red;
+}
+
+.loading{
+    margin-left: 16px;
+    color: #aaa;
+}
+
+.loading span{
+    font-weight: 200;
+}
+
+/* VISTA PREVIA */
+
+
+.mobile-container {
+    width: 320px;
+    height: 100%;
+    background: #000;
+    border-radius: 30px;
+    padding: 8px;
+    border: 4px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    container: inline-size;
+}
+
+.notch {
+    width: 160px;
+    /* Ajustado para el ancho del dispositivo */
+    height: 20px;
+    /* Proporción más pequeña debido a la menor altura */
+    background: #000;
+    border-radius: 15px 15px 0 0;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.notch-camera {
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    left: 40px;
+    /* Ajustado para el ancho */
+}
+
+.notch-speaker {
+    width: 50px;
+    height: 5px;
+    background: #333;
+    border-radius: 3px;
+    position: absolute;
+}
+
+.screen {
+    width: 100%;
+    height: calc(100% - 40px);
+    /* Resta espacio para el notch */
+    background: #fff;
+    border-radius: 10px;
+    /* Bordes redondeados de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 8px;
+    overflow: auto;
+}
+
+.screen app-web-bodas {
+    width: 100%;
+}

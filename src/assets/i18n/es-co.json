@@ -85,5 +85,104 @@
       "botonPlan2": "¡Quiero este!"
     },
     "siguenos": "Síguenos"
+  },
+  "Panel": {
+    "infoPrincipal": {
+      "titulo": "Info Principal",
+      "descripcion": "Configura la información básica de tu evento y actualízala sin complicaciones cuando lo prefieras.",
+      "guardado": "Guardado",
+      "guardando": "Guardando",
+      "guardadoNoConfirmado": "Datos no actualizados",
+      "guardadoNoConfirmadoDesc": "Es posible que la información no haya sido guardada correctamente, por favor recargue la página y verifique la información, si el problema continúa por favor contacte a soporte.",
+      "generales": {
+          "titulo": "Ajustes Generales"
+      },
+      "titulos": {
+        "titulo": "Títulos Secciones",
+        "tituloCeremonia": "Título Ceremonia",
+        "tituloFiesta": "Título Fiesta",
+        "tituloGaleriaFotos": "Título Galería de Fotos",
+        "tituloCodigoVestuario": "Título Código Vestuario",
+        "tituloRegalos": "Título Regalos",
+        "tituloConfirmacionAsistencia": "Título Confirmación de Asistencia",
+        "botonConfirmarAsistencia": "Botón Confirmar Asistencia-"
+      },
+      "encabezado": {
+        "titulo": "Encabezado",
+        "nombreEl": "Nombre Corto 1",
+        "nombreElla": "Nombre Corto 2",
+        "invertirNombres": "Invertir Nombres",
+        "fechaBoda": "Fecha y Hora de la Boda",
+        "frasePrincipal": "Frase Encabezado",
+        "imgPrincipal": "Imagen Principal",
+        "frase": "Eslogan",
+        "autoFrase": "Autor"
+      },
+      "ceremonia": {
+        "titulo": "Ceremonia",
+        "lugar": "Lugar",
+        "lugar2": "Info Lugar 2",
+        "lugar3": "Info Lugar 3",
+        "latitud": "Latitud",
+        "longitud": "Longitud",
+        "textoHora": "Texto Hora",
+        "cantidad": "Duración en horas / Hora Inicio"
+      },
+      "fiesta": {
+        "noIncluida": "Sección Oculta",
+        "fiestaAparte": "Fiesta separada de la Ceremonia",
+        "titulo": "Fiesta",
+        "lugar": "Lugar",
+        "lugar2": "Info Lugar 2",
+        "lugar3": "Info Lugar 3",
+        "latitud": "Latitud",
+        "longitud": "Longitud",
+        "textoHora": "Texto Hora",
+        "cantidad": "Duración en horas / Hora Inicio"
+      },
+      "fotos": {
+        "titulo": "Galería de Fotos",
+        "agregarFotos": "Agregar Fotos"
+      },
+      "codigoVestuario": {
+        "titulo": "Código de Vestuario",
+        "descripcionHombres": "Descripción Vestuario Hombres",
+        "linkHombres": "Link Ejemplo Hombres",
+        "descripcionMujeres": "Descripción Vestuario Mujeres",
+        "linkMujeres": "Link Ejemplo Mujeres",
+        "tituloNotaAdicional": "Titulo Nota Adicional",
+        "notaAdicional": "Nota Adicional",
+        "coloresSugeridosHombres": "Colores Sugeridos Hombres",
+        "coloresSugeridosMujeres": "Colores Sugeridos Mujeres",
+        "coloresReservados": "Colores Reservados"
+      },
+      "regalos": {
+        "titulo": "Sugerencias de Regalo",
+        "frase": "Texto Regalos",
+        "textoResaltado": "Texto Resaltado"
+      },
+      "confirmacionInvitados": {
+        "titulo": "Confirmación de Asistencia",
+        "gracias": "Texto Inicial Resaltado",
+        "gracias2": "Texto Confirmación"
+      },
+      "recuerdos": {
+        "titulo": "Recuerdos",
+        "hashtag": "Hashtag",
+        "icono": "Icono",
+        "textoResaltado": "Texto Resaltado",
+        "textoAdicional": "Texto Adicional",
+        "imgFondo": "Imagen de Fondo"
+      }
+    },
+    "invitados": {
+      "titulo": "Invitados",
+      "descripcion": "Controla tu lista de invitados, agrega o elimina nombres y consulta confirmaciones en tiempo real."
+    },
+    "personalizacion": {
+      "titulo": "Personalización",
+      "descripcion": "Tu web, tus reglas: cámbiala cuantas veces quieras, cuando lo necesites."
+    },
+    "cerrarSesion": "Cerrar Sesión"
   }
 }

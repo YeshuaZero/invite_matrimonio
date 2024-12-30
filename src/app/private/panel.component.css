@@ -1,0 +1,75 @@
+.drawer {
+    width: 100%;
+    height: calc(100vh - 50px);
+}
+
+.menu {
+    width: 100px;
+    background: transparent;
+    border: none;
+}
+
+.contenedorDataMenu {
+    position: relative;
+    border-radius: 16px;
+    margin: 24px 8px;
+    padding: 12px 16px;
+    height: calc(100% - 75px);
+    justify-content: flex-start;
+    background: linear-gradient(25deg, #222, #481489);
+}
+
+.contenidoDrawer {
+    margin-left: 100px;
+    padding: 12px 24px 0;
+    width: calc(100% - 148px);
+    height: calc(100% - 12px);
+}
+
+.contenedorLogo {
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    margin: 0 0 8px;
+}
+
+.contenedorLogo .logo {
+    width: 40px;
+}
+
+.contenedorOpciones {
+    color: rgba(255, 255, 255, .2);
+}
+
+.opcion {
+    width: 64px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 16px 0;
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.opcion:hover,
+.opcion.activo {
+    color: #fff;
+}
+
+.opcion i {
+    width: 50px;
+    text-align: center;
+    font-size: 30px;
+    margin: 0 12px;
+}
+
+.opcion span {
+    width: 0;
+}
+
+.opcion.cerrarSesion {
+    position: absolute;
+    bottom: 20px;
+    color: #fff;
+}

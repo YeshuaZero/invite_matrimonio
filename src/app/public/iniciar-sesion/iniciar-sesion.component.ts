@@ -72,6 +72,7 @@ export class IniciarSesionComponent implements OnInit {
     this.inicioService.getData(`dataWeb/${id}`).then((resp: any) => {
       console.log('resp:', resp);
       this.dataWeb = resp;
+      this.funcionesGeneralesService.setData('id', id);
       this.funcionesGeneralesService.setData('t0k3nD1g1t4lM0m3nt5', this.dataWeb, true);
       this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.sesionOk', 'Inicio.iniciarSesion.sesionOkDesc', TipoEnum.OK);
       this.router.navigate(['/panel']);

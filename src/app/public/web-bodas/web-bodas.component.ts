@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/core/shared/shared.module';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { WebBodasService } from './web-bodas.service';
 import { FuncionesGeneralesService} from 'src/app/core/funciones-generales.services';
 import { MatButtonModule } from '@angular/material/button';
@@ -19,7 +19,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./web-bodas.component.css'],
   imports: [SharedModule, MatButtonModule, MatMenuModule, CarouselModule]
 })
-export class WebBodasComponent implements OnInit {
+export class WebBodasComponent implements OnInit, OnChanges {
+
+  @Input('dataWeb') dataWeb: any = {};
+  @Input('listaFotosGaleria') listaFotosGaleria: any = [];
+  @Input('previa') previa: boolean = false;
+
   hide: boolean = true;
   loading: boolean = false;
 
@@ -46,7 +51,6 @@ export class WebBodasComponent implements OnInit {
   imgPrincipal = '';
   imgSecundaria = '';
   existeCoordenadas = '';
-  dataWeb: any = {};
   
   mostrarIcoSecciones = false;
 
@@ -109,40 +113,79 @@ export class WebBodasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cargarDataWeb();
+    if (this.dataWeb?.ConfigApp){
+      this.inicializarData();
+    } else {
+      this.consultarImagenes();
+      this.cargarDataWeb();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes:', changes)
+    if (changes?.['dataWeb']?.currentValue?.WebBodas){
+      this.targetDate = new Date(this.dataWeb.WebBodas.conteoRegresivo.fecha);
+      this.targetTime = this.targetDate.getTime();
+      setInterval(() => {
+        this.calculateTimeRemaining();
+      }, 500);
+    }
+  }
+
+  consultarImagenes() {
+    this.webBodasService.getFiles(`${this.id}/galeriaFotos`).subscribe((urls: any) => {
+      console.log('URLs de los archivos:', urls);
+      this.listaFotosGaleria = urls;
+    });
   }
 
   cargarDataWeb(){
     this.webBodasService.getDataWeb(`dataWeb/${this.id}`).then((resp: any) => {
       console.log('resp:', resp);
       this.dataWeb = resp;
-      this.background = this.dataWeb.ConfigApp.colorFondo;
-      this.backgroundVestuario = this.dataWeb.ConfigApp.colorFondoVestuario;
-      this.backgroundConfirmacion = this.dataWeb.ConfigApp.colorFondoConfirmacion;
-      this.imgPrincipal = this.dataWeb.WebBodas.encabezado.imgEncabezado;
-      this.imgSecundaria = this.dataWeb.WebBodas.encabezado.imgSecundaria;
-      this.existeCoordenadas = this.dataWeb.WebBodas.ceremonia.coordenadas;
-      this.listaFotos.forEach((e: any, i: number) => {
-        e.id = i + 1;
+      this.inicializarData();
+    })
+  }
+
+  inicializarData(){
+    this.background = this.dataWeb.ConfigApp.colorFondo;
+    this.backgroundVestuario = this.dataWeb.ConfigApp.colorFondoVestuario;
+    this.backgroundConfirmacion = this.dataWeb.ConfigApp.colorFondoConfirmacion;
+    this.imgPrincipal = this.dataWeb.WebBodas.encabezado.imgEncabezado;
+    this.imgSecundaria = this.dataWeb.WebBodas.encabezado.imgSecundaria;
+    this.existeCoordenadas = this.dataWeb.WebBodas.ceremonia.coordenadas;
+    this.listaFotos.forEach((e: any, i: number) => {
+      e.id = i + 1;
+    });
+
+    this.targetDate = new Date(this.dataWeb.WebBodas.conteoRegresivo.fecha);
+    this.targetTime = this.targetDate.getTime();
+
+    const tipoEncabezado = this.dataWeb.ConfigApp.encabezado;
+
+    console.log('this.previa:', this.previa)
+    if (this.previa) {
+      const elements = document.querySelectorAll('[data-aos]');
+      elements.forEach((element) => {
+        element.removeAttribute('data-aos');
+        element.removeAttribute('data-aos-duration');
+        element.removeAttribute('data-aos-offset');
       });
-
-      this.targetDate = new Date(this.dataWeb.WebBodas.conteoRegresivo.fecha);
-      this.targetTime = this.targetDate.getTime();
-
+      AOS.init({
+        disable: this.previa
+      });
+    } else {
       AOS.init();
-
-      const tipoEncabezado = this.dataWeb.ConfigApp.encabezado;
-      console.log('tipoEncabezado:', tipoEncabezado)
-      setTimeout(()=>{
+      setTimeout(() => {
         const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
         console.log('scene:', scene)
-        const parallaxInstance = new Parallax(scene);  
+        const parallaxInstance = new Parallax(scene);
       }, 500)
-
-      setInterval(() => {
-        this.calculateTimeRemaining();
-      }, 1000);
-    })
+    }
+      
+    setInterval(() => {
+      this.calculateTimeRemaining();
+    }, 1000);
   }
 
   calculateTimeRemaining() {
@@ -228,13 +271,13 @@ export class WebBodasComponent implements OnInit {
     window.open(url, '_blank');
   }
 
-  abrirPinterest(sexo: string){
-    const url = this.funcionesGenerales.translate(`${this.id}Inicio.codigoVestuario.${sexo}`);
+  abrirSugerencias(sexo: string){
+    const url = this.funcionesGenerales.translate(`${this.dataWeb.WebBodas.codigoVestuario[sexo]}`);
     window.open(url, '_blank');
   }
 
   verFormulario(){
-    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id } });
+    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id, dataWeb: this.dataWeb } });
   }
 
 }

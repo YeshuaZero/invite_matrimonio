@@ -3,9 +3,9 @@
 </div>
 
 <div *ngIf="dataWeb && dataWeb.ConfigApp" class="contenedorGeneral content"
-    [ngClass]="{'titulosTipo2': (['2', '3', '4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'titulosTipo3':  (['3', '4'].includes((dataWeb.ConfigApp.tipoTitulos))), 'titulosTipo4': (['4'].includes(dataWeb.ConfigApp.tipoTitulos))}"
+    [ngClass]="{'titulosTipo2': (['2', '3', '4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'titulosTipo3':  (['3', '4'].includes((dataWeb.ConfigApp.tipoTitulos))), 'titulosTipo4': (['4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'previa': previa}"
     [ngStyle]="{'background': background}">
-    <div class="encabezado">
+    <div id="encabezadoId" class="encabezado">
         <img class="imgPrincipal" src="{{dataWeb.WebBodas.encabezado.imgEncabezado}}" alt="imgPrincipal">
         <ng-container *ngIf="dataWeb.ConfigApp.encabezado == '1'; else encabezado2">
             <div id="nombres1" class="dataInfo flex flexColumn animate__animated animate__fadeIn animate__slow">
@@ -14,10 +14,10 @@
                         {{dataWeb.WebBodas.encabezado.fechaBoda}}
                     </div>
                     <span
-                        class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
+                        class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.invertirNombres ? dataWeb.WebBodas.encabezado.nombreElla : dataWeb.WebBodas.encabezado.nombreEl}}</span>
                     <span class="conectorNombres cursiva flex">&</span>
                     <span
-                        class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.nombreElla}}</span>
+                        class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.invertirNombres ? dataWeb.WebBodas.encabezado.nombreEl : dataWeb.WebBodas.encabezado.nombreElla}}</span>
                     <div class="fraseEncabezado flex">
                         {{dataWeb.WebBodas.encabezado.frase}}
                     </div>
@@ -28,9 +28,9 @@
         </ng-container>
         <div class="contenedorFlores">
             <img class="imgArribaIzq" src="/assets/imgs/esquinaSupIzq{{dataWeb.ConfigApp.flores}}.png"
-                alt="imgArribaIzq" data-aos="fade-down-right" data-aos-duration="2000" data-aos-offset="0">
+                alt="imgArribaIzq" [attr.data-aos]="!previa ? 'fade-down-right': null"  data-aos-duration="2000" data-aos-offset="0">
             <img class="imgArribaDer" src="/assets/imgs/esquinaSupDer{{dataWeb.ConfigApp.flores}}.png"
-                alt="imgArribaDer" data-aos="fade-down-left" data-aos-duration="2000" data-aos-offset="0">
+                alt="imgArribaDer" [attr.data-aos]="!previa ? 'fade-down-left': null" data-aos-duration="2000" data-aos-offset="0">
             <img class="imgAbajoIzq animate__animated animate__fadeInLeft"
                 src="/assets/imgs/abajoIzq{{dataWeb.ConfigApp.flores}}.png" alt="imgAbajoIzq">
             <img class="imgAbajoDer animate__animated animate__fadeInRight"
@@ -51,7 +51,7 @@
                 class="shape-fill"></path>
         </svg>
     </div>
-    <div class="contenedorEslogan flex" [ngStyle]="{'background': background}">
+    <div id="esloganId" class="contenedorEslogan flex" [ngStyle]="{'background': background}">
         <p class="eslogan flex flexColumn">
             <span class="frase flex">
                 <i class="fas fa-quote-left comillaIni"></i>
@@ -67,15 +67,15 @@
             [ngClass]="{'tipoConteo2': (dataWeb.ConfigApp.estiloConteoRegresivo) == '2'}">
             <ng-container *ngIf="(dataWeb.ConfigApp.estiloConteoRegresivo) == '1'; else tipoEstiloConteo2">
                 <img class="fechaSup" src="/assets/imgs/fecha{{dataWeb.ConfigApp.flores}}.png" alt="fechaSup"
-                    data-aos="fade-up" data-aos-duration="1000">
+                    [attr.data-aos]="!previa ? 'fade-up': null" data-aos-duration="1000">
                 <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
                 <img class="fechaInf" src="/assets/imgs/fecha{{dataWeb.ConfigApp.flores}}.png" alt="fechaInf"
-                    data-aos="fade-down" data-aos-duration="1000" data-aos-offset="100">
+                    [attr.data-aos]="!previa ? 'fade-down': null" data-aos-duration="1000" data-aos-offset="100">
             </ng-container>
             <ng-template #tipoEstiloConteo2>
                 <ng-container *ngIf="(dataWeb.ConfigApp.estiloConteoRegresivo) == '2'; else tipoEstiloConteo3">
                     <img class="fondoFloresFecha" src="/assets/imgs/conteo{{dataWeb.ConfigApp.flores}}.png"
-                        alt="fechaSup" data-aos="zoom-in" data-aos-duration="1000">
+                        alt="fechaSup" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="1000">
                     <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
                 </ng-container>
             </ng-template>
@@ -102,7 +102,7 @@
             </div>
         </div>
     </div>
-    <div class="contenedorCeremonia flex flexColumn" [ngStyle]="{'background': background}">
+    <div id="ceremoniaId" class="contenedorCeremonia flex flexColumn" [ngStyle]="{'background': background}">
         <svg class="lineaSeparadora color{{dataWeb.ConfigApp.flores}}" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" viewBox="0 0 1024.5 241.499998" height="322"
             preserveAspectRatio="none" version="1.0">
@@ -136,9 +136,9 @@
             </g>
         </svg>
         <img class="imgsBordes imgIzq" src="/assets/imgs/florIzquierda{{dataWeb.ConfigApp.flores}}.png" alt="flor1Izq"
-            data-aos="zoom-in-right" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <img class="imgsBordes imgDer" src="/assets/imgs/florDerecha{{dataWeb.ConfigApp.flores}}.png" alt="flor2Der"
-            data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            [attr.data-aos]="!previa ? 'zoom-in-left': null"  data-aos-duration="2000" data-aos-easing="ease-in-out">
         <i *ngIf="mostrarIcoSecciones"
             class="icoSeccion fas fa-church animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
         <div class="relative flex contenedorTitulo">
@@ -153,7 +153,7 @@
                 <div class="flex">
                     <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenCeremonia)"
                         class="icoCeremonia flex fas fa-map-marked-alt"></i>
-                    <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
+                    <div class="contenedorLugar flex flexColumn" [attr.data-aos]="!previa ? 'fade-left': null">
                         <p class="tituloLugar">{{dataWeb.WebBodas.ceremonia.lugar}}</p>
                         <div class="subcontenedorLugar flex flexColumn">
                             <span class="datoLugar">{{dataWeb.WebBodas.ceremonia.datoLugar}}</span>
@@ -188,7 +188,7 @@
                 </div>
 
                 <div class="flex">
-                    <div class="contenedorHora flex flexColumn" data-aos="fade-right">
+                    <div class="contenedorHora flex flexColumn" [attr.data-aos]="!previa ? 'fade-right': null">
 
                         <p class="tituloHora">{{dataWeb.WebBodas.ceremonia.hora}}</p>
                         <span class="datoHora flex flexColumn">
@@ -234,15 +234,15 @@
         </div>
     </div>
 
-    <div *ngIf="dataWeb.ConfigApp.tipoFiesta != '0' " class="contenedorCeremonia contenedorFiesta flex flexColumn"
+    <div *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" class="contenedorCeremonia contenedorFiesta flex flexColumn"
         [ngStyle]="{'background': background}">
         <img class="imgsBordes imgIzq" src="/assets/imgs/florDerecha{{dataWeb.ConfigApp.flores}}.png" alt="flor1Izq"
-            data-aos="zoom-in-right" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <img class="imgsBordes imgDer" src="/assets/imgs/florIzquierda{{dataWeb.ConfigApp.flores}}.png" alt="flor2Der"
-            data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            [attr.data-aos]="!previa ? 'zoom-in-left': null"  data-aos-duration="2000" data-aos-easing="ease-in-out">
         <i *ngIf="mostrarIcoSecciones"
             class="icoSeccion fas fa-church animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-        <div class="relative flex contenedorTitulo">
+        <div id="fiestaId" class="relative flex contenedorTitulo">
             <ng-container *ngIf="['3','4'].includes(dataWeb.ConfigApp.tipoTitulos)">
                 <ng-container *ngTemplateOutlet="imgFondoTitulo"></ng-container>
             </ng-container>
@@ -254,7 +254,7 @@
                 <div class="flex">
                     <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenCeremonia)"
                         class="icoCeremonia flex fas fa-map-marked-alt"></i>
-                    <div class="contenedorLugar flex flexColumn" data-aos="fade-left">
+                    <div class="contenedorLugar flex flexColumn" [attr.data-aos]="!previa ? 'fade-left': null">
                         <p class="tituloLugar">{{dataWeb.WebBodas.fiesta.lugar}}</p>
                         <div class="subcontenedorLugar flex flexColumn">
                             <span class="datoLugar">{{dataWeb.WebBodas.fiesta.datoLugar}}</span>
@@ -289,7 +289,7 @@
                 </div>
 
                 <div class="flex">
-                    <div class="contenedorHora flex flexColumn" data-aos="fade-right">
+                    <div class="contenedorHora flex flexColumn" [attr.data-aos]="!previa ? 'fade-right': null">
 
                         <p class="tituloHora">{{dataWeb.WebBodas.fiesta.hora}}</p>
                         <span class="datoHora flex flexColumn">
@@ -335,7 +335,7 @@
         </div>
     </div>
 
-    <div class="contenedorFotos" [ngStyle]="{'background': background}">
+    <div id="galeriaId" class="contenedorFotos" [ngStyle]="{'background': background}">
         <div class="relative flex contenedorTitulo" [ngClass]="{'tipoFoto2': (dataWeb.ConfigApp.tipoRecuerdos) == '2'}">
             <ng-container *ngIf="['3','4'].includes(dataWeb.ConfigApp.tipoTitulos)">
                 <ng-container *ngTemplateOutlet="imgFondoTitulo"></ng-container>
@@ -344,19 +344,17 @@
         </div>
 
         <owl-carousel-o [options]="customOptions">
-            <ng-container *ngFor="let slide of listaFotos">
+            <ng-container *ngFor="let slide of this.listaFotosGaleria; let i = index">
                 <ng-template carouselSlide [id]="slide.id">
                     <ng-container *ngIf="(dataWeb.ConfigApp.tipoRecuerdos) == '1'; else tipoRecuerdos2">
                         <div class="contenedorFoto">
-                            <img [src]="slide.src" [alt]="'Love '+slide.id" [title]="'Love '+slide.id"
-                                [ngStyle]="{ 'object-position': slide.position }">
+                            <img [src]="slide.url" [alt]="'Love '+(i+1)" [title]="'Love '+(i+1)">
                         </div>
                     </ng-container>
                     <ng-template #tipoRecuerdos2>
                         <div class="contenedorFotoTipo2 flex"
                             [ngClass]="{'contenedorFotoTipo3': (dataWeb.ConfigApp.tipoRecuerdos) == '3', 'contenedorFotoTipo4': (dataWeb.ConfigApp.tipoRecuerdos) == '4'}">
-                            <img [src]="slide.src" [alt]="'Love '+slide.id" [title]="'Love '+slide.id"
-                                [ngStyle]="{ 'object-position': slide.position }">
+                            <img [src]="slide.url" [alt]="'Love '+(i+1)" [title]="'Love '+(i+1)">
                         </div>
                     </ng-template>
                 </ng-template>
@@ -364,11 +362,11 @@
         </owl-carousel-o>
     </div>
 
-    <div class="contenedorCodigoVestuario flex flexColumn" [ngStyle]="{'background': backgroundVestuario}">
+    <div id="codigoVestuarioId" class="contenedorCodigoVestuario flex flexColumn" [ngStyle]="{'background': backgroundVestuario}">
         <img class="imgsBordes imgIzq" src="/assets/imgs/vestuarioIzq{{dataWeb.ConfigApp.vestuarioLateralesIzq}}.png"
-            alt="vestuarioIzq" data-aos="zoom-in-right" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            alt="vestuarioIzq" [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <img class="imgsBordes imgDer" src="/assets/imgs/vestuarioDer{{dataWeb.ConfigApp.vestuarioLateralesDer}}.png"
-            alt="vestuarioDer" data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            alt="vestuarioDer" [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <svg class="separadorTop" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
             preserveAspectRatio="none" [ngStyle]="{'fill': backgroundVestuario}">
             <path
@@ -386,9 +384,8 @@
             <ng-container *ngIf="['3','4'].includes(dataWeb.ConfigApp.tipoTitulos)">
                 <ng-container *ngTemplateOutlet="imgFondoTitulo"></ng-container>
             </ng-container>
-            <p class="tituloSeccion flex flexColumn relative">
-                <span class="primerTitulo">{{dataWeb.WebBodas.codigoVestuario.titulo}}</span>
-                <span class="cursiva">{{dataWeb.WebBodas.codigoVestuario.titulo2}}</span>
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.codigoVestuario.titulo}}
             </p>
         </div>
 
@@ -399,23 +396,37 @@
                 <div class="grupo flex flexColumn">
                     <p class="cursiva">
                         {{dataWeb.WebBodas.codigoVestuario.tituloHombres}}
-                        <i class="fab fa-pinterest" (click)="abrirPinterest('linkHombres')"></i>
+                        <i class="{{dataWeb.WebBodas.codigoVestuario.icono}} animate__animated animate__tada animate__infinite animate__slow" (click)="abrirSugerencias('linkHombres')"></i>
                     </p>
                     <span>{{dataWeb.WebBodas.codigoVestuario.descripcionHombres}}</span>
+                    <div class="coloresSugeridos flex">
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1" class="color1"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2" class="color2"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3" class="color3"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4" class="color4"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5" class="color5"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6" class="color6"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6}"></div>
+                    </div>
                 </div>
                 <div class="grupo flex flexColumn">
                     <p class="cursiva">
                         {{dataWeb.WebBodas.codigoVestuario.tituloMujeres}}
-                        <i class="fab fa-pinterest" (click)="abrirPinterest('linkMujeres')"></i>
+                        <i class="{{dataWeb.WebBodas.codigoVestuario.icono}} animate__animated animate__tada animate__infinite animate__slow" (click)="abrirSugerencias('linkMujeres')"></i>
                     </p>
                     <span>{{dataWeb.WebBodas.codigoVestuario.descripcionMujeres}}</span>
                     <div class="coloresSugeridos flex">
-                        <div *ngIf="cantidadColoresSugeridos >= 1" class="color1"></div>
-                        <div *ngIf="cantidadColoresSugeridos >= 2" class="color2"></div>
-                        <div *ngIf="cantidadColoresSugeridos >= 3" class="color3"></div>
-                        <div *ngIf="cantidadColoresSugeridos >= 4" class="color4"></div>
-                        <div *ngIf="cantidadColoresSugeridos >= 5" class="color5"></div>
-                        <div *ngIf="cantidadColoresSugeridos >= 6" class="color6"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1" class="color1" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2" class="color2" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3" class="color3" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4" class="color4" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5" class="color5" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6" class="color6" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6}"></div>
                     </div>
                 </div>
 
@@ -423,11 +434,12 @@
                 <span class="notaGeneral flex flexColumn">
                     {{dataWeb.WebBodas.codigoVestuario.notaGeneral}}
                     <div *ngIf="coloresReservados" class="coloresReservados flex">
-                        <i *ngIf="cantidadColoresReservados >= 1" class="fas fa-ban color1"></i>
-                        <i *ngIf="cantidadColoresReservados >= 2" class="fas fa-ban color2"></i>
-                        <i *ngIf="cantidadColoresReservados >= 3" class="fas fa-ban color3"></i>
-                        <i *ngIf="cantidadColoresReservados >= 4" class="fas fa-ban color4"></i>
-                        <i *ngIf="cantidadColoresReservados >= 5" class="fas fa-ban color5"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado1" class="fas fa-ban color1" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado1}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado2" class="fas fa-ban color2" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado2}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado3" class="fas fa-ban color3" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado3}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado4" class="fas fa-ban color4" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado4}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado5" class="fas fa-ban color5" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado5}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado5" class="fas fa-ban color6" [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado6}"></i>
                     </div>
                 </span>
             </div>
@@ -446,24 +458,23 @@
         </svg>
     </div>
 
-    <div class="contenedorRegalos flex flexColumn" [ngStyle]="{'background': background}">
+    <div id="regalosId" class="contenedorRegalos flex flexColumn" [ngStyle]="{'background': background}">
         <img class="imgsBordes imgIzq" src="/assets/imgs/regalosIzq{{dataWeb.ConfigApp.regalosLateralesIzq}}.png"
-            alt="regalosIzq" data-aos="zoom-in-right" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            alt="regalosIzq" [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
         <img class="imgsBordes imgDer" src="/assets/imgs/regalosDer{{dataWeb.ConfigApp.regalosLateralesDer}}.png"
-            alt="regalosDer" data-aos="zoom-in-left" data-aos-duration="2000" data-aos-easing="ease-in-out">
+            alt="regalosDer" [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
 
         <i *ngIf="mostrarIcoSecciones" class="icoSeccion fas fa-gift"></i>
         <div class="relative flex contenedorTitulo">
             <ng-container *ngIf="['3','4'].includes(dataWeb.ConfigApp.tipoTitulos)">
                 <ng-container *ngTemplateOutlet="imgFondoTitulo"></ng-container>
             </ng-container>
-            <p class="tituloSeccion flex flexColumn relative">
-                <span class="primerTitulo">{{dataWeb.WebBodas.regalos.titulo}}</span>
-                <span class="cursiva">{{dataWeb.WebBodas.regalos.titulo2}}</span>
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.regalos.titulo}}
             </p>
         </div>
 
-        <div class="flex">
+        <div class="flex textoRegalos">
             <div class="contenedor flex flexColumn">
                 <span>{{dataWeb.WebBodas.regalos.tituloLluvia}}</span>
                 <p class="cursiva">
@@ -474,7 +485,7 @@
         </div>
     </div>
 
-    <div class="confirmacionInvitados flex flexColumn" [ngStyle]="{'background': backgroundConfirmacion}">
+    <div id="confirmacionAsistenciaId" class="confirmacionInvitados flex flexColumn" [ngStyle]="{'background': backgroundConfirmacion}">
         <svg class="separadorTop" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
             preserveAspectRatio="none" [ngStyle]="{'fill': backgroundConfirmacion}">
             <path
@@ -493,13 +504,12 @@
             <ng-container *ngIf="['3','4'].includes(dataWeb.ConfigApp.tipoTitulos)">
                 <ng-container *ngTemplateOutlet="imgFondoTitulo"></ng-container>
             </ng-container>
-            <p class="tituloSeccion flex flexColumn relative">
-                <span class="primerTitulo">{{dataWeb.WebBodas.confirmacionInvitados.titulo}}</span>
-                <span class="cursiva">{{dataWeb.WebBodas.confirmacionInvitados.titulo2}}</span>
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.confirmacionInvitados.titulo}}
             </p>
         </div>
 
-        <div class="contenedor flex flexColumn">
+        <div id="botonConfirmacionAsistenciaId" class="contenedor flex flexColumn">
             <p class="textoGracias">{{dataWeb.WebBodas.confirmacionInvitados.gracias}}</p>
             <span class="textoGracias2">{{dataWeb.WebBodas.confirmacionInvitados.gracias2}}</span>
             <button mat-raised-button (click)="verFormulario()"
@@ -520,7 +530,7 @@
         </svg>
     </div>
 
-    <div class="contenedorRecuerdos flex flexColumn" [ngStyle]="{'background-image': 'url(' + imgSecundaria + ')'}">
+    <div id="recuerdosId" class="contenedorRecuerdos flex flexColumn" [ngStyle]="{'background-image': 'url(' + dataWeb.WebBodas.recuerdos.imgFondo + ')'}">
         <div class="nombresRecuerdos flex">
             <span
                 class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
@@ -530,14 +540,14 @@
         </div>
         <div class="subcontenedorRecuerdos flex flexColumn">
             <i
-                class="fab fa-instagram animate__animated animate__pulse animate__infinite animate__delay-1s animate__slow"></i>
+                class="{{dataWeb.WebBodas.recuerdos.icono}} animate__animated animate__pulse animate__infinite animate__delay-1s animate__slow"></i>
             <div class="textRecuerdos flex flexColumn">
                 <span
                     class="tituloRecuerdos animate__animated animate__fadeInUp">{{dataWeb.WebBodas.recuerdos.ayudanos}}</span>
                 <span
                     class="recuerdos animate__animated animate__fadeInUp">{{dataWeb.WebBodas.recuerdos.ayudanos2}}</span>
                 <span class="hashtag animate__animated animate__fadeInUp flex">
-                    <i class="fas fa-hashtag"></i>
+                    <i *ngIf="dataWeb.WebBodas.recuerdos.hashtag" class="fas fa-hashtag"></i>
                     {{dataWeb.WebBodas.recuerdos.hashtag}}
                 </span>
             </div>
@@ -595,11 +605,9 @@
                     <img class="argollas" src="assets/imgs/argollas.gif" alt="argollas">
                 </div>
                 <div class="flex subcontenedorNombres">
-                    <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{(id +
-                        'WebBodas.encabezado.nombreEl}}</span>
+                    <span class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
                     <span class="conectorNombres cursiva flex">&</span>
-                    <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{(id +
-                        'WebBodas.encabezado.nombreElla}}</span>
+                    <span class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.nombreElla}}</span>
                 </div>
                 <div class="fraseEncabezado flex">
                     {{dataWeb.WebBodas.encabezado.frase}}
@@ -695,8 +703,8 @@
 
 <ng-template #conteoRegresivo>
     <ng-container *ngIf="dataWeb && dataWeb.WebBodas">
-        <p class="dia" data-aos="zoom-in" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.dia}}</p>
-        <p class="mes" data-aos="zoom-in" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.mes}}</p>
-        <p class="year" data-aos="zoom-in" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.year}}</p>
+        <p class="dia" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.dia}}</p>
+        <p class="mes" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.mes}}</p>
+        <p class="year" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">{{dataWeb.WebBodas.conteoRegresivo.year}}</p>
     </ng-container>
 </ng-template>

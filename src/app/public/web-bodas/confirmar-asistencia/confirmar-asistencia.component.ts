@@ -138,6 +138,8 @@ export class ConfirmarAsistenciaComponent implements OnInit {
 
   dataConfirmacion: any = {};
 
+  dataWeb: any = {};
+
   constructor(
     private readonly funcionesGeneralesService: FuncionesGeneralesService,
     public dialogRef: MatDialogRef<ConfirmarAsistenciaComponent>,
@@ -146,11 +148,12 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.id = data.id;
+    this.dataWeb = data.dataWeb
   }
 
   ngOnInit(): void {
-    this.funcionesGeneralesService.translate(this.id + 'ConfigApp.familia');
-    this.form = this.funcionesGeneralesService.translate(this.id + 'WebBodas.confirmacionInvitados.linkFormulario');
+    this.funcionesGeneralesService.translate(this.dataWeb.ConfigApp.familia);
+    this.form = this.funcionesGeneralesService.translate(this.dataWeb.WebBodas.confirmacionInvitados.linkFormulario);
     this.linkForm = this.sanitizer.bypassSecurityTrustResourceUrl(this.form);
     this.obtenerConfirmados();
   }
@@ -158,7 +161,6 @@ export class ConfirmarAsistenciaComponent implements OnInit {
   // Consultar datos
   obtenerConfirmados() {
     this.webServiceService.getData(`${this.familia}/usuarios`).then((resp: any) => {
-      console.log('Datos consultados:', resp);
       if (resp?.length > 0) {
         this.listaInvitadosCompleta.forEach((familia: any) => {
           familia.invitados = familia.invitados.filter((inv: any) => !resp.some((e: any) => e.nombre == inv.nombre));
@@ -183,10 +185,10 @@ export class ConfirmarAsistenciaComponent implements OnInit {
     });
     
     this.webServiceService.agregarConfirmados(this.familia, data).then(() => {
-      this.funcionesGeneralesService.openDialog(this.id + 'WebBodas.confirmacionInvitados.confirmacionOk', this.id + 'WebBodas.confirmacionInvitados.confirmacionOkDetalle', TipoEnum.OK);
+      this.funcionesGeneralesService.openDialog(this.dataWeb.WebBodas.confirmacionInvitados.confirmacionOk, this.dataWeb.WebBodas.confirmacionInvitados.confirmacionOkDetalle, TipoEnum.OK);
       this.cerrar();
     }, ()=> {
-      this.funcionesGeneralesService.openDialog(this.id + 'WebBodas.confirmacionInvitados.confirmacionFallo', this.id + 'WebBodas.confirmacionInvitados.confirmacionFalloDetalle', TipoEnum.ERROR)
+      this.funcionesGeneralesService.openDialog(this.dataWeb.WebBodas.confirmacionInvitados.confirmacionFallo, this.dataWeb.WebBodas.confirmacionInvitados.confirmacionFalloDetalle, TipoEnum.ERROR)
       this.cerrar();
     });
   }

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PanelComponent } from './private/panel/panel.component';
+import { PanelComponent } from './private/panel.component';
 import { PRIVATE_ROUTING } from './private-routing.routing';
 import { authGuard } from './core/auth.guard';
 

@@ -763,6 +763,33 @@ mat-hint {
     margin: 0 12px;
 }
 
+.encabezado .titulo {
+    font-size: 16px;
+    font-weight: 800;
+    margin: 24px 0 12px;
+    justify-content: flex-start;
+}
+
+.encabezado .titulo i {
+    font-size: 36px;
+    margin-right: 8px;
+}
+
+.encabezado .titulo .texto {
+    align-items: baseline;
+    line-height: 14px;
+}
+
+.encabezado .titulo .texto .descripcion {
+    font-weight: 300;
+    font-size: 12px;
+}
+
+.dataContenedor {
+    width: 100%;
+    height: calc(100vh - 152px);
+}
+
 @media (max-width:420px) {
     .contenedorTituloPopUp span {
         font-size: 12px;

@@ -1,0 +1,59 @@
+<div class="contenedorPrincipal">
+    <mat-drawer-container class="drawer">
+        <mat-drawer class="menu" mode="side" opened>
+            <div class="contenedorDataMenu flex flexColumn">
+                <div class="contenedorLogo flex">
+                    <img class="logo" src="assets/imgs/logo2.svg"
+                        alt="Logo">
+                </div>
+
+                <div class="contenedorOpciones flex flexColumn">
+                    <div class="opcion flex" (click)="abrir('infoPrincipal')" [ngClass]="{'activo': component == 'infoPrincipal'}" matTooltip="{{'Panel.infoPrincipal.titulo' | translate}}" matTooltipPosition="right">
+                        <i class="fab fa-wpforms"></i>
+                        <span>{{'Panel.infoPrincipal.titulo' | translate}}</span>
+                    </div>
+
+                    <div class="opcion flex" (click)="abrir('invitados')" [ngClass]="{'activo': component == 'invitados'}" matTooltip="{{'Panel.invitados.titulo' | translate}}" matTooltipPosition="right">
+                        <i class="fas fa-vote-yea"></i>
+                        <span>{{'Panel.invitados.titulo' | translate}}</span>
+                    </div>
+
+                    <div class="opcion flex" (click)="abrir('personalizacion')" [ngClass]="{'activo': component == 'personalizacion'}" matTooltip="{{'Panel.personalizacion.titulo'| translate}}" matTooltipPosition="right">
+                        <i class="fas fa-tools"></i>
+                        <span>{{'Panel.personalizacion.titulo' | translate}}</span>
+                    </div>
+                </div>
+
+                <div class="opcion cerrarSesion" matTooltip="{{'Panel.cerrarSesion'| translate}}" matTooltipPosition="right">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>{{'Panel.cerrarSesion' | translate}}</span>
+                </div>
+            </div>
+        </mat-drawer>
+        <mat-drawer-content class="contenidoDrawer">
+            <ng-container *ngIf="component == 'infoPrincipal'; else invitados">
+                <app-info-principal></app-info-principal>
+            </ng-container>
+            <ng-template #invitados>
+                <ng-container *ngIf="component == 'invitados'; else personalizacion">
+                    <app-invitados></app-invitados>
+                </ng-container>
+            </ng-template>
+
+            <ng-template #personalizacion>
+                <app-personalizacion></app-personalizacion>
+            </ng-template>
+            
+        </mat-drawer-content>
+    </mat-drawer-container>
+    
+    <div class="contenedorFooter">
+        <div class="desarrolladoPor flex">
+            <p class="flex">
+                {{'dataApp.nombreApp' | translate}}
+                <i class="fas fa-copyright"></i>
+                {{'dataApp.copyright' | translate}} {{fechaActual | date: 'yyyy'}}
+            </p>
+        </div>
+    </div>
+</div>

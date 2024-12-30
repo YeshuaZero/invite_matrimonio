@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Database, ref, set, get, child, push } from '@angular/fire/database';
+import { Storage, ref as storageRef, uploadBytesResumable, getDownloadURL, listAll, getStorage } from '@angular/fire/storage'; // Para el almacenamiento
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root',
 })
 export class WebBodasService {
+    private storage: any = getStorage();
+
     constructor(private dataBase: Database) { }
 
     // Guardar datos en una ruta específica
@@ -63,4 +67,27 @@ export class WebBodasService {
         });
     }
 
+    getFiles(folderPath: string): Observable<string[]> {
+        const folderRef = storageRef(this.storage, folderPath);
+
+        return new Observable<string[]>((observer) => {
+            listAll(folderRef)
+                .then((res) => {
+                    const files = res.items.map(async (itemRef) => {
+                        const url = await getDownloadURL(itemRef);
+                        return { url, path: itemRef.fullPath };
+                    });
+
+                    // Resolvemos todas las promesas y notificamos al observable
+                    Promise.all(files).then((fileList: any) => {
+                        observer.next(fileList);
+                        observer.complete();
+                    });
+                })
+                .catch((error) => {
+                    console.error('Error al listar archivos:', error);
+                    observer.error(error);
+                });
+        });
+    }
 }

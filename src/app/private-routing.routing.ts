@@ -9,5 +9,5 @@ import { Routes } from '@angular/router';
 
 
 export const PRIVATE_ROUTING: Routes = [
-    { path: '', loadComponent: () => import('./private/panel/panel.component').then(c => c.PanelComponent) },
+    { path: '', loadComponent: () => import('./private/panel.component').then(c => c.PanelComponent) },
 ];
