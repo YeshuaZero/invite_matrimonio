@@ -100,64 +100,12 @@
     border: none;
 }
 
-.textoFiestaNoIncluida {
-    color: #ccc;
-    font-weight: 200;
-    margin-left: 4px;
+.flores img {
+    width: 100px;
 }
 
-.icoVestuario i {
-    font-size: 14px;
-    margin-right: 18px;
-}
-
-.icoRecuerdos {
-    margin-top: 10px;
-}
-
-.icoRecuerdos i {
-    font-size: 24px;
-    margin-right: 18px;
-}
-
-.icoUpload {
-    margin: 0;
-}
-
-.contenedorImagenesGaleria {
-    justify-content: flex-start;
-    margin-top: 20px;
-    gap: 24px;
-}
-
-.contenedorImagenesGaleria>div {
-    background: #fff;
-    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
-    padding: 4px 4px 12px;
-}
-
-.contenedorImagenesGaleria img {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-}
-
-.contenedorImagenesGaleria i {
-    position: absolute;
-    z-index: 999;
-    top: -8px;
-    right: -16px;
-    padding: 4px 6px;
-    background: #fff;
-    border-radius: 16px;
-    font-size: 16px;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
-    cursor: pointer;
-    color: #aaa;
-}
-
-.contenedorImagenesGaleria i:hover {
-    color: red;
+.flores .sinFlores{
+    margin-right: 12px;
 }
 
 .loading{
@@ -168,6 +116,104 @@
 .loading span{
     font-weight: 200;
 }
+
+.ajustesGeneralesInputs{
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.ajustesGeneralesInputs mat-radio-group{
+    width: 100%;
+}
+
+.dataContenedor mat-radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.dataContenedor mat-radio-button{
+    display: flex;
+}
+
+.tipoTitulos{
+    justify-content: flex-start;
+    margin-top: 16px;
+}
+
+.dataContenedor ::ng-deep .mdc-label{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tituloSeccion {
+    font-size: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+.tituloSeccion.tipoTitulo2,
+.tituloSeccion.tipoTitulo3,
+.tituloSeccion.tipoTitulo4 {
+    font-family: 'Raleway';
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.tipoTitulo3,
+.tipoTitulo4{
+    padding-left: 32px;
+    z-index: 9;
+    position: relative;
+}
+
+.fondoLetrero {
+    position: absolute;
+    width: 220px;
+    height: 70px;
+    margin-bottom: 6px;
+    fill: #eee;
+    top: -20px;
+    left: -0;
+}
+
+.tituloColor{
+    margin: 30px 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.inputsColor{
+    padding: 8px 0 0;
+}
+
+.opcionColor{
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+}
+
+.colorPicker{
+    margin-right: 6px;
+}
+
+.tituloImagenesPC{
+    margin: 48px 0 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.tituloLadoIzq{
+    margin: 8px 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.separadorBottom{
+    margin: 6px 0 12px;
+}
+
 
 /* VISTA PREVIA */
 

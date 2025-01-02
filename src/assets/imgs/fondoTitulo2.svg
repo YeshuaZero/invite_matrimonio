@@ -1,0 +1,20 @@
+<svg  xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" fill="#ffffff"
+    width="300" zoomAndPan="magnify" viewBox="0 0 224.87999 68.999997" height="150"
+    preserveAspectRatio="none" version="1.0">
+    <defs>
+        <clipPath id="b45f33407d">
+            <path
+                d="M 0.378906 13.488281 L 224.507812 13.488281 L 224.507812 55.464844 L 0.378906 55.464844 Z M 0.378906 13.488281 "
+                clip-rule="nonzero" />
+        </clipPath>
+    </defs>
+    <g clip-path="url(#b45f33407d)">
+        <path
+            d="M 224.390625 13.496094 L 0.484375 13.496094 L 16.863281 34.496094 L 0.484375 55.496094 L 224.390625 55.496094 L 208.011719 34.496094 L 224.390625 13.496094 "
+            fill-opacity="1" fill-rule="nonzero" />
+    </g>
+    <path opacity=".6"
+        d="M 11.207031 50.261719 L 213.667969 50.261719 L 201.375 34.496094 L 213.667969 18.730469 L 11.207031 18.730469 L 23.5 34.496094 Z M 215.617188 51.210938 L 9.257812 51.210938 L 22.292969 34.496094 L 9.257812 17.777344 L 215.617188 17.777344 L 202.582031 34.496094 L 215.617188 51.210938 "
+        fill-opacity=".6" fill-rule="nonzero" />
+</svg>

@@ -95,7 +95,21 @@
       "guardadoNoConfirmado": "Datos no actualizados",
       "guardadoNoConfirmadoDesc": "Es posible que la información no haya sido guardada correctamente, por favor recargue la página y verifique la información, si el problema continúa por favor contacte a soporte.",
       "generales": {
-          "titulo": "Ajustes Generales"
+          "titulo": "Ajustes Generales",
+          "ningunaFlor": "Sin Flores",
+          "tituloTipo1": "Titulos tipo 1",
+          "tituloTipo2": "Titulos tipo 2",
+          "tituloTipo3": "Titulos tipo 3",
+          "tituloTipo4": "Titulos tipo 4",
+          "colorFondo": "Color Fondo",
+          "colorTexto": "Color Texto",
+          "seleccionarColorFondo": "Personalizado",
+          "mostrarIcoSecciones": "Mostrar Icono en Títulos",
+          "separadorTopTipo1": "Separador Superior Tipo 1",
+          "separadorTopTipo2": "Separador Superior Tipo 2",
+          "separadorBottomTipo1": "Separador Inferior Tipo 1",
+          "separadorBottomTipo2": "Separador Inferior Tipo 2",
+          "ninguno": "Ninguno"
       },
       "titulos": {
         "titulo": "Títulos Secciones",
@@ -116,7 +130,17 @@
         "frasePrincipal": "Frase Encabezado",
         "imgPrincipal": "Imagen Principal",
         "frase": "Eslogan",
-        "autoFrase": "Autor"
+        "autoFrase": "Autor",
+        "floresEncabezado": "Flores En Encabezado",
+        "encabezadoTipo1": "Encabezado Tipo 1",
+        "encabezadoTipo2": "Encabezado Tipo 2",
+        "encabezadoTipo3": "Encabezado Tipo 3",
+        "estiloConteoRegresivo1": "Estilo Conteo Regresivo 1",
+        "estiloConteoRegresivo2": "Estilo Conteo Regresivo 2",
+        "estiloConteoRegresivo3": "Estilo Conteo Regresivo 3",
+        "separadorTipo0": "Ninguno",
+        "separadorTipo1": "Separador Tipo 1",
+        "separadorTipo2": "Separador Tipo 2"
       },
       "ceremonia": {
         "titulo": "Ceremonia",
@@ -126,7 +150,11 @@
         "latitud": "Latitud",
         "longitud": "Longitud",
         "textoHora": "Texto Hora",
-        "cantidad": "Duración en horas / Hora Inicio"
+        "cantidad": "Duración en horas / Hora Inicio",
+        "ceremoniaTipo1": "Ceremonia Tipo 1",
+        "ceremoniaTipo2": "Ceremonia Tipo 2",
+        "mostrarIconos": "Mostrar Iconos",
+        "sinIconosGrandes": "Sin Iconos Grandes"
       },
       "fiesta": {
         "noIncluida": "Sección Oculta",
@@ -138,11 +166,19 @@
         "latitud": "Latitud",
         "longitud": "Longitud",
         "textoHora": "Texto Hora",
-        "cantidad": "Duración en horas / Hora Inicio"
+        "cantidad": "Duración en horas / Hora Inicio",
+        "fiestaTipo1": "Fiesta Tipo 1",
+        "fiestaTipo2": "Fiesta Tipo 2",
+        "mostrarIconos": "Mostrar Iconos",
+        "sinIconosGrandes": "Sin Iconos Grandes"
       },
       "fotos": {
         "titulo": "Galería de Fotos",
-        "agregarFotos": "Agregar Fotos"
+        "agregarFotos": "Agregar Fotos",
+        "recuerdosTipo1": "Recuerdos Tipo 1",
+        "recuerdosTipo2": "Recuerdos Tipo 2",
+        "recuerdosTipo3": "Recuerdos Tipo 3",
+        "recuerdosTipo4": "Recuerdos Tipo 4"
       },
       "codigoVestuario": {
         "titulo": "Código de Vestuario",
@@ -154,12 +190,20 @@
         "notaAdicional": "Nota Adicional",
         "coloresSugeridosHombres": "Colores Sugeridos Hombres",
         "coloresSugeridosMujeres": "Colores Sugeridos Mujeres",
-        "coloresReservados": "Colores Reservados"
+        "coloresReservados": "Colores Reservados",
+        "imagenesPC": "Imágenes decorativas laterales en PC",
+        "ladoIzq": "Lado Izquierdo",
+        "ladoDer": "Lado Derecho",
+        "ninguno": "Ninguno"
       },
       "regalos": {
         "titulo": "Sugerencias de Regalo",
         "frase": "Texto Regalos",
-        "textoResaltado": "Texto Resaltado"
+        "textoResaltado": "Texto Resaltado",
+        "imgslaterales": "Imágenes decorativas laterales",
+        "ladoIzq": "Lado Izquierdo",
+        "ladoDer": "Lado Derecho",
+        "ninguno": "Ninguno"
       },
       "confirmacionInvitados": {
         "titulo": "Confirmación de Asistencia",

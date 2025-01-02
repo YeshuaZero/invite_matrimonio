@@ -42,12 +42,6 @@ export class WebBodasComponent implements OnInit, OnChanges {
     segundos: 0
   };
 
-  listaBackground = ['#f7f4ef', '#f9f6e9', '#e5ebf1', '#e2ece9', '#f7f4e9', '#fff7f7', '#f7f1ff'];
-  background = '#ffffff';
-  listaBackgroundVestuario = ['#f9c7c9', '#ffc69a', '##F8E8A0', '#dbe1bc', '#cfd5b3', '#93b3a7', '#a6c6dd', '#cca3c1'];
-  backgroundVestuario = '#e5e0d8';
-  listaBackgroundConfirmacion = ['#f9c7c9', '#ffc69a', '##F8E8A0', '#dbe1bc', '#cfd5b3', '#93b3a7', '#a6c6dd', '#cca3c1'];
-  backgroundConfirmacion = '#bec092';
   imgPrincipal = '';
   imgSecundaria = '';
   existeCoordenadas = '';
@@ -148,9 +142,6 @@ export class WebBodasComponent implements OnInit, OnChanges {
   }
 
   inicializarData(){
-    this.background = this.dataWeb.ConfigApp.colorFondo;
-    this.backgroundVestuario = this.dataWeb.ConfigApp.colorFondoVestuario;
-    this.backgroundConfirmacion = this.dataWeb.ConfigApp.colorFondoConfirmacion;
     this.imgPrincipal = this.dataWeb.WebBodas.encabezado.imgEncabezado;
     this.imgSecundaria = this.dataWeb.WebBodas.encabezado.imgSecundaria;
     this.existeCoordenadas = this.dataWeb.WebBodas.ceremonia.coordenadas;

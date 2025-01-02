@@ -30,7 +30,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
   id: string;
   dataWeb: any = {};
   copiaDataWeb: any = {};
-  listaIds = ['encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
+  listaIds = ['','encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
 
   listaFotosGaleria: any = [];
   selectImagen: any;
@@ -79,7 +79,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     this.consultarImagenes();
 
     this.subscriptions.add(this.saveObs.pipe(debounceTime(500)).subscribe((data: any) => {
-      this.guardar(data.seccion, data.atributo, data.seccionLoading);
+      this.guardar(data.seccion, data.seccionLoading);
     }));
   }
 
@@ -120,7 +120,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     this.ajustesFecha('ceremonia');
     this.ajustesFecha('fiesta');
 
-    this.guardar('', '', 'encabezado');
+    this.guardar('', 'encabezado');
     this.dataWeb = { ...this.dataWeb };
   }
 
@@ -144,7 +144,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     this.dataWeb.WebBodas[seccion].finCalendario = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYYMMddTHHmmss').toUpperCase();
     this.dataWeb.WebBodas[seccion].inicioCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaInicio, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
     this.dataWeb.WebBodas[seccion].finCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.saveData(seccion, '', seccion);
+    this.saveData('', seccion);
     this.dataWeb = { ...this.dataWeb };
   }
 
@@ -157,12 +157,12 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
 
   cambioLugar(seccion: any) {
     this.dataWeb.WebBodas[seccion].ubicacionCalendario = this.dataWeb.WebBodas[seccion].datoLugar;
-    this.saveData(seccion, 'ubicacionCalendario', seccion);
+    this.saveData('ubicacionCalendario', seccion);
   }
 
   cambioFiesta() {
     if (this.dataWeb.WebBodas.fiesta.fiestaAparte) setTimeout(() => this.scroll('fiestaId'), 200);
-    this.saveData('fiesta', 'fiestaAparte', 'fiesta')
+    this.saveData('fiestaAparte', 'fiesta')
   }
 
   agregarColor(tipoColor: any) {
@@ -174,7 +174,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
       }
     }
     this.dataWeb.WebBodas.codigoVestuario[`${tipoColor}${indexAgregar}`] = '#000';
-    this.guardar('codigoVestuario', `${tipoColor}${indexAgregar}`, 'codigoVestuario');
+    this.guardar(`${tipoColor}${indexAgregar}`, 'codigoVestuario');
   }
 
   quitarColor(tipoColor: any) {
@@ -186,7 +186,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
       }
     }
     this.dataWeb.WebBodas.codigoVestuario[`${tipoColor}${indexQuitar}`] = null;
-    this.guardar('codigoVestuario', `${tipoColor}${indexQuitar}`, 'codigoVestuario');
+    this.guardar(`${tipoColor}${indexQuitar}`, 'codigoVestuario');
   }
 
   onStepChange(event: StepperSelectionEvent) {
@@ -199,58 +199,25 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     if (elementId) this.funcionesGenerales.scroll(elementId);
   }
 
-  cargarArchivo(file: any, nombre: string, seccionLoading: string) {
-    this.loading[seccionLoading] = true;
-    if (file) {
-      const filePath = nombre == 'fotoGaleria' ? `${this.id}/galeriaFotos/${file.name}` : `${this.id}/${nombre}`;
-      this.panelService.uploadFile(filePath, file).subscribe((url) => {
-        console.log('url:', url)
-        this.loading[seccionLoading] = false;
-        switch (nombre) {
-          case 'imgPrincipal':
-            this.dataWeb.WebBodas.encabezado.imgEncabezado = url;
-            this.saveData('encabezado', 'imgEncabezado', 'encabezado');
-            break;
-          case 'imgFondo':
-            this.dataWeb.WebBodas.recuerdos.imgFondo = url;
-            this.saveData('recuerdos', 'imgFondo', 'recuerdos');
-            break;
-          case 'fotoGaleria':
-            this.selectImagen = null;
-            this.listaFotosGaleria.push({
-              path: `${this.id}/galeriaFotos/${file.name}`,
-              url
-            });
-            break;
-          default:
-            break;
-        }
-      });
-    }
+  saveData(seccion: string, seccionLoading?: string){
+    this.saveObs.next({ seccion, seccionLoading });
   }
 
-  saveData(seccion: string, atributo?: string, seccionLoading?: string){
-    this.saveObs.next({ seccion, atributo, seccionLoading });
-  }
-
-  guardar(seccion: string, atributo?: string, seccionLoading?: string): void {
+  guardar(atributo: string, seccionLoading?: string): void {
     if (seccionLoading) this.loading[seccionLoading] = true;
 
     let path: string;
     let dataToSave: any;
     if (atributo) {
-      path = `dataWeb/${this.id}/WebBodas/${seccion}/${atributo}`;
-      dataToSave = this.dataWeb.WebBodas[seccion][atributo];
-    } else if (seccion) {
-      path = `dataWeb/${this.id}/WebBodas/${seccion}`;
-      dataToSave = this.dataWeb.WebBodas[seccion];
+      path = `dataWeb/${this.id}/ConfigApp/${atributo}`;
+      dataToSave = this.dataWeb.ConfigApp[atributo];
     } else {
-      path = `dataWeb/${this.id}/WebBodas`;
-      dataToSave = this.dataWeb.WebBodas;
+      path = `dataWeb/${this.id}/ConfigApp`;
+      dataToSave = this.dataWeb.ConfigApp;
     }
 
 
-    if (!atributo || !seccion || this.dataWeb.WebBodas[seccion][atributo] !== this.copiaDataWeb.WebBodas[seccion][atributo]) {
+    if (!atributo || this.dataWeb.ConfigApp[atributo] !== this.copiaDataWeb.ConfigApp[atributo]) {
       this.panelService.saveData(path, dataToSave)
         .then((resp) => {
           console.log('Info guardada exitosamente.', resp);

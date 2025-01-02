@@ -1,0 +1,13 @@
+<svg class="separador2" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none">
+    <path d="M0 97L192 83L384 95L576 123L768 105L960 72L960 0L768 0L576 0L384 0L192 0L0 0Z"
+        opacity=".2"></path>
+    <path d="M0 89L192 103L384 75L576 68L768 89L960 79L960 0L768 0L576 0L384 0L192 0L0 0Z"
+        opacity=".25"></path>
+    <path d="M0 50L192 69L384 83L576 54L768 54L960 83L960 0L768 0L576 0L384 0L192 0L0 0Z"
+        opacity=".4"></path>
+    <path d="M0 51L192 28L384 27L576 60L768 61L960 33L960 0L768 0L576 0L384 0L192 0L0 0Z"
+        opacity=".6"></path>
+    <path d="M0 38L192 32L384 38L576 37L768 16L960 17L960 0L768 0L576 0L384 0L192 0L0 0Z"
+        opacity="1"></path>
+</svg>

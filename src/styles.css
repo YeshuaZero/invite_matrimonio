@@ -599,11 +599,10 @@ textarea {
     padding-top: 4px !important
 }
 
-.separador {
+.separadorLinea {
     height: 1px;
     width: 120px;
     border-bottom: solid 1px #d3d3ff;
-    margin: 10px 0 20px;
 }
 
 /* POPUP LOADER */
