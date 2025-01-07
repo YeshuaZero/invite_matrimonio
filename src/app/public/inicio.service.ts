@@ -26,4 +26,16 @@ export class InicioService {
             });
     }
 
+    sesionIniciada(path: string, data: any): Promise<void> {
+        const dbRef = ref(this.dataBase, path);
+        return set(dbRef, data)
+            .then(() => {
+                console.log('Datos guardados exitosamente.');
+            })
+            .catch((error) => {
+                console.error('Error al guardar los datos:', error);
+                throw error;
+            });
+    }
+
 }

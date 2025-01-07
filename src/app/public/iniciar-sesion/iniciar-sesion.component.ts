@@ -50,7 +50,10 @@ export class IniciarSesionComponent implements OnInit {
       console.log('resp:', resp);
       if(resp){
         if(resp.activo){
-          this.consultarData(resp.id);
+          resp.fechaUltimoLogueo = this.funcionesGeneralesService.formatearFecha(new Date(), 'dd/MM/yyyy HH:mm:ss');
+          this.inicioService.sesionIniciada(`users/${key}`, resp).then(() => {
+              this.consultarData(resp.id);
+            });
         } else {
           this.loading = false;
           this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioInactivo', 'Inicio.iniciarSesion.usuarioInactivoDesc', TipoEnum.ERROR);

@@ -21,8 +21,8 @@
             <div class="flex flexColumn">
                 <p class="descripcion">{{'Inicio.descripcionAccion' | translate}}</p>
                 <div class="flex flexColumn contenedorAcciones">
-                    <button class="accion1 animate__animated animate__tada animate__infinite animate__delay-1s animate__slow">{{'Inicio.accion1' | translate}}</button>
-                    <button class="accion2">{{'Inicio.accion2' | translate}}</button>
+                    <button class="accion1 animate__animated animate__tada animate__infinite animate__delay-1s animate__slow" (click)="enviarWhatsApp('Inicio.precios.quieroClassic')">{{'Inicio.accion1' | translate}}</button>
+                    <button class="accion2" (click)="verEjemplos()">{{'Inicio.accion2' | translate}}</button>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
                             </div>
                         
                             <div class="flex contenedorAccionCompra">
-                                <button>{{'Inicio.precios.botonPlan1' | translate}}</button>
+                                <button (click)="enviarWhatsApp('Inicio.precios.quieroClassic')">{{'Inicio.precios.botonPlan1' | translate}}</button>
                             </div>
                         </div>
                         <div class="planVIP boxInfo detallePrecio">
@@ -117,7 +117,7 @@
                             </div>
                         
                             <div class="flex contenedorAccionCompra">
-                                <button>{{'Inicio.precios.botonPlan2' | translate}}</button>
+                                <button (click)="enviarWhatsApp('Inicio.precios.quieroPlatino')">{{'Inicio.precios.botonPlan2' | translate}}</button>
                             </div>
                         </div>
             </div>

@@ -1,3 +1,7 @@
+.popUp{
+    padding-bottom: 6px;
+}
+
 .contenedorIniciarSesion,
 .loader{
     width: 250px;

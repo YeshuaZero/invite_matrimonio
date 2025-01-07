@@ -1,7 +1,13 @@
 {
   "dataApp": {
     "nombreApp": "Digital Moments ",
-    "copyright": "Copyright"
+    "copyright": "Copyright",
+    "noData": "Sin datos...",
+    "celularWhatsApp": "573182400371"
+  },
+  "General": {
+    "eliminar": "Eliminar",
+    "cancelar": "Cancelar"
   },
   "Inicio": {
     "digitalMoments": "Digital Moments",
@@ -10,7 +16,7 @@
     "textoPrincipalFinal": "personalizada.",
     "descripcionAccion": "El primer paso hacia el 'Sí, acepto' empieza aquí. ¡Diseña tu invitación ahora!",
     "accion1": "¡ Quiero mi Web !",
-    "accion2": "ver Ejemplos",
+    "accion2": "Ver Ejemplo",
     "historiaCorta": "Tu boda es única, y la invitación debe reflejar eso.",
     "historiaCorta2": "Con una invitación digital, no solo envías un mensaje, envías una experiencia, un adelanto del amor y la felicidad que compartirás en tu gran día.",
     "historiaCorta3": "Pasemos de lo complicado y ten control de lo que quieres, incluso de la confirmación de tus invitados.",
@@ -82,7 +88,9 @@
         "nro3Pro": "¿Tienes un estilo en mente? Lo creamos para ti."
       },
       "botonPlan1": "¡Quiero este!",
-      "botonPlan2": "¡Quiero este!"
+      "botonPlan2": "¡Quiero este!",
+      "quieroClassic": "Hola, estoy interesado en el Plan Classic. ¿Cuál es el paso a seguir?",
+      "quieroPlatino": "Hola, quiero contratar el Plan Platino. ¿Cuál es el paso a seguir?"
     },
     "siguenos": "Síguenos"
   },
@@ -191,7 +199,7 @@
         "coloresSugeridosHombres": "Colores Sugeridos Hombres",
         "coloresSugeridosMujeres": "Colores Sugeridos Mujeres",
         "coloresReservados": "Colores Reservados",
-        "imagenesPC": "Imágenes decorativas laterales en PC",
+        "imagenesPC": "Imágenes decorativas laterales",
         "ladoIzq": "Lado Izquierdo",
         "ladoDer": "Lado Derecho",
         "ninguno": "Ninguno"
@@ -221,12 +229,63 @@
     },
     "invitados": {
       "titulo": "Invitados",
-      "descripcion": "Controla tu lista de invitados, agrega o elimina nombres y consulta confirmaciones en tiempo real."
+      "descripcion": "Controla tu lista de invitados, agrega o elimina nombres y consulta confirmaciones en tiempo real.",
+      "tituloInvitados": "Lista de Invitados",
+      "configuracion": "Configuración",
+      "inputSeleccionarNombre": "Input Seleccionar Invitado(s)",
+      "preguntaAsistencia": "Pregunta Asistencia",
+      "preguntaAsistenciaGrupo": "Pregunta Asistencia Varios",
+      "si": "Texto Si",
+      "no": "Texto No",
+      "tituloInfoAdicional": "Texto Info Adicional",
+      "inputInfoAdicional": "Input Info Adicional",
+      "graciasConfirmados": "Título Todos Confirmados",
+      "todosConfirmados": "Texto Todos Confirmados",
+      "agregarInvitado": "Agregar Invitado",
+      "crearInvitado": "Agregar Invitado",
+      "editarInvitado": "Editar Invitado",
+      "nombre": "Nombre",
+      "grupo": "Familia o Grupo",
+      "nombreNuevoGrupo": "Nombre Nueva Familia o Grupo",
+      "celular": "Celular",
+      "estadoInvitacion": "Estado Invitación",
+      "infoAdicional": "Info Adicional",
+      "opciones": "Opciones",
+      "nombreInvitado": "Nombre Invitado",
+      "botonCrearInvitado": "AGREGAR INVITADO",
+      "botonEditarInvitado": "GUARDAR",
+      "invitadoAgregadoOK": "Nuevo Invitado Agregado",
+      "invitadoAgregadoOKDetalle": "Se ha agregado el nuevo invitado correctamente.",
+      "invitadoAgregadoError": "Error al Agregar Invitado",
+      "invitadoAgregadoErrorDetalle": "No ha sido posible agregar el nuevo invitado, por favor intente de nuevo y en caso de continuar el error reportarlo.",
+      "invitadoEditadoOK": "Invitado Actualizado",
+      "invitadoEditadoOKDetalle": "Se ha actualizado los datos del invitado correctamente.",
+      "invitadoEditadoError": "Error al Actualizar Invitado",
+      "invitadoEditadoErrorDetalle": "No ha sido posible actualizar el invitado, por favor intente de nuevo y en caso de continuar el error reportarlo.",
+      "todosLosInvitados": "Todos",
+      "confirmados": "Confirmados",
+      "pendientes": "Pendientes",
+      "rechazados": "No Asisten",
+      "enviarWhatsapp": "Enviar WhatsApp",
+      "editar": "Editar",
+      "eliminar": "Eliminar",
+      "preguntaEliminar": "¿Eliminar Invitado?",
+      "preguntaEliminarDetalle": "¿Está seguro que desea eliminar el invitado? Este proceso no tiene reversa.",
+      "invitadoEliminadoOK": "Invitado Eliminado",
+      "invitadoEliminadoOKDetalle": "El Invitado ha sido eliminado correctamente.",
+      "invitadoEliminadoError": "Error al eliminar el invitado",
+      "invitadoEliminadoErrorDetalle": "No ha sido posible eliminar el invitado, por favor intente de nuevo y en caso de continuar el error reportarlo.",
+      "dice": "Dice: "
     },
     "personalizacion": {
       "titulo": "Personalización",
       "descripcion": "Tu web, tus reglas: cámbiala cuantas veces quieras, cuando lo necesites."
     },
     "cerrarSesion": "Cerrar Sesión"
+  },
+  "Invitados": {
+    "tituloBoton": "ENVIAR RESPUESTA...",
+    "confirmacionFallo": "No ha sido posible registrar la respuesta",
+    "confirmacionFalloDetalle": "No sabemos que pasó... Por favor ayúdanos enviando nuevamente tu respuesta..."
   }
 }

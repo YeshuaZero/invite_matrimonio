@@ -1,15 +1,14 @@
 import { SharedModule } from 'src/app/core/shared/shared.module';
 import { Component } from '@angular/core';
-import { FuncionesGeneralesService} from 'src/app/core/funciones-generales.services';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { InfoPrincipalComponent } from "./info-principal/info-principal.component";
 import { InvitadosComponent } from "./invitados/invitados.component";
 import { PersonalizacionComponent } from "./personalizacion/personalizacion.component";
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-panel',
@@ -22,17 +21,20 @@ import { PersonalizacionComponent } from "./personalizacion/personalizacion.comp
 export class PanelComponent {
 
   fechaActual = new Date();
-  component: string = 'personalizacion';
+  component: string = 'infoPrincipal';
 
   constructor(
-    private readonly funcionesGenerales: FuncionesGeneralesService,
-    private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private readonly router: Router
   ) {
   }
 
   abrir(component: string){
     this.component = component;
+  }
+
+  cerrarSesion(){
+    this.router.navigate(['/']);
   }
 
 }

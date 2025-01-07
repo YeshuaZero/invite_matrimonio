@@ -1,6 +1,6 @@
 <div class=popUp>
     <div class="contenedorTituloPopUp">
-        <span *ngIf="listaInvitados?.length > 0">{{dataWeb.WebBodas.confirmacionInvitados.confirmarAsistencia}}</span>
+        <span *ngIf="listaInvitados?.length > 0">{{dataWeb.WebBodas.confirmacionInvitados.titulo}}</span>
         <i class="cerrar fas fa-times" (click)="cerrar()"></i>
     </div>
     <div class="contenedorConfirmarAsistencia flex flexColumn">
@@ -11,9 +11,9 @@
         <ng-template #listaEnApp>
             <ng-container *ngIf="!loading; else loader">
             
-            <ng-container *ngIf="listaInvitados?.length > 0; else todosConfirmados">
+            <ng-container *ngIf="listaInvitados?.length > 0 && !mostrarCompletado; else todosConfirmados">
                 <mat-form-field class="listaInvitados" appearance="outline" subscriptSizing="dynamic">
-                    <mat-label>{{dataWeb.WebBodas.confirmacionInvitados.listaInvitados}}</mat-label>
+                    <mat-label>{{dataWeb.Invitados.configuracion.listaInvitados}}</mat-label>
                     <mat-select [panelWidth]="300" [(ngModel)]="dataConfirmacion.invitado" multiple>
                         <mat-optgroup *ngFor="let familia of listaInvitados" [label]="familia.nombre">
                             <i class="fas fa-users"></i>
@@ -25,22 +25,22 @@
                 </mat-form-field>
 
                 <div class="flex flexColumn decisionAsistencia">
-                    <p>{{dataConfirmacion.invitado?.length > 1 ? dataWeb.WebBodas.confirmacionInvitados.preguntaAsistenciaGrupo : dataWeb.WebBodas.confirmacionInvitados.preguntaAsistencia}}</p>
+                    <p>{{dataConfirmacion.invitado?.length > 1 ? dataWeb.Invitados.configuracion.preguntaAsistenciaGrupo : dataWeb.Invitados.configuracion.preguntaAsistencia}}</p>
                     <mat-radio-group aria-label="Select an option" [(ngModel)]="dataConfirmacion.asistencia">
-                        <mat-radio-button value="1">{{dataWeb.WebBodas.confirmacionInvitados.si}}</mat-radio-button>
-                        <mat-radio-button value="2">{{dataWeb.WebBodas.confirmacionInvitados.no}}</mat-radio-button>
+                        <mat-radio-button value="1">{{dataWeb.Invitados.configuracion.si}}</mat-radio-button>
+                        <mat-radio-button value="2">{{dataWeb.Invitados.configuracion.no}}</mat-radio-button>
                     </mat-radio-group>
                 </div>
 
                 <div class="flex flexColumn infoAdicional">
-                    <p>{{dataWeb.WebBodas.confirmacionInvitados.infoAdicional}}</p>
+                    <p>{{dataWeb.Invitados.configuracion.infoAdicional}}</p>
                     <mat-form-field class="infoAdicionalInvitado" appearance="outline" subscriptSizing="dynamic">
-                        <mat-label>{{dataWeb.WebBodas.confirmacionInvitados.infoAdicionalInvitado}}</mat-label>
+                        <mat-label>{{dataWeb.Invitados.configuracion.infoAdicionalInvitado}}</mat-label>
                         <textarea matInput placeholder="{{dataWeb.WebBodas.confirmacionInvitados.ingreseAqui}}" [(ngModel)]="dataConfirmacion.infoAdicional"></textarea>
                     </mat-form-field>
                 </div>
 
-                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{dataWeb.WebBodas.confirmacionInvitados.tituloBoton}}</button>
+                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="enviar()" [disabled]="!dataConfirmacion.invitado || !dataConfirmacion.asistencia">{{'Invitados.tituloBoton' | translate}}</button>
             </ng-container>
             </ng-container>
         </ng-template>
@@ -49,8 +49,8 @@
 
 <ng-template #todosConfirmados>
     <i class="icoConfirmados fas fa-glass-cheers animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
-    <p class="tituloGraciasConfirmacion cursiva">{{dataWeb.WebBodas.confirmacionInvitados.graciasConfirmados}}</p>
-    <p class="invitadosConfirmados">{{dataWeb.WebBodas.confirmacionInvitados.todosConfirmados}}</p>
+    <p class="tituloGraciasConfirmacion cursiva">{{dataWeb.Invitados.configuracion.graciasConfirmados}}</p>
+    <p class="invitadosConfirmados">{{dataWeb.Invitados.configuracion.todosConfirmados}}</p>
 </ng-template>
 
 <ng-template #loader>

@@ -1,0 +1,138 @@
+.dataContenedor {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-gap: 40px;
+    align-items: start;
+    align-content: baseline;
+    padding-top: 18px;
+    overflow: hidden;
+}
+
+.contenedorPreviaWeb {
+    position: absolute;
+    right: 80px;
+    top: 60px;
+    height: calc(100% - 110px);
+    max-height: 600px;
+    container: inline-size;
+}
+
+.stepperVertical{
+    height: calc(100vh - 150px);
+}
+
+
+.inputForm {
+    overflow: auto;
+    height: calc(100% - 16px);
+    direction: rtl;
+    padding-bottom: 16px;
+}
+
+.inputForm ::ng-deep mat-vertical-stepper {
+    direction: ltr;
+}
+
+.contenedorInputs {
+    padding: 12px 0 0;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+::ng-deep .mat-step:first-child {
+    padding-top: 8px;
+}
+
+::ng-deep .mat-step:last-child {
+    padding-bottom: 8px;
+}
+
+::ng-deep .mat-vertical-stepper-header {
+    padding: 8px 24px !important;
+}
+
+::ng-deep .mat-step-icon {
+    background-color: #311d47 !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+    background-color: #451580 !important;
+}
+
+::ng-deep .mat-step-label-selected .mat-step-text-label {
+    font-weight: 600;
+    color: #451580;
+}
+
+.loading {
+    margin-left: 16px;
+    color: #aaa;
+}
+
+.loading span {
+    font-weight: 200;
+}
+
+.ajustesGeneralesInputs {
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.ajustesGeneralesInputs mat-radio-group {
+    width: 100%;
+}
+
+.dataContenedor mat-radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.dataContenedor mat-radio-button {
+    display: flex;
+}
+
+.dataContenedor ::ng-deep .mdc-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.botonVistaPrevia {
+    background: #471386 !important;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 16px;
+}
+
+.contenedorVistaPrevia {
+    position: absolute;
+    top: 100px;
+    right: 70px;
+    background: #fff;
+    border: solid 2px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.contenedorTabs{
+    width: 100%;
+}
+
+.botonCrearNuevo{
+    margin-left: 20px;
+    height: 26px;
+    padding: 0px 12px;
+    background-color: #471587 !important;
+    margin-bottom: 2px;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.contenedorTabla{
+    padding: 16px 0;
+    overflow: auto;
+    height: calc(100vh - 320px);
+    margin-bottom: 24px;
+}

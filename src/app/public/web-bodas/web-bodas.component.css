@@ -661,11 +661,6 @@
     background-blend-mode: overlay;
 }
 
-.contenedorCodigoVestuario .imgIzq,
-.contenedorCodigoVestuario .imgDer {
-    opacity: .05 !important;
-}
-
 
 .contenedorCodigoVestuario .imgVestuario {
     max-width: 95vw;
@@ -673,6 +668,11 @@
     margin: 0;
     object-fit: contain;
 }
+
+.contenedorCodigoVestuario .imgIzq{
+    top: -80px
+}
+
 
 .contenedorCodigoVestuario .contenedor {
     align-items: baseline;
@@ -1055,6 +1055,10 @@
     .dataInfo.encabezado3 .nombreEl {
         margin-right: 12px;
     }
+
+    .tituloSeccion {
+        font-size: 90px;
+    }
 }
 
 @media (max-width:1180px) {
@@ -1226,11 +1230,6 @@
     .comillaIni,
     .comillaFin {
         font-size: 14px;
-    }
-
-    .contenedorCodigoVestuario .imgIzq,
-    .contenedorCodigoVestuario .imgDer {
-        display: none;
     }
 }
 
@@ -1947,12 +1946,6 @@
     font-size: 16px;
 }
 
-.previa .contenedorCodigoVestuario .imgIzq,
-.previa .contenedorCodigoVestuario .imgDer {
-    display: none;
-}
-
-
 .previa .contenedorCeremonia .icoCeremonia {
     width: 240px;
     font-size: 210px;
@@ -2025,6 +2018,10 @@
 
 .previa .imgIzq {
     top: -20px;
+}
+
+.previa .contenedorCodigoVestuario .imgIzq {
+    top: -80px
 }
 
 .previa .imgDer {

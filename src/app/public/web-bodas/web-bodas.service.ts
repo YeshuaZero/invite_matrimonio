@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, set, get, child, push } from '@angular/fire/database';
+import { Database, ref, set, get, child, push, update } from '@angular/fire/database';
 import { Storage, ref as storageRef, uploadBytesResumable, getDownloadURL, listAll, getStorage } from '@angular/fire/storage'; // Para el almacenamiento
 import { Observable } from 'rxjs';
 
@@ -11,22 +11,19 @@ export class WebBodasService {
 
     constructor(private dataBase: Database) { }
 
-    // Guardar datos en una ruta específica
-    agregarConfirmado(familia: any, data: any): Promise<void> {
-        const dbRef = ref(this.dataBase, `${familia}/usuarios`);
-        const nuevoUsuarioRef = push(dbRef);
-        return set(nuevoUsuarioRef, data);
+    actualizarInvitado(path: string, idInvitado: string, datosActualizados: any): Promise<void> {
+        const invitadoRef = ref(this.dataBase, `${path}/${idInvitado}`);
+        return update(invitadoRef, datosActualizados);
     }
 
-    agregarConfirmados(familia: string, usuarios: any[]): Promise<void[]> {
-        const dbRef = ref(this.dataBase, `${familia}/usuarios`);
-
-        const promesas = usuarios.map((usuario) => {
-            const nuevoUsuarioRef = push(dbRef); // Genera un ID único para cada usuario
-            return set(nuevoUsuarioRef, usuario);
+    actualizarMultiplesInvitadosDesdeArray(path: string, invitados: { id: string, [key: string]: any }[]): Promise<void> {
+        const updates: Record<string, any> = {};
+        invitados.forEach((invitado) => {
+            const { id, ...datos } = invitado;
+            updates[`${path}/${id}`] = datos; 
         });
 
-        return Promise.all(promesas); // Espera a que todas las operaciones se completen
+        return update(ref(this.dataBase), updates);
     }
 
     getDataWeb(path: string): Promise<any> {

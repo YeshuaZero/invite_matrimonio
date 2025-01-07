@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Database, ref, get, child, set } from '@angular/fire/database'; // Para la base de datos en tiempo real
+import { Database, ref, get, child, set, push, update, remove } from '@angular/fire/database'; // Para la base de datos en tiempo real
 import { Storage, ref as storageRef, uploadBytesResumable, getDownloadURL, listAll, getStorage, deleteObject } from '@angular/fire/storage'; // Para el almacenamiento
 import { Observable } from 'rxjs'; // Para trabajar con streams y observables
 
@@ -40,6 +40,22 @@ export class PanelService {
                 console.error('Error al guardar los datos:', error);
                 throw error; // Lanza el error para que sea manejado por el componente que lo llame
             });
+    }
+
+    agregarConfirmado(path: any, invitado: any): Promise<void> {
+        const dbRef = ref(this.dataBase, path);
+        const nuevoUsuarioRef = push(dbRef);
+        return set(nuevoUsuarioRef, invitado);
+    }
+
+    editarInvitado(path: string, idInvitado: string, datosActualizados: any): Promise<void> {
+        const invitadoRef = ref(this.dataBase, `${path}/${idInvitado}`);
+        return update(invitadoRef, datosActualizados);
+    }
+
+    eliminarInvitado(path: string, idInvitado: string): Promise<void> {
+        const invitadoRef = ref(this.dataBase, `${path}/${idInvitado}`);
+        return remove(invitadoRef);
     }
 
     uploadFile(filePath: string, file: File): Observable<string> {

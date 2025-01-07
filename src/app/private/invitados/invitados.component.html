@@ -10,7 +10,133 @@
     </div>
 
     <div class="dataContenedor">
-        
+        <mat-vertical-stepper class="stepperVertical" [linear]="false" #stepper animationDuration="200" [selectedIndex]="1">
+            <mat-step>
+                <ng-template matStepLabel>
+                    <div class="flex">
+                        {{'Panel.invitados.configuracion' | translate}}
+                        <div *ngIf="loading?.configuracion; else guardado" class="flex loading">
+                            <i class="fas fa-spinner fa-spin"></i>
+                            <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                        </div>
+                        <ng-template #guardado>
+                            <div class="flex loading animate__animated animate__fadeOut">
+                                <i class="fas fa-check-circle"></i>
+                                <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                            </div>
+                        </ng-template>
+                    </div>
+                </ng-template>
+                <div class="flex contenedorInputs">
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.inputSeleccionarNombre' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.listaInvitados" name="listaInvitados"
+                            maxlength="200" autocomplete="off"
+                            (blur)="saveData('configuracion', 'listaInvitados', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.preguntaAsistencia' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.preguntaAsistencia" name="preguntaAsistencia"
+                            maxlength="200" autocomplete="off"
+                            (blur)="saveData('configuracion', 'preguntaAsistencia', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.preguntaAsistenciaGrupo' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.preguntaAsistenciaGrupo"
+                            name="preguntaAsistenciaGrupo" maxlength="200" autocomplete="off"
+                            (blur)="saveData('configuracion', 'preguntaAsistenciaGrupo', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.si' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.si" name="si" maxlength="200"
+                            autocomplete="off" (blur)="saveData('configuracion', 'si', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.no' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.no" name="no" maxlength="200"
+                            autocomplete="off" (blur)="saveData('configuracion', 'no', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.tituloInfoAdicional' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.infoAdicional" name="tituloInfoAdicional"
+                            maxlength="200" autocomplete="off" (blur)="saveData('configuracion', 'infoAdicional', 'configuracion')">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.inputInfoAdicional' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.infoAdicionalInvitado"
+                            name="inputInfoAdicional" maxlength="200" autocomplete="off"
+                            (blur)="saveData('configuracion', 'infoAdicionalInvitado', 'configuracion')">
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.graciasConfirmados' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.graciasConfirmados" name="graciasConfirmados"
+                            maxlength="200" autocomplete="off" (focus)="mostrarCompletado = true"
+                            (blur)="saveData('configuracion', 'graciasConfirmados', 'configuracion'); mostrarCompletado = false">
+                    </mat-form-field>
+            
+                    <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.invitados.todosConfirmados' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.Invitados.configuracion.todosConfirmados" name="todosConfirmados"
+                            maxlength="200" autocomplete="off" (focus)="mostrarCompletado = true"
+                            (blur)="saveData('configuracion', 'todosConfirmados', 'configuracion'); mostrarCompletado = false">
+                    </mat-form-field>
+                </div>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>
+                    <div class="flex">
+                        {{'Panel.invitados.tituloInvitados' | translate}}
+                        <div class="contenedorBoton">
+                            <button mat-raised-button class="botonCrearNuevo" (click)="crearNuevo()">
+                                <i class="fas fa-user-plus"></i>
+                                {{'Panel.invitados.agregarInvitado' | translate}}
+                            </button>
+                        </div>
+                    </div>
+                </ng-template>
+                <div class="flex contenedorInvitados">
+                    <mat-tab-group class="contenedorTabs">
+                        <mat-tab label="{{'Panel.invitados.todosLosInvitados' | translate}}">
+                            <div class="contenedorTabla">
+                                <ng-container *ngIf="dataWeb.Invitados">
+                                    <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitados" [indexIcono]="5" [indexNoOrdenarColumna]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                    [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla" [atributoOpciones]="'nombre'"
+                                    (opcionSeleccionada)="opcionTablaSeleccionada($event)" ></app-table>
+                                </ng-container>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="{{'Panel.invitados.confirmados' | translate}}"> 
+                            <div class="contenedorTabla">
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosConfirmados" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="{{'Panel.invitados.pendientes' | translate}}"> 
+                            <div class="contenedorTabla">
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosPendientes" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="{{'Panel.invitados.rechazados' | translate}}"> 
+                            <div class="contenedorTabla">
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosRechazados" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </mat-step>    
+        </mat-vertical-stepper>
+    </div>
+
+    <div class="contenedorVistaPrevia">
+        <ng-container *ngIf="dataWeb">
+            <app-confirmar-asistencia [id]="id" [dataWeb]="dataWeb" [mostrarCompletado]="mostrarCompletado" (confirmacion)="consultarData()"></app-confirmar-asistencia>
+        </ng-container>
     </div>
 
 </div>

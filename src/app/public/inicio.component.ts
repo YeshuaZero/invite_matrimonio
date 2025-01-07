@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IniciarSesionComponent } from './iniciar-sesion/iniciar-sesion.component';
 
 @Component({
@@ -55,6 +55,7 @@ export class InicioComponent {
   constructor(
     private readonly funcionesGenerales: FuncionesGeneralesService,
     private route: ActivatedRoute,
+    private readonly router: Router,
     public dialog: MatDialog
   ) {
     this.funcionesGenerales.deleteData('t0k3nD1g1t4lM0m3nt5');
@@ -66,6 +67,15 @@ export class InicioComponent {
 
   iniciarSesion(){
     this.dialog.open(IniciarSesionComponent, { autoFocus: false });
+  }
+
+  enviarWhatsApp(mensaje: string) {
+    const urlWhatsApp = `https://wa.me/${this.funcionesGenerales.translate('dataApp.celularWhatsApp')}?text=${encodeURIComponent(this.funcionesGenerales.translate(mensaje))}`;
+    window.open(urlWhatsApp, '_blank');
+  }
+
+  verEjemplos(){
+    this.router.navigate(['/boda/yeshua_&_ana']);
   }
 
 }

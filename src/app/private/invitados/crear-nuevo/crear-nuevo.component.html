@@ -1,0 +1,42 @@
+<div class=popUp>
+    <div class="contenedorTituloPopUp">
+        <span>{{(editar ? 'Panel.invitados.editarInvitado' : 'Panel.invitados.crearInvitado') | translate}}</span>
+        <i class="cerrar fas fa-times" (click)="cerrar()"></i>
+    </div>
+    <div class="contenedorCrearEditarInvitado flex flexColumn">
+            <ng-container *ngIf="!loading; else loader">
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.invitados.nombreInvitado' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataInvitado.nombre" name="nombreTema" maxlength="50" autocomplete="off" [required]="true">
+                </mat-form-field>
+
+                <mat-form-field *ngIf="listaGrupos?.length > 0" appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.invitados.grupo' | translate}}</mat-label>
+                    <mat-select [(ngModel)]="dataInvitado.grupo">
+                        <mat-option [value]="grupo" title="{{grupo.nombre | capitalize}}"
+                            *ngFor="let grupo of listaGrupos, let i=index">
+                            <i class="fas {{grupo.id == 0 ? 'fa-plus-square':'fa-users'}}"></i>
+                            {{grupo.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field *ngIf="!listaGrupos || listaGrupos?.length == 0 || dataInvitado?.grupo?.id == 0" appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.invitados.nombreNuevoGrupo' | translate}}</mat-label>
+                    <input matInput  [(ngModel)]="dataInvitado.nombreNuevoGrupo" name="nombreTema" maxlength="50" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field class="celular" appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.invitados.celular' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataInvitado.celular" name="nombreTema" maxlength="50" autocomplete="off">
+                </mat-form-field>
+
+                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="guardarInvitado()" [disabled]="!dataInvitado.nombre">{{(editar ? 'Panel.invitados.botonEditarInvitado' : 'Panel.invitados.botonCrearInvitado') | translate}}</button>
+            </ng-container>
+    </div>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

@@ -114,7 +114,7 @@ export class FuncionesGeneralesService {
     timeoutColorNuevo: any;
 
     constructor(
-        private translateUtilService: TranslateUtilService,
+        private readonly translateUtilService: TranslateUtilService,
         public dialog: MatDialog
     ) {
         this.dataLogin = this.getDataLoginToken();
