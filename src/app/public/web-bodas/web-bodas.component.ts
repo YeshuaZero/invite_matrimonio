@@ -102,7 +102,6 @@ export class WebBodasComponent implements OnInit, OnChanges {
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id') ? `${params.get('id')}` : null; 
       this.id = this.id ?? 'yeshua_&_ana';
-      console.log(this.id);
     });
   }
 
@@ -116,7 +115,6 @@ export class WebBodasComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes:', changes)
     if (changes?.['dataWeb']?.currentValue?.WebBodas){
       this.targetDate = new Date(this.dataWeb.WebBodas.conteoRegresivo.fecha);
       this.targetTime = this.targetDate.getTime();
@@ -128,15 +126,22 @@ export class WebBodasComponent implements OnInit, OnChanges {
 
   consultarImagenes() {
     this.webBodasService.getFiles(`${this.id}/galeriaFotos`).subscribe((urls: any) => {
-      console.log('URLs de los archivos:', urls);
       this.listaFotosGaleria = urls;
     });
   }
 
   cargarDataWeb(){
     this.webBodasService.getDataWeb(`dataWeb/${this.id}`).then((resp: any) => {
-      console.log('resp:', resp);
       this.dataWeb = resp;
+      if (this.dataWeb.Invitados?.listaInvitados){
+        this.dataWeb.Invitados.listaInvitados = Object.entries(this.dataWeb.Invitados.listaInvitados).map(([id, data]) => {
+          if (typeof data === 'object' && data !== null) {
+            return { id, ...data };
+          } else {
+            return { id };
+          }
+        });
+      }
       this.inicializarData();
     })
   }
@@ -154,7 +159,7 @@ export class WebBodasComponent implements OnInit, OnChanges {
 
     const tipoEncabezado = this.dataWeb.ConfigApp.encabezado;
 
-    console.log('this.previa:', this.previa)
+
     if (this.previa) {
       const elements = document.querySelectorAll('[data-aos]');
       elements.forEach((element) => {
@@ -165,7 +170,6 @@ export class WebBodasComponent implements OnInit, OnChanges {
     } else {
       setTimeout(() => {
         const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
-        console.log('scene:', scene)
         const parallaxInstance = new Parallax(scene);
       }, 500)
     }
