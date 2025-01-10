@@ -1,0 +1,40 @@
+.popUp{
+    padding-bottom: 6px;
+}
+
+.contenedorIniciarSesion,
+.loader{
+    width: 250px;
+    height: 350px;
+}
+
+.contenedorIniciarSesion img {
+    width: 100px;
+}
+
+.contenedorIniciarSesion .textoBienvenida {
+    font-size: 16px;
+    font-weight: 200;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+.contenedorIniciarSesion mat-form-field {
+    width: 100%;
+    margin: 4px 0 8px;
+}
+
+.contenedorIniciarSesion .botonGeneralAccion {
+    margin-top: 12px;
+    width: 100%;
+    background: #2b1746;
+    color: #fff;
+}
+
+.mostrarPass {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}

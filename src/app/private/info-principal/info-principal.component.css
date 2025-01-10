@@ -1,0 +1,397 @@
+.infoPrincipal .dataContenedor {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-gap: 40px;
+    align-items: start;
+    align-content: baseline;
+    padding-top: 18px;
+    overflow: hidden;
+}
+
+.infoPrincipal .contenedorPreviaWeb {
+    position: absolute;
+    right: 80px;
+    top: 60px;
+    height: calc(100% - 110px);
+    max-height: 600px;
+    container: inline-size;
+}
+
+.infoPrincipal .inputForm {
+    overflow: auto;
+    height: calc(100% - 16px);
+    direction: rtl;
+    padding-bottom: 16px;
+}
+
+.infoPrincipal .inputForm ::ng-deep mat-vertical-stepper {
+    direction: ltr;
+}
+
+.infoPrincipal .contenedorInputs {
+    padding: 12px 0 0;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.infoPrincipal ::ng-deep .mat-step:first-child {
+    padding-top: 8px;
+}
+
+.infoPrincipal ::ng-deep .mat-step:last-child {
+    padding-bottom: 8px;
+}
+
+.infoPrincipal ::ng-deep .mat-vertical-stepper-header {
+    padding: 8px 24px !important;
+}
+
+.infoPrincipal ::ng-deep .mat-step-icon {
+    background-color: #311d47 !important;
+}
+
+.infoPrincipal ::ng-deep .mat-step-icon-selected {
+    background-color: #451580 !important;
+}
+
+.infoPrincipal ::ng-deep .mat-step-label-selected .mat-step-text-label {
+    font-weight: 600;
+    color: #451580;
+}
+
+.infoPrincipal .contenedorHoras {
+    justify-content: flex-start;
+    gap: 30px;
+}
+
+.infoPrincipal .contenedorHoras .textoFechas {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.infoPrincipal .contenedorPrincipalVestuario {
+    align-items: baseline;
+}
+
+.infoPrincipal .contenedorColores {
+    padding: 12px 12px 0px;
+    gap: 40px;
+}
+
+.infoPrincipal .colores {
+    gap: 8px;
+    margin-top: 2px;
+}
+
+.infoPrincipal .colores i {
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 1px;
+    margin: 0 !important;
+}
+
+.infoPrincipal .opcionColores span {
+    font-size: 11px;
+}
+
+.infoPrincipal .colorPicker {
+    width: 26px;
+    border: none;
+}
+
+.infoPrincipal .textoFiestaNoIncluida {
+    color: #ccc;
+    font-weight: 200;
+    margin-left: 4px;
+}
+
+.infoPrincipal .icoVestuario i {
+    font-size: 14px;
+    margin-right: 18px;
+}
+
+.infoPrincipal .icoRecuerdos {
+    margin-top: 10px;
+}
+
+.infoPrincipal .icoRecuerdos i {
+    font-size: 24px;
+    margin-right: 18px;
+}
+
+.infoPrincipal .icoUpload {
+    margin: 0;
+}
+
+.infoPrincipal .contenedorImagenesGaleria {
+    justify-content: flex-start;
+    margin-top: 20px;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.infoPrincipal .contenedorImagenesGaleria>div {
+    background: #fff;
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+    padding: 4px 4px 12px;
+}
+
+.infoPrincipal .contenedorImagenesGaleria img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.infoPrincipal .contenedorImagenesGaleria i {
+    position: absolute;
+    z-index: 999;
+    top: -8px;
+    right: -16px;
+    padding: 4px 6px;
+    background: #fff;
+    border-radius: 16px;
+    font-size: 16px;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    color: #aaa;
+}
+
+.infoPrincipal .contenedorImagenesGaleria i:hover {
+    color: red;
+}
+
+.infoPrincipal .loading {
+    margin-left: 16px;
+    color: #aaa;
+}
+
+.infoPrincipal .loading span {
+    font-weight: 200;
+}
+
+/* VISTA PREVIA */
+
+
+.infoPrincipal .mobile-container {
+    width: 320px;
+    height: 100%;
+    background: #000;
+    border-radius: 30px;
+    padding: 8px;
+    border: 4px solid #333;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    container: inline-size;
+}
+
+.infoPrincipal .notch {
+    width: 160px;
+    /* Ajustado para el ancho del dispositivo */
+    height: 20px;
+    /* Proporción más pequeña debido a la menor altura */
+    background: #000;
+    border-radius: 15px 15px 0 0;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.infoPrincipal .notch-camera {
+    width: 8px;
+    height: 8px;
+    background: #333;
+    border-radius: 50%;
+    position: absolute;
+    left: 40px;
+    /* Ajustado para el ancho */
+}
+
+.infoPrincipal .notch-speaker {
+    width: 50px;
+    height: 5px;
+    background: #333;
+    border-radius: 3px;
+    position: absolute;
+}
+
+.infoPrincipal .screen {
+    width: 100%;
+    height: calc(100% - 40px);
+    /* Resta espacio para el notch */
+    background: #fff;
+    border-radius: 10px;
+    /* Bordes redondeados de la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-top: 8px;
+    overflow: auto;
+}
+
+.infoPrincipal .screen app-web-bodas {
+    width: 100%;
+}
+
+@media (max-width:1170px) {
+    .infoPrincipal .contenedorPreviaWeb {
+        top: 100px;
+        height: calc(100% - 150px);
+    }
+
+    .infoPrincipal .loading span {
+        display: none;
+    }
+
+    .infoPrincipal .contenedorInputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .infoPrincipal .contenedorColores {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 12px;
+    }
+
+    .infoPrincipal .contenedorInputs mat-radio-group {
+        grid-column: span 2;
+        margin-top: 12px;
+    }
+
+    .infoPrincipal .colores {
+        justify-content: flex-start;
+    }
+}
+
+.infoPrincipal .botonVerVistaPrevia button {
+    display: none;
+    height: 22px;
+    margin-top: 8px;
+    background-color: #471587 !important;
+    color: #fff !important;
+    font-size: 12px;
+}
+
+@media (max-width:1070px) {
+    .infoPrincipal .dataContenedor {
+        grid-template-columns: 1fr 340px;
+    }
+
+    .infoPrincipal .contenedorPreviaWeb {
+        right: 40px;
+    }
+
+    .infoPrincipal .contenedorInputs {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .infoPrincipal .contenedorInputs mat-radio-group {
+        grid-column: auto;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 0;
+    }
+}
+
+@media (max-width:860px) {
+    .infoPrincipal .dataContenedor {
+        height: calc(100vh - 170px);
+        grid-template-columns: 1fr;
+        padding-top: 0;
+    }
+
+    .infoPrincipal .contenedorPreviaWeb {
+        display: none;
+    }
+
+    .infoPrincipal .encabezado .titulo {
+        align-items: flex-start;
+    }
+
+    .infoPrincipal .botonVerVistaPrevia button {
+        display: flex;
+    }
+
+    .infoPrincipal .contenedorInputs,
+    .infoPrincipal .contenedorColores {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .infoPrincipal .contenedorInputs mat-radio-group {
+        grid-column: span 2;
+    }
+
+}
+
+@media (max-width:710px) {
+
+    .infoPrincipal .contenedorInputs,
+    .infoPrincipal .contenedorColores {
+        grid-template-columns: 1fr;
+    }
+
+    .infoPrincipal .contenedorInputs mat-radio-group {
+        grid-column: auto;
+    }
+}
+
+@media (max-width:470px) {
+    .infoPrincipal .dataContenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .infoPrincipal .encabezado .titulo {
+        margin-left: 40px;
+    }
+
+    .infoPrincipal .encabezado .titulo .texto .descripcion {
+        font-size: 10px;
+        line-height: 1;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width:380px) {
+    .infoPrincipal ::ng-deep .mat-vertical-content-container {
+        margin-left: 8px;
+    }
+
+    .infoPrincipal .icoVestuario i {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    .infoPrincipal .colores {
+        gap: 4px;
+        flex-wrap: wrap;
+        width: calc(100% - 24px);
+    }
+
+    .infoPrincipal ::ng-deep .mat-step-text-label {
+        font-size: 14px;
+    }
+
+    .infoPrincipal ::ng-deep .mat-step-text-label>div {
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+    }
+
+    .infoPrincipal .loading {
+        display: none;
+    }
+}

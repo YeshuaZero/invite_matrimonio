@@ -1,0 +1,669 @@
+<div *ngIf="!dataWeb || !dataWeb.ConfigApp" class="flex loaderWeb">
+    <app-loader></app-loader>
+</div>
+
+<div *ngIf="dataWeb && dataWeb.ConfigApp" class="contenedorGeneral content"
+    [ngClass]="{'titulosTipo2': (['2', '3', '4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'titulosTipo3':  (['3', '4'].includes((dataWeb.ConfigApp.tipoTitulos))), 'titulosTipo4': (['4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'previa': previa}"
+    [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
+    <div id="encabezadoId" class="encabezado">
+        <img class="imgPrincipal" src="{{dataWeb.WebBodas.encabezado.imgEncabezado}}" alt="imgPrincipal">
+        <ng-container *ngIf="dataWeb.ConfigApp.encabezado == '1'; else encabezado2">
+            <div id="nombres1" class="dataInfo flex flexColumn animate__animated animate__fadeIn animate__slow">
+                <div data-depth="0.2" class="flex flexColumn relative">
+                    <div class="fechaBodaEncabezado flex">
+                        {{dataWeb.WebBodas.encabezado.fechaBoda}}
+                    </div>
+                    <span
+                        class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.invertirNombres
+                        ? dataWeb.WebBodas.encabezado.nombreElla : dataWeb.WebBodas.encabezado.nombreEl}}</span>
+                    <span class="conectorNombres cursiva flex">&</span>
+                    <span
+                        class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.invertirNombres
+                        ? dataWeb.WebBodas.encabezado.nombreEl : dataWeb.WebBodas.encabezado.nombreElla}}</span>
+                    <div class="fraseEncabezado flex">
+                        {{dataWeb.WebBodas.encabezado.frase}}
+                    </div>
+                    <i
+                        class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+                </div>
+            </div>
+        </ng-container>
+        <div class="contenedorFlores">
+            <img *ngIf="dataWeb.ConfigApp.floresEncabezado" class="imgArribaIzq"
+                src="/assets/imgs/esquinaSupIzq{{dataWeb.ConfigApp.flores}}.png" alt="imgArribaIzq"
+                [attr.data-aos]="!previa ? 'fade-down-right': null" data-aos-duration="2000" data-aos-offset="0">
+            <img *ngIf="dataWeb.ConfigApp.floresEncabezado" class="imgArribaDer"
+                src="/assets/imgs/esquinaSupDer{{dataWeb.ConfigApp.flores}}.png" alt="imgArribaDer"
+                [attr.data-aos]="!previa ? 'fade-down-left': null" data-aos-duration="2000" data-aos-offset="0">
+            <img *ngIf="dataWeb.ConfigApp.floresEncabezado" class="imgAbajoIzq animate__animated animate__fadeInLeft"
+                src="/assets/imgs/abajoIzq{{dataWeb.ConfigApp.flores}}.png" alt="imgAbajoIzq">
+            <img *ngIf="dataWeb.ConfigApp.floresEncabezado" class="imgAbajoDer animate__animated animate__fadeInRight"
+                src="/assets/imgs/abajoDer{{dataWeb.ConfigApp.flores}}.png" alt="imgAbajoDer">
+        </div>
+
+        <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorBottom', tipoSeparador: dataWeb.ConfigApp.separadorEncabezado, fill: dataWeb.ConfigApp.colorFondo }"></ng-container>
+    </div>
+    <div id="esloganId" class="contenedorEslogan flex"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo, 'color': dataWeb.ConfigApp.colorTexto}">
+        <p class="eslogan flex flexColumn">
+            <span class="frase flex">
+                <i class="fas fa-quote-left comillaIni" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+                {{dataWeb.WebBodas.eslogan.frase}}
+                <i class="fas fa-quote-right comillaFin" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+            </span>
+            <span class="autor">{{dataWeb.WebBodas.eslogan.autor}}</span>
+        </p>
+    </div>
+
+    <div id="conteoRegresivoId" class="contenedorConteoRegresivo flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
+        <div class="fechaBoda flex flexColumn relative"
+            [ngClass]="{'tipoConteo2': (dataWeb.ConfigApp.estiloConteoRegresivo) == '2'}">
+            <ng-container *ngIf="(dataWeb.ConfigApp.estiloConteoRegresivo) == '1'; else tipoEstiloConteo2">
+                <img class="fechaSup" src="/assets/imgs/fecha{{dataWeb.ConfigApp.flores}}.png" alt="fechaSup"
+                    [attr.data-aos]="!previa ? 'fade-up': null" data-aos-duration="1000">
+                <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
+                <img class="fechaInf" src="/assets/imgs/fecha{{dataWeb.ConfigApp.flores}}.png" alt="fechaInf"
+                    [attr.data-aos]="!previa ? 'fade-down': null" data-aos-duration="1000" data-aos-offset="100">
+            </ng-container>
+            <ng-template #tipoEstiloConteo2>
+                <ng-container *ngIf="(dataWeb.ConfigApp.estiloConteoRegresivo) == '2'; else tipoEstiloConteo3">
+                    <img class="fondoFloresFecha" src="/assets/imgs/conteo{{dataWeb.ConfigApp.flores}}.png"
+                        alt="fechaSup" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="1000">
+                    <ng-container *ngTemplateOutlet="conteoRegresivo"></ng-container>
+                </ng-container>
+            </ng-template>
+            <ng-template #tipoEstiloConteo3>
+
+            </ng-template>
+        </div>
+        <div class="conteo flex" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{dataWeb.WebBodas.conteoRegresivo.dias}}</span>
+                <span class="valor">{{tiempoRestante.dias}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{dataWeb.WebBodas.conteoRegresivo.horas}}</span>
+                <span class="valor">{{tiempoRestante.horas}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{dataWeb.WebBodas.conteoRegresivo.minutos}}</span>
+                <span class="valor">{{tiempoRestante.minutos}}</span>
+            </div>
+            <div class="valorRegresivo flex flexColumn">
+                <span class="titulo">{{dataWeb.WebBodas.conteoRegresivo.segundos}}</span>
+                <span class="valor">{{tiempoRestante.segundos}}</span>
+            </div>
+        </div>
+    </div>
+    <div id="ceremoniaId" class="contenedorCeremonia flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
+        <svg class="lineaSeparadora color{{dataWeb.ConfigApp.flores}}" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" width="1366" viewBox="0 0 1024.5 241.499998" height="322"
+            preserveAspectRatio="none" version="1.0">
+            <defs>
+                <clipPath id="5200d755a2">
+                    <path d="M 0.808594 0 L 1023.191406 0 L 1023.191406 241 L 0.808594 241 Z M 0.808594 0 "
+                        clip-rule="nonzero" />
+                </clipPath>
+            </defs>
+            <g clip-path="url(#5200d755a2)">
+                <path stroke-linecap="butt" transform="matrix(0.811643, 0, 0, 0.812199, -227.544927, -778.920616)"
+                    fill="none" stroke-linejoin="miter"
+                    d="M 275.442128 1090.398243 C 404.742042 1018.568706 534.041956 946.739168 686.688623 986.239402 C 839.340103 1025.758873 1015.328712 1176.608116 1162.589888 1212.52048 C 1309.86069 1248.442463 1428.379996 1169.417948 1487.63965 1129.917715 C 1546.908928 1090.398243 1546.908928 1090.398243 1546.908928 1090.398243 "
+                    stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
+            </g>
+        </svg>
+        <svg class="lineaSeparadora lineaSeparadora2 color{{dataWeb.ConfigApp.flores}}"
+            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1366"
+            viewBox="0 0 1024.5 241.499998" height="322" preserveAspectRatio="none" version="1.0">
+            <defs>
+                <clipPath id="5200d755a2">
+                    <path d="M 0.808594 0 L 1023.191406 0 L 1023.191406 241 L 0.808594 241 Z M 0.808594 0 "
+                        clip-rule="nonzero" />
+                </clipPath>
+            </defs>
+            <g clip-path="url(#5200d755a2)">
+                <path stroke-linecap="butt" transform="matrix(0.811643, 0, 0, 0.812199, -227.544927, -778.920616)"
+                    fill="none" stroke-linejoin="miter"
+                    d="M 275.442128 1090.398243 C 404.742042 1018.568706 534.041956 946.739168 686.688623 986.239402 C 839.340103 1025.758873 1015.328712 1176.608116 1162.589888 1212.52048 C 1309.86069 1248.442463 1428.379996 1169.417948 1487.63965 1129.917715 C 1546.908928 1090.398243 1546.908928 1090.398243 1546.908928 1090.398243 "
+                    stroke-width="14.11" stroke-opacity="1" stroke-miterlimit="22.926001" />
+            </g>
+        </svg>
+        <img class="imgsBordes imgIzq" src="/assets/imgs/florIzquierda{{dataWeb.ConfigApp.flores}}.png" alt="flor1Izq"
+            [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
+        <img class="imgsBordes imgDer" src="/assets/imgs/florDerecha{{dataWeb.ConfigApp.flores}}.png" alt="flor2Der"
+            [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
+        <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones"
+            class="icoSeccion fas fa-church" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+        <div class="relative flex contenedorTitulo" [ngClass]="{'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+            <p class="tituloSeccion cursiva relative" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                {{dataWeb.WebBodas.ceremonia.titulo}}</p>
+        </div>
+
+        <div class="flex" [ngClass]="{'ceremoniaColumn': ['1'].includes(dataWeb.ConfigApp.ordenCeremonia)}"
+            [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+            <ng-container *ngIf="['1', '2'].includes(dataWeb.ConfigApp.tipoCeremonia); else ceremoniaTipo3">
+                <div class="flex">
+                    <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenCeremonia)"
+                        class="icoCeremonia flex fas fa-map-marked-alt"></i>
+                    <div class="contenedorLugar flex flexColumn" [attr.data-aos]="!previa ? 'fade-left': null">
+                        <p class="tituloLugar">{{dataWeb.WebBodas.ceremonia.lugar}}</p>
+                        <div class="subcontenedorLugar flex flexColumn">
+                            <span class="datoLugar">{{dataWeb.WebBodas.ceremonia.datoLugar}}</span>
+                            <span class="datoLugar2">{{dataWeb.WebBodas.ceremonia.datoLugar2}}</span>
+                            <span class="datoLugar3">{{dataWeb.WebBodas.ceremonia.datoLugar3}}</span>
+                        </div>
+                        <ng-container *ngIf="dataWeb.ConfigApp.tipoCeremonia == '1'; else ceremoniaTipo2">
+                            <button mat-raised-button [matMenuTriggerFor]="menuLugar"
+                                [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                                <i class="fas fa-map-marked-alt"></i>
+                                {{dataWeb.WebBodas.ceremonia.accionLugar}}
+                            </button>
+                        </ng-container>
+                        <ng-template #ceremoniaTipo2>
+                            <div class="flex flexColumn contenedorCeremoniaTipo2">
+                                <span class="tituloCeremoniaTipo2">{{dataWeb.WebBodas.ceremonia.accionLugar}}</span>
+                                <div class="flex ceremoniaTipo2">
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg"
+                                                alt="GoogleMaps">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="contenedorHora flex flexColumn" [attr.data-aos]="!previa ? 'fade-right': null"
+                        [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+
+                        <p class="tituloHora">{{dataWeb.WebBodas.ceremonia.hora}}</p>
+                        <span class="datoHora flex flexColumn">
+                            {{dataWeb.WebBodas.ceremonia.datoHora}}
+                            <span class="textoHora">{{dataWeb.WebBodas.ceremonia.textoHora}}</span>
+                        </span>
+                        <ng-container *ngIf="dataWeb.ConfigApp.tipoCeremonia == '1'; else ceremoniaHoraTipo2">
+                            <button mat-raised-button [matMenuTriggerFor]="menuAgenda"
+                                [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                                <i class="far fa-clock"></i>
+                                {{dataWeb.WebBodas.ceremonia.accionHora}}
+                            </button>
+                        </ng-container>
+                        <ng-template #ceremoniaHoraTipo2>
+                            <div class="flex flexColumn contenedorCeremoniaTipo2">
+                                <span class="tituloCeremoniaTipo2">{{dataWeb.WebBodas.ceremonia.accionHora}}</span>
+                                <div class="flex ceremoniaTipo2">
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
+                                        <div class="flex flexColumn">
+                                            <i class="fab fa-apple"></i>
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgGoogle" src="assets/imgs/google.png" alt="Google">
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenCeremonia)"
+                        class="icoCeremonia flex far fa-calendar-check"></i>
+                </div>
+            </ng-container>
+            <ng-template #ceremoniaTipo3>
+                fasdfasd
+            </ng-template>
+        </div>
+    </div>
+
+    <div *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" class="contenedorCeremonia contenedorFiesta flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo, 'color': dataWeb.ConfigApp.colorTexto}">
+        <img class="imgsBordes imgIzq" src="/assets/imgs/florDerecha{{dataWeb.ConfigApp.flores}}.png" alt="flor1Izq"
+            [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
+        <img class="imgsBordes imgDer" src="/assets/imgs/florIzquierda{{dataWeb.ConfigApp.flores}}.png" alt="flor2Der"
+            [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000" data-aos-easing="ease-in-out">
+        <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones"
+            class="icoSeccion fas fa-glass-cheers" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+        <div id="fiestaId" class="relative flex contenedorTitulo" [ngClass]="{'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+            <p class="tituloSeccion cursiva relative">{{dataWeb.WebBodas.fiesta.titulo}}</p>
+        </div>
+
+        <div class="flex" [ngClass]="{'ceremoniaColumn': ['1'].includes(dataWeb.ConfigApp.ordenFiesta)}">
+            <ng-container *ngIf="['1', '2'].includes(dataWeb.ConfigApp.tipoFiesta); else fiestaTipo3">
+                <div class="flex">
+                    <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenFiesta)"
+                        class="icoCeremonia flex fas fa-map-marked-alt"></i>
+                    <div class="contenedorLugar flex flexColumn" [attr.data-aos]="!previa ? 'fade-left': null">
+                        <p class="tituloLugar" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                            {{dataWeb.WebBodas.fiesta.lugar}}</p>
+                        <div class="subcontenedorLugar flex flexColumn"
+                            [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                            <span class="datoLugar">{{dataWeb.WebBodas.fiesta.datoLugar}}</span>
+                            <span class="datoLugar2">{{dataWeb.WebBodas.fiesta.datoLugar2}}</span>
+                            <span class="datoLugar3">{{dataWeb.WebBodas.fiesta.datoLugar3}}</span>
+                        </div>
+                        <ng-container *ngIf="(dataWeb.ConfigApp.tipoFiesta) == '1'; else ceremoniaTipo2">
+                            <button mat-raised-button [matMenuTriggerFor]="menuLugar"
+                                [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                                <i class="fas fa-map-marked-alt"></i>
+                                {{dataWeb.WebBodas.fiesta.accionLugar}}
+                            </button>
+                        </ng-container>
+                        <ng-template #ceremoniaTipo2>
+                            <div class="flex flexColumn contenedorCeremoniaTipo2">
+                                <span class="tituloCeremoniaTipo2">{{dataWeb.WebBodas.fiesta.accionLugar}}</span>
+                                <div class="flex ceremoniaTipo2">
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg"
+                                                alt="GoogleMaps">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="contenedorHora flex flexColumn" [attr.data-aos]="!previa ? 'fade-right': null">
+
+                        <p class="tituloHora">{{dataWeb.WebBodas.fiesta.hora}}</p>
+                        <span class="datoHora flex flexColumn">
+                            {{dataWeb.WebBodas.fiesta.datoHora}}
+                            <span class="textoHora">{{dataWeb.WebBodas.fiesta.textoHora}}</span>
+                        </span>
+                        <ng-container *ngIf="(dataWeb.ConfigApp.tipoFiesta) == '1'; else ceremoniaHoraTipo2">
+                            <button mat-raised-button [matMenuTriggerFor]="menuAgenda"
+                                [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                                <i class="far fa-clock"></i>
+                                {{dataWeb.WebBodas.fiesta.accionHora}}
+                            </button>
+                        </ng-container>
+                        <ng-template #ceremoniaHoraTipo2>
+                            <div class="flex flexColumn contenedorCeremoniaTipo2">
+                                <span class="tituloCeremoniaTipo2">{{dataWeb.WebBodas.fiesta.accionHora}}</span>
+                                <div class="flex ceremoniaTipo2">
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
+                                        <div class="flex flexColumn">
+                                            <i class="fab fa-apple"></i>
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgGoogle" src="assets/imgs/google.png" alt="Google">
+                                        </div>
+                                    </button>
+                                    <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
+                                        <div class="flex flexColumn">
+                                            <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </ng-template>
+                    </div>
+                    <i *ngIf="['1'].includes(dataWeb.ConfigApp.ordenFiesta)"
+                        class="icoCeremonia flex far fa-calendar-check"></i>
+                </div>
+            </ng-container>
+            <ng-template #fiestaTipo3>
+                fasdfasd
+            </ng-template>
+        </div>
+    </div>
+
+    <div id="galeriaId" class="contenedorFotos" [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
+        <div class="tituloFotos flex flexColumn">
+            <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones" class="icoSeccion fas fa-heart"
+                [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+            <div class="relative flex contenedorTitulo" [ngClass]="{'tipoFoto2': (dataWeb.ConfigApp.tipoRecuerdos) == '2', 'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+                <p class="tituloSeccion cursiva relative flex" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+                    {{dataWeb.WebBodas.fotos.titulo}}</p>
+                </div>
+        </div>
+
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let slide of this.listaFotosGaleria; let i = index">
+                <ng-template carouselSlide [id]="slide.id">
+                    <ng-container *ngIf="(dataWeb.ConfigApp.tipoRecuerdos) == '1'; else tipoRecuerdos2">
+                        <div class="contenedorFoto">
+                            <img [src]="slide.url" [alt]="'Love '+(i+1)" [title]="'Love '+(i+1)">
+                        </div>
+                    </ng-container>
+                    <ng-template #tipoRecuerdos2>
+                        <div class="contenedorFotoTipo2 flex"
+                            [ngClass]="{'contenedorFotoTipo3': (dataWeb.ConfigApp.tipoRecuerdos) == '3', 'contenedorFotoTipo4': (dataWeb.ConfigApp.tipoRecuerdos) == '4'}">
+                            <img [src]="slide.url" [alt]="'Love '+(i+1)" [title]="'Love '+(i+1)">
+                        </div>
+                    </ng-template>
+                </ng-template>
+            </ng-container>
+        </owl-carousel-o>
+    </div>
+
+    <div id="codigoVestuarioId" class="contenedorCodigoVestuario flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondoVestuario, 'color': dataWeb.ConfigApp.colorTextoVestuario}">
+        <img *ngIf="dataWeb.ConfigApp.vestuarioLateralesIzq && dataWeb.ConfigApp.vestuarioLateralesIzq != '0'" class="imgsBordes imgIzq" src="/assets/imgs/vestuarioIzq{{dataWeb.ConfigApp.vestuarioLateralesIzq}}.png"
+            alt="vestuarioIzq" [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000"
+            data-aos-easing="ease-in-out">
+        <img *ngIf="dataWeb.ConfigApp.vestuarioLateralesDer && dataWeb.ConfigApp.vestuarioLateralesDer != '0'" class="imgsBordes imgDer" src="/assets/imgs/vestuarioDer{{dataWeb.ConfigApp.vestuarioLateralesDer}}.png"
+            alt="vestuarioDer" [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000"
+            data-aos-easing="ease-in-out">
+
+        <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorTop', tipoSeparador: dataWeb.ConfigApp.separadorVestuarioTop, fill: dataWeb.ConfigApp.colorFondoVestuario }"></ng-container>
+
+        <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones" class="icoSeccion fas fa-thumbs-up" [ngStyle]="{'color': dataWeb.ConfigApp.colorTextoVestuario}"></i>
+        <div class="relative flex contenedorTitulo" [ngClass]="{'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.codigoVestuario.titulo}}
+            </p>
+        </div>
+
+        <div class="flex">
+            <img class="imgVestuario" src="/assets/imgs/codigoVestuario{{dataWeb.ConfigApp.vestuarioImgPrincipal}}.png"
+                alt="Código Vestuario">
+            <div class="contenedor flex flexColumn">
+                <div class="grupo flex flexColumn">
+                    <p class="cursiva">
+                        {{dataWeb.WebBodas.codigoVestuario.tituloHombres}}
+                        <i class="{{dataWeb.WebBodas.codigoVestuario.icono}} animate__animated animate__tada animate__infinite animate__slow"
+                            (click)="abrirSugerencias('linkHombres')"></i>
+                    </p>
+                    <span>{{dataWeb.WebBodas.codigoVestuario.descripcionHombres}}</span>
+                    <div class="coloresSugeridos flex">
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1" class="color1"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2" class="color2"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3" class="color3"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4" class="color4"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5" class="color5"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6" class="color6"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6}"></div>
+                    </div>
+                </div>
+                <div class="grupo flex flexColumn">
+                    <p class="cursiva">
+                        {{dataWeb.WebBodas.codigoVestuario.tituloMujeres}}
+                        <i class="{{dataWeb.WebBodas.codigoVestuario.icono}} animate__animated animate__tada animate__infinite animate__slow"
+                            (click)="abrirSugerencias('linkMujeres')"></i>
+                    </p>
+                    <span>{{dataWeb.WebBodas.codigoVestuario.descripcionMujeres}}</span>
+                    <div class="coloresSugeridos flex">
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1" class="color1"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2" class="color2"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3" class="color3"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4" class="color4"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5" class="color5"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5}"></div>
+                        <div *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6" class="color6"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6}"></div>
+                    </div>
+                </div>
+
+                <span class="tenPresente">{{dataWeb.WebBodas.codigoVestuario.tenPresente}}</span>
+                <span class="notaGeneral flex flexColumn">
+                    {{dataWeb.WebBodas.codigoVestuario.notaGeneral}}
+                    <div *ngIf="coloresReservados" class="coloresReservados flex">
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado1" class="fas fa-ban color1"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado1}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado2" class="fas fa-ban color2"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado2}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado3" class="fas fa-ban color3"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado3}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado4" class="fas fa-ban color4"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado4}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado5" class="fas fa-ban color5"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado5}"></i>
+                        <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado5" class="fas fa-ban color6"
+                            [ngStyle]="{'background': dataWeb.WebBodas.codigoVestuario.colorReservado6}"></i>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+        <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorBottom', tipoSeparador: dataWeb.ConfigApp.separadorVestuarioBottom, fill: dataWeb.ConfigApp.colorFondoVestuario }"></ng-container>
+    </div>
+
+    <div id="regalosId" class="contenedorRegalos flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
+        <img *ngIf="dataWeb.ConfigApp.regalosLateralesIzq && dataWeb.ConfigApp.regalosLateralesIzq != '0'" class="imgsBordes imgIzq" src="/assets/imgs/regalosIzq{{dataWeb.ConfigApp.regalosLateralesIzq}}.png"
+            alt="regalosIzq" [attr.data-aos]="!previa ? 'zoom-in-right': null" data-aos-duration="2000"
+            data-aos-easing="ease-in-out">
+        <img *ngIf="dataWeb.ConfigApp.regalosLateralesDer && dataWeb.ConfigApp.regalosLateralesDer != '0'" class="imgsBordes imgDer" src="/assets/imgs/regalosDer{{dataWeb.ConfigApp.regalosLateralesDer}}.png"
+            alt="regalosDer" [attr.data-aos]="!previa ? 'zoom-in-left': null" data-aos-duration="2000"
+            data-aos-easing="ease-in-out">
+
+        <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones" class="icoSeccion fas fa-gift" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}"></i>
+        <div class="relative flex contenedorTitulo" [ngClass]="{'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.regalos.titulo}}
+            </p>
+        </div>
+
+        <div class="flex textoRegalos">
+            <div class="contenedor flex flexColumn">
+                <span>{{dataWeb.WebBodas.regalos.tituloLluvia}}</span>
+                <p class="cursiva">
+                    {{dataWeb.WebBodas.regalos.lluviaSobres}}
+                </p>
+            </div>
+            <img src="/assets/imgs/sobre{{dataWeb.ConfigApp.regalosImgPrincipal}}.png" alt="Regalo">
+        </div>
+    </div>
+
+    <div id="confirmacionAsistenciaId" class="confirmacionInvitados flex flexColumn"
+        [ngStyle]="{'background': dataWeb.ConfigApp.colorFondoConfirmacion, 'color': dataWeb.ConfigApp.colorTextoConfirmacion}">
+        <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorTop', tipoSeparador: dataWeb.ConfigApp.separadorConfirmacionTop, fill: dataWeb.ConfigApp.colorFondoConfirmacion }"></ng-container>
+
+        <i *ngIf="dataWeb.ConfigApp.mostrarIcoSecciones"
+            class="icoSeccion fas fa-vote-yea" [ngStyle]="{'color': dataWeb.ConfigApp.colorTextoConfirmacion}"></i>
+        <div class="relative flex contenedorTitulo" [ngClass]="{'tipoTitulo3': ['3'].includes(dataWeb.ConfigApp.tipoTitulos), 'tipoTitulo4': ['4'].includes(dataWeb.ConfigApp.tipoTitulos)}">
+            <p class="tituloSeccion cursiva flex flexColumn relative">
+                {{dataWeb.WebBodas.confirmacionInvitados.titulo}}
+            </p>
+        </div>
+
+        <div id="botonConfirmacionAsistenciaId" class="contenedor flex flexColumn">
+            <p class="textoGracias">{{dataWeb.WebBodas.confirmacionInvitados.gracias}}</p>
+            <span class="textoGracias2">{{dataWeb.WebBodas.confirmacionInvitados.gracias2}}</span>
+            <button mat-raised-button (click)="verFormulario()" [ngStyle]="{'color': dataWeb.ConfigApp.colorTextoConfirmacion}"
+                class="animate__animated animate__tada animate__infinite animate__delay-1s animate__slow">
+                <i class="fas fa-vote-yea"></i>
+                {{dataWeb.WebBodas.confirmacionInvitados.confirmarAsistencia}}
+            </button>
+        </div>
+
+        <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorBottom', tipoSeparador: dataWeb.ConfigApp.separadorConfirmacionBottom, fill: dataWeb.ConfigApp.colorFondoConfirmacion }"></ng-container>
+    </div>
+
+    <div id="recuerdosId" class="contenedorRecuerdos flex flexColumn"
+        [ngStyle]="{'background-image': 'url(' + dataWeb.WebBodas.recuerdos.imgFondo + ')'}">
+        <div class="nombresRecuerdos flex">
+            <span
+                class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
+            <span class="conectorNombres cursiva">&</span>
+            <span
+                class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.nombreElla}}</span>
+        </div>
+        <div class="subcontenedorRecuerdos flex flexColumn">
+            <i
+                class="{{dataWeb.WebBodas.recuerdos.icono}} animate__animated animate__pulse animate__infinite animate__delay-1s animate__slow"></i>
+            <div class="textRecuerdos flex flexColumn">
+                <span
+                    class="tituloRecuerdos animate__animated animate__fadeInUp">{{dataWeb.WebBodas.recuerdos.ayudanos}}</span>
+                <span
+                    class="recuerdos animate__animated animate__fadeInUp">{{dataWeb.WebBodas.recuerdos.ayudanos2}}</span>
+                <span class="hashtag animate__animated animate__fadeInUp flex">
+                    <i *ngIf="dataWeb.WebBodas.recuerdos.hashtag" class="fas fa-hashtag"></i>
+                    {{dataWeb.WebBodas.recuerdos.hashtag}}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="contenedorFooter">
+        <div class="desarrolladoPor flex">
+            <p class="flex">
+                {{'dataApp.nombreApp' | translate}}
+                <i class="fas fa-copyright"></i>
+                {{'dataApp.copyright' | translate}} {{fechaActual | date: 'yyyy'}}
+            </p>
+        </div>
+    </div>
+</div>
+
+<mat-menu #menuAgenda="matMenu">
+    <ng-container *ngIf="dataWeb && dataWeb.WebBodas">
+        <button class="flex opcionAgenda" mat-menu-item (click)="addToAppleCalendar()">
+            <i class="fab fa-apple"></i>
+            {{dataWeb.WebBodas.ceremonia.appleCalendar}}
+        </button>
+        <button class="flex opcionAgenda" mat-menu-item (click)="addToGoogleCalendar()">
+            <img class="google" src="assets/imgs/google.png" alt="Google">
+            {{dataWeb.WebBodas.ceremonia.googleCalendar}}
+        </button>
+        <button class="flex opcionAgenda" mat-menu-item (click)="addToMicrosoftCalendar()">
+            <img class="imgMicrosoft" src="assets/imgs/microsoft.png" alt="Microsoft">
+            {{dataWeb.WebBodas.ceremonia.microsoftCalendar}}
+        </button>
+    </ng-container>
+</mat-menu>
+
+<mat-menu #menuLugar="matMenu">
+    <ng-container *ngIf="dataWeb && dataWeb.WebBodas">
+        <button class="flex opcionAgenda" mat-menu-item (click)="abrirWaze()">
+            <img class="imgWaze" src="assets/imgs/Waze.svg" alt="Waze">
+            {{dataWeb.WebBodas.ceremonia.waze}}
+        </button>
+        <button class="flex opcionAgenda" mat-menu-item (click)="abrirGoogleMaps()">
+            <img class="imgGoogleMaps" src="assets/imgs/GoogleMaps.svg" alt="GoogleMaps">
+            {{dataWeb.WebBodas.ceremonia.googleMaps}}
+        </button>
+    </ng-container>
+</mat-menu>
+
+
+<ng-template #encabezado2>
+    <ng-container *ngIf="dataWeb && dataWeb.ConfigApp">
+        <div id="nombres2" *ngIf="dataWeb.ConfigApp.encabezado == '2'; else encabezado3"
+            class="dataInfo flex flexColumn encabezado2 relative animate__animated animate__fadeIn animate__slow">
+            <div data-depth="0.2" class="flex flexColumn relative">
+                <div class="fechaBodaEncabezado flex">
+                    <img class="argollas" src="assets/imgs/argollas.gif" alt="argollas">
+                </div>
+                <div class="flex subcontenedorNombres">
+                    <span
+                        class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
+                    <span class="conectorNombres cursiva flex">&</span>
+                    <span
+                        class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.nombreElla}}</span>
+                </div>
+                <div class="fraseEncabezado flex">
+                    {{dataWeb.WebBodas.encabezado.frase}}
+                </div>
+                <i
+                    class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+<ng-template #encabezado3>
+    <ng-container *ngIf="dataWeb && dataWeb.WebBodas">
+        <div id="nombres3"
+            class="dataInfo flex flexColumn encabezado3 relative animate__animated animate__fadeIn animate__slow">
+            <div data-depth="0.2" class="flex flexColumn relative">
+                <div class="flex subcontenedorNombres">
+                    <span
+                        class="nombreEl cursiva animate__animated animate__fadeInLeft">{{dataWeb.WebBodas.encabezado.nombreEl}}</span>
+                    <span class="conectorNombres cursiva flex">/</span>
+                    <span
+                        class="nombreElla cursiva animate__animated animate__fadeInRight">{{dataWeb.WebBodas.encabezado.nombreElla}}</span>
+                </div>
+                <i
+                    class="scrollAbajo fas fa-chevron-down animate__animated animate__tada animate__infinite animate__delay-1s animate__slow"></i>
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #separador let-tipo="tipo" let-tipoSeparador="tipoSeparador" let-fill="fill">
+    <ng-container *ngIf="tipoSeparador != '0'">
+
+        <ng-container *ngIf="tipoSeparador == '1'; else separador2">
+            <svg class="separador {{tipo}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none" [ngStyle]="{'fill': fill}">
+                <path
+                    d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
+                    opacity=".25" class="shape-fill"></path>
+                <path
+                    d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z"
+                    opacity=".5" class="shape-fill"></path>
+                <path
+                    d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"
+                    class="shape-fill"></path>
+            </svg>
+        </ng-container>
+
+        <ng-template #separador2>
+            <svg class="separador2 {{tipo}}" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none"
+                [ngStyle]="{'fill': fill}">
+                <path d="M0 97L192 83L384 95L576 123L768 105L960 72L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".2">
+                </path>
+                <path d="M0 89L192 103L384 75L576 68L768 89L960 79L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".25">
+                </path>
+                <path d="M0 50L192 69L384 83L576 54L768 54L960 83L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".4">
+                </path>
+                <path d="M0 51L192 28L384 27L576 60L768 61L960 33L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".6">
+                </path>
+                <path d="M0 38L192 32L384 38L576 37L768 16L960 17L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity="1">
+                </path>
+            </svg>
+        </ng-template>
+    </ng-container>
+</ng-template>
+
+<ng-template #conteoRegresivo>
+    <div *ngIf="dataWeb && dataWeb.WebBodas" [ngStyle]="{'color': dataWeb.ConfigApp.colorTexto}">
+        <p class="dia" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">
+            {{dataWeb.WebBodas.conteoRegresivo.dia}}</p>
+        <p class="mes" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">
+            {{dataWeb.WebBodas.conteoRegresivo.mes}}</p>
+        <p class="year" [attr.data-aos]="!previa ? 'zoom-in': null" data-aos-duration="2000">
+            {{dataWeb.WebBodas.conteoRegresivo.year}}</p>
+    </div>
+</ng-template>

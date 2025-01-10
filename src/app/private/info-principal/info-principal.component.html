@@ -1,0 +1,637 @@
+<div class="contenedor infoPrincipal">
+    <div class="encabezado">
+        <p class="titulo flex">
+            <i class="fab fa-wpforms"></i>
+            <span class="texto flex flexColumn">
+                {{'Panel.infoPrincipal.titulo' | translate}}
+                <span class="descripcion">{{'Panel.infoPrincipal.descripcion' | translate}}</span>
+                <div class="botonVerVistaPrevia">
+                    <button mat-raised-button (click)="verWeb()">
+                        {{'Panel.infoPrincipal.vistaPrevia' | translate}}
+                    </button>
+                </div>
+            </span>
+        </p>
+    </div>
+
+    <div class="dataContenedor flex">
+        <div class="inputForm">
+            <mat-vertical-stepper [linear]="false" #stepper animationDuration="200"
+                (selectionChange)="onStepChange($event)">
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.titulos.titulo' | translate}}
+                                <div *ngIf="loading?.titulos; else guardado" class="flex loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                                </div>
+                                <ng-template #guardado>
+                                    <div class="flex loading animate__animated animate__fadeOut">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                    </div>
+                                </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloCeremonia' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.titulo" name="tituloCeremonia"
+                                maxlength="200" autocomplete="off" (click)="scroll('ceremoniaId')"
+                                (blur)="saveData('ceremonia', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" appearance="outline"
+                            subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloFiesta' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.titulo" name="tituloFiesta"
+                                maxlength="50" autocomplete="off" (click)="scroll('fiestaId')"
+                                (blur)="saveData('fiesta', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloGaleriaFotos' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fotos.titulo" name="tituloGaleriaFotos"
+                                maxlength="50" autocomplete="off" (click)="scroll('galeriaId')"
+                                (blur)="saveData('fotos', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloCodigoVestuario' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.titulo"
+                                name="tituloCodigoVestuario" maxlength="50" autocomplete="off"
+                                (click)="scroll('codigoVestuarioId')" (blur)="saveData('codigoVestuario', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloRegalos' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.titulo" name="tituloRegalos"
+                                maxlength="50" autocomplete="off" (click)="scroll('regalosId')"
+                                (blur)="saveData('regalos', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloConfirmacionAsistencia' |
+                                translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.titulo"
+                                name="tituloConfirmacionAsistencia" maxlength="50" autocomplete="off"
+                                (click)="scroll('confirmacionAsistenciaId')"
+                                (blur)="saveData('confirmacionInvitados', 'titulo', 'titulos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.botonConfirmarAsistencia' |
+                                translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.confirmarAsistencia"
+                                name="confirmarAsistencia" maxlength="50" autocomplete="off"
+                                (click)="scroll('botonConfirmacionAsistenciaId')"
+                                (blur)="saveData('confirmacionInvitados', 'confirmarAsistencia', 'titulos')">
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.encabezado.titulo' | translate}}
+                            <div *ngIf="loading?.encabezado; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-checkbox class="checkFiesta"
+                            [(ngModel)]="dataWeb.WebBodas.encabezado.invertirNombres" (ngModelChange)="saveData('encabezado', 'invertirNombres', 'encabezado')">{{'Panel.infoPrincipal.encabezado.invertirNombres'
+                            | translate}}</mat-checkbox>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.nombreEl' | translate}}</mat-label>
+                            <input matInput [ngModel]="dataWeb.WebBodas.encabezado.nombreEl" name="nombreEl"
+                                maxlength="50" autocomplete="off" disabled="true">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.nombreElla' | translate}}</mat-label>
+                            <input matInput [ngModel]="dataWeb.WebBodas.encabezado.nombreElla" name="nombreElla"
+                                maxlength="50" autocomplete="off" disabled="true">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.fechaBoda' | translate}}</mat-label>
+                            <input matInput readonly [matDatepicker]="picker" [(ngModel)]="dataWeb.WebBodas.fecha"
+                                (ngModelChange)="cambiaFechaBoda()" (click)="picker.open()">
+                            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                        </mat-form-field>
+                        <div class="contenedorHoraBoda">
+                            <ngx-mat-timepicker class="horaBoda" [(ngModel)]="dataWeb.WebBodas.fecha" name="horaBoda"
+                                [showSpinners]="false" [stepHour]="1" [stepMinute]="15" [stepSecond]="1"
+                                [showSeconds]="false" [enableMeridian]="true" (ngModelChange)="cambiaFechaBoda()">
+                            </ngx-mat-timepicker>
+                        </div>
+
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.frasePrincipal' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.encabezado.frase" name="fraseEncabezado"
+                                maxlength="50" autocomplete="off" (blur)="saveData('encabezado', 'frase', 'encabezado')">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.frase' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.eslogan.frase" name="frase" autocomplete="off"
+                                (click)="scroll('esloganId')" (blur)="saveData('eslogan', 'frase', 'encabezado')">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.autoFrase' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.eslogan.autor" name="autor" autocomplete="off"
+                                (blur)="saveData('eslogan', 'autor', 'encabezado')">
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.imgPrincipal' | translate}}</mat-label>
+                            <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.encabezado.archivoImgPrincipal"
+                                accept="image/*" [disabled]="loading?.encabezado"
+                                (change)="cargarArchivo(dataWeb.WebBodas.encabezado.archivoImgPrincipal, 'imgPrincipal', 'encabezado')">
+                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                            </ngx-mat-file-input>
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.ceremonia.titulo' | translate}}
+                            <div *ngIf="loading?.ceremonia; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.lugar' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.datoLugar"
+                                (ngModelChange)="cambioLugar('ceremonia')" (blur)="saveData('ceremonia', 'datoLugar', 'ceremonia')" name="datoLugar" maxlength="50"
+                                autocomplete="off">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.lugar2' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.datoLugar2" name="datoLugar2"
+                                maxlength="50" autocomplete="off" (blur)="saveData('ceremonia', 'datoLugar2', 'ceremonia')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.lugar3' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.datoLugar3" name="datoLugar3"
+                                maxlength="50" autocomplete="off" (blur)="saveData('ceremonia', 'datoLugar3', 'ceremonia')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.textoHora' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.textoHora" name="textoHora"
+                                maxlength="50" autocomplete="off" (blur)="saveData('ceremonia', 'textoHora', 'ceremonia')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.latitud' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.latitud" name="latitud"
+                                maxlength="20" autocomplete="off" (blur)="saveData('ceremonia', 'latitud', 'ceremonia')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.longitud' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.longitud" name="longitud"
+                                maxlength="20" autocomplete="off" (blur)="saveData('ceremonia', 'longitud', 'ceremonia')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.ceremonia.cantidad' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.duracion" name="cantidad"
+                                maxlength="20" autocomplete="off"
+                                (keypress)="funcionesGenerales.limitarInput($event, 'NUMEROS')"
+                                (ngModelChange)="cambiaFecha('ceremonia')" (blur)="saveData('ceremonia', 'duracion', 'ceremonia')">
+                        </mat-form-field>
+                        <div class="contenedorHoraCeremonia">
+                            <ngx-mat-timepicker class="horaInicioCer"
+                                [(ngModel)]="dataWeb.WebBodas.ceremonia.fechaInicio" name="horaInicioCer"
+                                [showSpinners]="false" [stepHour]="1" [stepMinute]="15" [stepSecond]="1"
+                                [showSeconds]="false" [enableMeridian]="true"
+                                (ngModelChange)="cambiaFecha('ceremonia')">
+                            </ngx-mat-timepicker>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.fiesta.titulo' | translate}}
+                            <span class="textoFiestaNoIncluida" *ngIf="!dataWeb.WebBodas.fiesta.fiestaAparte">
+                                ({{'Panel.infoPrincipal.fiesta.noIncluida' | translate}})
+                            </span>
+                            <div *ngIf="loading?.fiesta; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.WebBodas.fiesta.fiestaAparte"
+                        (ngModelChange)="cambioFiesta()">{{'Panel.infoPrincipal.fiesta.fiestaAparte' |
+                        translate}}</mat-checkbox>
+                    <div *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.lugar' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.datoLugar"
+                                (ngModelChange)="cambioLugar('fiesta')" name="datoLugar" maxlength="50"
+                                autocomplete="off" (blur)="saveData('fiesta', 'datoLugar', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.lugar2' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.datoLugar2" name="datoLugar2"
+                                maxlength="50" autocomplete="off" (blur)="saveData('fiesta', 'datoLugar2', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.lugar3' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.datoLugar3" name="datoLugar3"
+                                maxlength="50" autocomplete="off" (blur)="saveData('fiesta', 'datoLugar3', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.textoHora' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.textoHora" name="textoHora"
+                                maxlength="50" autocomplete="off" (blur)="saveData('fiesta', 'textoHora', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.latitud' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.latitud" name="latitud" maxlength="20"
+                                autocomplete="off" (blur)="saveData('fiesta', 'latitud', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.longitud' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.longitud" name="longitud"
+                                maxlength="20" autocomplete="off" (blur)="saveData('fiesta', 'longitud', 'fiesta')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fiesta.cantidad' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.duracion" name="cantidad"
+                                maxlength="20" autocomplete="off"
+                                (keypress)="funcionesGenerales.limitarInput($event, 'NUMEROS')"
+                                (ngModelChange)="cambiaFecha('fiesta')">
+                        </mat-form-field>
+                        <div class="contenedorHoraCeremonia">
+                            <ngx-mat-timepicker class="horaInicioCer" [(ngModel)]="dataWeb.WebBodas.fiesta.fechaInicio"
+                                name="horaInicioCer" [showSpinners]="false" [stepHour]="1" [stepMinute]="15"
+                                [stepSecond]="1" [showSeconds]="false" [enableMeridian]="true"
+                                (ngModelChange)="cambiaFecha('fiesta')">
+                            </ngx-mat-timepicker>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.fotos.titulo' | translate}}
+                            <div *ngIf="loading?.fotos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fotos.agregarFotos' | translate}}</mat-label>
+                            <ngx-mat-file-input [(ngModel)]="selectImagen" accept="image/*"
+                                (change)="cargarArchivo(selectImagen, 'fotoGaleria', 'fotos')" [disabled]="!!selectImagen">
+                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                            </ngx-mat-file-input>
+                        </mat-form-field>
+                    </div>
+                    <div class="contenedorImagenesGaleria flex">
+                        <div class="relative" *ngFor="let slide of this.listaFotosGaleria; let i = index">
+                            <i class="eliminarImgGaleria fas fa-times" (click)="eliminarImagen(slide, i)"></i>
+                            <img [src]="slide.url" [alt]="i + 1">
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.codigoVestuario.titulo' | translate}}
+                            <div *ngIf="loading?.codigoVestuario; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex flexColumn contenedorPrincipalVestuario">
+                        <div class="flex contenedorInputs">
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.descripcionHombres' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.descripcionHombres"
+                                    name="descripcionHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionHombres', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.linkHombres' | translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.linkHombres"
+                                    name="linkHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkHombres', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.descripcionMujeres' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.descripcionMujeres"
+                                    name="descripcionMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionMujeres', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.linkMujeres' | translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.linkMujeres"
+                                    name="linkMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkMujeres', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.tituloNotaAdicional' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.tenPresente"
+                                    name="tituloNotaAdicional" maxlength="30" autocomplete="off" (blur)="saveData('codigoVestuario', 'tenPresente', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.notaAdicional' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.notaGeneral"
+                                    name="notaAdicional" maxlength="50" autocomplete="off" (blur)="saveData('codigoVestuario', 'notaGeneral', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-radio-group aria-label="Icono" class="icoVestuario"
+                                [(ngModel)]="dataWeb.WebBodas.codigoVestuario.icono" (ngModelChange)="saveData('codigoVestuario', 'icono', 'codigoVestuario')">
+                                <mat-radio-button value="fab fa-pinterest"><i
+                                        class="fab fa-pinterest"></i></mat-radio-button>
+                                <mat-radio-button value="fas fa-external-link-square-alt"><i
+                                        class="fas fa-external-link-square-alt"></i></mat-radio-button>
+                                <mat-radio-button value="fas fa-eye"><i class="fas fa-eye"></i></mat-radio-button>
+                                <mat-radio-button value="fas fa-tags"><i class="fas fa-tags"></i></mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="contenedorColores flex">
+                            <div class="opcionColores">
+                                <span>{{'Panel.infoPrincipal.codigoVestuario.coloresSugeridosHombres' |
+                                    translate}}</span>
+                                <div class="colores flex">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1"  (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre1', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre2', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre3', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre4', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre5', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoHombre6', 'codigoVestuario')">
+                                    <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1 || dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre2 || dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre3 || dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre4 || dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre5 || dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6"
+                                        class="fas fa-minus-square" (click)="quitarColor('colorSugeridoHombre')"></i>
+                                    <i *ngIf="!dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre6"
+                                        class="fas fa-plus-square" (click)="agregarColor('colorSugeridoHombre')"></i>
+                                </div>
+                            </div>
+                            <div class="opcionColores">
+                                <span>{{'Panel.infoPrincipal.codigoVestuario.coloresSugeridosMujeres' |
+                                    translate}}</span>
+                                <div class="colores flex">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer1', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer2', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer3', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer4', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer5', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6"
+                                        name="colorPicker"
+                                        [value]="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6" (ngModelChange)="saveData('codigoVestuario', 'colorSugeridoMujer6', 'codigoVestuario')">
+                                    <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer1 || dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer2 || dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer3 || dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer4 || dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer5 || dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6"
+                                        class="fas fa-minus-square" (click)="quitarColor('colorSugeridoMujer')"></i>
+                                    <i *ngIf="!dataWeb.WebBodas.codigoVestuario.colorSugeridoMujer6"
+                                        class="fas fa-plus-square" (click)="agregarColor('colorSugeridoMujer')"></i>
+                                </div>
+                            </div>
+                            <div class="opcionColores">
+                                <span>{{'Panel.infoPrincipal.codigoVestuario.coloresReservados' | translate}}</span>
+                                <div class="colores flex">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado1" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado1"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado1" (ngModelChange)="saveData('codigoVestuario', 'colorReservado1', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado2" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado2"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado2" (ngModelChange)="saveData('codigoVestuario', 'colorReservado2', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado3" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado3"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado3" (ngModelChange)="saveData('codigoVestuario', 'colorReservado3', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado4" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado4"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado4" (ngModelChange)="saveData('codigoVestuario', 'colorReservado4', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado5" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado5"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado5" (ngModelChange)="saveData('codigoVestuario', 'colorReservado5', 'codigoVestuario')">
+                                    <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado6" type="color"
+                                        class="colorPicker"
+                                        [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorReservado6"
+                                        name="colorPicker" [value]="dataWeb.WebBodas.codigoVestuario.colorReservado6" (ngModelChange)="saveData('codigoVestuario', 'colorReservado6', 'codigoVestuario')">
+                                    <i *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado1 || dataWeb.WebBodas.codigoVestuario.colorReservado2 || dataWeb.WebBodas.codigoVestuario.colorReservado3 || dataWeb.WebBodas.codigoVestuario.colorReservado4 || dataWeb.WebBodas.codigoVestuario.colorReservado5 || dataWeb.WebBodas.codigoVestuario.colorReservado6"
+                                        class="fas fa-minus-square" (click)="quitarColor('colorReservado')"></i>
+                                    <i *ngIf="!dataWeb.WebBodas.codigoVestuario.colorReservado6"
+                                        class="fas fa-plus-square" (click)="agregarColor('colorReservado')"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.regalos.titulo' | translate}}
+                            <div *ngIf="loading?.regalos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.regalos.frase' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.tituloLluvia" name="tituloLluvia"
+                                maxlength="200" autocomplete="off" (blur)="saveData('regalos', 'tituloLluvia', 'regalos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.regalos.textoResaltado' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.lluviaSobres" name="lluviaSobres"
+                                maxlength="50" autocomplete="off" (blur)="saveData('regalos', 'lluviaSobres', 'regalos')">
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.confirmacionInvitados.titulo' | translate}}
+                            <div *ngIf="loading?.confirmacionInvitados; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.confirmacionInvitados.gracias' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.gracias" name="gracias"
+                                maxlength="200" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias', 'confirmacionInvitados')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.confirmacionInvitados.gracias2' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.gracias2"
+                                name="gracias2" maxlength="500" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias2', 'confirmacionInvitados')">
+                        </mat-form-field>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.recuerdos.titulo' | translate}}
+                            <div *ngIf="loading?.recuerdos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.recuerdos.textoResaltado' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.recuerdos.ayudanos" name="ayudanos"
+                                maxlength="200" autocomplete="off" (blur)="saveData('recuerdos', 'ayudanos', 'recuerdos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.recuerdos.textoAdicional' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.recuerdos.ayudanos2" name="ayudanos2"
+                                maxlength="100" autocomplete="off" (blur)="saveData('recuerdos', 'ayudanos2', 'recuerdos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.recuerdos.hashtag' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.recuerdos.hashtag" name="hashtag"
+                                maxlength="20" autocomplete="off" (blur)="saveData('recuerdos', 'hashtag', 'recuerdos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.recuerdos.imgFondo' | translate}}</mat-label>
+                            <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.recuerdos.archivoImgFondo"
+                                accept="image/*" [disabled]="loading?.recuerdos"
+                                (change)="cargarArchivo(dataWeb.WebBodas.recuerdos.archivoImgFondo, 'imgFondo', 'recuerdos')">
+                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                            </ngx-mat-file-input>
+                        </mat-form-field>
+
+                        <mat-radio-group aria-label="Icono" class="icoRecuerdos"
+                            [(ngModel)]="dataWeb.WebBodas.recuerdos.icono" (ngModelChange)="saveData('recuerdos', 'icono', 'recuerdos')">
+                            <mat-radio-button value="fab fa-instagram"><i
+                                    class="fab fa-instagram"></i></mat-radio-button>
+                            <mat-radio-button value="fab fa-facebook-square"><i
+                                    class="fab fa-facebook-square"></i></mat-radio-button>
+                            <mat-radio-button value="fas fa-images"><i class="fas fa-images"></i></mat-radio-button>
+                            <mat-radio-button value="fas fa-photo-video"><i
+                                    class="fas fa-photo-video"></i></mat-radio-button>
+                            <mat-radio-button value="fas fa-camera"><i class="fas fa-camera"></i></mat-radio-button>
+                            <mat-radio-button value="fas fa-camera-retro"><i
+                                    class="fas fa-camera-retro"></i></mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+
+        <div class="contenedorPreviaWeb">
+            <div class="mobile-container">
+                <div class="notch">
+                    <div class="notch-camera"></div>
+                    <div class="notch-speaker"></div>
+                </div>
+                <div class="screen">
+                    <app-web-bodas [dataWeb]="dataWeb" [listaFotosGaleria]="listaFotosGaleria"
+                        [previa]="true"></app-web-bodas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

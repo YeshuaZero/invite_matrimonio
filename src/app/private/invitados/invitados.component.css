@@ -1,0 +1,317 @@
+.invitados .dataContenedor {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    grid-gap: 40px;
+    align-items: start;
+    align-content: baseline;
+    padding-top: 18px;
+    overflow: hidden;
+}
+
+.invitados .contenedorPreviaWeb {
+    position: absolute;
+    right: 80px;
+    top: 60px;
+    height: calc(100% - 110px);
+    max-height: 600px;
+    container: inline-size;
+}
+
+.invitados .stepperVertical {
+    height: calc(100vh - 150px);
+}
+
+
+.invitados .inputForm {
+    overflow: auto;
+    height: calc(100% - 16px);
+    direction: rtl;
+    padding-bottom: 16px;
+}
+
+.invitados .inputForm ::ng-deep mat-vertical-stepper {
+    direction: ltr;
+}
+
+.invitados .contenedorInputs {
+    padding: 12px 0 0;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.invitados ::ng-deep .mat-step:first-child {
+    padding-top: 8px;
+}
+
+.invitados ::ng-deep .mat-step:last-child {
+    padding-bottom: 8px;
+}
+
+.invitados ::ng-deep .mat-vertical-stepper-header {
+    padding: 8px 24px !important;
+}
+
+.invitados ::ng-deep .mat-step-icon {
+    background-color: #311d47 !important;
+}
+
+.invitados ::ng-deep .mat-step-icon-selected {
+    background-color: #451580 !important;
+}
+
+.invitados ::ng-deep .mat-step-label-selected .mat-step-text-label {
+    font-weight: 600;
+    color: #451580;
+}
+
+.invitados .loading {
+    margin-left: 16px;
+    color: #aaa;
+}
+
+.invitados .loading span {
+    font-weight: 200;
+}
+
+.invitados .ajustesGeneralesInputs {
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.invitados .ajustesGeneralesInputs mat-radio-group {
+    width: 100%;
+}
+
+.invitados .dataContenedor mat-radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.invitados .dataContenedor mat-radio-button {
+    display: flex;
+}
+
+.invitados .dataContenedor ::ng-deep .mdc-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.invitados .botonVistaPrevia {
+    background: #471386 !important;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 16px;
+}
+
+.invitados .contenedorVistaPrevia {
+    position: absolute;
+    top: 100px;
+    right: 70px;
+    background: #fff;
+    border: solid 2px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.invitados .contenedorTabs {
+    width: 100%;
+}
+
+.invitados .botonCrearNuevo {
+    margin-left: 20px;
+    height: 26px;
+    padding: 0px 12px;
+    background-color: #471587 !important;
+    margin-bottom: 2px;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.invitados .contenedorTabla {
+    padding: 16px 0;
+    overflow: auto;
+    height: calc(100vh - 320px);
+    margin-bottom: 24px;
+}
+
+.invitados .botonVerVistaPrevia button {
+    display: none;
+    height: 22px;
+    margin-top: 8px;
+    background-color: #471587 !important;
+    color: #fff !important;
+    font-size: 12px;
+}
+
+@media (max-width:1300px) {
+    .invitados .contenedorInputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:1150px) {
+
+    .invitados .botonVerVistaPrevia button {
+        display: flex;
+    }
+
+    .invitados .contenedorVistaPrevia {
+        display: none;
+    }
+
+    .invitados .encabezado .titulo {
+        align-items: flex-start;
+    }
+
+    .invitados .dataContenedor {
+        grid-template-columns: 1fr;
+        height: calc(100vh - 180px);
+    }
+}
+
+@media (max-width:1000px) {
+    .invitados ::ng-deep .mat-vertical-content-container {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width:740px) {
+    .invitados .dataContenedor {
+        height: calc(100vh - 190px);
+    }
+}
+
+@media (max-width:680px) {
+    .invitados ::ng-deep .mdc-tab {
+        padding: 0 4px !important;
+        min-width: auto !important;
+        width: auto;
+        font-size: 14px !important;
+        --mdc-secondary-navigation-tab-container-height: 36px;
+    }
+
+    .invitados ::ng-deep .mat-vertical-content {
+        padding: 0 24px 0 24px !important;
+    }
+}
+
+@media (max-width:550px) {
+    .invitados ::ng-deep .mdc-tab {
+        font-size: 12px !important;
+    }
+
+    .invitados ::ng-deep .mat-mdc-cell:nth-child(2) {
+        text-align: center !important;
+    }
+
+    .invitados ::ng-deep .mat-mdc-cell span .icoEstado {
+        margin-right: 0;
+    }
+
+    .invitados ::ng-deep .mat-mdc-cell span span {
+        display: none;
+    }
+
+    .invitados ::ng-deep .mat-step-header:nth-child(1) {
+        height: auto;
+    }
+
+    .invitados .dataContenedor {
+        height: calc(100vh - 190px);
+    }
+
+    .invitados .stepperVertical {
+        height: calc(100vh - 190px);
+        overflow: auto;
+        padding-bottom: 16px;
+    }
+
+    .invitados .labelListaInvitados {
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .invitados .contenedorInputs {
+        grid-template-columns: 1fr;
+        padding-bottom: 12px;
+    }
+
+    .invitados .contenedorTabla {
+        padding: 16px 0 0;
+        overflow: auto;
+        margin-bottom: 0;
+        height: calc(100vh - 340px);
+    }
+
+    .invitados .botonCrearNuevo {
+        margin: 0 0 0 4px;
+        height: 18px;
+        font-size: 10px;
+    }
+
+}
+
+
+@media (max-width:500px) {
+    .invitados .botonCrearNuevo {
+        min-width: auto;
+    }
+
+    .invitados .botonCrearNuevo i {
+        margin: 0;
+    }
+
+    .invitados .textoCrearNuevo {
+        display: none;
+    }
+}
+
+@media (max-width:470px) {
+    .invitados .encabezado .titulo {
+        margin-left: 40px;
+    }
+
+    .invitados .encabezado .titulo .texto .descripcion {
+        font-size: 10px;
+        line-height: 1;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width:380px) {
+    .invitados ::ng-deep .mat-step-text-label {
+        font-size: 14px;
+    }
+
+    .invitados ::ng-deep .mat-vertical-content {
+        padding: 0 12px 0 12px !important;
+    }
+}
+
+@media (max-width:360px) {
+    .invitados .dataContenedor {
+        height: calc(100vh - 200px);
+    }
+
+    .invitados .loading span {
+        display: none;
+    }
+
+    .invitados ::ng-deep .mat-vertical-content {
+        padding: 0 12px 24px 12px;
+    }
+
+    .invitados ::ng-deep .mat-mdc-cell span {
+        font-size: 10px;
+    }
+
+    .invitados ::ng-deep th:nth-child(1),
+    .invitados ::ng-deep td:nth-child(1) {
+        max-width: 100px;
+        min-width: 100px;
+    }
+}

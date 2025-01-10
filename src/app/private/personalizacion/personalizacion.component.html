@@ -1,0 +1,612 @@
+<div class="contenedor personalizacion">
+    <div class="encabezado">
+        <p class="titulo flex">
+            <i class="fab fa-wpforms"></i>
+            <span class="texto flex flexColumn">
+                {{'Panel.personalizacion.titulo' | translate}}
+                <span class="descripcion">{{'Panel.personalizacion.descripcion' | translate}}</span>
+                <div class="botonVerVistaPrevia">
+                    <button mat-raised-button (click)="verWeb()">
+                        {{'Panel.infoPrincipal.vistaPrevia' | translate}}
+                    </button>
+                </div>
+            </span>
+        </p>
+    </div>
+
+    <div class="dataContenedor flex">
+        <div class="inputForm">
+            <mat-vertical-stepper [linear]="false" #stepper animationDuration="200"
+                (selectionChange)="onStepChange($event)">
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.generales.titulo' | translate}}
+                                <div *ngIf="loading?.generales; else guardado" class="flex loading">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                    <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                                </div>
+                                <ng-template #guardado>
+                                    <div class="flex loading animate__animated animate__fadeOut">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                    </div>
+                                </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex flexColumn contenedorInputs ajustesGeneralesInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.flores"
+                            (ngModelChange)="saveData('flores', 'generales')">
+                            <mat-radio-button value="1"><img src="/assets/imgs/florDerecha1.png" alt="flores1"></mat-radio-button>
+                            <mat-radio-button value="2"><img src="/assets/imgs/florDerecha2.png" alt="flores2"></mat-radio-button>
+                            <mat-radio-button value="3"><img src="/assets/imgs/florDerecha3.png" alt="flores3"></mat-radio-button>
+                            <mat-radio-button value="4"><img src="/assets/imgs/florDerecha4.png" alt="flores4"></mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-radio-group aria-label="Icono" class="flex tipoTitulos" [(ngModel)]="dataWeb.ConfigApp.tipoTitulos"
+                            (ngModelChange)="saveData('tipoTitulos', 'generales')">
+                            <mat-radio-button value="1"><span class="tituloSeccion cursiva tipoTitulo1">{{'Panel.infoPrincipal.generales.tituloTipo1' | translate}}</span></mat-radio-button>
+                            <mat-radio-button value="2"><span class="tituloSeccion tipoTitulo2">{{'Panel.infoPrincipal.generales.tituloTipo2' | translate}}</span></mat-radio-button>
+                            <mat-radio-button value="3">
+                                <svg class="fondoLetrero"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300" zoomAndPan="magnify"
+                                    viewBox="0 0 224.87999 68.999997" height="92" preserveAspectRatio="none" version="1.0">
+                                    <defs>
+                                        <clipPath id="fb40fe4ca7">
+                                            <path
+                                                d="M 6.894531 0.0195312 L 204.789062 0.0195312 L 204.789062 68.980469 L 6.894531 68.980469 Z M 6.894531 0.0195312 "
+                                                clip-rule="nonzero" />
+                                        </clipPath>
+                                        <clipPath id="42d23947fe">
+                                            <path d="M 197 9 L 204.789062 9 L 204.789062 64 L 197 64 Z M 197 9 " clip-rule="nonzero" />
+                                        </clipPath>
+                                    </defs>
+                                    <g clip-path="url(#fb40fe4ca7)">
+                                        <path opacity=".8"
+                                            d="M 6.894531 10.960938 C 9.226562 9.636719 21.175781 3.300781 25.601562 0.957031 C 26.671875 0.390625 27.894531 0.183594 29.089844 0.363281 C 37.410156 1.625 72.726562 6.6875 106.910156 7.160156 C 146 7.703125 198.878906 0.105469 198.878906 0.105469 L 204.628906 2.277344 L 202.269531 5.773438 C 201.191406 7.375 200.671875 9.292969 200.792969 11.222656 L 204.054688 63.054688 L 200.460938 61.292969 C 199.007812 60.582031 197.371094 60.332031 195.769531 60.585938 C 186.597656 62.03125 153.058594 67.011719 120.707031 67.9375 C 87.691406 68.882812 39.890625 60.039062 28.042969 57.730469 C 26.339844 57.394531 24.589844 57.984375 23.429688 59.273438 L 19.542969 63.597656 Z M 6.894531 10.960938 "
+                                            fill-opacity=".8" fill-rule="nonzero" />
+                                    </g>
+                                    <path class="fondo"
+                                        d="M 26.730469 7.882812 L 25.210938 54.953125 L 22.335938 17.96875 C 22.113281 15.128906 19.914062 12.847656 17.085938 12.523438 L 11.160156 11.84375 L 23.753906 5.925781 C 25.164062 5.261719 26.78125 6.324219 26.730469 7.882812 Z M 26.730469 7.882812 "
+                                        fill-opacity="1" fill-rule="nonzero" />
+                                    <g clip-path="url(#42d23947fe)">
+                                        <path class="fondo"
+                                            d="M 200.253906 9.824219 L 197.609375 51.148438 C 197.445312 53.726562 198.289062 56.265625 199.960938 58.234375 L 204.054688 63.054688 Z M 200.253906 9.824219 "
+                                            fill-opacity="1" fill-rule="nonzero" />
+                                    </g>
+                                </svg>
+                                <span class="tituloSeccion tipoTitulo3">{{'Panel.infoPrincipal.generales.tituloTipo3' | translate}}</span>
+                            </mat-radio-button>
+                            <mat-radio-button value="4">
+                                <svg class="fondoLetrero" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="300"
+                                    zoomAndPan="magnify" viewBox="0 0 224.87999 68.999997" height="92" preserveAspectRatio="none" version="1.0">
+                                    <defs>
+                                        <clipPath id="b45f33407d">
+                                            <path
+                                                d="M 0.378906 13.488281 L 224.507812 13.488281 L 224.507812 55.464844 L 0.378906 55.464844 Z M 0.378906 13.488281 "
+                                                clip-rule="nonzero" />
+                                        </clipPath>
+                                    </defs>
+                                    <g clip-path="url(#b45f33407d)">
+                                        <path
+                                            d="M 224.390625 13.496094 L 0.484375 13.496094 L 16.863281 34.496094 L 0.484375 55.496094 L 224.390625 55.496094 L 208.011719 34.496094 L 224.390625 13.496094 "
+                                            fill-opacity="1" fill-rule="nonzero" />
+                                    </g>
+                                    <path opacity=".6"
+                                        d="M 11.207031 50.261719 L 213.667969 50.261719 L 201.375 34.496094 L 213.667969 18.730469 L 11.207031 18.730469 L 23.5 34.496094 Z M 215.617188 51.210938 L 9.257812 51.210938 L 22.292969 34.496094 L 9.257812 17.777344 L 215.617188 17.777344 L 202.582031 34.496094 L 215.617188 51.210938 "
+                                        fill-opacity=".6" fill-rule="nonzero" />
+                                </svg>
+                                <span class="tituloSeccion tipoTitulo4">{{'Panel.infoPrincipal.generales.tituloTipo4' | translate}}</span>
+                            </mat-radio-button>
+                        </mat-radio-group>
+
+                        <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.ConfigApp.mostrarIcoSecciones"
+                            (ngModelChange)="saveData('mostrarIcoSecciones', 'generales')">{{'Panel.infoPrincipal.generales.mostrarIcoSecciones' | translate}}</mat-checkbox>
+                    </div>
+                    <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
+                    <div class="flex contenedorInputs inputsColor">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorFondo"
+                            (ngModelChange)="saveData('colorFondo', 'generales')" (click)="scroll('esloganId')">
+                            <mat-radio-button value="#f7f4ef">
+                                <div class="opcionColor" [ngStyle]="{'background': '#f7f4ef'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#f9f6e9">
+                                <div class="opcionColor" [ngStyle]="{'background': '#f9f6e9'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#e5ebf1">
+                                <div class="opcionColor" [ngStyle]="{'background': '#e5ebf1'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#e2ece9">
+                                <div class="opcionColor" [ngStyle]="{'background': '#e2ece9'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#f7f4e9">
+                                <div class="opcionColor" [ngStyle]="{'background': '#f7f4e9'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#fff7f7">
+                                <div class="opcionColor" [ngStyle]="{'background': '#fff7f7'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#f7f1ff">
+                                <div class="opcionColor" [ngStyle]="{'background': '#f7f1ff'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button [value]="['#f7f4ef', '#f9f6e9', '#e5ebf1', '#e2ece9', '#f7f4e9', '#fff7f7', '#f7f1ff'].includes(dataWeb.ConfigApp.colorFondo) ? '#222' : dataWeb.ConfigApp.colorFondo">
+                                <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorFondo" name="colorPicker"
+                                    [value]="dataWeb.ConfigApp.colorFondo" (ngModelChange)="saveData('colorFondo', 'generales')" (click)="scroll('esloganId')">
+                                {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorTexto' | translate}}</p>
+                    <div class="flex contenedorInputs inputsColor">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorTexto"
+                            (ngModelChange)="saveData('colorTexto', 'generales')" (click)="scroll('esloganId')">
+                            <mat-radio-button value="#6e6d68">
+                                <div class="opcionColor" [ngStyle]="{'background': '#6e6d68'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#6c6957">
+                                <div class="opcionColor" [ngStyle]="{'background': '#6c6957'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#46515c">
+                                <div class="opcionColor" [ngStyle]="{'background': '#46515c'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#3a4f48">
+                                <div class="opcionColor" [ngStyle]="{'background': '#3a4f48'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#5d552d">
+                                <div class="opcionColor" [ngStyle]="{'background': '#5d552d'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#7c5c5c">
+                                <div class="opcionColor" [ngStyle]="{'background': '#7c5c5c'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button value="#413253">
+                                <div class="opcionColor" [ngStyle]="{'background': '#413253'}"></div>
+                            </mat-radio-button>
+                            <mat-radio-button [value]="['#6e6d68', '#6c6957', '#46515c', '#3a4f48', '#5d552d', '#7c5c5c', '#413253'].includes(dataWeb.ConfigApp.colorTexto) ? '#222' : dataWeb.ConfigApp.colorTexto">
+                                <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorTexto" name="colorTextoPicker"
+                                    [value]="dataWeb.ConfigApp.colorTexto" (ngModelChange)="saveData('colorTexto', 'generales')" (click)="scroll('esloganId')">
+                                {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.encabezado.titulo' | translate}}
+                            <div *ngIf="loading?.encabezado; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.ConfigApp.floresEncabezado"
+                            (ngModelChange)="saveData('floresEncabezado', 'encabezado')" (click)="scroll('encabezadoId')">{{'Panel.infoPrincipal.encabezado.floresEncabezado' |
+                            translate}}</mat-checkbox>
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.encabezado"
+                            (ngModelChange)="saveData('encabezado', 'encabezado')">
+                            <mat-radio-button value="1">{{'Panel.infoPrincipal.encabezado.encabezadoTipo1' | translate}}</mat-radio-button>
+                            <mat-radio-button value="2">{{'Panel.infoPrincipal.encabezado.encabezadoTipo2' | translate}}</mat-radio-button>
+                            <mat-radio-button value="3">{{'Panel.infoPrincipal.encabezado.encabezadoTipo3' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores separadorTop"
+                            [(ngModel)]="dataWeb.ConfigApp.separadorEncabezado"
+                            (ngModelChange)="saveData('separadorEncabezado', 'encabezado')">
+                            <mat-radio-button value="1">{{'Panel.infoPrincipal.encabezado.separadorTipo1' | translate}}</mat-radio-button>
+                            <mat-radio-button value="2">{{'Panel.infoPrincipal.encabezado.separadorTipo2' | translate}}</mat-radio-button>
+                            <mat-radio-button value="0">{{'Panel.infoPrincipal.encabezado.separadorTipo0' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.estiloConteoRegresivo"
+                            (ngModelChange)="saveData('estiloConteoRegresivo', 'encabezado')" (click)="scroll('conteoRegresivoId')">
+                            <mat-radio-button value="1">{{'Panel.infoPrincipal.encabezado.estiloConteoRegresivo1' | translate}}</mat-radio-button>
+                            <mat-radio-button value="2">{{'Panel.infoPrincipal.encabezado.estiloConteoRegresivo2' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.ceremonia.titulo' | translate}}
+                            <div *ngIf="loading?.ceremonia; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.tipoCeremonia" (ngModelChange)="saveData('tipoCeremonia', 'ceremonia')">
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.ceremonia.ceremoniaTipo1' | translate}}</mat-radio-button>
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.ceremonia.ceremoniaTipo2' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.ordenCeremonia"
+                                (ngModelChange)="saveData('ordenCeremonia', 'ceremonia')">
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.ceremonia.sinIconosGrandes' | translate}}</mat-radio-button>
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.ceremonia.mostrarIconos' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.fiesta.titulo' | translate}}
+                            <span class="textoFiestaNoIncluida" *ngIf="!dataWeb.WebBodas.fiesta.fiestaAparte">
+                                ({{'Panel.infoPrincipal.fiesta.noIncluida' | translate}})
+                            </span>
+                            <div *ngIf="loading?.fiesta; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+
+                    <ng-container *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte">
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.tipoFiesta"
+                                (ngModelChange)="saveData('tipoFiesta', 'fiesta')">
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.fiesta.fiestaTipo1' | translate}}</mat-radio-button>
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.fiesta.fiestaTipo2' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.ordenFiesta"
+                                (ngModelChange)="saveData('ordenFiesta', 'fiesta')">
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.fiesta.sinIconosGrandes' | translate}}</mat-radio-button>
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.fiesta.mostrarIconos' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </ng-container>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.fotos.titulo' | translate}}
+                            <div *ngIf="loading?.fotos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.tipoRecuerdos"
+                            (ngModelChange)="saveData('tipoRecuerdos', 'fotos')">
+                            <mat-radio-button value="1">{{'Panel.infoPrincipal.fotos.recuerdosTipo1' | translate}}</mat-radio-button>
+                            <mat-radio-button value="2">{{'Panel.infoPrincipal.fotos.recuerdosTipo2' | translate}}</mat-radio-button>
+                            <mat-radio-button value="3">{{'Panel.infoPrincipal.fotos.recuerdosTipo3' | translate}}</mat-radio-button>
+                            <mat-radio-button value="4">{{'Panel.infoPrincipal.fotos.recuerdosTipo4' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.codigoVestuario.titulo' | translate}}
+                            <div *ngIf="loading?.codigoVestuario; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex flexColumn contenedorPrincipalVestuario">
+                            <div class="flex contenedorInputs">
+                                <mat-radio-group aria-label="Icono" class="flores separadorTop"
+                                    [(ngModel)]="dataWeb.ConfigApp.separadorVestuarioTop"
+                                    (ngModelChange)="saveData('separadorVestuarioTop', 'codigoVestuario')">
+                                    <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorTopTipo1' | translate}}</mat-radio-button>
+                                    <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorTopTipo2' | translate}}</mat-radio-button>
+                                    <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div class="flex contenedorInputs separadorBottom">
+                                <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.separadorVestuarioBottom"
+                                    (ngModelChange)="saveData('separadorVestuarioBottom', 'codigoVestuario')">
+                                    <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorBottomTipo1' |
+                                        translate}}</mat-radio-button>
+                                    <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorBottomTipo2' |
+                                        translate}}</mat-radio-button>
+                                    <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioImgPrincipal"
+                                (ngModelChange)="saveData('vestuarioImgPrincipal', 'codigoVestuario')">
+                                <mat-radio-button value="1"><img src="/assets/imgs/codigoVestuario1.png" alt="codigoVestuario1"></mat-radio-button>
+                                <mat-radio-button value="2"><img src="/assets/imgs/codigoVestuario2.png" alt="codigoVestuario2"></mat-radio-button>
+                                <mat-radio-button value="3"><img src="/assets/imgs/codigoVestuario3.png" alt="codigoVestuario3"></mat-radio-button>
+                                <mat-radio-button value="4"><img src="/assets/imgs/codigoVestuario4.png" alt="codigoVestuario4"></mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
+                        <div class="flex contenedorInputs inputsColor">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorFondoVestuario"
+                                (ngModelChange)="saveData('colorFondoVestuario', 'codigoVestuario')">
+                                <mat-radio-button value="#e5e0d8">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#e5e0d8'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#e8e5cb">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#e8e5cb'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#acb7c2">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#acb7c2'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#b2c8c1">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#b2c8c1'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#e7e1be">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#e7e1be'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#ccb5b5">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#ccb5b5'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#b9afc6">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#b9afc6'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button
+                                    [value]="['#e5e0d8', '#e8e5cb', '#acb7c2', '#b2c8c1', '#e7e1be', '#ccb5b5', '#b9afc6'].includes(dataWeb.ConfigApp.colorFondoVestuario) ? '#222' : dataWeb.ConfigApp.colorFondoVestuario">
+                                    <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorFondoVestuario" name="colorPicker"
+                                        [value]="dataWeb.ConfigApp.colorFondoVestuario" (ngModelChange)="saveData('colorFondoVestuario', 'codigoVestuario')">
+                                    {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorTexto' | translate}}</p>
+                        <div class="flex contenedorInputs inputsColor">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorTextoVestuario"
+                                (ngModelChange)="saveData('colorTextoVestuario', 'codigoVestuario')">
+                                <mat-radio-button value="#222222">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#222222'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#6c6957">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#6c6957'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#46515c">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#46515c'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#3a4f48">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#3a4f48'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#5d552d">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#5d552d'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#7c5c5c">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#7c5c5c'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#413253">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#413253'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button
+                                    [value]="['#222222', '#6c6957', '#46515c', '#3a4f48', '#5d552d', '#7c5c5c', '#413253'].includes(dataWeb.ConfigApp.colorTextoVestuario) ? '#000' : dataWeb.ConfigApp.colorTextoVestuario">
+                                    <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorTextoVestuario" name="colorTextoPicker"
+                                        [value]="dataWeb.ConfigApp.colorTextoVestuario" (ngModelChange)="saveData('colorTextoVestuario', 'codigoVestuario')">
+                                    {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloImagenesPC">{{'Panel.infoPrincipal.codigoVestuario.imagenesPC' | translate}}</p>
+                        <p class="tituloLadoIzq">{{'Panel.infoPrincipal.codigoVestuario.ladoIzq' | translate}}</p>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioLateralesIzq"
+                                (ngModelChange)="saveData('vestuarioLateralesIzq', 'codigoVestuario')">
+                                <mat-radio-button value="1"><img src="/assets/imgs/vestuarioIzq1.png" alt="vestuarioIzq1"></mat-radio-button>
+                                <mat-radio-button value="2"><img src="/assets/imgs/vestuarioIzq2.png" alt="vestuarioIzq2"></mat-radio-button>
+                                <mat-radio-button value="3"><img src="/assets/imgs/vestuarioIzq3.png" alt="vestuarioIzq3"></mat-radio-button>
+                                <mat-radio-button value="0">{{'Panel.infoPrincipal.codigoVestuario.ninguno' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloColor">{{'Panel.infoPrincipal.codigoVestuario.ladoDer' | translate}}</p>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioLateralesDer"
+                                (ngModelChange)="saveData('vestuarioLateralesDer', 'codigoVestuario')">
+                                <mat-radio-button value="1"><img src="/assets/imgs/vestuarioDer1.png" alt="vestuarioDer1"></mat-radio-button>
+                                <mat-radio-button value="2"><img src="/assets/imgs/vestuarioDer2.png" alt="vestuarioDer2"></mat-radio-button>
+                                <mat-radio-button value="3"><img src="/assets/imgs/vestuarioDer3.png" alt="vestuarioDer3"></mat-radio-button>
+                                <mat-radio-button value="0">{{'Panel.infoPrincipal.codigoVestuario.ninguno' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.regalos.titulo' | translate}}
+                            <div *ngIf="loading?.regalos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosImgPrincipal"
+                            (ngModelChange)="saveData('regalosImgPrincipal', 'regalos')">
+                            <mat-radio-button value="1"><img src="/assets/imgs/sobre1.png" alt="regalo1"></mat-radio-button>
+                            <mat-radio-button value="2"><img src="/assets/imgs/sobre2.png" alt="regalo2"></mat-radio-button>
+                            <mat-radio-button value="3"><img src="/assets/imgs/sobre3.png" alt="regalo3"></mat-radio-button>
+                            <mat-radio-button value="4"><img src="/assets/imgs/sobre4.png" alt="regalo4"></mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    
+                    <p class="tituloImagenesPC">{{'Panel.infoPrincipal.regalos.imgslaterales' | translate}}</p>
+                    <p class="tituloLadoIzq">{{'Panel.infoPrincipal.regalos.ladoIzq' | translate}}</p>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosLateralesIzq"
+                            (ngModelChange)="saveData('regalosLateralesIzq', 'regalos')">
+                            <mat-radio-button value="1"><img src="/assets/imgs/regalosIzq1.png" alt="regalosIzq1"></mat-radio-button>
+                            <mat-radio-button value="2"><img src="/assets/imgs/regalosIzq2.png" alt="regalosIzq2"></mat-radio-button>
+                            <mat-radio-button value="3"><img src="/assets/imgs/regalosIzq3.png" alt="regalosIzq3"></mat-radio-button>
+                            <mat-radio-button value="0">{{'Panel.infoPrincipal.regalos.ninguno' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                    <p class="tituloColor">{{'Panel.infoPrincipal.regalos.ladoDer' | translate}}</p>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosLateralesDer"
+                            (ngModelChange)="saveData('regalosLateralesDer', 'regalos')">
+                            <mat-radio-button value="1"><img src="/assets/imgs/regalosDer1.png" alt="regalosDer1"></mat-radio-button>
+                            <mat-radio-button value="2"><img src="/assets/imgs/regalosDer2.png" alt="regalosDer2"></mat-radio-button>
+                            <mat-radio-button value="3"><img src="/assets/imgs/regalosDer3.png" alt="regalosDer3"></mat-radio-button>
+                            <mat-radio-button value="0">{{'Panel.infoPrincipal.regalos.ninguno' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.confirmacionInvitados.titulo' | translate}}
+                            <div *ngIf="loading?.confirmacionInvitados; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                        <div class="flex contenedorInputs">
+                            <mat-radio-group aria-label="Icono" class="flores separadorTop"
+                                [(ngModel)]="dataWeb.ConfigApp.separadorConfirmacionTop"
+                                (ngModelChange)="saveData('separadorConfirmacionTop', 'confirmacionInvitados')">
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorTopTipo1' | translate}}</mat-radio-button>
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorTopTipo2' | translate}}</mat-radio-button>
+                                <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="flex contenedorInputs separadorBottom">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.separadorConfirmacionBottom"
+                                (ngModelChange)="saveData('separadorConfirmacionBottom', 'confirmacionInvitados')">
+                                <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorBottomTipo1' |
+                                    translate}}</mat-radio-button>
+                                <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorBottomTipo2' |
+                                    translate}}</mat-radio-button>
+                                <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
+                        <div class="flex contenedorInputs inputsColor">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorFondoConfirmacion"
+                                (ngModelChange)="saveData('colorFondoConfirmacion', 'confirmacionInvitados')">
+                                <mat-radio-button value="#bec092">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#bec092'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#e8e5cb">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#e8e5cb'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#acb7c2">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#acb7c2'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#b2c8c1">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#b2c8c1'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#e7e1be">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#e7e1be'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#ccb5b5">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#ccb5b5'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#b9afc6">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#b9afc6'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button
+                                    [value]="['#bec092', '#e8e5cb', '#acb7c2', '#b2c8c1', '#e7e1be', '#ccb5b5', '#b9afc6'].includes(dataWeb.ConfigApp.colorFondoConfirmacion) ? '#222' : dataWeb.ConfigApp.colorFondoConfirmacion">
+                                    <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorFondoConfirmacion"
+                                        name="colorPicker" [value]="dataWeb.ConfigApp.colorFondoConfirmacion"
+                                        (ngModelChange)="saveData('colorFondoConfirmacion', 'confirmacionInvitados')">
+                                    {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorTexto' | translate}}</p>
+                        <div class="flex contenedorInputs inputsColor">
+                            <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorTextoConfirmacion"
+                                (ngModelChange)="saveData('colorTextoConfirmacion', 'confirmacionInvitados')">
+                                <mat-radio-button value="#222222">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#222222'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#6c6957">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#6c6957'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#46515c">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#46515c'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#3a4f48">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#3a4f48'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#5d552d">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#5d552d'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#7c5c5c">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#7c5c5c'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button value="#413253">
+                                    <div class="opcionColor" [ngStyle]="{'background': '#413253'}"></div>
+                                </mat-radio-button>
+                                <mat-radio-button
+                                    [value]="['#222222', '#6c6957', '#46515c', '#3a4f48', '#5d552d', '#7c5c5c', '#413253'].includes(dataWeb.ConfigApp.colorTextoConfirmacion) ? '#000' : dataWeb.ConfigApp.colorTextoConfirmacion">
+                                    <input type="color" class="colorPicker" [(ngModel)]="dataWeb.ConfigApp.colorTextoConfirmacion"
+                                        name="colorTextoPicker" [value]="dataWeb.ConfigApp.colorTextoConfirmacion"
+                                        (ngModelChange)="saveData('colorTextoConfirmacion', 'confirmacionInvitados')">
+                                    {{'Panel.infoPrincipal.generales.seleccionarColorFondo' | translate}}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                </mat-step>
+            </mat-vertical-stepper>
+        </div>
+
+        <div class="contenedorPreviaWeb">
+            <div class="mobile-container">
+                <div class="notch">
+                    <div class="notch-camera"></div>
+                    <div class="notch-speaker"></div>
+                </div>
+                <div class="screen">
+                    <app-web-bodas [dataWeb]="dataWeb" [listaFotosGaleria]="listaFotosGaleria"
+                        [previa]="true"></app-web-bodas>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

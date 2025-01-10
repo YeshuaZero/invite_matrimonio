@@ -21,6 +21,7 @@ import { NgxMatNativeDateModule } from '@angular-material-components/datetime-pi
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from 'src/environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideStorage, getStorage } from '@angular/fire/storage';
 import { provideDatabase, getDatabase } from '@angular/fire/database';
 
 registerLocaleData(localeEs, 'es');
@@ -48,14 +49,13 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDWsEcMwGa71YR24wiCWpdKKsXAjaZ64w8",
-  authDomain: "app-invite-c081e.firebaseapp.com",
-  databaseURL: "https://app-invite-c081e-default-rtdb.firebaseio.com",
-  projectId: "app-invite-c081e",
-  storageBucket: "app-invite-c081e.firebasestorage.app",
-  messagingSenderId: "1010992241532",
-  appId: "1:1010992241532:web:8ed8c256a9807c53e1e2f9",
-  measurementId: "G-XV8J3VCMCH"
+  apiKey: "AIzaSyCzDNzBi7SregPGvasXYm38Qk5P5RDf6QU",
+  authDomain: "digitalmoments.firebaseapp.com",
+  databaseURL: "https://digitalmoments-default-rtdb.firebaseio.com",
+  projectId: "digitalmoments",
+  storageBucket: "digitalmoments.firebasestorage.app",
+  messagingSenderId: "113651890036",
+  appId: "1:113651890036:web:5a3ecb6d2d4df1625fde21"
 };
 
 
@@ -86,6 +86,7 @@ const firebaseConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     }),
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
+    provideStorage(() => getStorage()),
     provideDatabase(() => getDatabase())
   ],
   providers: [

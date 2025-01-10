@@ -1,0 +1,29 @@
+.contenedorPreviaWeb{
+    height: calc(80vh - 20px);
+    max-height: 550px;
+    padding: 8px;
+}
+
+.mobile-container {
+    width: 320px;
+    max-width: 90vw;
+    height: 100%;
+}
+
+.screen{
+    height: 100%;
+    overflow: auto;
+}
+
+.popUp {
+    padding: 0 !important;
+}
+
+.contenedorTituloPopUp i.cerrar {
+    top: 4px;
+    right: 4px;
+}
+
+.contenedorTituloPopUp {
+    padding: 10px 0px;
+}

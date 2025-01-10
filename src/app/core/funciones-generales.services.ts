@@ -114,7 +114,7 @@ export class FuncionesGeneralesService {
     timeoutColorNuevo: any;
 
     constructor(
-        private translateUtilService: TranslateUtilService,
+        private readonly translateUtilService: TranslateUtilService,
         public dialog: MatDialog
     ) {
         this.dataLogin = this.getDataLoginToken();
@@ -374,7 +374,6 @@ export class FuncionesGeneralesService {
     scroll(elementId: string, top?: boolean) {
         setTimeout(() => {
             const element = document.getElementById(elementId);
-            console.log('element:', element)
             if (element) {
                 if (top) {
                     element.scrollTo({ behavior: 'smooth', top: 0 });
