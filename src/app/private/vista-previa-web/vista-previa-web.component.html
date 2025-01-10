@@ -1,0 +1,21 @@
+<div class=popUp>
+    <div class="contenedorTituloPopUp">
+        <i class="cerrar fas fa-times" (click)="cerrar()"></i>
+    </div>
+    <div class="contenedorPreviaWeb">
+        <div class="mobile-container">
+            <div class="notch">
+                <div class="notch-camera"></div>
+                <div class="notch-speaker"></div>
+            </div>
+            <div class="screen">
+                <app-web-bodas [dataWeb]="dataWeb" [listaFotosGaleria]="listaFotosGaleria" [previa]="true"></app-web-bodas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

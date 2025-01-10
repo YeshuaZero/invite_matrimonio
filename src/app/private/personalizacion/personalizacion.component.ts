@@ -16,6 +16,7 @@ import { StepperSelectionEvent } from '@angular/cdk/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import { debounceTime, Subject, Subscription } from 'rxjs';
+import { VistaPreviaWebComponent } from '../vista-previa-web/vista-previa-web.component';
 
 @Component({
   selector: 'app-personalizacion',
@@ -246,6 +247,10 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
       console.log('resp:', resp)
       this.listaFotosGaleria.splice(index, 1);
     });
+  }
+
+  verWeb() {
+    this.dialog.open(VistaPreviaWebComponent, { autoFocus: false, disableClose: true, data: { dataWeb: this.dataWeb, listaFotosGaleria: this.listaFotosGaleria } });
   }
 
 }

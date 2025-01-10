@@ -1,10 +1,15 @@
-<div class="contenedor">
+<div class="contenedor personalizacion">
     <div class="encabezado">
         <p class="titulo flex">
             <i class="fab fa-wpforms"></i>
             <span class="texto flex flexColumn">
                 {{'Panel.personalizacion.titulo' | translate}}
                 <span class="descripcion">{{'Panel.personalizacion.descripcion' | translate}}</span>
+                <div class="botonVerVistaPrevia">
+                    <button mat-raised-button (click)="verWeb()">
+                        {{'Panel.infoPrincipal.vistaPrevia' | translate}}
+                    </button>
+                </div>
             </span>
         </p>
     </div>

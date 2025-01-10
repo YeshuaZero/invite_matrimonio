@@ -1,4 +1,4 @@
-.dataContenedor {
+.personalizacion .dataContenedor {
     display: grid;
     grid-template-columns: 1fr 360px;
     grid-gap: 40px;
@@ -8,7 +8,7 @@
     overflow: hidden;
 }
 
-.contenedorPreviaWeb {
+.personalizacion .contenedorPreviaWeb {
     position: absolute;
     right: 80px;
     top: 60px;
@@ -17,158 +17,161 @@
     container: inline-size;
 }
 
-.inputForm {
+.personalizacion .inputForm {
     overflow: auto;
     height: calc(100% - 16px);
     direction: rtl;
     padding-bottom: 16px;
 }
 
-.inputForm ::ng-deep mat-vertical-stepper {
+.personalizacion .inputForm ::ng-deep mat-vertical-stepper {
     direction: ltr;
 }
 
-.contenedorInputs {
+.personalizacion .contenedorInputs {
     padding: 12px 0 0;
     justify-content: flex-start;
     gap: 10px;
     flex-wrap: wrap;
 }
 
-::ng-deep .mat-step:first-child {
+.personalizacion ::ng-deep .mat-step:first-child {
     padding-top: 8px;
 }
 
-::ng-deep .mat-step:last-child {
+.personalizacion ::ng-deep .mat-step:last-child {
     padding-bottom: 8px;
 }
 
-::ng-deep .mat-vertical-stepper-header {
+.personalizacion ::ng-deep .mat-vertical-stepper-header {
     padding: 8px 24px !important;
 }
 
-::ng-deep .mat-step-icon {
+.personalizacion ::ng-deep .mat-step-icon {
     background-color: #311d47 !important;
 }
 
-::ng-deep .mat-step-icon-selected {
+.personalizacion ::ng-deep .mat-step-icon-selected {
     background-color: #451580 !important;
 }
 
-::ng-deep .mat-step-label-selected .mat-step-text-label {
+.personalizacion ::ng-deep .mat-step-label-selected .mat-step-text-label {
     font-weight: 600;
     color: #451580;
 }
 
-.contenedorHoras {
+.personalizacion .contenedorHoras {
     justify-content: flex-start;
     gap: 30px;
 }
 
-.contenedorHoras .textoFechas {
+.personalizacion .contenedorHoras .textoFechas {
     margin-bottom: 8px;
     font-size: 16px;
 }
 
-.contenedorPrincipalVestuario {
+.personalizacion .contenedorPrincipalVestuario {
     align-items: baseline;
 }
 
-.contenedorColores {
+.personalizacion .contenedorColores {
     padding: 12px 12px 0px;
     gap: 40px;
 }
 
-.colores {
+.personalizacion .colores {
     gap: 8px;
     margin-top: 2px;
 }
 
-.colores i {
+.personalizacion .colores i {
     cursor: pointer;
     font-size: 16px;
     padding: 5px 1px;
     margin: 0 !important;
 }
 
-.opcionColores span {
+.personalizacion .opcionColores span {
     font-size: 11px;
 }
 
-.colorPicker {
+.personalizacion .colorPicker {
     width: 26px;
     border: none;
 }
 
-.flores img {
+.personalizacion .flores img {
     width: 100px;
 }
 
-.flores .sinFlores{
+.personalizacion .flores .sinFlores {
     margin-right: 12px;
 }
 
-.loading{
+.personalizacion .loading {
     margin-left: 16px;
     color: #aaa;
 }
 
-.loading span{
+.personalizacion .loading span {
     font-weight: 200;
 }
 
-.ajustesGeneralesInputs{
+.personalizacion .ajustesGeneralesInputs {
     align-content: flex-start;
     align-items: flex-start;
 }
 
-.ajustesGeneralesInputs mat-radio-group{
+.personalizacion .ajustesGeneralesInputs mat-radio-group {
     width: 100%;
 }
 
-.dataContenedor mat-radio-group {
+.personalizacion .dataContenedor mat-radio-group {
     display: flex;
+    flex-wrap: wrap;
     gap: 16px;
 }
 
-.dataContenedor mat-radio-button{
+.personalizacion .dataContenedor mat-radio-button {
     display: flex;
 }
 
-.tipoTitulos{
+.personalizacion .tipoTitulos {
     justify-content: flex-start;
     margin-top: 16px;
+    margin-bottom: 12px;
+    gap: 24px 20px !important;
 }
 
-.dataContenedor ::ng-deep .mdc-label{
+.personalizacion .dataContenedor ::ng-deep .mdc-label {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.tituloSeccion {
+.personalizacion .tituloSeccion {
     font-size: 40px;
     margin: 0;
     text-align: center;
 }
 
-.tituloSeccion.tipoTitulo2,
-.tituloSeccion.tipoTitulo3,
-.tituloSeccion.tipoTitulo4 {
+.personalizacion .tituloSeccion.tipoTitulo2,
+.personalizacion .tituloSeccion.tipoTitulo3,
+.personalizacion .tituloSeccion.tipoTitulo4 {
     font-family: 'Raleway';
     font-size: 24px;
     font-weight: 700;
 }
 
-.tipoTitulo3,
-.tipoTitulo4{
+.personalizacion .tipoTitulo3,
+.personalizacion .tipoTitulo4 {
     padding-left: 32px;
     z-index: 9;
     position: relative;
 }
 
-.fondoLetrero {
+.personalizacion .fondoLetrero {
     position: absolute;
     width: 220px;
     height: 70px;
@@ -178,39 +181,40 @@
     left: -0;
 }
 
-.tituloColor{
+.personalizacion .tituloColor {
     margin: 30px 0 0 8px;
     font-size: 14px;
     font-weight: 600;
 }
 
-.inputsColor{
+.personalizacion .inputsColor {
     padding: 8px 0 0;
+    flex-wrap: wrap;
 }
 
-.opcionColor{
+.personalizacion .opcionColor {
     width: 26px;
     height: 26px;
     border-radius: 8px;
 }
 
-.colorPicker{
+.personalizacion .colorPicker {
     margin-right: 6px;
 }
 
-.tituloImagenesPC{
+.personalizacion .tituloImagenesPC {
     margin: 48px 0 0;
     font-size: 18px;
     font-weight: 600;
 }
 
-.tituloLadoIzq{
+.personalizacion .tituloLadoIzq {
     margin: 8px 0 0 8px;
     font-size: 14px;
     font-weight: 600;
 }
 
-.separadorBottom{
+.personalizacion .separadorBottom {
     margin: 6px 0 12px;
 }
 
@@ -218,7 +222,7 @@
 /* VISTA PREVIA */
 
 
-.mobile-container {
+.personalizacion .mobile-container {
     width: 320px;
     height: 100%;
     background: #000;
@@ -234,7 +238,7 @@
     container: inline-size;
 }
 
-.notch {
+.personalizacion .notch {
     width: 160px;
     /* Ajustado para el ancho del dispositivo */
     height: 20px;
@@ -248,7 +252,7 @@
     position: relative;
 }
 
-.notch-camera {
+.personalizacion .notch-camera {
     width: 8px;
     height: 8px;
     background: #333;
@@ -258,7 +262,7 @@
     /* Ajustado para el ancho */
 }
 
-.notch-speaker {
+.personalizacion .notch-speaker {
     width: 50px;
     height: 5px;
     background: #333;
@@ -266,7 +270,7 @@
     position: absolute;
 }
 
-.screen {
+.personalizacion .screen {
     width: 100%;
     height: calc(100% - 40px);
     /* Resta espacio para el notch */
@@ -280,6 +284,162 @@
     overflow: auto;
 }
 
-.screen app-web-bodas {
+.personalizacion .screen app-web-bodas {
     width: 100%;
+}
+
+@media (max-width:1170px) {
+    .personalizacion .contenedorPreviaWeb {
+        top: 100px;
+        height: calc(100% - 150px);
+    }
+
+    .personalizacion .loading span {
+        display: none;
+    }
+
+    .personalizacion .contenedorInputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .personalizacion .contenedorColores {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 12px;
+    }
+
+    .personalizacion .contenedorInputs mat-radio-group {
+        grid-column: span 2;
+        margin-top: 12px;
+    }
+
+    .personalizacion .colores {
+        justify-content: flex-start;
+    }
+}
+
+.personalizacion .botonVerVistaPrevia button {
+    display: none;
+    height: 22px;
+    margin-top: 8px;
+    background-color: #471587 !important;
+    color: #fff !important;
+    font-size: 12px;
+}
+
+@media (max-width:1070px) {
+    .personalizacion .dataContenedor {
+        grid-template-columns: 1fr 340px;
+    }
+
+    .personalizacion .contenedorPreviaWeb {
+        right: 40px;
+    }
+
+    .personalizacion .contenedorInputs {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .personalizacion .contenedorInputs mat-radio-group {
+        grid-column: auto;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 0;
+    }
+}
+
+@media (max-width:860px) {
+    .personalizacion .dataContenedor {
+        height: calc(100vh - 190px);
+        grid-template-columns: 1fr;
+    }
+
+    .personalizacion .contenedorPreviaWeb {
+        display: none;
+    }
+
+    .personalizacion .encabezado .titulo {
+        align-items: flex-start;
+    }
+
+    .personalizacion .botonVerVistaPrevia button {
+        display: flex;
+    }
+
+    .personalizacion .contenedorInputs,
+    .personalizacion .contenedorColores {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .personalizacion .contenedorInputs mat-radio-group {
+        grid-column: span 2;
+    }
+
+}
+
+@media (max-width:710px) {
+
+    .personalizacion .contenedorInputs,
+    .personalizacion .contenedorColores {
+        grid-template-columns: 1fr;
+    }
+
+    .personalizacion .contenedorInputs mat-radio-group {
+        grid-column: auto;
+    }
+}
+
+@media (max-width:470px) {
+    .personalizacion .dataContenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .personalizacion .encabezado .titulo {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width:380px) {
+    .personalizacion ::ng-deep .mat-vertical-content-container {
+        margin-left: 8px;
+    }
+
+    .personalizacion .encabezado .titulo .texto .descripcion {
+        font-size: 10px;
+        line-height: 1;
+        margin-top: 4px;
+    }
+
+    .personalizacion .icoVestuario i {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    .personalizacion .colores {
+        gap: 4px;
+        flex-wrap: wrap;
+        width: calc(100% - 24px);
+    }
+
+    .personalizacion ::ng-deep .mat-step-text-label {
+        font-size: 14px;
+    }
+
+    .personalizacion ::ng-deep .mat-step-text-label>div {
+        justify-content: flex-start;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+    }
+
+    .personalizacion .loading {
+        display: none;
+    }
 }

@@ -162,18 +162,15 @@ export class WebBodasComponent implements OnInit, OnChanges {
         element.removeAttribute('data-aos-duration');
         element.removeAttribute('data-aos-offset');
       });
-      AOS.init({
-        disable: this.previa
-      });
     } else {
-      AOS.init();
       setTimeout(() => {
         const scene: any = document.getElementById('nombres' + `${tipoEncabezado}`);
         console.log('scene:', scene)
         const parallaxInstance = new Parallax(scene);
       }, 500)
     }
-      
+    
+    AOS.init();
     setInterval(() => {
       this.calculateTimeRemaining();
     }, 1000);
@@ -268,7 +265,9 @@ export class WebBodasComponent implements OnInit, OnChanges {
   }
 
   verFormulario(){
-    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id, dataWeb: this.dataWeb } });
+    if (!this.previa){
+      this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id, dataWeb: this.dataWeb } });
+    }
   }
 
 }

@@ -1,5 +1,5 @@
 import { SharedModule } from 'src/app/core/shared/shared.module';
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PanelService } from '../panel.service';
 import { FuncionesGeneralesService, TipoEnum} from 'src/app/core/funciones-generales.services';
 import { MatButtonModule } from '@angular/material/button';
@@ -11,6 +11,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { ConfirmarAsistenciaComponent } from 'src/app/public/web-bodas/confirmar-asistencia/confirmar-asistencia.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { CrearNuevoInvitadoComponent } from './crear-nuevo/crear-nuevo.component';
+import { distinctUntilChanged, Subscription } from 'rxjs';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
     selector: 'app-invitados',
@@ -20,7 +22,7 @@ import { CrearNuevoInvitadoComponent } from './crear-nuevo/crear-nuevo.component
     styleUrls: ['./invitados.component.css'],
   imports: [SharedModule, MatButtonModule, MatMenuModule, CarouselModule, MatStepperModule, ConfirmarAsistenciaComponent, MatTabsModule]
 })
-export class InvitadosComponent {
+export class InvitadosComponent implements OnInit, OnDestroy {
 
   id: string;
   dataWeb: any = {};
@@ -51,10 +53,21 @@ export class InvitadosComponent {
     <span class="noAsiste">No Asiste</span>`,
   ]
 
+  private subscriptions = new Subscription();
+
+  readonly breakpoint$ = this.breakpointObserver
+    .observe(['(min-width: 680px)', '(min-width: 750px)','(min-width: 1000px)', '(min-width: 1150px)','(min-width: 1320px)'])
+    .pipe(
+      distinctUntilChanged()
+    );
+  
+  indexOpciones = 5;
+
   constructor(
     private funcionesGenerales: FuncionesGeneralesService,
     private route: ActivatedRoute,
     public dialog: MatDialog,
+    private breakpointObserver: BreakpointObserver,
     private panelService: PanelService
   ) {
     this.id = this.funcionesGenerales.getData('id');
@@ -67,6 +80,27 @@ export class InvitadosComponent {
       this.consultarData();
     }
 
+    this.subscriptions.add(this.breakpoint$.subscribe(() => {
+      if (this.breakpointObserver.isMatched('(max-width: 680px)')) {
+        this.columnas = ['nombre', 'estadoInvitacion', 'opciones'];
+        this.indexOpciones = 2;
+      } else if (this.breakpointObserver.isMatched('(max-width: 750px)')) {
+        this.columnas = ['nombre', 'grupo', 'estadoInvitacion', 'opciones'];
+        this.indexOpciones = 3;
+      } else if (this.breakpointObserver.isMatched('(max-width: 1000px)')) {
+        this.columnas = ['nombre', 'celular', 'grupo', 'estadoInvitacion', 'opciones'];
+        this.indexOpciones = 4;
+      } else if (this.breakpointObserver.isMatched('(max-width: 1150px)')) {
+        this.columnas = ['nombre', 'celular', 'grupo', 'estadoInvitacion', 'infoAdicional', 'opciones'];
+        this.indexOpciones = 5;
+      } else if (this.breakpointObserver.isMatched('(max-width: 1320px)')) {
+        this.columnas = ['nombre', 'celular', 'grupo', 'estadoInvitacion', 'opciones'];
+        this.indexOpciones = 4;
+      } else {
+        this.columnas = ['nombre', 'celular', 'grupo', 'estadoInvitacion', 'infoAdicional', 'opciones'];
+        this.indexOpciones = 5;
+      }
+    }));
   }
 
   private isPageReloaded(): boolean {
@@ -201,5 +235,12 @@ export class InvitadosComponent {
     });
   }
 
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  verWeb(){
+    this.dialog.open(ConfirmarAsistenciaComponent, { autoFocus: false, data: { id: this.id, dataWeb: this.dataWeb } });
+  }
   
 }

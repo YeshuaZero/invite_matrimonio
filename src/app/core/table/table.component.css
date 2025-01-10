@@ -346,6 +346,11 @@ tr:nth-child(even) {
     color: red;
 }
 
+.grupo{
+        font-weight: 300;
+            font-size: 12px;
+}
+
 @media (max-width:920px) {
     .contenedorNoData {
         padding-top: 30px;

@@ -73,3 +73,27 @@
     bottom: 20px;
     color: #fff;
 }
+
+.menuCelular{
+    display: none;
+}
+
+@media (max-width:470px) {
+    mat-drawer{
+        box-shadow: none;
+    }
+
+        .contenidoDrawer {
+            margin-left: 0;
+            width: calc(100% - 50px);
+                    padding: 0 24px;
+                    height: 100%;
+        }
+
+        .menuCelular{
+            display: flex;
+                position: absolute;
+                    top: 26px;
+                    font-size: 24px;
+        }
+}

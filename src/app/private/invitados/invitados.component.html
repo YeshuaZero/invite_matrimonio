@@ -1,10 +1,15 @@
-<div class="contenedor">
+<div class="contenedor invitados">
     <div class="encabezado">
         <p class="titulo flex">
             <i class="fas fa-vote-yea"></i>
             <span class="texto flex flexColumn">
                 {{'Panel.invitados.titulo' | translate}}
                 <span class="descripcion">{{'Panel.invitados.descripcion' | translate}}</span>
+                <div class="botonVerVistaPrevia">
+                    <button mat-raised-button (click)="verWeb()">
+                        {{'Panel.infoPrincipal.vistaPrevia' | translate}}
+                    </button>
+                </div>
             </span>
         </p>
     </div>
@@ -85,12 +90,12 @@
             </mat-step>
             <mat-step>
                 <ng-template matStepLabel>
-                    <div class="flex">
+                    <div class="flex labelListaInvitados">
                         {{'Panel.invitados.tituloInvitados' | translate}}
                         <div class="contenedorBoton">
                             <button mat-raised-button class="botonCrearNuevo" (click)="crearNuevo()">
                                 <i class="fas fa-user-plus"></i>
-                                {{'Panel.invitados.agregarInvitado' | translate}}
+                                <span class="textoCrearNuevo">{{'Panel.invitados.agregarInvitado' | translate}}</span>
                             </button>
                         </div>
                     </div>
@@ -100,7 +105,7 @@
                         <mat-tab label="{{'Panel.invitados.todosLosInvitados' | translate}}">
                             <div class="contenedorTabla">
                                 <ng-container *ngIf="dataWeb.Invitados">
-                                    <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitados" [indexIcono]="5" [indexNoOrdenarColumna]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                    <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitados" [indexIcono]="indexOpciones" [indexNoOrdenarColumna]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
                                     [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla" [atributoOpciones]="'nombre'"
                                     (opcionSeleccionada)="opcionTablaSeleccionada($event)" ></app-table>
                                 </ng-container>
@@ -108,22 +113,22 @@
                         </mat-tab>
                         <mat-tab label="{{'Panel.invitados.confirmados' | translate}}"> 
                             <div class="contenedorTabla">
-                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosConfirmados" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
-                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosConfirmados" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
                                 [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
                             </div>
                         </mat-tab>
                         <mat-tab label="{{'Panel.invitados.pendientes' | translate}}"> 
                             <div class="contenedorTabla">
-                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosPendientes" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
-                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosPendientes" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
                                 [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
                             </div>
                         </mat-tab>
                         <mat-tab label="{{'Panel.invitados.rechazados' | translate}}"> 
                             <div class="contenedorTabla">
-                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosRechazados" [indexIcono]="5" [mostrarPaginador]="false" [ordenarTabla]="false"
-                                [indexNoOrdenarColumna]="5" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
+                                <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosRechazados" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
+                                [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
                                 [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
                             </div>
                         </mat-tab>

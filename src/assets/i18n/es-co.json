@@ -102,6 +102,7 @@
       "guardando": "Guardando",
       "guardadoNoConfirmado": "Datos no actualizados",
       "guardadoNoConfirmadoDesc": "Es posible que la información no haya sido guardada correctamente, por favor recargue la página y verifique la información, si el problema continúa por favor contacte a soporte.",
+      "vistaPrevia": "Visualizar",
       "generales": {
           "titulo": "Ajustes Generales",
           "ningunaFlor": "Sin Flores",
@@ -248,7 +249,7 @@
       "grupo": "Familia o Grupo",
       "nombreNuevoGrupo": "Nombre Nueva Familia o Grupo",
       "celular": "Celular",
-      "estadoInvitacion": "Estado Invitación",
+      "estadoInvitacion": "Estado",
       "infoAdicional": "Info Adicional",
       "opciones": "Opciones",
       "nombreInvitado": "Nombre Invitado",

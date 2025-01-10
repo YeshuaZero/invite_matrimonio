@@ -106,7 +106,10 @@
 </div>
 
 <mat-menu #menuOtrasOpc="matMenu">
-    <span *ngIf="filaSeleccionada && atributoOpciones" class="nombreSel">{{filaSeleccionada[atributoOpciones]}}</span>
+    <span *ngIf="filaSeleccionada && atributoOpciones" class="nombreSel flexColumn">
+        {{filaSeleccionada[atributoOpciones]}}
+        <span class="grupo">{{filaSeleccionada.grupo}}</span>
+    </span>
     <ng-container *ngIf="infoAdicional">
         <ng-container *ngTemplateOutlet="templateInfoAdicional"></ng-container>
     </ng-container>
