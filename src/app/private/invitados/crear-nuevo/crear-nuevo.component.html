@@ -11,7 +11,7 @@
                 </mat-form-field>
 
                 <mat-form-field *ngIf="listaGrupos?.length > 0" appearance="outline" subscriptSizing="dynamic">
-                    <mat-label>{{'Panel.invitados.grupo' | translate}}</mat-label>
+                    <mat-label>{{'Panel.invitados.grupoInput' | translate}}</mat-label>
                     <mat-select [(ngModel)]="dataInvitado.grupo">
                         <mat-option [value]="grupo" title="{{grupo.nombre | capitalize}}"
                             *ngFor="let grupo of listaGrupos, let i=index">
@@ -27,7 +27,7 @@
                 </mat-form-field>
 
                 <mat-form-field class="celular" appearance="outline" subscriptSizing="dynamic">
-                    <mat-label>{{'Panel.invitados.celular' | translate}}</mat-label>
+                    <mat-label>{{'Panel.invitados.celularInput' | translate}}</mat-label>
                     <input matInput [(ngModel)]="dataInvitado.celular" name="nombreTema" maxlength="50" autocomplete="off">
                 </mat-form-field>
 

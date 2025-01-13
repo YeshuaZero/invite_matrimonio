@@ -42,19 +42,19 @@ export class PanelService {
             });
     }
 
-    agregarConfirmado(path: any, invitado: any): Promise<void> {
+    agregarConfirmado(path: any, user: any): Promise<void> {
         const dbRef = ref(this.dataBase, path);
         const nuevoUsuarioRef = push(dbRef);
-        return set(nuevoUsuarioRef, invitado);
+        return set(nuevoUsuarioRef, user);
     }
 
-    editarInvitado(path: string, idInvitado: string, datosActualizados: any): Promise<void> {
-        const invitadoRef = ref(this.dataBase, `${path}/${idInvitado}`);
+    editarUser(path: string, idUser: string, datosActualizados: any): Promise<void> {
+        const invitadoRef = ref(this.dataBase, `${path}/${idUser}`);
         return update(invitadoRef, datosActualizados);
     }
 
-    eliminarInvitado(path: string, idInvitado: string): Promise<void> {
-        const invitadoRef = ref(this.dataBase, `${path}/${idInvitado}`);
+    eliminarUser(path: string, idUser: string): Promise<void> {
+        const invitadoRef = ref(this.dataBase, `${path}/${idUser}`);
         return remove(invitadoRef);
     }
 

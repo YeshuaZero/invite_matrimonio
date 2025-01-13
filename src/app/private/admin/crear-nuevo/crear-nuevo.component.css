@@ -1,0 +1,64 @@
+.contenedorCrearEditarUsuario {
+    width: 260px;
+    max-width: 90vw;
+}
+
+.conteneforForm {
+    width: 500px;
+    max-width: 90vw;
+    height: 70vh;
+}
+
+.listaInvitados {
+    margin-top: 6px;
+}
+
+::ng-deep .mat-mdc-option{
+    min-height: 36px !important;
+}
+
+::ng-deep .mat-mdc-option .mdc-list-item__primary-text {
+    width: 100%;
+}
+
+::ng-deep .mat-mdc-optgroup-label .mdc-list-item__primary-text{
+    padding-left: 40px;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-start;
+    font-family: 'Allison' !important;
+    font-size: 32px !important;
+}
+
+::ng-deep .mat-mdc-optgroup-label .mdc-list-item__primary-text i{
+    position: absolute;
+    left: 18px;
+    font-size: 18px;
+    margin-left: 4px;
+}
+
+.botonConfirmacion {
+    background: #471587;
+}
+
+.botonConfirmacion.mat-mdc-raised-button[disabled][disabled]{
+    background: #ccc;
+}
+
+.contenedorCrearEditarUsuario mat-form-field{
+    margin: 0 0 8px;
+    width: 100%;
+}
+
+.contenedorCrearEditarUsuario .activo{
+    margin: 8px 0 16px;
+}
+
+.botonConfirmacion{
+    width: 100%;
+}
+
+.textoActivo{
+    margin-left: 8px;
+}

@@ -11,6 +11,8 @@ import { PersonalizacionComponent } from "./personalizacion/personalizacion.comp
 import { Router } from '@angular/router';
 import { distinctUntilChanged, Subscription } from 'rxjs';
 import { BreakpointObserver } from '@angular/cdk/layout';
+import { FuncionesGeneralesService } from '../core/funciones-generales.services';
+import { AdminComponent } from "./admin/admin.component";
 
 @Component({
     selector: 'app-panel',
@@ -18,7 +20,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
     providers: [],
     templateUrl: './panel.component.html',
     styleUrls: ['./panel.component.css'],
-    imports: [SharedModule, MatSidenavModule, MatButtonModule, MatMenuModule, CarouselModule, InfoPrincipalComponent, InvitadosComponent, PersonalizacionComponent]
+    imports: [SharedModule, MatSidenavModule, MatButtonModule, MatMenuModule, CarouselModule, InfoPrincipalComponent, InvitadosComponent, PersonalizacionComponent, AdminComponent]
 })
 export class PanelComponent implements OnInit, OnDestroy {
 
@@ -35,12 +37,16 @@ export class PanelComponent implements OnInit, OnDestroy {
     );
 
   menuAbierto = true;
+  dataWeb: any = {};
 
   constructor(
     public dialog: MatDialog,
     private breakpointObserver: BreakpointObserver,
-    private readonly router: Router
+    private readonly router: Router,
+    private funcionesGenerales: FuncionesGeneralesService
   ) {
+    this.dataWeb = this.funcionesGenerales.getData('t0k3nD1g1t4lM0m3nt5', true);
+    if (this.dataWeb.admin) this.component = 'admin';
   }
 
   ngOnInit(): void {
@@ -56,7 +62,7 @@ export class PanelComponent implements OnInit, OnDestroy {
   }
 
   abrir(component: string, drawer: any){
-    drawer.close();
+    if (this.modoDrawer == 'over') drawer.close();
     this.component = component;
   }
 

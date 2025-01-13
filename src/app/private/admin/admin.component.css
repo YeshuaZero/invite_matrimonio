@@ -1,0 +1,316 @@
+.admin .dataContenedor {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 40px;
+    align-items: start;
+    align-content: baseline;
+    padding-top: 18px;
+    overflow: hidden;
+}
+
+.admin .contenedorPreviaWeb {
+    position: absolute;
+    right: 80px;
+    top: 60px;
+    height: calc(100% - 110px);
+    max-height: 600px;
+    container: inline-size;
+}
+
+.admin .stepperVertical {
+    height: calc(100vh - 150px);
+}
+
+ .admin .encabezado .titulo {
+     align-items: flex-start;
+ }
+
+
+.admin .inputForm {
+    overflow: auto;
+    height: calc(100% - 16px);
+    direction: rtl;
+    padding-bottom: 16px;
+}
+
+.admin .inputForm ::ng-deep mat-vertical-stepper {
+    direction: ltr;
+}
+
+.admin .contenedorInputs {
+    padding: 12px 0 0;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.admin ::ng-deep .mat-step:first-child {
+    padding-top: 8px;
+}
+
+.admin ::ng-deep .mat-step:last-child {
+    padding-bottom: 8px;
+}
+
+.admin ::ng-deep .mat-vertical-stepper-header {
+    padding: 8px 24px !important;
+}
+
+.admin ::ng-deep .mat-step-icon {
+    background-color: #311d47 !important;
+}
+
+.admin ::ng-deep .mat-step-icon-selected {
+    background-color: #451580 !important;
+}
+
+.admin ::ng-deep .mat-step-label-selected .mat-step-text-label {
+    font-weight: 600;
+    color: #451580;
+}
+
+.admin .loading {
+    margin-left: 16px;
+    color: #aaa;
+}
+
+.admin .loading span {
+    font-weight: 200;
+}
+
+.admin .ajustesGeneralesInputs {
+    align-content: flex-start;
+    align-items: flex-start;
+}
+
+.admin .ajustesGeneralesInputs mat-radio-group {
+    width: 100%;
+}
+
+.admin .dataContenedor mat-radio-group {
+    display: flex;
+    gap: 16px;
+}
+
+.admin .dataContenedor mat-radio-button {
+    display: flex;
+}
+
+.admin .dataContenedor ::ng-deep .mdc-label {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin .botonVistaPrevia {
+    background: #471386 !important;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0 16px;
+}
+
+.admin .contenedorVistaPrevia {
+    position: absolute;
+    top: 100px;
+    right: 70px;
+    background: #fff;
+    border: solid 2px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+}
+
+.admin .contenedorTabs {
+    width: 100%;
+}
+
+.admin .botonCrearNuevo {
+    margin-left: 20px;
+    height: 26px;
+    padding: 0px 12px;
+    background-color: #471587 !important;
+    margin-bottom: 2px;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.admin .contenedorTabla {
+    width: 100%;
+    padding: 16px 30px;
+    overflow: auto;
+    height: calc(100vh - 200px);
+    margin-bottom: 24px;
+}
+
+.admin .botonVerVistaPrevia button {
+    height: 22px;
+    margin-top: 8px;
+    background-color: #471587 !important;
+    color: #fff !important;
+    font-size: 12px;
+}
+
+@media (max-width:1300px) {
+    .admin .contenedorInputs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width:1150px) {
+    .admin .contenedorVistaPrevia {
+        display: none;
+    }
+
+    .admin .encabezado .titulo {
+        align-items: flex-start;
+    }
+
+    .admin .dataContenedor {
+        grid-template-columns: 1fr;
+        height: calc(100vh - 180px);
+    }
+}
+
+@media (max-width:1000px) {
+    .admin ::ng-deep .mat-vertical-content-container {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width:740px) {
+    .admin .dataContenedor {
+        height: calc(100vh - 190px);
+    }
+}
+
+@media (max-width:680px) {
+    .admin ::ng-deep .mdc-tab {
+        padding: 0 4px !important;
+        min-width: auto !important;
+        width: auto;
+        font-size: 14px !important;
+        --mdc-secondary-navigation-tab-container-height: 36px;
+    }
+
+    .admin ::ng-deep .mat-vertical-content {
+        padding: 0 24px 0 24px !important;
+    }
+}
+
+@media (max-width:550px) {
+    .admin ::ng-deep .mdc-tab {
+        font-size: 12px !important;
+    }
+
+    .admin ::ng-deep .mat-mdc-cell:nth-child(2) {
+        text-align: center !important;
+    }
+
+    .admin ::ng-deep .mat-mdc-cell span .icoEstado {
+        margin-right: 0;
+    }
+
+    .admin ::ng-deep .mat-mdc-cell span span {
+        display: none;
+    }
+
+    .admin ::ng-deep .mat-step-header:nth-child(1) {
+        height: auto;
+    }
+
+    .admin .dataContenedor {
+        height: calc(100vh - 190px);
+    }
+
+    .admin .stepperVertical {
+        height: calc(100vh - 190px);
+        overflow: auto;
+        padding-bottom: 16px;
+    }
+
+    .admin .labelListaInvitados {
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .admin .contenedorInputs {
+        grid-template-columns: 1fr;
+        padding-bottom: 12px;
+    }
+
+    .admin .contenedorTabla {
+        padding: 16px 0 0;
+        overflow: auto;
+        margin-bottom: 0;
+        height: calc(100vh - 340px);
+    }
+
+    .admin .botonCrearNuevo {
+        margin: 0 0 0 4px;
+        height: 18px;
+        font-size: 10px;
+    }
+
+}
+
+
+@media (max-width:500px) {
+    .admin .botonCrearNuevo {
+        min-width: auto;
+    }
+
+    .admin .botonCrearNuevo i {
+        margin: 0;
+    }
+
+    .admin .textoCrearNuevo {
+        display: none;
+    }
+}
+
+@media (max-width:470px) {
+    .admin .encabezado .titulo {
+        margin-left: 40px;
+    }
+
+    .admin .encabezado .titulo .texto .descripcion {
+        font-size: 10px;
+        line-height: 1;
+        margin-top: 4px;
+    }
+}
+
+@media (max-width:380px) {
+    .admin ::ng-deep .mat-step-text-label {
+        font-size: 14px;
+    }
+
+    .admin ::ng-deep .mat-vertical-content {
+        padding: 0 12px 0 12px !important;
+    }
+}
+
+@media (max-width:360px) {
+    .admin .dataContenedor {
+        height: calc(100vh - 200px);
+    }
+
+    .admin .loading span {
+        display: none;
+    }
+
+    .admin ::ng-deep .mat-vertical-content {
+        padding: 0 12px 24px 12px;
+    }
+
+    .admin ::ng-deep .mat-mdc-cell span {
+        font-size: 10px;
+    }
+
+    .admin ::ng-deep th:nth-child(1),
+    .admin ::ng-deep td:nth-child(1) {
+        max-width: 100px;
+        min-width: 100px;
+    }
+}

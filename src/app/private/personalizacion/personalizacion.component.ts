@@ -253,4 +253,8 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     this.dialog.open(VistaPreviaWebComponent, { autoFocus: false, disableClose: true, data: { dataWeb: this.dataWeb, listaFotosGaleria: this.listaFotosGaleria } });
   }
 
+  cambioEstiloBase(){
+    console.log('this.dataWeb.ConfigApp.estilosBase:', this.dataWeb.ConfigApp.estilosBase)
+  }
+
 }

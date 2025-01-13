@@ -63,7 +63,7 @@ export class CrearNuevoInvitadoComponent implements OnInit {
     if (grupo) dataInvitado.grupo = grupo;
     if (this.dataInvitado.celular) dataInvitado.celular = this.dataInvitado.celular;
 
-    const peticion = this.editar ? this.panelService.editarInvitado(`dataWeb/${this.id}/Invitados/listaInvitados`, this.dataInvitado.id, dataInvitado) : this.panelService.agregarConfirmado(`dataWeb/${this.id}/Invitados/listaInvitados`, dataInvitado);
+    const peticion = this.editar ? this.panelService.editarUser(`dataWeb/${this.id}/Invitados/listaInvitados`, this.dataInvitado.id, dataInvitado) : this.panelService.agregarConfirmado(`dataWeb/${this.id}/Invitados/listaInvitados`, dataInvitado);
     
     peticion.then(() => {
       this.funcionesGeneralesService.openDialog(this.editar ? 'Panel.invitados.invitadoEditadoOK' : 'Panel.invitados.invitadoAgregadoOK', this.editar ? 'Panel.invitados.invitadoEditadoOKDetalle' : 'Panel.invitados.invitadoAgregadoOKDetalle', TipoEnum.OK);

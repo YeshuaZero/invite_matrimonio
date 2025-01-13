@@ -1,0 +1,28 @@
+<div class="contenedor admin">
+    <div class="encabezado">
+        <p class="titulo flex">
+            <i class="fas fa-vote-yea"></i>
+            <span class="texto flex flexColumn">
+                {{'Panel.admin.titulo' | translate}}
+                <span class="descripcion">{{'Panel.admin.descripcion' | translate}}</span>
+                <div class="botonVerVistaPrevia">
+                    <button mat-raised-button (click)="crearNuevo()">
+                        {{'Panel.admin.crearUsuario' | translate}}
+                    </button>
+                </div>
+            </span>
+        </p>
+    </div>
+
+    <div class="dataContenedor">
+        <div class="flex contenedorInvitados">
+            <div class="contenedorTabla">
+                <app-table [nombreTabla]="'Panel.admin'" [columnas]="columnas"
+                    [data]="listaUsuarios" [indexIcono]="indexOpciones" [mostrarPaginador]="false"
+                    [ordenarTabla]="false" [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'"
+                    [opcionesTabla]="opcionesTabla" [atributoOpciones]="'nombre'"
+                    (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
+            </div>
+        </div>
+    </div>
+</div>

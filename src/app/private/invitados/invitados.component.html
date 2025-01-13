@@ -102,7 +102,7 @@
                 </ng-template>
                 <div class="flex contenedorInvitados">
                     <mat-tab-group class="contenedorTabs">
-                        <mat-tab label="{{'Panel.invitados.todosLosInvitados' | translate}}">
+                        <mat-tab label="{{'Panel.invitados.todosLosInvitados' | translate}} ({{dataWeb.Invitados?.listaInvitados?.length}})">
                             <div class="contenedorTabla">
                                 <ng-container *ngIf="dataWeb.Invitados">
                                     <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitados" [indexIcono]="indexOpciones" [indexNoOrdenarColumna]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
@@ -111,21 +111,21 @@
                                 </ng-container>
                             </div>
                         </mat-tab>
-                        <mat-tab label="{{'Panel.invitados.confirmados' | translate}}"> 
+                        <mat-tab label="{{'Panel.invitados.confirmados' | translate}} ({{dataWeb.Invitados?.listaInvitadosConfirmados?.length}}/{{dataWeb.Invitados?.listaInvitados?.length}})"> 
                             <div class="contenedorTabla">
                                 <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosConfirmados" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
                                 [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
                                 [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
                             </div>
                         </mat-tab>
-                        <mat-tab label="{{'Panel.invitados.pendientes' | translate}}"> 
+                        <mat-tab label="{{'Panel.invitados.pendientes' | translate}} ({{dataWeb.Invitados?.listaInvitadosPendientes?.length}}/{{dataWeb.Invitados?.listaInvitados?.length}})"> 
                             <div class="contenedorTabla">
                                 <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosPendientes" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
                                 [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"
                                 [atributoOpciones]="'nombre'" (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
                             </div>
                         </mat-tab>
-                        <mat-tab label="{{'Panel.invitados.rechazados' | translate}}"> 
+                        <mat-tab label="{{'Panel.invitados.rechazados' | translate}} ({{dataWeb.Invitados?.listaInvitadosRechazados?.length}}/{{dataWeb.Invitados?.listaInvitados?.length}})"> 
                             <div class="contenedorTabla">
                                 <app-table [nombreTabla]="'Panel.invitados'" [columnas]="columnas" [data]="dataWeb.Invitados?.listaInvitadosRechazados" [indexIcono]="indexOpciones" [mostrarPaginador]="false" [ordenarTabla]="false"
                                 [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'" [opcionesTabla]="opcionesTabla"

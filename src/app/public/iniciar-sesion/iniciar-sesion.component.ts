@@ -1,11 +1,12 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharedModule } from 'src/app/core/shared/shared.module';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { FuncionesGeneralesService, TipoEnum } from 'src/app/core/funciones-generales.services';
 import { InicioService } from '../inicio.service';
 import * as CryptoJS from 'crypto-js';
 import { Router } from '@angular/router';
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 
 @Component({
@@ -28,7 +29,7 @@ export class IniciarSesionComponent implements OnInit {
     public dialogRef: MatDialogRef<IniciarSesionComponent>,
     private readonly inicioService: InicioService,
     private readonly router: Router
-) {
+  ) {
 
   }
 
@@ -46,32 +47,36 @@ export class IniciarSesionComponent implements OnInit {
     });
     const key = encrypted.ciphertext.toString(CryptoJS.enc.Hex);
     console.log('pass:', key);
-    this.inicioService.getData(`users/${key}`).then((resp: any) => {
-      console.log('resp:', resp);
-      if(resp){
-        if(resp.activo){
-          resp.fechaUltimoLogueo = this.funcionesGeneralesService.formatearFecha(new Date(), 'dd/MM/yyyy HH:mm:ss');
-          this.inicioService.sesionIniciada(`users/${key}`, resp).then(() => {
-              this.consultarData(resp.id);
-            });
-        } else {
-          this.loading = false;
-          this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioInactivo', 'Inicio.iniciarSesion.usuarioInactivoDesc', TipoEnum.ERROR);
-        }
-      } else {
-        this.loading = false;
-        this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioPassInvalido', 'Inicio.iniciarSesion.usuarioPassInvalidoDesc', TipoEnum.ERROR);
-      }
-    })
-    .catch ((error) => {
-      this.loading = false;
-      console.error(error); // Si ocurre un error, se ejecuta esta línea.
-      this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioPassInvalido', 'Inicio.iniciarSesion.usuarioPassInvalidoDesc', TipoEnum.ERROR);
-        this.cerrar();
-    })
+    const auth = getAuth();
+    signInAnonymously(auth)
+      .then(() => {
+        this.inicioService.getData(`users/${key}`).then((resp: any) => {
+          console.log('resp:', resp);
+          if (resp) {
+            if (resp.activo) {
+              resp.fechaUltimoLogueo = this.funcionesGeneralesService.formatearFecha(new Date(), 'dd/MM/yyyy HH:mm:ss');
+              this.inicioService.sesionIniciada(`users/${key}`, resp).then(() => {
+                this.consultarData(resp.id);
+              });
+            } else {
+              this.loading = false;
+              this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioInactivo', 'Inicio.iniciarSesion.usuarioInactivoDesc', TipoEnum.ERROR);
+            }
+          } else {
+            this.loading = false;
+            this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioPassInvalido', 'Inicio.iniciarSesion.usuarioPassInvalidoDesc', TipoEnum.ERROR);
+          }
+        })
+          .catch((error) => {
+            this.loading = false;
+            console.error(error); // Si ocurre un error, se ejecuta esta línea.
+            this.funcionesGeneralesService.openDialog('Inicio.iniciarSesion.usuarioPassInvalido', 'Inicio.iniciarSesion.usuarioPassInvalidoDesc', TipoEnum.ERROR);
+            this.cerrar();
+          })
+      });
   }
 
-  consultarData(id: string){
+  consultarData(id: string) {
     this.inicioService.getData(`dataWeb/${id}`).then((resp: any) => {
       console.log('resp:', resp);
       this.dataWeb = resp;

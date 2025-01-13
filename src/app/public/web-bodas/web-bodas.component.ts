@@ -10,6 +10,7 @@ import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmarAsistenciaComponent } from './confirmar-asistencia/confirmar-asistencia.component';
 import { ActivatedRoute } from '@angular/router';
+import { getAuth, signInAnonymously } from "firebase/auth";
 
 @Component({
   selector: 'app-web-bodas',
@@ -106,12 +107,17 @@ export class WebBodasComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    if (this.dataWeb?.ConfigApp){
-      this.inicializarData();
-    } else {
-      this.consultarImagenes();
-      this.cargarDataWeb();
-    }
+    const auth = getAuth();
+    signInAnonymously(auth)
+      .then(() => {
+        console.log('entro')
+        if (this.dataWeb?.ConfigApp){
+          this.inicializarData();
+        } else {
+          this.consultarImagenes();
+          this.cargarDataWeb();
+        }
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

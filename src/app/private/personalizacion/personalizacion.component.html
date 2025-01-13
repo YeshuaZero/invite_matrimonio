@@ -21,6 +21,58 @@
                 <mat-step>
                     <ng-template matStepLabel>
                         <div class="flex">
+                            {{'Panel.infoPrincipal.estilosBase.titulo' | translate}}
+                            <div *ngIf="loading?.estilosBase; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.estilosBase"
+                            (ngModelChange)="cambioEstiloBase()">
+                            <mat-radio-button value="1">{{'Panel.infoPrincipal.estilosBase.tipo1' | translate}}</mat-radio-button>
+                            <mat-radio-button value="2">{{'Panel.infoPrincipal.estilosBase.tipo2' | translate}}</mat-radio-button>
+                            <mat-radio-button value="3">{{'Panel.infoPrincipal.estilosBase.tipo3' | translate}}</mat-radio-button>
+                            <mat-radio-button value="4">{{'Panel.infoPrincipal.estilosBase.tipo4' | translate}}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.regalos.titulo' | translate}}
+                            <div *ngIf="loading?.regalos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosImgPrincipal"
+                            (ngModelChange)="saveData('regalosImgPrincipal', 'regalos')">
+                            <mat-radio-button value="1"><img src="/assets/imgs/sobre1.png" alt="regalo1"></mat-radio-button>
+                            <mat-radio-button value="2"><img src="/assets/imgs/sobre2.png" alt="regalo2"></mat-radio-button>
+                            <mat-radio-button value="3"><img src="/assets/imgs/sobre3.png" alt="regalo3"></mat-radio-button>
+                            <mat-radio-button value="4"><img src="/assets/imgs/sobre4.png" alt="regalo4"></mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </mat-step>
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
                             {{'Panel.infoPrincipal.generales.titulo' | translate}}
                                 <div *ngIf="loading?.generales; else guardado" class="flex loading">
                                     <i class="fas fa-spinner fa-spin"></i>

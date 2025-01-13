@@ -219,7 +219,7 @@ export class InvitadosComponent implements OnInit, OnDestroy {
   }
 
   confirmarEliminarInvitado(e: any) {
-    this.panelService.eliminarInvitado(`dataWeb/${this.id}/Invitados/listaInvitados`, e.id).then(() => {
+    this.panelService.eliminarUser(`dataWeb/${this.id}/Invitados/listaInvitados`, e.id).then(() => {
       this.funcionesGenerales.openDialog('Panel.invitados.invitadoEliminadoOK', 'Panel.invitados.invitadoEliminadoOKDetalle', TipoEnum.OK);
       this.consultarData();
     }, () => {

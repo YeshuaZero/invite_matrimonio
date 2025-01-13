@@ -1,0 +1,48 @@
+<div class=popUp>
+    <div class="contenedorTituloPopUp">
+        <span>{{(editar ? 'Panel.admin.editarUsuario' : 'Panel.admin.crearUsuario') | translate}}</span>
+        <i class="cerrar fas fa-times" (click)="cerrar()"></i>
+    </div>
+    <div class="contenedorCrearEditarUsuario flex flexColumn">
+            <ng-container *ngIf="!loading; else loader">
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.admin.nombreCorto1' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataUsuario.nombre" name="nombre" maxlength="50" autocomplete="off" [required]="true">
+                </mat-form-field>
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.admin.nombreCorto2' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataUsuario.nombre2" name="nombre2" maxlength="50" autocomplete="off"
+                        [required]="true">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.admin.fechaEvento' | translate}}</mat-label>
+                    <input matInput readonly [matDatepicker]="picker" [(ngModel)]="dataUsuario.dateEvento"
+                        (ngModelChange)="cambiaFechaBoda()" (click)="picker.open()">
+                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.admin.celularInput' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataUsuario.celular" name="celular" maxlength="50" autocomplete="off">
+                </mat-form-field>
+
+                <mat-form-field  appearance="outline" subscriptSizing="dynamic">
+                    <mat-label>{{'Panel.admin.correoInput' | translate}}</mat-label>
+                    <input matInput [(ngModel)]="dataUsuario.email" name="correo" maxlength="50" autocomplete="off">
+                </mat-form-field>
+
+                <mat-slide-toggle class="activo" [(ngModel)]="dataUsuario.activo" name="activo" >
+                    <span class="textoActivo">{{'Panel.admin.activo' | translate}}</span>
+                </mat-slide-toggle>
+
+                <button class="botonConfirmacion" mat-raised-button color="primary" (click)="guardarUsuario()" [disabled]="!dataUsuario.nombre ||!dataUsuario.nombre2 || !dataUsuario.dateEvento || !dataUsuario.celular || !dataUsuario.email">{{(editar ? 'Panel.admin.botonEditarUsuario' : 'Panel.admin.botonCrearUsuario') | translate}}</button>
+            </ng-container>
+    </div>
+</div>
+
+<ng-template #loader>
+    <app-loader></app-loader>
+</ng-template>
+

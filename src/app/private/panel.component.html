@@ -3,28 +3,41 @@
         <mat-drawer #drawer class="menu" [mode]="modoDrawer" [(opened)]="menuAbierto">
             <div class="contenedorDataMenu flex flexColumn">
                 <div class="contenedorLogo flex">
-                    <img class="logo" src="assets/imgs/logo2.svg"
-                        alt="Logo">
+                    <img class="logo" src="assets/imgs/logo2.svg" alt="Logo">
                 </div>
 
                 <div class="contenedorOpciones flex flexColumn">
-                    <div class="opcion flex" (click)="abrir('infoPrincipal', drawer)" [ngClass]="{'activo': component == 'infoPrincipal'}" matTooltip="{{'Panel.infoPrincipal.titulo' | translate}}" matTooltipPosition="right">
+                    <div *ngIf="dataWeb.admin" class="opcion flex" (click)="abrir('admin', drawer)"
+                        [ngClass]="{'activo': component == 'admin'}" matTooltip="{{'Panel.admin.titulo' | translate}}"
+                        matTooltipPosition="right">
+                        <i class="fas fa-cogs"></i>
+                        <span>{{'Panel.admin.titulo' | translate}}</span>
+                    </div>
+
+                    <div class="opcion flex" (click)="abrir('infoPrincipal', drawer)"
+                        [ngClass]="{'activo': component == 'infoPrincipal'}"
+                        matTooltip="{{'Panel.infoPrincipal.titulo' | translate}}" matTooltipPosition="right">
                         <i class="fab fa-wpforms"></i>
                         <span>{{'Panel.infoPrincipal.titulo' | translate}}</span>
                     </div>
 
-                    <div class="opcion flex" (click)="abrir('invitados', drawer)" [ngClass]="{'activo': component == 'invitados'}" matTooltip="{{'Panel.invitados.titulo' | translate}}" matTooltipPosition="right">
+                    <div class="opcion flex" (click)="abrir('invitados', drawer)"
+                        [ngClass]="{'activo': component == 'invitados'}"
+                        matTooltip="{{'Panel.invitados.titulo' | translate}}" matTooltipPosition="right">
                         <i class="fas fa-vote-yea"></i>
                         <span>{{'Panel.invitados.titulo' | translate}}</span>
                     </div>
 
-                    <div class="opcion flex" (click)="abrir('personalizacion', drawer)" [ngClass]="{'activo': component == 'personalizacion'}" matTooltip="{{'Panel.personalizacion.titulo'| translate}}" matTooltipPosition="right">
+                    <div class="opcion flex" (click)="abrir('personalizacion', drawer)"
+                        [ngClass]="{'activo': component == 'personalizacion'}"
+                        matTooltip="{{'Panel.personalizacion.titulo'| translate}}" matTooltipPosition="right">
                         <i class="fas fa-tools"></i>
                         <span>{{'Panel.personalizacion.titulo' | translate}}</span>
                     </div>
                 </div>
 
-                <div class="opcion cerrarSesion" matTooltip="{{'Panel.cerrarSesion'| translate}}" matTooltipPosition="right" (click)="cerrarSesion()">
+                <div class="opcion cerrarSesion" matTooltip="{{'Panel.cerrarSesion'| translate}}"
+                    matTooltipPosition="right" (click)="cerrarSesion()">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>{{'Panel.cerrarSesion' | translate}}</span>
                 </div>
@@ -33,9 +46,15 @@
         <mat-drawer-content class="contenidoDrawer">
             <i class="menuCelular fas fa-bars" (click)="drawer.toggle()"></i>
 
-            <ng-container *ngIf="component == 'infoPrincipal'; else invitados">
-                <app-info-principal></app-info-principal>
+            <ng-container *ngIf="component == 'admin'; else infoPrincipal">
+                <app-admin></app-admin>
             </ng-container>
+
+            <ng-template #infoPrincipal>
+                <ng-container *ngIf="component == 'infoPrincipal'; else invitados">
+                    <app-info-principal></app-info-principal>
+                </ng-container>
+            </ng-template>
 
             <ng-template #invitados>
                 <ng-container *ngIf="component == 'invitados'; else personalizacion">
@@ -44,14 +63,14 @@
             </ng-template>
 
             <ng-template #personalizacion>
-                <ng-container  *ngIf="component == 'personalizacion'">
+                <ng-container *ngIf="component == 'personalizacion'">
                     <app-personalizacion></app-personalizacion>
                 </ng-container>
             </ng-template>
-            
+
         </mat-drawer-content>
     </mat-drawer-container>
-    
+
     <div class="contenedorFooter">
         <div class="desarrolladoPor flex">
             <p class="flex">
