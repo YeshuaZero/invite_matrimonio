@@ -1040,6 +1040,10 @@
     width: 540px;
 }
 
+.backgroundSinImagen{
+    background: #222222;
+}
+
 @media (max-width:1300px) {
 
     .imgIzq,

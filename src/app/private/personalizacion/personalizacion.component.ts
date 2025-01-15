@@ -31,7 +31,7 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
   id: string;
   dataWeb: any = {};
   copiaDataWeb: any = {};
-  listaIds = ['','encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
+  listaIds = ['', '', 'encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
 
   listaFotosGaleria: any = [];
   selectImagen: any;
@@ -108,62 +108,9 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
     });
   }
 
-  cambiaFechaBoda() {
-    console.log('this.dataWeb.WebBodas:', this.dataWeb.WebBodas)
-    this.dataWeb.WebBodas.fecha = this.dataWeb.WebBodas.fecha instanceof Date ? this.dataWeb.WebBodas.fecha : this.dataWeb.WebBodas.fecha.toDate();
-    this.dataWeb.WebBodas.fechaBoda = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.dataWeb.WebBodas.encabezado.fechaBoda = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'dd.MM.YYYY');
-    this.dataWeb.WebBodas.conteoRegresivo.fecha = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.dataWeb.WebBodas.conteoRegresivo.dia = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'd');
-    this.dataWeb.WebBodas.conteoRegresivo.mes = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'MMMM');
-    this.dataWeb.WebBodas.conteoRegresivo.year = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas.fecha, 'YYYY');
-
-    this.ajustesFecha('ceremonia');
-    this.ajustesFecha('fiesta');
-
-    this.guardar('', 'encabezado');
-    this.dataWeb = { ...this.dataWeb };
-  }
-
-  ajustesFecha(seccion: any) {
-    this.dataWeb.WebBodas[seccion].fechaInicio = this.dataWeb.WebBodas.fecha;
-    this.dataWeb.WebBodas[seccion].fechaFinal = new Date(this.dataWeb.WebBodas.fecha);
-    this.dataWeb.WebBodas[seccion].fechaFinal.setHours(this.dataWeb.WebBodas.fecha.getHours() + parseInt(this.dataWeb.WebBodas[seccion].duracion));
-    this.dataWeb.WebBodas[seccion].inicioCalendario = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaInicio, 'YYYYMMddTHHmmss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].finCalendario = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYYMMddTHHmmss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].inicioCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaInicio, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].finCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].datoHora = this.formatearHora(this.dataWeb.WebBodas.fecha);
-  }
-
-  cambiaFecha(seccion: any) {
-    console.log('this.dataWeb.WebBodas:', this.dataWeb.WebBodas)
-    this.dataWeb.WebBodas[seccion].fechaFinal = new Date(this.dataWeb.WebBodas[seccion].fechaInicio);
-    this.dataWeb.WebBodas[seccion].fechaFinal.setHours(this.dataWeb.WebBodas[seccion].fechaInicio.getHours() + parseInt(this.dataWeb.WebBodas[seccion].duracion));
-    this.dataWeb.WebBodas[seccion].datoHora = this.formatearHora(this.dataWeb.WebBodas[seccion].fechaInicio);
-    this.dataWeb.WebBodas[seccion].inicioCalendario = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaInicio, 'YYYYMMddTHHmmss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].finCalendario = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYYMMddTHHmmss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].inicioCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaInicio, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.dataWeb.WebBodas[seccion].finCalendarioMicrosoft = this.funcionesGenerales.formatearFecha(this.dataWeb.WebBodas[seccion].fechaFinal, 'YYYY-MM-ddTHH:mm:ss').toUpperCase();
-    this.saveData('', seccion);
-    this.dataWeb = { ...this.dataWeb };
-  }
-
-  formatearHora(fecha: Date): string {
-    const horas = fecha.getHours() % 12 || 12;
-    const minutos = fecha.getMinutes().toString().padStart(2, '0');
-    const amPm = fecha.getHours() >= 12 ? 'pm' : 'am';
-    return `${horas}:${minutos}${amPm}`;
-  }
-
-  cambioLugar(seccion: any) {
-    this.dataWeb.WebBodas[seccion].ubicacionCalendario = this.dataWeb.WebBodas[seccion].datoLugar;
-    this.saveData('ubicacionCalendario', seccion);
-  }
-
   cambioFiesta() {
     if (this.dataWeb.WebBodas.fiesta.fiestaAparte) setTimeout(() => this.scroll('fiestaId'), 200);
-    this.saveData('fiestaAparte', 'fiesta')
+    this.guardarDataWeb('fiesta', 'fiestaAparte');
   }
 
   agregarColor(tipoColor: any) {
@@ -193,15 +140,92 @@ export class PersonalizacionComponent implements OnInit, OnDestroy {
   onStepChange(event: StepperSelectionEvent) {
     console.log('event:', event)
     const elementId = this.listaIds[event.selectedIndex];
-    this.scroll(elementId);
+      this.scroll(elementId);
   }
 
-  scroll(elementId: any) {
-    if (elementId) this.funcionesGenerales.scroll(elementId);
+  scroll(elementId: any, margen?: any) {
+    if (elementId) this.funcionesGenerales.scroll(elementId, false, 'screen', elementId == 'fiestaId' ? 100 : margen);
   }
 
   saveData(seccion: string, seccionLoading?: string){
     this.saveObs.next({ seccion, seccionLoading });
+  }
+
+  cargarArchivo(file: any, nombre: string, seccionLoading: string) {
+    this.loading[seccionLoading] = true;
+    if (file) {
+      const filePath = nombre == 'fotoGaleria' ? `${this.id}/galeriaFotos/${file.name}` : `${this.id}/${nombre}`;
+      this.panelService.uploadFile(filePath, file).subscribe((url) => {
+        console.log('url:', url)
+        this.loading[seccionLoading] = false;
+        switch (nombre) {
+          case 'imgPrincipal':
+            this.dataWeb.WebBodas.encabezado.imgEncabezado = url;
+            this.guardarDataWeb('encabezado', 'imgEncabezado', 'encabezado');
+            break;
+          case 'imgFondo':
+            this.dataWeb.WebBodas.recuerdos.imgFondo = url;
+            this.guardarDataWeb('recuerdos', 'imgFondo', 'recuerdos');
+            break;
+          case 'fotoGaleria':
+            this.selectImagen = null;
+            this.listaFotosGaleria.push({
+              path: `${this.id}/galeriaFotos/${file.name}`,
+              url
+            });
+            break;
+          default:
+            break;
+        }
+      });
+    }
+  }
+
+  guardarDataWeb(seccion: string, atributo?: string, seccionLoading?: string): void {
+    if (seccionLoading) this.loading[seccionLoading] = true;
+
+    let path: string;
+    let dataToSave: any;
+    if (atributo) {
+      path = `dataWeb/${this.id}/WebBodas/${seccion}/${atributo}`;
+      console.log('this.dataWeb:', this.dataWeb)
+      console.log('this.dataWeb.WebBodas:', this.dataWeb.WebBodas)
+      console.log('seccion:', seccion)
+      console.log('atributo:', atributo)
+      console.log('this.dataWeb.WebBodas[seccion]:', this.dataWeb.WebBodas[seccion])
+      dataToSave = this.dataWeb.WebBodas[seccion][atributo];
+      console.log('dataToSave:', dataToSave)
+    } else if (seccion) {
+      path = `dataWeb/${this.id}/WebBodas/${seccion}`;
+      dataToSave = this.dataWeb.WebBodas[seccion];
+    } else {
+      path = `dataWeb/${this.id}/WebBodas`;
+      dataToSave = this.dataWeb.WebBodas;
+    }
+
+console.log('wntro')
+    if (!atributo || !seccion || this.dataWeb.WebBodas[seccion][atributo] !== this.copiaDataWeb.WebBodas[seccion][atributo]) {
+      this.panelService.saveData(path, dataToSave)
+        .then((resp) => {
+          console.log('Info guardada exitosamente.', resp);
+          this.funcionesGenerales.setData('t0k3nD1g1t4lM0m3nt5', this.dataWeb, true);
+          this.copiaDataWeb = this.funcionesGenerales.getData('t0k3nD1g1t4lM0m3nt5', true);
+        })
+        .catch((error) => {
+          console.error('Error al guardar los datos:', error);
+          this.dataWeb = this.funcionesGenerales.getData('t0k3nD1g1t4lM0m3nt5', true);
+          this.funcionesGenerales.openDialog(
+            'Panel.infoPrincipal.guardadoNoConfirmado',
+            'Panel.infoPrincipal.guardadoNoConfirmadoDesc',
+            TipoEnum.WARNING
+          );
+        })
+        .finally(() => {
+          if (seccionLoading) this.loading[seccionLoading] = false;
+        });
+    } else if (seccionLoading) {
+      this.loading[seccionLoading] = false;
+    }
   }
 
   guardar(atributo: string, seccionLoading?: string): void {

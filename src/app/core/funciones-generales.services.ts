@@ -371,11 +371,25 @@ export class FuncionesGeneralesService {
         return new Date(fechaAFormatear.getFullYear(), fechaAFormatear.getMonth(), fechaAFormatear.getDate());
     }
 
-    scroll(elementId: string, top?: boolean) {
+    scroll(elementId: string, top?: boolean, contenedorId?: string, margin?: number) {
         setTimeout(() => {
             const element = document.getElementById(elementId);
             if (element) {
-                if (top) {
+                if (contenedorId && margin) {
+                    const container = document.getElementById(contenedorId);
+                    const element = document.getElementById(elementId);
+
+                    if (container && element) {
+                        const containerRect = container.getBoundingClientRect();
+                        const elementRect = element.getBoundingClientRect();
+                        const offset = elementRect.top - containerRect.top - margin; // Calcula la posición relativa con margen
+
+                        container.scrollTo({
+                            top: container.scrollTop + offset, // Ajusta el scrollTop del contenedor
+                            behavior: 'smooth',
+                        });
+                    }
+                } else if (top) {
                     element.scrollTo({ behavior: 'smooth', top: 0 });
                 } else {
                     element.scrollIntoView({ behavior: 'smooth', block: 'start' });

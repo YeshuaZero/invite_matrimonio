@@ -5,8 +5,8 @@
 <div *ngIf="dataWeb && dataWeb.ConfigApp" class="contenedorGeneral content"
     [ngClass]="{'titulosTipo2': (['2', '3', '4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'titulosTipo3':  (['3', '4'].includes((dataWeb.ConfigApp.tipoTitulos))), 'titulosTipo4': (['4'].includes(dataWeb.ConfigApp.tipoTitulos)), 'previa': previa}"
     [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo}">
-    <div id="encabezadoId" class="encabezado">
-        <img class="imgPrincipal" src="{{dataWeb.WebBodas.encabezado.imgEncabezado}}" alt="imgPrincipal">
+    <div id="encabezadoId" class="encabezado" [ngClass]="{'backgroundSinImagen': !dataWeb.WebBodas.encabezado.imgEncabezado}">
+        <img *ngIf="dataWeb.WebBodas.encabezado.imgEncabezado" class="imgPrincipal" src="{{dataWeb.WebBodas.encabezado.imgEncabezado}}" alt="imgPrincipal">
         <ng-container *ngIf="dataWeb.ConfigApp.encabezado == '1'; else encabezado2">
             <div id="nombres1" class="dataInfo flex flexColumn animate__animated animate__fadeIn animate__slow">
                 <div data-depth="0.2" class="flex flexColumn relative">
@@ -41,8 +41,8 @@
                 src="/assets/imgs/abajoDer{{dataWeb.ConfigApp.flores}}.png" alt="imgAbajoDer">
         </div>
 
-        <ng-container
-            *ngTemplateOutlet="separador; context: { tipo: 'separadorBottom', tipoSeparador: dataWeb.ConfigApp.separadorEncabezado, fill: dataWeb.ConfigApp.colorFondo }"></ng-container>
+            <ng-container
+            *ngTemplateOutlet="separador; context: { tipo: 'separadorBottom', tipoSeparador: dataWeb.ConfigApp.separadorEncabezado, fill: dataWeb.ConfigApp.colorFondo, id: 'separadorEncabezado' }"></ng-container>
     </div>
     <div id="esloganId" class="contenedorEslogan flex"
         [ngStyle]="{'background': dataWeb.ConfigApp.colorFondo, 'color': dataWeb.ConfigApp.colorTexto}">
@@ -620,11 +620,11 @@
     </ng-container>
 </ng-template>
 
-<ng-template #separador let-tipo="tipo" let-tipoSeparador="tipoSeparador" let-fill="fill">
+<ng-template #separador let-tipo="tipo" let-tipoSeparador="tipoSeparador" let-fill="fill" let-id="id">
     <ng-container *ngIf="tipoSeparador != '0'">
 
         <ng-container *ngIf="tipoSeparador == '1'; else separador2">
-            <svg class="separador {{tipo}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+            <svg [id]="id" class="separador {{tipo}}" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
                 preserveAspectRatio="none" [ngStyle]="{'fill': fill}">
                 <path
                     d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
@@ -639,7 +639,7 @@
         </ng-container>
 
         <ng-template #separador2>
-            <svg class="separador2 {{tipo}}" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
+            <svg [id]="id" class="separador2 {{tipo}}" viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" preserveAspectRatio="none"
                 [ngStyle]="{'fill': fill}">
                 <path d="M0 97L192 83L384 95L576 123L768 105L960 72L960 0L768 0L576 0L384 0L192 0L0 0Z" opacity=".2">

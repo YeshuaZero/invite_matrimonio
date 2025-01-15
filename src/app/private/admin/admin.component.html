@@ -17,12 +17,20 @@
     <div class="dataContenedor">
         <div class="flex contenedorInvitados">
             <div class="contenedorTabla">
-                <app-table [nombreTabla]="'Panel.admin'" [columnas]="columnas"
+                <ng-container *ngIf="!loading; else loader">
+                    <app-table [nombreTabla]="'Panel.admin'" [columnas]="columnas"
                     [data]="listaUsuarios" [indexIcono]="indexOpciones" [mostrarPaginador]="false"
                     [ordenarTabla]="false" [indexNoOrdenarColumna]="indexOpciones" [icono]="'fas fa-caret-square-down'"
                     [opcionesTabla]="opcionesTabla" [atributoOpciones]="'nombre'"
                     (opcionSeleccionada)="opcionTablaSeleccionada($event)"></app-table>
+                </ng-container>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #loader>
+    <div class="contenedorLoader">
+        <app-loader></app-loader>
+    </div>
+</ng-template>

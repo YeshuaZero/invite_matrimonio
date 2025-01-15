@@ -21,72 +21,6 @@
                 <mat-step>
                     <ng-template matStepLabel>
                         <div class="flex">
-                            {{'Panel.infoPrincipal.titulos.titulo' | translate}}
-                                <div *ngIf="loading?.titulos; else guardado" class="flex loading">
-                                    <i class="fas fa-spinner fa-spin"></i>
-                                    <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
-                                </div>
-                                <ng-template #guardado>
-                                    <div class="flex loading animate__animated animate__fadeOut">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
-                                    </div>
-                                </ng-template>
-                        </div>
-                    </ng-template>
-                    <div class="flex contenedorInputs">
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloCeremonia' | translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.titulo" name="tituloCeremonia"
-                                maxlength="200" autocomplete="off" (click)="scroll('ceremoniaId')"
-                                (blur)="saveData('ceremonia', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" appearance="outline"
-                            subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloFiesta' | translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.titulo" name="tituloFiesta"
-                                maxlength="50" autocomplete="off" (click)="scroll('fiestaId')"
-                                (blur)="saveData('fiesta', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloGaleriaFotos' | translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.fotos.titulo" name="tituloGaleriaFotos"
-                                maxlength="50" autocomplete="off" (click)="scroll('galeriaId')"
-                                (blur)="saveData('fotos', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloCodigoVestuario' | translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.titulo"
-                                name="tituloCodigoVestuario" maxlength="50" autocomplete="off"
-                                (click)="scroll('codigoVestuarioId')" (blur)="saveData('codigoVestuario', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloRegalos' | translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.titulo" name="tituloRegalos"
-                                maxlength="50" autocomplete="off" (click)="scroll('regalosId')"
-                                (blur)="saveData('regalos', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloConfirmacionAsistencia' |
-                                translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.titulo"
-                                name="tituloConfirmacionAsistencia" maxlength="50" autocomplete="off"
-                                (click)="scroll('confirmacionAsistenciaId')"
-                                (blur)="saveData('confirmacionInvitados', 'titulo', 'titulos')">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.titulos.botonConfirmarAsistencia' |
-                                translate}}</mat-label>
-                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.confirmarAsistencia"
-                                name="confirmarAsistencia" maxlength="50" autocomplete="off"
-                                (click)="scroll('botonConfirmacionAsistenciaId')"
-                                (blur)="saveData('confirmacionInvitados', 'confirmarAsistencia', 'titulos')">
-                        </mat-form-field>
-                    </div>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>
-                        <div class="flex">
                             {{'Panel.infoPrincipal.encabezado.titulo' | translate}}
                             <div *ngIf="loading?.encabezado; else guardado" class="flex loading">
                                 <i class="fas fa-spinner fa-spin"></i>
@@ -145,15 +79,6 @@
                             <input matInput [(ngModel)]="dataWeb.WebBodas.eslogan.autor" name="autor" autocomplete="off"
                                 (blur)="saveData('eslogan', 'autor', 'encabezado')">
                         </mat-form-field>
-
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.encabezado.imgPrincipal' | translate}}</mat-label>
-                            <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.encabezado.archivoImgPrincipal"
-                                accept="image/*" [disabled]="loading?.encabezado"
-                                (change)="cargarArchivo(dataWeb.WebBodas.encabezado.archivoImgPrincipal, 'imgPrincipal', 'encabezado')">
-                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
-                            </ngx-mat-file-input>
-                        </mat-form-field>
                     </div>
                 </mat-step>
                 <mat-step>
@@ -173,6 +98,11 @@
                         </div>
                     </ng-template>
                     <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloCeremonia' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.titulo" name="tituloCeremonia" maxlength="200"
+                                autocomplete="off" (click)="scroll('ceremoniaId')" (blur)="saveData('ceremonia', 'titulo', 'ceremonia')">
+                        </mat-form-field>
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.ceremonia.lugar' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.ceremonia.datoLugar"
@@ -244,6 +174,11 @@
                         (ngModelChange)="cambioFiesta()">{{'Panel.infoPrincipal.fiesta.fiestaAparte' |
                         translate}}</mat-checkbox>
                     <div *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" class="flex contenedorInputs">
+                        <mat-form-field *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte" appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloFiesta' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.titulo" name="tituloFiesta" maxlength="50" autocomplete="off"
+                                (click)="scroll('fiestaId')" (blur)="saveData('fiesta', 'titulo', 'fiesta')">
+                        </mat-form-field>
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.fiesta.lugar' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.fiesta.datoLugar"
@@ -307,21 +242,11 @@
                             </ng-template>
                         </div>
                     </ng-template>
-                    <div class="flex contenedorInputs">
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.fotos.agregarFotos' | translate}}</mat-label>
-                            <ngx-mat-file-input [(ngModel)]="selectImagen" accept="image/*"
-                                (change)="cargarArchivo(selectImagen, 'fotoGaleria', 'fotos')" [disabled]="!!selectImagen">
-                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
-                            </ngx-mat-file-input>
-                        </mat-form-field>
-                    </div>
-                    <div class="contenedorImagenesGaleria flex">
-                        <div class="relative" *ngFor="let slide of this.listaFotosGaleria; let i = index">
-                            <i class="eliminarImgGaleria fas fa-times" (click)="eliminarImagen(slide, i)"></i>
-                            <img [src]="slide.url" [alt]="i + 1">
-                        </div>
-                    </div>
+                    <mat-form-field class="inputGaleria" appearance="outline" subscriptSizing="dynamic">
+                        <mat-label>{{'Panel.infoPrincipal.titulos.tituloGaleriaFotos' | translate}}</mat-label>
+                        <input matInput [(ngModel)]="dataWeb.WebBodas.fotos.titulo" name="tituloGaleriaFotos" maxlength="50"
+                            autocomplete="off" (click)="scroll('galeriaId')" (blur)="saveData('fotos', 'titulo', 'fotos')">
+                    </mat-form-field>
                 </mat-step>
                 <mat-step>
                     <ng-template matStepLabel>
@@ -342,41 +267,61 @@
                     <div class="flex flexColumn contenedorPrincipalVestuario">
                         <div class="flex contenedorInputs">
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.titulos.tituloCodigoVestuario' | translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.titulo" name="tituloCodigoVestuario" maxlength="50"
+                                    autocomplete="off" (click)="scroll('codigoVestuarioId')"
+                                    (blur)="saveData('codigoVestuario', 'titulo', 'codigoVestuario')">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.tituloHombres' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.tituloHombres" name="tituloHombres"
+                                    maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'tituloHombres', 'codigoVestuario')"
+                                    (click)="scroll('codigoVestuarioId', -470)">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.descripcionHombres' |
                                     translate}}</mat-label>
                                 <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.descripcionHombres"
-                                    name="descripcionHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionHombres', 'codigoVestuario')">
+                                    name="descripcionHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionHombres', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -470)">
                             </mat-form-field>
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.linkHombres' | translate}}</mat-label>
                                 <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.linkHombres"
-                                    name="linkHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkHombres', 'codigoVestuario')">
+                                    name="linkHombres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkHombres', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -470)">
+                            </mat-form-field>
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                                <mat-label>{{'Panel.infoPrincipal.codigoVestuario.tituloMujeres' |
+                                    translate}}</mat-label>
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.tituloMujeres"
+                                    name="tituloMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'tituloMujeres', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -620)">
                             </mat-form-field>
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.descripcionMujeres' |
                                     translate}}</mat-label>
-                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.descripcionMujeres"
-                                    name="descripcionMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionMujeres', 'codigoVestuario')">
+                                <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.descripcionMujeres" name="descripcionMujeres"
+                                    maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'descripcionMujeres', 'codigoVestuario')"
+                                    (click)="scroll('codigoVestuarioId', -620)">
                             </mat-form-field>
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.linkMujeres' | translate}}</mat-label>
                                 <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.linkMujeres"
-                                    name="linkMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkMujeres', 'codigoVestuario')">
+                                    name="linkMujeres" maxlength="100" autocomplete="off" (blur)="saveData('codigoVestuario', 'linkMujeres', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -620)">
                             </mat-form-field>
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.tituloNotaAdicional' |
                                     translate}}</mat-label>
                                 <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.tenPresente"
-                                    name="tituloNotaAdicional" maxlength="30" autocomplete="off" (blur)="saveData('codigoVestuario', 'tenPresente', 'codigoVestuario')">
+                                    name="tituloNotaAdicional" maxlength="30" autocomplete="off" (blur)="saveData('codigoVestuario', 'tenPresente', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -780)">
                             </mat-form-field>
                             <mat-form-field appearance="outline" subscriptSizing="dynamic">
                                 <mat-label>{{'Panel.infoPrincipal.codigoVestuario.notaAdicional' |
                                     translate}}</mat-label>
                                 <input matInput [(ngModel)]="dataWeb.WebBodas.codigoVestuario.notaGeneral"
-                                    name="notaAdicional" maxlength="50" autocomplete="off" (blur)="saveData('codigoVestuario', 'notaGeneral', 'codigoVestuario')">
+                                    name="notaAdicional" maxlength="50" autocomplete="off" (blur)="saveData('codigoVestuario', 'notaGeneral', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -780)">
                             </mat-form-field>
                             <mat-radio-group aria-label="Icono" class="icoVestuario"
-                                [(ngModel)]="dataWeb.WebBodas.codigoVestuario.icono" (ngModelChange)="saveData('codigoVestuario', 'icono', 'codigoVestuario')">
+                                [(ngModel)]="dataWeb.WebBodas.codigoVestuario.icono" (ngModelChange)="saveData('codigoVestuario', 'icono', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -470)">
                                 <mat-radio-button value="fab fa-pinterest"><i
                                         class="fab fa-pinterest"></i></mat-radio-button>
                                 <mat-radio-button value="fas fa-external-link-square-alt"><i
@@ -389,7 +334,7 @@
                             <div class="opcionColores">
                                 <span>{{'Panel.infoPrincipal.codigoVestuario.coloresSugeridosHombres' |
                                     translate}}</span>
-                                <div class="colores flex">
+                                <div class="colores flex" (click)="scroll('codigoVestuarioId', -470)">
                                     <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1" type="color"
                                         class="colorPicker"
                                         [(ngModel)]="dataWeb.WebBodas.codigoVestuario.colorSugeridoHombre1"
@@ -426,7 +371,7 @@
                                         class="fas fa-plus-square" (click)="agregarColor('colorSugeridoHombre')"></i>
                                 </div>
                             </div>
-                            <div class="opcionColores">
+                            <div class="opcionColores" (click)="scroll('codigoVestuarioId', -620)">
                                 <span>{{'Panel.infoPrincipal.codigoVestuario.coloresSugeridosMujeres' |
                                     translate}}</span>
                                 <div class="colores flex">
@@ -466,7 +411,7 @@
                                         class="fas fa-plus-square" (click)="agregarColor('colorSugeridoMujer')"></i>
                                 </div>
                             </div>
-                            <div class="opcionColores">
+                            <div class="opcionColores" (click)="scroll('codigoVestuarioId', -780)">
                                 <span>{{'Panel.infoPrincipal.codigoVestuario.coloresReservados' | translate}}</span>
                                 <div class="colores flex">
                                     <input *ngIf="dataWeb.WebBodas.codigoVestuario.colorReservado1" type="color"
@@ -520,14 +465,19 @@
                     </ng-template>
                     <div class="flex contenedorInputs">
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloRegalos' | translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.titulo" name="tituloRegalos" maxlength="50" autocomplete="off"
+                                (click)="scroll('regalosId')" (blur)="saveData('regalos', 'titulo', 'regalos')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.regalos.frase' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.tituloLluvia" name="tituloLluvia"
-                                maxlength="200" autocomplete="off" (blur)="saveData('regalos', 'tituloLluvia', 'regalos')">
+                                maxlength="200" autocomplete="off" (blur)="saveData('regalos', 'tituloLluvia', 'regalos')" (click)="scroll('regalosId', -220)">
                         </mat-form-field>
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.regalos.textoResaltado' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.regalos.lluviaSobres" name="lluviaSobres"
-                                maxlength="50" autocomplete="off" (blur)="saveData('regalos', 'lluviaSobres', 'regalos')">
+                                maxlength="50" autocomplete="off" (blur)="saveData('regalos', 'lluviaSobres', 'regalos')" (click)="scroll('regalosId', -350)">
                         </mat-form-field>
                     </div>
                 </mat-step>
@@ -549,14 +499,28 @@
                     </ng-template>
                     <div class="flex contenedorInputs">
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.tituloConfirmacionAsistencia' |
+                                translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.titulo" name="tituloConfirmacionAsistencia"
+                                maxlength="50" autocomplete="off" (click)="scroll('confirmacionAsistenciaId')"
+                                (blur)="saveData('confirmacionInvitados', 'titulo', 'confirmacionInvitados')">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.confirmacionInvitados.gracias' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.gracias" name="gracias"
-                                maxlength="200" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias', 'confirmacionInvitados')">
+                                maxlength="200" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias', 'confirmacionInvitados')" (click)="scroll('confirmacionAsistenciaId', -100)">
                         </mat-form-field>
                         <mat-form-field appearance="outline" subscriptSizing="dynamic">
                             <mat-label>{{'Panel.infoPrincipal.confirmacionInvitados.gracias2' | translate}}</mat-label>
                             <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.gracias2"
-                                name="gracias2" maxlength="500" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias2', 'confirmacionInvitados')">
+                                name="gracias2" maxlength="500" autocomplete="off" (blur)="saveData('confirmacionInvitados', 'gracias2', 'confirmacionInvitados')" (click)="scroll('confirmacionAsistenciaId', -130)">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.titulos.botonConfirmarAsistencia' |
+                                translate}}</mat-label>
+                            <input matInput [(ngModel)]="dataWeb.WebBodas.confirmacionInvitados.confirmarAsistencia" name="confirmarAsistencia"
+                                maxlength="50" autocomplete="off" (click)="scroll('botonConfirmacionAsistenciaId')"
+                                (blur)="saveData('confirmacionInvitados', 'confirmarAsistencia', 'confirmacionInvitados')">
                         </mat-form-field>
                     </div>
                 </mat-step>
@@ -592,14 +556,6 @@
                             <input matInput [(ngModel)]="dataWeb.WebBodas.recuerdos.hashtag" name="hashtag"
                                 maxlength="20" autocomplete="off" (blur)="saveData('recuerdos', 'hashtag', 'recuerdos')">
                         </mat-form-field>
-                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
-                            <mat-label>{{'Panel.infoPrincipal.recuerdos.imgFondo' | translate}}</mat-label>
-                            <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.recuerdos.archivoImgFondo"
-                                accept="image/*" [disabled]="loading?.recuerdos"
-                                (change)="cargarArchivo(dataWeb.WebBodas.recuerdos.archivoImgFondo, 'imgFondo', 'recuerdos')">
-                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
-                            </ngx-mat-file-input>
-                        </mat-form-field>
 
                         <mat-radio-group aria-label="Icono" class="icoRecuerdos"
                             [(ngModel)]="dataWeb.WebBodas.recuerdos.icono" (ngModelChange)="saveData('recuerdos', 'icono', 'recuerdos')">
@@ -625,7 +581,7 @@
                     <div class="notch-camera"></div>
                     <div class="notch-speaker"></div>
                 </div>
-                <div class="screen">
+                <div id="screen" class="screen">
                     <app-web-bodas [dataWeb]="dataWeb" [listaFotosGaleria]="listaFotosGaleria"
                         [previa]="true"></app-web-bodas>
                 </div>

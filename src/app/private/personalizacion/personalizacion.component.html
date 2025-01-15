@@ -47,32 +47,6 @@
                 <mat-step>
                     <ng-template matStepLabel>
                         <div class="flex">
-                            {{'Panel.infoPrincipal.regalos.titulo' | translate}}
-                            <div *ngIf="loading?.regalos; else guardado" class="flex loading">
-                                <i class="fas fa-spinner fa-spin"></i>
-                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
-                            </div>
-                            <ng-template #guardado>
-                                <div class="flex loading animate__animated animate__fadeOut">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
-                                </div>
-                            </ng-template>
-                        </div>
-                    </ng-template>
-                    <div class="flex contenedorInputs">
-                        <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosImgPrincipal"
-                            (ngModelChange)="saveData('regalosImgPrincipal', 'regalos')">
-                            <mat-radio-button value="1"><img src="/assets/imgs/sobre1.png" alt="regalo1"></mat-radio-button>
-                            <mat-radio-button value="2"><img src="/assets/imgs/sobre2.png" alt="regalo2"></mat-radio-button>
-                            <mat-radio-button value="3"><img src="/assets/imgs/sobre3.png" alt="regalo3"></mat-radio-button>
-                            <mat-radio-button value="4"><img src="/assets/imgs/sobre4.png" alt="regalo4"></mat-radio-button>
-                        </mat-radio-group>
-                    </div>
-                </mat-step>
-                <mat-step>
-                    <ng-template matStepLabel>
-                        <div class="flex">
                             {{'Panel.infoPrincipal.generales.titulo' | translate}}
                                 <div *ngIf="loading?.generales; else guardado" class="flex loading">
                                     <i class="fas fa-spinner fa-spin"></i>
@@ -87,8 +61,17 @@
                         </div>
                     </ng-template>
                     <div class="flex flexColumn contenedorInputs ajustesGeneralesInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic" (click)="scroll('encabezadoId')">
+                            <mat-label>{{'Panel.infoPrincipal.encabezado.imgPrincipal' | translate}}</mat-label>
+                            <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.encabezado.archivoImgPrincipal" accept="image/*"
+                                [disabled]="loading?.encabezado"
+                                (change)="cargarArchivo(dataWeb.WebBodas.encabezado.archivoImgPrincipal, 'imgPrincipal', 'encabezado')">
+                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                            </ngx-mat-file-input>
+                        </mat-form-field>
+
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.flores"
-                            (ngModelChange)="saveData('flores', 'generales')">
+                            (ngModelChange)="saveData('flores', 'generales')" (click)="scroll('conteoRegresivoId')">
                             <mat-radio-button value="1"><img src="/assets/imgs/florDerecha1.png" alt="flores1"></mat-radio-button>
                             <mat-radio-button value="2"><img src="/assets/imgs/florDerecha2.png" alt="flores2"></mat-radio-button>
                             <mat-radio-button value="3"><img src="/assets/imgs/florDerecha3.png" alt="flores3"></mat-radio-button>
@@ -96,7 +79,7 @@
                         </mat-radio-group>
 
                         <mat-radio-group aria-label="Icono" class="flex tipoTitulos" [(ngModel)]="dataWeb.ConfigApp.tipoTitulos"
-                            (ngModelChange)="saveData('tipoTitulos', 'generales')">
+                            (ngModelChange)="saveData('tipoTitulos', 'generales')" (click)="scroll('ceremoniaId')">
                             <mat-radio-button value="1"><span class="tituloSeccion cursiva tipoTitulo1">{{'Panel.infoPrincipal.generales.tituloTipo1' | translate}}</span></mat-radio-button>
                             <mat-radio-button value="2"><span class="tituloSeccion tipoTitulo2">{{'Panel.infoPrincipal.generales.tituloTipo2' | translate}}</span></mat-radio-button>
                             <mat-radio-button value="3">
@@ -152,7 +135,7 @@
                             </mat-radio-button>
                         </mat-radio-group>
 
-                        <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.ConfigApp.mostrarIcoSecciones"
+                        <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.ConfigApp.mostrarIcoSecciones" (click)="scroll('ceremoniaId')"
                             (ngModelChange)="saveData('mostrarIcoSecciones', 'generales')">{{'Panel.infoPrincipal.generales.mostrarIcoSecciones' | translate}}</mat-checkbox>
                     </div>
                     <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
@@ -241,7 +224,7 @@
                             (ngModelChange)="saveData('floresEncabezado', 'encabezado')" (click)="scroll('encabezadoId')">{{'Panel.infoPrincipal.encabezado.floresEncabezado' |
                             translate}}</mat-checkbox>
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.encabezado"
-                            (ngModelChange)="saveData('encabezado', 'encabezado')">
+                            (ngModelChange)="saveData('encabezado', 'encabezado')" (click)="scroll('encabezadoId')">
                             <mat-radio-button value="1">{{'Panel.infoPrincipal.encabezado.encabezadoTipo1' | translate}}</mat-radio-button>
                             <mat-radio-button value="2">{{'Panel.infoPrincipal.encabezado.encabezadoTipo2' | translate}}</mat-radio-button>
                             <mat-radio-button value="3">{{'Panel.infoPrincipal.encabezado.encabezadoTipo3' | translate}}</mat-radio-button>
@@ -250,7 +233,7 @@
                     <div class="flex contenedorInputs">
                         <mat-radio-group aria-label="Icono" class="flores separadorTop"
                             [(ngModel)]="dataWeb.ConfigApp.separadorEncabezado"
-                            (ngModelChange)="saveData('separadorEncabezado', 'encabezado')">
+                            (ngModelChange)="saveData('separadorEncabezado', 'encabezado')" (click)="scroll('esloganId', 250)">
                             <mat-radio-button value="1">{{'Panel.infoPrincipal.encabezado.separadorTipo1' | translate}}</mat-radio-button>
                             <mat-radio-button value="2">{{'Panel.infoPrincipal.encabezado.separadorTipo2' | translate}}</mat-radio-button>
                             <mat-radio-button value="0">{{'Panel.infoPrincipal.encabezado.separadorTipo0' | translate}}</mat-radio-button>
@@ -313,7 +296,9 @@
                             </ng-template>
                         </div>
                     </ng-template>
-
+                    <mat-checkbox class="checkFiesta" [(ngModel)]="dataWeb.WebBodas.fiesta.fiestaAparte"
+                        (ngModelChange)="cambioFiesta()">{{'Panel.infoPrincipal.fiesta.fiestaAparte' |
+                        translate}}</mat-checkbox>
                     <ng-container *ngIf="dataWeb.WebBodas.fiesta.fiestaAparte">
                         <div class="flex contenedorInputs">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.tipoFiesta"
@@ -348,6 +333,21 @@
                         </div>
                     </ng-template>
                     <div class="flex contenedorInputs">
+                        <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                            <mat-label>{{'Panel.infoPrincipal.fotos.agregarFotos' | translate}}</mat-label>
+                            <ngx-mat-file-input [(ngModel)]="selectImagen" accept="image/*"
+                                (change)="cargarArchivo(selectImagen, 'fotoGaleria', 'fotos')" [disabled]="!!selectImagen">
+                                <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                            </ngx-mat-file-input>
+                        </mat-form-field>
+                    </div>
+                    <div class="contenedorImagenesGaleria flex">
+                        <div class="relative" *ngFor="let slide of this.listaFotosGaleria; let i = index">
+                            <i class="eliminarImgGaleria fas fa-times" (click)="eliminarImagen(slide, i)"></i>
+                            <img [src]="slide.url" [alt]="i + 1">
+                        </div>
+                    </div>
+                    <div class="flex contenedorInputs">
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.tipoRecuerdos"
                             (ngModelChange)="saveData('tipoRecuerdos', 'fotos')">
                             <mat-radio-button value="1">{{'Panel.infoPrincipal.fotos.recuerdosTipo1' | translate}}</mat-radio-button>
@@ -377,7 +377,7 @@
                             <div class="flex contenedorInputs">
                                 <mat-radio-group aria-label="Icono" class="flores separadorTop"
                                     [(ngModel)]="dataWeb.ConfigApp.separadorVestuarioTop"
-                                    (ngModelChange)="saveData('separadorVestuarioTop', 'codigoVestuario')">
+                                    (ngModelChange)="saveData('separadorVestuarioTop', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', 300)">
                                     <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorTopTipo1' | translate}}</mat-radio-button>
                                     <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorTopTipo2' | translate}}</mat-radio-button>
                                     <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
@@ -385,7 +385,7 @@
                             </div>
                             <div class="flex contenedorInputs separadorBottom">
                                 <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.separadorVestuarioBottom"
-                                    (ngModelChange)="saveData('separadorVestuarioBottom', 'codigoVestuario')">
+                                    (ngModelChange)="saveData('separadorVestuarioBottom', 'codigoVestuario')" (click)="scroll('regalosId', 100)">
                                     <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorBottomTipo1' |
                                         translate}}</mat-radio-button>
                                     <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorBottomTipo2' |
@@ -395,7 +395,7 @@
                             </div>
                         <div class="flex contenedorInputs">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioImgPrincipal"
-                                (ngModelChange)="saveData('vestuarioImgPrincipal', 'codigoVestuario')">
+                                (ngModelChange)="saveData('vestuarioImgPrincipal', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -100)">
                                 <mat-radio-button value="1"><img src="/assets/imgs/codigoVestuario1.png" alt="codigoVestuario1"></mat-radio-button>
                                 <mat-radio-button value="2"><img src="/assets/imgs/codigoVestuario2.png" alt="codigoVestuario2"></mat-radio-button>
                                 <mat-radio-button value="3"><img src="/assets/imgs/codigoVestuario3.png" alt="codigoVestuario3"></mat-radio-button>
@@ -405,7 +405,7 @@
                         <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
                         <div class="flex contenedorInputs inputsColor">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorFondoVestuario"
-                                (ngModelChange)="saveData('colorFondoVestuario', 'codigoVestuario')">
+                                (ngModelChange)="saveData('colorFondoVestuario', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -620)">
                                 <mat-radio-button value="#e5e0d8">
                                     <div class="opcionColor" [ngStyle]="{'background': '#e5e0d8'}"></div>
                                 </mat-radio-button>
@@ -438,7 +438,7 @@
                         <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorTexto' | translate}}</p>
                         <div class="flex contenedorInputs inputsColor">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorTextoVestuario"
-                                (ngModelChange)="saveData('colorTextoVestuario', 'codigoVestuario')">
+                                (ngModelChange)="saveData('colorTextoVestuario', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', -620)">
                                 <mat-radio-button value="#222222">
                                     <div class="opcionColor" [ngStyle]="{'background': '#222222'}"></div>
                                 </mat-radio-button>
@@ -472,7 +472,7 @@
                         <p class="tituloLadoIzq">{{'Panel.infoPrincipal.codigoVestuario.ladoIzq' | translate}}</p>
                         <div class="flex contenedorInputs">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioLateralesIzq"
-                                (ngModelChange)="saveData('vestuarioLateralesIzq', 'codigoVestuario')">
+                                (ngModelChange)="saveData('vestuarioLateralesIzq', 'codigoVestuario')" (click)="scroll('codigoVestuarioId', 300)">
                                 <mat-radio-button value="1"><img src="/assets/imgs/vestuarioIzq1.png" alt="vestuarioIzq1"></mat-radio-button>
                                 <mat-radio-button value="2"><img src="/assets/imgs/vestuarioIzq2.png" alt="vestuarioIzq2"></mat-radio-button>
                                 <mat-radio-button value="3"><img src="/assets/imgs/vestuarioIzq3.png" alt="vestuarioIzq3"></mat-radio-button>
@@ -482,7 +482,7 @@
                         <p class="tituloColor">{{'Panel.infoPrincipal.codigoVestuario.ladoDer' | translate}}</p>
                         <div class="flex contenedorInputs">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.vestuarioLateralesDer"
-                                (ngModelChange)="saveData('vestuarioLateralesDer', 'codigoVestuario')">
+                                (ngModelChange)="saveData('vestuarioLateralesDer', 'codigoVestuario')" (click)="scroll('regalosId', 150)">
                                 <mat-radio-button value="1"><img src="/assets/imgs/vestuarioDer1.png" alt="vestuarioDer1"></mat-radio-button>
                                 <mat-radio-button value="2"><img src="/assets/imgs/vestuarioDer2.png" alt="vestuarioDer2"></mat-radio-button>
                                 <mat-radio-button value="3"><img src="/assets/imgs/vestuarioDer3.png" alt="vestuarioDer3"></mat-radio-button>
@@ -509,7 +509,7 @@
                     </ng-template>
                     <div class="flex contenedorInputs">
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosImgPrincipal"
-                            (ngModelChange)="saveData('regalosImgPrincipal', 'regalos')">
+                            (ngModelChange)="saveData('regalosImgPrincipal', 'regalos')" (click)="scroll('regalosId', -100)">
                             <mat-radio-button value="1"><img src="/assets/imgs/sobre1.png" alt="regalo1"></mat-radio-button>
                             <mat-radio-button value="2"><img src="/assets/imgs/sobre2.png" alt="regalo2"></mat-radio-button>
                             <mat-radio-button value="3"><img src="/assets/imgs/sobre3.png" alt="regalo3"></mat-radio-button>
@@ -521,7 +521,7 @@
                     <p class="tituloLadoIzq">{{'Panel.infoPrincipal.regalos.ladoIzq' | translate}}</p>
                     <div class="flex contenedorInputs">
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosLateralesIzq"
-                            (ngModelChange)="saveData('regalosLateralesIzq', 'regalos')">
+                            (ngModelChange)="saveData('regalosLateralesIzq', 'regalos')" (click)="scroll('regalosId', 150)">
                             <mat-radio-button value="1"><img src="/assets/imgs/regalosIzq1.png" alt="regalosIzq1"></mat-radio-button>
                             <mat-radio-button value="2"><img src="/assets/imgs/regalosIzq2.png" alt="regalosIzq2"></mat-radio-button>
                             <mat-radio-button value="3"><img src="/assets/imgs/regalosIzq3.png" alt="regalosIzq3"></mat-radio-button>
@@ -531,7 +531,7 @@
                     <p class="tituloColor">{{'Panel.infoPrincipal.regalos.ladoDer' | translate}}</p>
                     <div class="flex contenedorInputs">
                         <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.regalosLateralesDer"
-                            (ngModelChange)="saveData('regalosLateralesDer', 'regalos')">
+                            (ngModelChange)="saveData('regalosLateralesDer', 'regalos')" (click)="scroll('confirmacionAsistenciaId', 200)">
                             <mat-radio-button value="1"><img src="/assets/imgs/regalosDer1.png" alt="regalosDer1"></mat-radio-button>
                             <mat-radio-button value="2"><img src="/assets/imgs/regalosDer2.png" alt="regalosDer2"></mat-radio-button>
                             <mat-radio-button value="3"><img src="/assets/imgs/regalosDer3.png" alt="regalosDer3"></mat-radio-button>
@@ -558,7 +558,7 @@
                         <div class="flex contenedorInputs">
                             <mat-radio-group aria-label="Icono" class="flores separadorTop"
                                 [(ngModel)]="dataWeb.ConfigApp.separadorConfirmacionTop"
-                                (ngModelChange)="saveData('separadorConfirmacionTop', 'confirmacionInvitados')">
+                                (ngModelChange)="saveData('separadorConfirmacionTop', 'confirmacionInvitados')" (click)="scroll('confirmacionAsistenciaId', 200)">
                                 <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorTopTipo1' | translate}}</mat-radio-button>
                                 <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorTopTipo2' | translate}}</mat-radio-button>
                                 <mat-radio-button value="0">{{'Panel.infoPrincipal.generales.ninguno' | translate}}</mat-radio-button>
@@ -566,7 +566,7 @@
                         </div>
                         <div class="flex contenedorInputs separadorBottom">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.separadorConfirmacionBottom"
-                                (ngModelChange)="saveData('separadorConfirmacionBottom', 'confirmacionInvitados')">
+                                (ngModelChange)="saveData('separadorConfirmacionBottom', 'confirmacionInvitados')" (click)="scroll('recuerdosId', 200)">
                                 <mat-radio-button value="1">{{'Panel.infoPrincipal.generales.separadorBottomTipo1' |
                                     translate}}</mat-radio-button>
                                 <mat-radio-button value="2">{{'Panel.infoPrincipal.generales.separadorBottomTipo2' |
@@ -577,7 +577,7 @@
                         <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorFondo' | translate}}</p>
                         <div class="flex contenedorInputs inputsColor">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorFondoConfirmacion"
-                                (ngModelChange)="saveData('colorFondoConfirmacion', 'confirmacionInvitados')">
+                                (ngModelChange)="saveData('colorFondoConfirmacion', 'confirmacionInvitados')" (click)="scroll('confirmacionAsistenciaId')">
                                 <mat-radio-button value="#bec092">
                                     <div class="opcionColor" [ngStyle]="{'background': '#bec092'}"></div>
                                 </mat-radio-button>
@@ -611,7 +611,7 @@
                         <p class="tituloColor">{{'Panel.infoPrincipal.generales.colorTexto' | translate}}</p>
                         <div class="flex contenedorInputs inputsColor">
                             <mat-radio-group aria-label="Icono" class="flores" [(ngModel)]="dataWeb.ConfigApp.colorTextoConfirmacion"
-                                (ngModelChange)="saveData('colorTextoConfirmacion', 'confirmacionInvitados')">
+                                (ngModelChange)="saveData('colorTextoConfirmacion', 'confirmacionInvitados')" (click)="scroll('confirmacionAsistenciaId')">
                                 <mat-radio-button value="#222222">
                                     <div class="opcionColor" [ngStyle]="{'background': '#222222'}"></div>
                                 </mat-radio-button>
@@ -643,6 +643,34 @@
                             </mat-radio-group>
                         </div>
                 </mat-step>
+
+                <mat-step>
+                    <ng-template matStepLabel>
+                        <div class="flex">
+                            {{'Panel.infoPrincipal.recuerdos.titulo' | translate}}
+                            <div *ngIf="loading?.recuerdos; else guardado" class="flex loading">
+                                <i class="fas fa-spinner fa-spin"></i>
+                                <span>{{'Panel.infoPrincipal.guardando' | translate}}</span>
+                            </div>
+                            <ng-template #guardado>
+                                <div class="flex loading animate__animated animate__fadeOut">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>{{'Panel.infoPrincipal.guardado' | translate}}</span>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </ng-template>
+                    <div class="flex contenedorInputs">
+                            <mat-form-field appearance="outline" subscriptSizing="dynamic" (click)="scroll('recuerdosId', -100)">
+                                <mat-label>{{'Panel.infoPrincipal.recuerdos.imgFondo' | translate}}</mat-label>
+                                <ngx-mat-file-input [(ngModel)]="dataWeb.WebBodas.recuerdos.archivoImgFondo" accept="image/*"
+                                    [disabled]="loading?.recuerdos"
+                                    (change)="cargarArchivo(dataWeb.WebBodas.recuerdos.archivoImgFondo, 'imgFondo', 'recuerdos')">
+                                    <i class="icoUpload fas fa-image" ngxMatFileInputIcon></i>
+                                </ngx-mat-file-input>
+                            </mat-form-field>
+                    </div>
+                </mat-step>
             </mat-vertical-stepper>
         </div>
 
@@ -652,7 +680,7 @@
                     <div class="notch-camera"></div>
                     <div class="notch-speaker"></div>
                 </div>
-                <div class="screen">
+                <div id="screen" class="screen">
                     <app-web-bodas [dataWeb]="dataWeb" [listaFotosGaleria]="listaFotosGaleria"
                         [previa]="true"></app-web-bodas>
                 </div>

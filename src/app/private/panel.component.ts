@@ -26,7 +26,7 @@ export class PanelComponent implements OnInit, OnDestroy {
 
   fechaActual = new Date();
   modoDrawer: any = 'side';
-  component: string = 'infoPrincipal';
+  component: string = 'personalizacion';
 
   private subscriptions = new Subscription();
 

@@ -29,7 +29,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   id: string;
   listaUsuarios: any = [];
   
-  loading: boolean = false;
+  loading: boolean = true;
   
   mostrarCompletado: boolean = false;
 
@@ -72,17 +72,15 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    if (this.isPageReloaded()) {
-      this.consultarData();
-    }
+    this.consultarData();
 
     this.subscriptions.add(this.breakpoint$.subscribe(() => {
       if (this.breakpointObserver.isMatched('(max-width: 680px)')) {
-        this.columnas = ['id', 'pass', 'celular', 'estadoUsuario', 'opciones'];
-        this.indexOpciones = 4;
+        this.columnas = ['email', 'pass', 'estadoUsuario', 'opciones'];
+        this.indexOpciones = 3;
       } else if (this.breakpointObserver.isMatched('(max-width: 750px)')) {
-        this.columnas = ['id', 'pass', 'celular', 'fechaUltimoLogueo', 'estadoUsuario', 'opciones'];
-        this.indexOpciones = 5;
+        this.columnas = ['email', 'pass', 'fechaUltimoLogueo', 'estadoUsuario', 'opciones'];
+        this.indexOpciones = 4;
       } else if (this.breakpointObserver.isMatched('(max-width: 1000px)')) {
         this.columnas = ['id', 'email', 'pass', 'celular', 'fechaUltimoLogueo', 'estadoUsuario', 'opciones'];
         this.indexOpciones = 6;
@@ -118,7 +116,7 @@ export class AdminComponent implements OnInit, OnDestroy {
           if (!e.celular) e[`Enviar WhatsAppOcultar`] = true;
           return e;
         });
-        console.log('listaUsuarios:', this.listaUsuarios)
+        this.loading = false;
       }
     });
     });

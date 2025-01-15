@@ -31,7 +31,7 @@ export class InfoPrincipalComponent implements OnInit, OnDestroy {
   id: string;
   dataWeb: any = {};
   copiaDataWeb: any = {};
-  listaIds = ['', 'encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
+  listaIds = ['encabezadoId', 'ceremoniaId', 'fiestaId', 'galeriaId', 'codigoVestuarioId', 'regalosId', 'confirmacionAsistenciaId', 'recuerdosId'];
 
   listaFotosGaleria: any = [];
   selectImagen: any;
@@ -191,13 +191,12 @@ export class InfoPrincipalComponent implements OnInit, OnDestroy {
   }
 
   onStepChange(event: StepperSelectionEvent) {
-    console.log('event:', event)
     const elementId = this.listaIds[event.selectedIndex];
-    this.scroll(elementId);
+      this.scroll(elementId);
   }
 
-  scroll(elementId: any) {
-    if (elementId) this.funcionesGenerales.scroll(elementId);
+  scroll(elementId: any, margen?: any) {
+    if (elementId) this.funcionesGenerales.scroll(elementId, false, 'screen', elementId == 'fiestaId' ? 100 : elementId == 'recuerdosId' ? -100 : margen);
   }
 
   cargarArchivo(file: any, nombre: string, seccionLoading: string) {

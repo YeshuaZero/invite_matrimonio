@@ -13,6 +13,13 @@
                         <i class="fas fa-cogs"></i>
                         <span>{{'Panel.admin.titulo' | translate}}</span>
                     </div>
+                    
+                    <div class="opcion flex" (click)="abrir('personalizacion', drawer)"
+                        [ngClass]="{'activo': component == 'personalizacion'}"
+                        matTooltip="{{'Panel.personalizacion.titulo'| translate}}" matTooltipPosition="right">
+                        <i class="fas fa-tools"></i>
+                        <span>{{'Panel.personalizacion.titulo' | translate}}</span>
+                    </div>
 
                     <div class="opcion flex" (click)="abrir('infoPrincipal', drawer)"
                         [ngClass]="{'activo': component == 'infoPrincipal'}"
@@ -26,13 +33,6 @@
                         matTooltip="{{'Panel.invitados.titulo' | translate}}" matTooltipPosition="right">
                         <i class="fas fa-vote-yea"></i>
                         <span>{{'Panel.invitados.titulo' | translate}}</span>
-                    </div>
-
-                    <div class="opcion flex" (click)="abrir('personalizacion', drawer)"
-                        [ngClass]="{'activo': component == 'personalizacion'}"
-                        matTooltip="{{'Panel.personalizacion.titulo'| translate}}" matTooltipPosition="right">
-                        <i class="fas fa-tools"></i>
-                        <span>{{'Panel.personalizacion.titulo' | translate}}</span>
                     </div>
                 </div>
 

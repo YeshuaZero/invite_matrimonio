@@ -146,6 +146,13 @@
           "separadorBottomTipo2": "Separador Inferior Tipo 2",
           "ninguno": "Ninguno"
       },
+      "estilosBase": {
+        "titulo": "Estilos Predefinidos",
+        "tipo1": "Estilo #1",
+        "tipo2": "Estilo #2",
+        "tipo3": "Estilo #3",
+        "tipo4": "Estilo #4"
+      },
       "titulos": {
         "titulo": "Títulos Secciones",
         "tituloCeremonia": "Título Ceremonia",
@@ -218,7 +225,9 @@
       "codigoVestuario": {
         "titulo": "Código de Vestuario",
         "descripcionHombres": "Descripción Vestuario Hombres",
+        "tituloHombres": "Título Hombres",
         "linkHombres": "Link Ejemplo Hombres",
+        "tituloMujeres": "Título Mujeres",
         "descripcionMujeres": "Descripción Vestuario Mujeres",
         "linkMujeres": "Link Ejemplo Mujeres",
         "tituloNotaAdicional": "Titulo Nota Adicional",

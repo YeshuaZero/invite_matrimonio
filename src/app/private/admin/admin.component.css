@@ -135,7 +135,7 @@
 }
 
 .admin .contenedorTabla {
-    width: 100%;
+    width: calc(100vw - 180px);
     padding: 16px 30px;
     overflow: auto;
     height: calc(100vh - 200px);
@@ -148,6 +148,10 @@
     background-color: #471587 !important;
     color: #fff !important;
     font-size: 12px;
+}
+
+.admin ::ng-deep .mat-mdc-cell:nth-child(5){
+    max-width: 300px;
 }
 
 @media (max-width:1300px) {
@@ -251,6 +255,14 @@
         height: 18px;
         font-size: 10px;
     }
+
+        .admin ::ng-deep .mat-mdc-cell:nth-child(2) {
+            text-align: left !important;
+        }
+
+        .admin ::ng-deep .mat-mdc-cell:nth-child(3) {
+            text-align: center;
+        }
 
 }
 
